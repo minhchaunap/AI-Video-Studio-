@@ -49,7 +49,7 @@
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-rose-500 selection:text-white">
 
   <!-- Toast Notification Container -->
   <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
@@ -63,11 +63,11 @@
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
           </div>
           <div>
-            <h3 class="text-xl font-bold text-white">Cách đưa Website này lên GitHub Pages</h3>
-            <p class="text-xs text-slate-400">Chỉ mất 2 phút, miễn phí 100%, có link web công khai ngay</p>
+            <h3 class="text-xl font-bold text-white">Cách đưa Website lên GitHub Pages</h3>
+            <p class="text-xs text-slate-400">Hoàn toàn miễn phí, có tên miền .github.io ngay</p>
           </div>
         </div>
-        <button id="close-modal-btn" class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition">
+        <button id="close-modal-btn" type="button" class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
@@ -76,27 +76,20 @@
         <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/60 flex gap-3">
           <span class="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shrink-0">1</span>
           <div>
-            <h4 class="font-semibold text-white">Tạo Repository mới trên GitHub (Public)</h4>
-            <p class="mt-1 text-slate-400">Đăng nhập <a href="https://github.com" target="_blank" class="text-indigo-400 hover:underline">github.com</a> &rarr; Bấm <strong>New Repository</strong> &rarr; Đặt tên &rarr; Chọn chế độ <strong>Public</strong> (Bắt buộc để chạy Pages miễn phí).</p>
+            <h4 class="font-semibold text-white">Vào link tải trực tiếp file lên kho GitHub của bạn</h4>
+            <p class="mt-1 text-slate-400">Bấm vào đường link: <strong class="text-indigo-400 font-mono">https://github.com/minhchaunap/AI-Video-Studio-/upload/main</strong></p>
           </div>
         </div>
 
         <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/60 flex gap-3">
           <span class="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shrink-0">2</span>
           <div>
-            <h4 class="font-semibold text-white">Tải file index.html lên bằng trình duyệt</h4>
-            <p class="mt-1 text-slate-400">Trong repository vừa tạo trên web (Chrome/máy tính), bấm <strong>Add file</strong> &rarr; <strong>Upload files</strong> &rarr; Tải file <code class="bg-slate-900 px-1.5 py-0.5 rounded text-indigo-300">index.html</code> lên &rarr; Bấm <strong>Commit changes</strong>.</p>
-          </div>
-        </div>
-
-        <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/60 flex gap-3">
-          <span class="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shrink-0">3</span>
-          <div>
-            <h4 class="font-semibold text-white">Kích hoạt GitHub Pages</h4>
-            <p class="mt-1 text-slate-400">Vào tab <strong>Settings</strong> &rarr; mục <strong>Pages</strong> ở menu trái &rarr; tại <em>Branch</em> chọn <strong>main</strong>, folder chọn <strong>/ (root)</strong> &rarr; Bấm <strong>Save</strong>.</p>
+            <h4 class="font-semibold text-white">Tải file index.html lên và Commit</h4>
+            <p class="mt-1 text-slate-400">Bấm nút <strong>Choose your files</strong> &rarr; Chọn file <code class="bg-slate-900 px-1.5 py-0.5 rounded text-indigo-300">index.html</code> vừa tải về máy &rarr; Cuộn xuống bấm <strong>Commit changes</strong>.</p>
           </div>
         </div>
       </div>
+
       <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end gap-3">
         <button id="modal-download-btn" type="button" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold flex items-center gap-2 transition">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
@@ -110,17 +103,17 @@
   <header class="border-b border-slate-800/80 bg-slate-900/60 backdrop-blur-md sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-500 via-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/20">
           <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
         </div>
         <div>
-          <span class="font-bold text-lg bg-gradient-to-r from-white via-indigo-100 to-indigo-300 bg-clip-text text-transparent">AI Video Pipeline Studio</span>
-          <span class="hidden sm:inline-block ml-2 text-xs px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Content 10s • AI Học Hỏi</span>
+          <span class="font-bold text-lg bg-gradient-to-r from-white via-indigo-100 to-rose-300 bg-clip-text text-transparent">AI Video Pipeline Studio</span>
+          <span class="hidden sm:inline-block ml-2 text-xs px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/20">Content 10s • Nhu cầu + Nỗi đau</span>
         </div>
       </div>
 
       <div class="flex items-center gap-2 sm:gap-3">
-        <button id="open-github-modal-btn" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs sm:text-sm font-medium text-slate-200 flex items-center gap-2 transition">
+        <button id="open-github-modal-btn" type="button" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs sm:text-sm font-medium text-slate-200 flex items-center gap-2 transition">
           <svg class="w-4 h-4 text-indigo-400" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
           <span class="hidden sm:inline">Cách Deploy</span> GitHub
         </button>
@@ -150,7 +143,7 @@
           <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center font-bold text-xs sm:text-sm shrink-0">2</span>
           <div class="text-left">
             <span class="text-[10px] uppercase font-bold tracking-wider block opacity-80 leading-none">Bước 2</span>
-            <span class="text-xs sm:text-sm font-bold block truncate mt-0.5">Content 10s (AI Học)</span>
+            <span class="text-xs sm:text-sm font-bold block truncate mt-0.5">Content 10s</span>
           </div>
         </button>
 
@@ -170,7 +163,7 @@
   <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full">
 
     <!-- ========================================== -->
-    <!-- STEP 1: TÁCH NỀN (BACKGROUND REMOVER) -->
+    <!-- STEP 1: TÁCH NỀN (GIỮ NGUYÊN 100%) -->
     <!-- ========================================== -->
     <section id="step-panel-1" class="step-panel block space-y-6">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-slate-900 to-indigo-950/40 border border-slate-800 rounded-2xl p-6">
@@ -289,7 +282,7 @@
                 Tải ảnh PNG không nền
               </button>
 
-              <button id="goto-step-2-btn" type="button" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white text-xs sm:text-sm font-bold shadow-lg shadow-indigo-600/30 flex items-center gap-2 transition">
+              <button id="goto-step-2-btn" type="button" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white text-xs sm:text-sm font-bold shadow-lg shadow-rose-500/25 flex items-center gap-2 transition">
                 <span>Chuyển sang Bước 2: Tạo Content 10s</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </button>
@@ -299,282 +292,182 @@
       </div>
     </section>
 
-        <!-- ======================================================= -->
-    <!-- STEP 2: CONTENT 10S + Ô HỌC HỎI CỦA AI (AI LEARNING BOX) -->
     <!-- ======================================================= -->
-    <section id="step-panel-2" class="step-panel hidden space-y-6">
-      <!-- Section Header -->
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-slate-900 via-indigo-950/50 to-slate-900 border border-slate-800 rounded-2xl p-6">
-        <div>
+    <!-- STEP 2: CONTENT 10S - THIẾT KẾ GỌN GÀNG THEO HÌNH MẪU -->
+    <!-- ======================================================= -->
+    <section id="step-panel-2" class="step-panel hidden space-y-6 max-w-4xl mx-auto">
+      
+      <!-- Ô HỌC HỎI CỦA AI: THIẾT KẾ SIÊU GỌN GÀNG (COMPACT AI MEMORY BAR) -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-md">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-2.5 border-b border-slate-800/80">
           <div class="flex items-center gap-2">
-            <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Quy trình sản xuất • Bước 2</span>
-            <span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">Chuẩn Video 10 Giây</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+            <span class="text-xs font-bold text-white flex items-center gap-1.5">
+              🧠 Ô Học Hỏi Của AI (AI Memory)
+            </span>
+            <span class="text-[10px] text-slate-400 font-medium hidden sm:inline">• Học 1 lần, ghi nhớ mãi mãi</span>
           </div>
-          <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Sáng Tạo Content 10s & Ô Học Hỏi Của AI</h1>
-          <p class="text-slate-400 text-sm mt-1 max-w-2xl">Nạp dữ liệu bằng <strong>Ảnh chụp màn hình sản phẩm</strong>, <strong>Link sản phẩm</strong> hoặc <strong>Dán nhanh tiêu đề</strong>. AI sẽ đối chiếu với Bộ nhớ quy tắc đã học để viết kịch bản 10s chuẩn xác.</p>
-        </div>
-        <div class="flex items-center gap-2 flex-wrap">
-          <button id="quick-preset-rice-btn" type="button" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-amber-300 flex items-center gap-1.5 transition">
-            🌾 Thử: Gạo ST25 (Có số kg)
+          <button id="toggle-add-rule-btn" type="button" class="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1 transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            + Dạy thêm quy tắc mới
           </button>
-          <button id="quick-preset-table-btn" type="button" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-indigo-300 flex items-center gap-1.5 transition">
-            🪑 Thử: Bàn ghế (Có kích thước)
+        </div>
+
+        <!-- Các tag quy tắc AI đã học (gọn gàng, bấm xóa nhanh) -->
+        <div class="pt-3 flex flex-wrap items-center gap-2" id="compact-rules-container">
+          <!-- Rendered via JS -->
+        </div>
+
+        <!-- Form thêm quy tắc mới (thu gọn, chỉ hiện khi bấm) -->
+        <div id="add-rule-form-row" class="hidden mt-3 pt-3 border-t border-slate-800/60 grid grid-cols-1 sm:grid-cols-12 gap-2">
+          <input type="text" id="new-rule-category" placeholder="Tên loại SP (VD: Gạo, Bàn ghế, Mỹ phẩm...)" class="sm:col-span-4 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
+          <input type="text" id="new-rule-musthave" placeholder="Cấu trúc bắt buộc (VD: Bao nhiêu ký, Kích thước DxRxC...)" class="sm:col-span-6 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
+          <button id="add-learning-rule-btn" type="button" class="sm:col-span-2 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition shadow">
+            Lưu nhớ
           </button>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
-        <!-- Left Column: 3 Input Modes + AI Learning Memory Vault (5 cols) -->
-        <div class="lg:col-span-5 space-y-5">
+      <!-- KHU VỰC NHẬP: LINK, ẢNH, YÊU CẦU (GIỐNG HÌNH CHỤP 12507.jpg) -->
+      <div class="space-y-3">
+        <!-- Badge Hồng: NHẬP: Link, Ảnh -->
+        <div class="flex items-center gap-2">
+          <span class="px-3 py-1 rounded-lg bg-rose-500 text-white font-black text-xs uppercase tracking-wider shadow-sm shadow-rose-500/30">
+            NHẬP: Link, Ảnh
+          </span>
+          <span class="text-xs text-slate-400">Gõ yêu cầu hoặc dán link/ảnh sản phẩm</span>
+        </div>
+
+        <!-- Khung chat/nhập liệu phong cách thẻ hội thoại -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xl space-y-3">
           
-          <!-- Box Đầu vào: 3 Phương thức nạp dữ liệu linh hoạt -->
-          <div class="bg-slate-900/95 border border-slate-800 rounded-2xl p-5 space-y-4 shadow-lg">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-              <h3 class="text-sm font-bold text-white flex items-center gap-2">
-                <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-                Phương thức nạp đầu vào cho AI:
-              </h3>
+          <!-- Ô gõ nội dung / Tên sản phẩm chính -->
+          <div class="bg-slate-950/80 border border-slate-800 focus-within:border-rose-500 rounded-xl p-3 transition">
+            <textarea id="prompt-input" rows="2" class="w-full bg-transparent text-sm sm:text-base text-slate-100 placeholder-slate-500 focus:outline-none resize-none leading-relaxed font-medium" placeholder="Ví dụ: Viet content 10s nhu cầu nỗi đau - Gạo Quảng Trị">Viet content 10s nhu cầu nỗi đau
+Gạo Quảng Trị</textarea>
+          </div>
+
+          <!-- Hàng đính kèm: Link + Tải Ảnh sản phẩm (Gọn gàng trong 1 hàng) -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 items-center">
+            
+            <!-- Ô dán Link sản phẩm -->
+            <div class="sm:col-span-7 relative">
+              <input type="url" id="product-link-input" placeholder="Dán link sản phẩm (Shopee, TikTok, Web...)" value="https://shopee.vn/gao-quang-tri-chinh-hang" class="w-full bg-slate-950 border border-slate-800 focus:border-rose-500 rounded-xl pl-8 pr-3 py-2 text-xs text-slate-200 focus:outline-none truncate">
+              <svg class="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
             </div>
 
-            <!-- Tab Switcher: Up Ảnh vs Gửi Link vs Dán Chữ -->
-            <div class="grid grid-cols-3 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 text-xs font-semibold">
-              <button id="input-mode-photo" type="button" class="py-2 px-1 text-center rounded-lg transition bg-indigo-600 text-white shadow">
-                📸 Up ảnh SP
+            <!-- Nút Tải ảnh sản phẩm + Preview nhỏ -->
+            <div class="sm:col-span-5 flex items-center gap-2">
+              <button id="choose-other-img-btn" type="button" class="flex-1 py-2 px-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-200 rounded-xl flex items-center justify-center gap-1.5 transition">
+                <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <span id="thumb-status-text">Up/Đổi ảnh SP</span>
               </button>
-              <button id="input-mode-link" type="button" class="py-2 px-1 text-center rounded-lg transition text-slate-400 hover:text-white">
-                🔗 Gửi Link
-              </button>
-              <button id="input-mode-text" type="button" class="py-2 px-1 text-center rounded-lg transition text-slate-400 hover:text-white">
-                ✍️ Dán tiêu đề
-              </button>
+              <div class="w-9 h-9 rounded-lg bg-slate-950 border border-slate-800 checkerboard flex items-center justify-center overflow-hidden shrink-0">
+                <img id="content-input-thumb" src="" alt="" class="max-w-full max-h-full object-contain">
+              </div>
+              <input type="file" id="step2-image-input" accept="image/*" class="hidden">
             </div>
 
-            <!-- Panel Mode 1: Up Ảnh (Khuyên dùng - Nhanh nhất) -->
-            <div id="panel-input-photo" class="space-y-3">
-              <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center gap-3">
-                <div class="w-16 h-16 rounded-xl bg-slate-900 border border-slate-700 checkerboard flex items-center justify-center overflow-hidden shrink-0 relative">
-                  <img id="content-input-thumb" src="" alt="Thumbnail" class="max-w-full max-h-full object-contain">
-                </div>
-                <div class="flex-1 min-w-0">
-                  <span class="text-xs font-bold text-slate-200 block truncate" id="thumb-status-text">Ảnh từ Bước 1 đã sẵn sàng</span>
-                  <p class="text-[11px] text-slate-400 mt-0.5">Khuyên dùng: Ảnh chụp màn hình Shopee/TikTok có sẵn thông số</p>
-                </div>
-                <button id="choose-other-img-btn" type="button" class="px-3 py-2 bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 text-xs font-bold rounded-xl border border-indigo-500/40 transition shrink-0">
-                  Tải ảnh khác
-                </button>
-                <input type="file" id="step2-image-input" accept="image/*" class="hidden">
-              </div>
+          </div>
 
-              <!-- Ô trích xuất thông số từ ảnh -->
-              <div>
-                <label for="product-name-input" class="text-xs text-slate-300 font-medium block mb-1">Tên sản phẩm & Thông số đọc được từ ảnh:</label>
-                <input type="text" id="product-name-input" value="Gạo ST25 Ông Cua Thượng Hạng túi 5kg" placeholder="Ví dụ: Gạo ST25 túi 5kg, Bàn ghế 1m6x80cm..." class="w-full bg-slate-950 border border-slate-700 focus:border-indigo-500 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none">
-              </div>
-            </div>
-
-            <!-- Panel Mode 2: Gửi Link sản phẩm -->
-            <div id="panel-input-link" class="space-y-3 hidden">
-              <div>
-                <label for="product-link-input" class="text-xs text-slate-300 font-medium block mb-1">Dán link sản phẩm (Shopee / TikTok Shop / Web):</label>
-                <div class="relative">
-                  <input type="url" id="product-link-input" placeholder="https://shopee.vn/san-pham-xyz..." value="https://shopee.vn/gao-st25-ong-cua-chinh-hang-5kg" class="w-full bg-slate-950 border border-slate-700 focus:border-indigo-500 rounded-xl pl-8 pr-3.5 py-2.5 text-xs text-white focus:outline-none">
-                  <svg class="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-2">
-                <button id="extract-link-btn" type="button" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-indigo-300 rounded-xl border border-slate-700 transition flex items-center justify-center gap-1.5">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                  Quét tự động thông tin từ link
-                </button>
-              </div>
-
-              <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800/80 text-[11px] text-slate-400 space-y-1">
-                <p class="text-amber-400 font-semibold flex items-center gap-1">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                  Lưu ý về link Shopee / TikTok Shop:
-                </p>
-                <p>Các sàn TMĐT có tường lửa chặn bot (CORS). Nếu link bị sàn chặn truy cập, bạn chỉ cần <strong>copy tiêu đề sản phẩm</strong> hoặc <strong>chụp ảnh màn hình</strong> dán vào là AI xử lý ngay 100%.</p>
-              </div>
-            </div>
-
-            <!-- Panel Mode 3: Dán nhanh tiêu đề / mô tả từ sàn -->
-            <div id="panel-input-text" class="space-y-3 hidden">
-              <div>
-                <label for="quick-paste-desc" class="text-xs text-slate-300 font-medium block mb-1">Dán tiêu đề / mô tả copy từ Shopee/TikTok Shop:</label>
-                <textarea id="quick-paste-desc" rows="3" placeholder="Ví dụ: Gạo ST25 Ông Cua chính hãng Sóc Trăng túi 5kg dẻo thơm thượng hạng đạt giải nhất thế giới..." class="w-full bg-slate-950 border border-slate-700 focus:border-indigo-500 rounded-xl p-3 text-xs text-white focus:outline-none resize-none leading-relaxed"></textarea>
-              </div>
-              <button id="apply-quick-paste-btn" type="button" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-emerald-300 rounded-xl border border-slate-700 transition flex items-center justify-center gap-1.5">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                Trích xuất vào kịch bản
-              </button>
-            </div>
-
-            <!-- Nút Tạo Kịch Bản 10s -->
-            <button id="generate-script-btn" type="button" class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white text-xs sm:text-sm font-bold shadow-lg shadow-indigo-600/30 transition flex items-center justify-center gap-2 cursor-pointer">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-              Tạo Kịch Bản 10s (Áp Dụng Quy Tắc AI Đã Học)
+          <!-- Nút TẠO to rõ ràng -->
+          <div class="pt-1">
+            <button id="generate-script-btn" type="button" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-rose-500 via-pink-600 to-rose-600 hover:from-rose-600 hover:to-pink-700 text-white text-sm sm:text-base font-black shadow-lg shadow-rose-500/25 transition duration-200 flex items-center justify-center gap-2 cursor-pointer">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              <span>TẠO CONTENT 10 GIÂY NGAY</span>
             </button>
           </div>
 
-          <!-- ============================================== -->
-          <!-- Ô HỌC HỎI CỦA AI (AI LEARNING & RULE VAULT) -->
-          <!-- ============================================== -->
-          <div class="bg-gradient-to-b from-indigo-950/40 to-slate-900 border border-indigo-500/40 rounded-2xl p-5 space-y-4 shadow-xl">
-            <div class="flex items-center justify-between border-b border-indigo-900/50 pb-3">
-              <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
-                <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
-                  🧠 Ô Học Hỏi Của AI (AI Memory)
-                </h3>
-              </div>
-              <span class="text-[11px] px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-semibold">Học 1 lần • Nhớ mãi mãi</span>
-            </div>
-
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Bạn dạy AI quy tắc viết cho từng mặt hàng (ví dụ: <em>Gạo bắt buộc có số kg</em>, <em>Bàn ghế bắt buộc có kích thước</em>). AI tự động lưu vào trình duyệt của bạn và luôn tuân thủ cho mọi lần viết kịch bản sau.
-            </p>
-
-            <!-- Danh sách các quy tắc AI đã học -->
-            <div class="space-y-2">
-              <div class="flex items-center justify-between text-xs text-slate-400 font-semibold">
-                <span>Bộ nhớ quy tắc AI đang sở hữu:</span>
-                <span id="rules-count-badge" class="text-indigo-400 font-mono font-bold">2 quy tắc</span>
-              </div>
-              <div id="learned-rules-list" class="space-y-2 max-h-[220px] overflow-y-auto no-scrollbar pr-1">
-                <!-- Sẽ được render động bằng Javascript từ localStorage -->
-              </div>
-            </div>
-
-            <!-- Form: Dạy AI quy tắc mới -->
-            <div class="p-3.5 rounded-xl bg-slate-950/90 border border-slate-800 space-y-2.5">
-              <span class="text-xs font-bold text-indigo-300 block">➕ Dạy AI thêm quy tắc sản phẩm mới:</span>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <input type="text" id="new-rule-category" placeholder="Tên loại SP (VD: Mỹ phẩm, Áo thun...)" class="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
-                <input type="text" id="new-rule-musthave" placeholder="Cấu trúc bắt buộc (VD: Dung tích ml, Size...)" class="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
-              </div>
-              <button id="add-learning-rule-btn" type="button" class="w-full py-2 bg-indigo-600/80 hover:bg-indigo-600 text-white rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                Lưu quy tắc vào bộ nhớ AI
-              </button>
-            </div>
-          </div>
-
         </div>
-
-        <!-- Right Column: Output Content 10s with 3 Styles (7 cols) -->
-        <div class="lg:col-span-7 space-y-4">
-          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col h-full min-h-[540px] shadow-xl">
-            
-            <!-- Output Header & 10s Badge -->
-            <div class="flex flex-wrap items-center justify-between pb-3 border-b border-slate-800 gap-2 mb-3">
-              <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                <h3 class="text-sm font-bold text-white">Đầu ra: Kịch bản Video ngắn 10 Giây</h3>
-                <span class="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[11px] font-bold">10 Giây Chuẩn</span>
-              </div>
-              <div class="flex items-center gap-3 text-xs text-slate-400">
-                <span>Số từ: <strong id="word-count" class="text-white font-mono">27 từ</strong></span>
-                <span>•</span>
-                <span>Tốc độ đọc: <strong id="est-duration" class="text-emerald-400 font-mono">~9.6 giây</strong></span>
-              </div>
-            </div>
-
-            <!-- 3 Lựa chọn Phong Cách Kịch Bản 10s -->
-            <div class="mb-3 flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
-              <span class="text-xs text-slate-400 shrink-0 font-medium">Chọn phong cách:</span>
-              <button id="script-style-viral" type="button" class="px-3 py-1 rounded-lg text-xs font-bold transition bg-indigo-600 text-white shadow shrink-0">
-                🔥 Hài hước / Viral
-              </button>
-              <button id="script-style-specs" type="button" class="px-3 py-1 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white bg-slate-950 border border-slate-800 shrink-0">
-                📏 Nêu thông số thực tế
-              </button>
-              <button id="script-style-fomo" type="button" class="px-3 py-1 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white bg-slate-950 border border-slate-800 shrink-0">
-                ⚡ Flash Sale chốt đơn
-              </button>
-            </div>
-
-            <!-- Rule Applied Indicator Banner -->
-            <div id="rule-applied-banner" class="mb-3 p-2.5 rounded-xl bg-amber-950/30 border border-amber-500/30 text-xs text-amber-300 flex items-center gap-2">
-              <svg class="w-4 h-4 shrink-0 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <span>Quy tắc AI đã áp dụng: <strong id="rule-applied-text">Sản phẩm Gạo bắt buộc có khối lượng (5kg).</strong></span>
-            </div>
-
-            <!-- 10-Second 3-Act Breakdown -->
-            <div class="space-y-3 flex-1 overflow-y-auto no-scrollbar pr-1">
-              
-              <!-- 0s - 3s: Hook -->
-              <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-900/40">
-                <div class="flex items-center justify-between mb-1.5">
-                  <span class="text-xs font-bold text-indigo-400 flex items-center gap-1.5">
-                    <span class="px-1.5 py-0.5 rounded bg-indigo-500/20 text-[10px] font-mono">00:00 - 00:03 (3s)</span>
-                    HOOK GIỮ CHÂN CỰC MẠNH
-                  </span>
-                  <span class="text-[10px] text-slate-400">~8 từ</span>
-                </div>
-                <textarea id="script-hook" rows="2" class="w-full bg-slate-950/70 border border-slate-800 focus:border-indigo-500 rounded-lg p-2.5 text-xs text-slate-200 focus:outline-none resize-none font-medium leading-relaxed">Đừng ăn cơm khô khốc nữa khi đã có ST25 chính hãng này!</textarea>
-              </div>
-
-              <!-- 3s - 7s: Thân bài (Bắt buộc chèn quy tắc đã học) -->
-              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
-                <div class="flex items-center justify-between mb-1.5">
-                  <span class="text-xs font-bold text-violet-400 flex items-center gap-1.5">
-                    <span class="px-1.5 py-0.5 rounded bg-violet-500/20 text-[10px] font-mono">00:03 - 00:07 (4s)</span>
-                    THÂN BÀI: BẮT BUỘC CHÈN ĐẶC TÍNH (QUY TẮC ĐÃ HỌC)
-                  </span>
-                  <span class="text-[10px] text-slate-400">~11 từ</span>
-                </div>
-                <textarea id="script-body" rows="3" class="w-full bg-slate-900/70 border border-slate-800 focus:border-indigo-500 rounded-lg p-2.5 text-xs text-slate-200 focus:outline-none resize-none leading-relaxed">Túi 5kg gạo ST25 chuẩn cơm dẻo ngọt, thơm lừng đậm đà, để nguội vẫn mềm tan.</textarea>
-              </div>
-
-              <!-- 7s - 10s: CTA -->
-              <div class="p-3.5 rounded-xl bg-emerald-950/20 border border-emerald-900/40">
-                <div class="flex items-center justify-between mb-1.5">
-                  <span class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
-                    <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-[10px] font-mono">00:07 - 00:10 (3s)</span>
-                    KÊU GỌI HÀNH ĐỘNG (CTA VÀO LINK/GIỎ HÀNG)
-                  </span>
-                  <span class="text-[10px] text-slate-400">~8 từ</span>
-                </div>
-                <textarea id="script-cta" rows="2" class="w-full bg-slate-950/70 border border-slate-800 focus:border-emerald-500 rounded-lg p-2.5 text-xs text-slate-200 focus:outline-none resize-none leading-relaxed">Đang có mã giảm sốc, bấm ngay vào link góc dưới để mua nhé!</textarea>
-              </div>
-            </div>
-
-            <!-- Full 10s Reader Preview Bar -->
-            <div class="p-3 mt-2 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between gap-3">
-              <div class="flex items-center gap-2">
-                <button id="listen-10s-btn" type="button" class="w-8 h-8 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white flex items-center justify-center transition shadow">
-                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </button>
-                <div class="text-left">
-                  <span class="text-xs font-bold text-white block">Nghe thử giọng đọc 10s</span>
-                  <span class="text-[10px] text-slate-400">Đọc tự động chuẩn 10 giây</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-2">
-                <button id="copy-script-btn" type="button" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 flex items-center gap-1.5 border border-slate-700 transition">
-                  <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                  Sao chép kịch bản 10s
-                </button>
-              </div>
-            </div>
-
-            <!-- Bottom Navigation -->
-            <div class="pt-4 mt-3 flex flex-wrap items-center justify-between gap-3 border-t border-slate-800">
-              <button id="back-to-step-1-btn" type="button" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-300 transition">
-                &larr; Xem Bước 1 (Tách nền)
-              </button>
-
-              <button id="goto-step-3-btn" type="button" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white text-xs sm:text-sm font-bold shadow-lg shadow-indigo-600/30 flex items-center gap-2 transition">
-                <span>Chuyển sang Bước 3: Tạo Video 10s</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
       </div>
+
+      <!-- KHU VỰC KẾT QUẢ: GIỐNG HỆT HÌNH ẢNH MẪU 12507.jpg -->
+      <div class="space-y-3 pt-2">
+        
+        <!-- Tiêu đề kết quả & Badge TẠO -->
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md bg-rose-500 text-white font-black text-[11px] uppercase tracking-wider shadow-sm">
+            TẠO
+          </span>
+          <h2 id="result-title-display" class="text-base sm:text-lg font-bold text-white">
+            Content 10 giây – Gạo Quảng Trị (Nhu cầu + Nỗi đau)
+          </h2>
+        </div>
+
+        <!-- Card kết quả theo chuẩn giao diện mẫu trong ảnh -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-2xl relative space-y-4">
+          
+          <!-- Thanh trên cùng của Card: "Viết" & Các nút Copy/Share -->
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800/80 text-xs">
+            <div class="flex items-center gap-2 text-slate-300 font-semibold">
+              <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+              <span>Viết (Có thể sửa trực tiếp)</span>
+            </div>
+            
+            <div class="flex items-center gap-3 text-slate-400">
+              <button id="card-top-copy-btn" type="button" class="hover:text-white p-1 transition" title="Sao chép kịch bản">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              </button>
+              <button id="card-top-share-btn" type="button" class="hover:text-white p-1 transition" title="Chia sẻ">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Nội dung kịch bản 10 giây (Font chữ dễ đọc, chuẩn 10 giây) -->
+          <div class="relative">
+            <textarea id="full-script-content" rows="4" class="w-full bg-slate-950/60 border border-slate-800/80 focus:border-rose-500/80 rounded-xl p-3.5 sm:p-4 text-slate-100 text-sm sm:text-base leading-relaxed focus:outline-none resize-none font-normal" placeholder="Nội dung kịch bản 10 giây sẽ hiển thị ở đây...">Cơm mỗi ngày mà gạo khô, nấu lên không thơm, cả nhà ăn cũng kém ngon? Chọn ngay gạo Quảng Trị, hạt gạo chất lượng, giúp bữa cơm gia đình thêm thơm ngon, tròn vị. Một bữa cơm ngon bắt đầu từ hạt gạo tốt!</textarea>
+          </div>
+
+          <!-- Thông số thời gian & Số từ -->
+          <div class="flex items-center justify-between text-xs text-slate-400 px-1">
+            <div class="flex items-center gap-2">
+              <span>Độ dài: <strong id="word-count" class="text-white font-mono">37 từ</strong></span>
+              <span>•</span>
+              <span>Thời lượng ước tính: <strong id="est-duration" class="text-emerald-400 font-mono">~10.5 giây</strong></span>
+            </div>
+            <span id="rule-status-badge" class="text-amber-400 text-[11px] font-medium truncate max-w-[200px]">Đã áp dụng: Gạo</span>
+          </div>
+
+          <!-- Thanh công cụ dưới đáy Card (Giống hệt hình chụp) -->
+          <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-1 sm:gap-3 text-slate-400">
+              <!-- Copy Button -->
+              <button id="card-bot-copy-btn" type="button" class="p-2 hover:text-white rounded-lg hover:bg-slate-800 transition" title="Sao chép kịch bản">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              </button>
+              
+              <!-- Thumbs Up -->
+              <button id="card-like-btn" type="button" class="p-2 hover:text-emerald-400 rounded-lg hover:bg-slate-800 transition" title="Thích">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
+              </button>
+
+              <!-- Thumbs Down (Tạo lại biến thể khác) -->
+              <button id="card-dislike-btn" type="button" class="p-2 hover:text-rose-400 rounded-lg hover:bg-slate-800 transition" title="Tạo biến thể khác">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.765.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5"/></svg>
+              </button>
+
+              <!-- Loa phát âm thanh đọc 10s TTS -->
+              <button id="card-speak-btn" type="button" class="p-2 hover:text-rose-400 rounded-lg hover:bg-slate-800 transition" title="Nghe đọc thử giọng 10s">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+              </button>
+
+              <!-- Share Button -->
+              <button id="card-share-btn" type="button" class="p-2 hover:text-white rounded-lg hover:bg-slate-800 transition" title="Chia sẻ">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+              </button>
+            </div>
+
+            <!-- Nút chuyển sang Bước 3 -->
+            <button id="goto-step-3-btn" type="button" class="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white text-xs font-bold shadow-md shadow-indigo-600/30 flex items-center gap-1.5 transition">
+              <span>Đưa sang Bước 3 (Tạo Video)</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
     </section>
 
     <!-- ========================================== -->
@@ -631,7 +524,7 @@
               <div class="relative z-10 space-y-2">
                 <!-- 10s Timeline Progress Bar -->
                 <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                  <div id="video-timeline-progress" class="bg-indigo-500 h-1.5 rounded-full w-0 transition-all duration-100"></div>
+                  <div id="video-timeline-progress" class="bg-rose-500 h-1.5 rounded-full w-0 transition-all duration-100"></div>
                 </div>
 
                 <!-- Subtitle Box -->
@@ -749,7 +642,7 @@
   <!-- Global Footer -->
   <footer class="border-t border-slate-900 bg-slate-950/80 py-6 text-center text-xs text-slate-500">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p>AI Video Production Pipeline • 3 Nút Ngang • Content 10s • Bộ Nhớ Học Hỏi AI</p>
+      <p>AI Video Production Pipeline • 3 Nút Ngang • Content 10s Nhu Cầu Nỗi Đau • Bộ Nhớ AI</p>
       <div class="flex items-center gap-4">
         <span>Bước 1: Tách nền</span>
         <span>&bull;</span>
@@ -774,26 +667,23 @@
       isPlayingPreview: false,
       previewTimerInterval: null,
       previewTimeElapsed: 0,
-      productName: 'Gạo ST25 Ông Cua Thượng Hạng',
-      productLink: 'https://shopee.vn/gao-st25-ong-cua-chinh-hang-5kg',
-      productImage: '',
+      productName: 'Gạo Quảng Trị',
+      productLink: 'https://shopee.vn/gao-quang-tri-chinh-hang',
       learnedRules: [
         {
           id: 'rule-rice',
           category: 'gạo',
-          mustHave: 'Bắt buộc nêu rõ khối lượng bao nhiêu kg (ví dụ: túi 5kg)',
-          sampleBody: 'Túi 5kg chuẩn cơm dẻo ngọt, thơm lừng đậm đà, để nguội vẫn mềm tan.'
+          mustHave: 'Bắt buộc có số kg (Ví dụ: túi 5kg)'
         },
         {
           id: 'rule-furniture',
           category: 'bàn ghế',
-          mustHave: 'Bắt buộc nêu rõ kích thước cụ thể (Dài x Rộng x Cao)',
-          sampleBody: 'Kích thước chuẩn 1m6 x 80cm, gỗ sồi bền đẹp, vừa vặn mọi phòng khách.'
+          mustHave: 'Bắt buộc có kích thước DxRxC (Ví dụ: 1m6 x 80cm)'
         }
       ]
     };
 
-    // Load Learned Rules from localStorage (persist memory)
+    // Load & Save Learned Rules
     function loadLearnedRules() {
       try {
         const saved = localStorage.getItem('ai_video_learned_rules');
@@ -804,51 +694,42 @@
           }
         }
       } catch (e) {
-        console.warn('Could not read localStorage', e);
+        console.warn('Cannot read localStorage', e);
       }
       renderLearnedRulesList();
     }
 
-    // Save Learned Rules to localStorage
     function saveLearnedRules() {
       try {
         localStorage.setItem('ai_video_learned_rules', JSON.stringify(state.learnedRules));
       } catch (e) {
-        console.warn('Could not write to localStorage', e);
+        console.warn('Cannot write localStorage', e);
       }
       renderLearnedRulesList();
     }
 
-    // Render Rules List in UI
     function renderLearnedRulesList() {
-      const container = document.getElementById('learned-rules-list');
-      const countBadge = document.getElementById('rules-count-badge');
+      const container = document.getElementById('compact-rules-container');
       if (!container) return;
 
       container.innerHTML = '';
-      countBadge.textContent = `${state.learnedRules.length} quy tắc`;
 
       state.learnedRules.forEach((rule, index) => {
-        const item = document.createElement('div');
-        item.className = 'p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-start justify-between gap-2 text-xs';
-        item.innerHTML = `
-          <div>
-            <div class="flex items-center gap-1.5 font-bold text-indigo-300">
-              <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
-              Sản phẩm: <span class="capitalize text-white">${rule.category}</span>
-            </div>
-            <p class="text-slate-300 text-[11px] mt-0.5">👉 Cấu trúc: <span class="text-amber-300 font-medium">${rule.mustHave}</span></p>
-          </div>
-          <button type="button" class="delete-rule-btn text-slate-500 hover:text-red-400 p-1 shrink-0" data-index="${index}" title="Xóa quy tắc này">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+        const tag = document.createElement('div');
+        tag.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 shadow-sm';
+        tag.innerHTML = `
+          <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+          <span class="font-bold text-white capitalize">${rule.category}:</span>
+          <span class="text-amber-300 font-medium">${rule.mustHave}</span>
+          <button type="button" class="delete-rule-btn ml-1.5 text-slate-500 hover:text-rose-400 transition" data-index="${index}" title="Xóa quy tắc">
+            &times;
           </button>
         `;
-        container.appendChild(item);
+        container.appendChild(tag);
       });
 
-      // Attach delete listeners
       container.querySelectorAll('.delete-rule-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', () => {
           const idx = parseInt(btn.getAttribute('data-index'));
           state.learnedRules.splice(idx, 1);
           saveLearnedRules();
@@ -884,7 +765,6 @@
       }, 3500);
     }
 
-    // Safe Clipboard Copy Helper
     function copyText(text, successMsg) {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text)
@@ -917,7 +797,6 @@
     function switchStep(stepNum) {
       state.currentStep = stepNum;
       
-      // Cập nhật giao diện 3 nút nằm ngang
       for (let i = 1; i <= 3; i++) {
         const tab = document.getElementById(`tab-step-${i}`);
         const panel = document.getElementById(`step-panel-${i}`);
@@ -937,12 +816,10 @@
         }
       }
 
-      // Khi sang bước 2, đồng bộ thumbnail
       if (stepNum === 2) {
         syncStep2Thumbnail();
       }
 
-      // Khi sang bước 3, đồng bộ video preview
       if (stepNum === 3) {
         syncStep3Preview();
       }
@@ -977,10 +854,9 @@
       const cx = canvas.width / 2;
       const cy = canvas.height / 2 - 10;
 
-      // Draw rice bag / modern product
       ctx.save();
       // Rice sack outline
-      ctx.fillStyle = '#fef08a'; // Golden grain color
+      ctx.fillStyle = '#fef08a';
       ctx.strokeStyle = '#ca8a04';
       ctx.lineWidth = 6;
       ctx.beginPath();
@@ -994,32 +870,32 @@
       ctx.ellipse(cx, cy - 80, 50, 14, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Badge label
-      ctx.fillStyle = '#dc2626'; // Red seal
+      // Red seal
+      ctx.fillStyle = '#dc2626';
       ctx.beginPath();
       ctx.arc(cx, cy - 10, 36, 0, Math.PI * 2);
       ctx.fill();
 
       ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 14px Inter, sans-serif';
+      ctx.font = 'bold 13px Inter, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('ST25', cx, cy - 6);
+      ctx.fillText('QUẢNG TRỊ', cx, cy - 6);
       ctx.font = 'bold 11px Inter, sans-serif';
       ctx.fillText('5KG', cx, cy + 12);
 
       // Branding text
       ctx.fillStyle = '#78350f';
-      ctx.font = 'bold 16px Inter, sans-serif';
-      ctx.fillText('GẠO ÔNG CUA', cx, cy + 65);
+      ctx.font = 'bold 15px Inter, sans-serif';
+      ctx.fillText('GẠO SẠCH', cx, cy + 65);
       ctx.font = '12px Inter, sans-serif';
-      ctx.fillText('THƯỢNG HẠNG', cx, cy + 85);
+      ctx.fillText('THƠM NGON', cx, cy + 85);
 
       ctx.restore();
 
       originalImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       document.getElementById('canvas-empty-state').classList.add('hidden');
       processBackgroundRemoval();
-      showToast('Đã nạp mẫu Bao Gạo ST25 5KG!');
+      showToast('Đã nạp mẫu Bao Gạo Quảng Trị!');
     }
 
     function handleImageLoad(file) {
@@ -1109,136 +985,117 @@
       showToast('Đã tải ảnh PNG không nền về máy!');
     }
 
-    // Đồng bộ thumbnail sang bước 2
     function syncStep2Thumbnail() {
       const thumb = document.getElementById('content-input-thumb');
       const status = document.getElementById('thumb-status-text');
       if (state.processedImage) {
         thumb.src = state.processedImage;
-        status.textContent = 'Ảnh từ Bước 1 đã sẵn sàng';
+        status.textContent = 'Ảnh đã sẵn sàng';
       } else {
         thumb.src = '';
-        status.textContent = 'Chưa có ảnh (bấm đổi ảnh)';
+        status.textContent = 'Up/Đổi ảnh SP';
       }
     }
 
     // ========================================================
-    // STEP 2: CONTENT 10S + BỘ NHỚ HỌC HỎI AI (AI MEMORY)
+    // STEP 2: CONTENT 10S - LOGIC THEO HÌNH MẪU 12507.jpg
     // ========================================================
-    state.activeScriptStyle = 'viral';
-
-    function setScriptStyle(style) {
-      state.activeScriptStyle = style;
-      const viralBtn = document.getElementById('script-style-viral');
-      const specsBtn = document.getElementById('script-style-specs');
-      const fomoBtn = document.getElementById('script-style-fomo');
-
-      [viralBtn, specsBtn, fomoBtn].forEach(b => {
-        b.className = 'px-3 py-1 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white bg-slate-950 border border-slate-800 shrink-0';
-      });
-
-      if (style === 'viral') {
-        viralBtn.className = 'px-3 py-1 rounded-lg text-xs font-bold transition bg-indigo-600 text-white shadow shrink-0';
-      } else if (style === 'specs') {
-        specsBtn.className = 'px-3 py-1 rounded-lg text-xs font-bold transition bg-indigo-600 text-white shadow shrink-0';
-      } else if (style === 'fomo') {
-        fomoBtn.className = 'px-3 py-1 rounded-lg text-xs font-bold transition bg-indigo-600 text-white shadow shrink-0';
-      }
-      generate10sScript();
-    }
-
     function generate10sScript() {
-      const prodName = document.getElementById('product-name-input').value.trim() || 'Sản phẩm';
+      const promptText = document.getElementById('prompt-input').value.trim();
       const prodLink = document.getElementById('product-link-input').value.trim();
-      state.productName = prodName;
       state.productLink = prodLink;
 
-      const lowerName = prodName.toLowerCase();
-      let matchedRule = null;
+      // Trích xuất tên sản phẩm từ nội dung người dùng gõ
+      let prodName = 'Gạo Quảng Trị';
+      const lines = promptText.split(/[\r\n]+/);
+      for (const line of lines) {
+        const clean = line.replace(/viet content 10s/i, '').replace(/nhu cầu/i, '').replace(/nỗi đau/i, '').replace(/[-–:]/g, '').trim();
+        if (clean.length > 2) {
+          prodName = clean;
+          break;
+        }
+      }
+      state.productName = prodName;
 
-      // Tìm kiếm trong bộ nhớ xem loại sản phẩm này đã được "dạy" quy tắc chưa
+      // Cập nhật tiêu đề giống hình: Content 10 giây – [Tên SP] (Nhu cầu + Nỗi đau)
+      const titleElem = document.getElementById('result-title-display');
+      if (titleElem) {
+        titleElem.textContent = `Content 10 giây – ${prodName} (Nhu cầu + Nỗi đau)`;
+      }
+
+      // Kiểm tra quy tắc đã học
+      const lower = prodName.toLowerCase();
+      let matchedRule = null;
       for (const rule of state.learnedRules) {
-        if (lowerName.includes(rule.category.toLowerCase())) {
+        if (lower.includes(rule.category.toLowerCase())) {
           matchedRule = rule;
           break;
         }
       }
 
-      let hookText = '';
-      let bodyText = '';
-      let ctaText = '';
-      const style = state.activeScriptStyle || 'viral';
+      let scriptText = '';
+      const ruleStatus = document.getElementById('rule-status-badge');
 
       if (matchedRule) {
-        document.getElementById('rule-applied-banner').classList.remove('hidden');
-        document.getElementById('rule-applied-text').textContent = `Sản phẩm "${matchedRule.category}" bắt buộc: ${matchedRule.mustHave}.`;
-        
-        const isRice = matchedRule.category.toLowerCase().includes('gạo');
-        const isFurniture = matchedRule.category.toLowerCase().includes('bàn') || matchedRule.category.toLowerCase().includes('ghế');
-
-        if (style === 'viral') {
-          if (isRice) {
-            hookText = `Đừng ăn cơm khô khốc nữa khi đã có ST25 chính hãng này!`;
-            bodyText = `Túi 5kg chuẩn cơm dẻo ngọt, thơm lừng đậm đà, để nguội vẫn mềm tan.`;
-            ctaText = `Đang có mã giảm sốc, bấm ngay vào link bên dưới để mua nhé!`;
-          } else if (isFurniture) {
-            hookText = `Phòng khách chật hẹp vẫn cực sang với bộ bàn ghế thông minh này!`;
-            bodyText = `Kích thước chuẩn 1m6 x 80cm, gỗ sồi bền đẹp chống ẩm, vừa vặn mọi góc nhà.`;
-            ctaText = `Số lượng sale có hạn, nhấn ngay vào link bên dưới nhận ưu đãi!`;
-          } else {
-            hookText = `Tìm kiếm bấy lâu nay thì đây chính là chân ái cho bạn!`;
-            bodyText = `${prodName}: Chuẩn tiêu chí ${matchedRule.mustHave}, dùng là ưng ngay!`;
-            ctaText = `Chớp deal hôm nay, bấm ngay vào đường link để săn sale!`;
-          }
-        } else if (style === 'specs') {
-          if (isRice) {
-            hookText = `Review chân thực túi gạo ST25 Ông Cua 5kg ăn có ngon thật không?`;
-            bodyText = `Hạt dài đều tăm tắp, túi 5kg chuẩn trọng lượng, nấu lên dẻo thơm từng hạt.`;
-            ctaText = `Hàng chuẩn chính hãng, đặt ngay tại đường link bên dưới nhé!`;
-          } else if (isFurniture) {
-            hookText = `Đo đạc thực tế bộ bàn ghế phòng khách trước khi bạn xuống tiền:`;
-            bodyText = `Kích thước Dài 1m6 Rộng 80cm Cao 75cm, gỗ thịt chắc nịch chịu lực 300kg.`;
-            ctaText = `Xem chi tiết kích thước và đặt mua tại link góc dưới màn hình!`;
-          } else {
-            hookText = `Thông số chi tiết của ${prodName} mà bạn nhất định phải biết:`;
-            bodyText = `Đáp ứng chuẩn ${matchedRule.mustHave}, kiểm định chất lượng nghiêm ngặt.`;
-            ctaText = `Bấm xem thông số đầy đủ và đặt hàng tại liên kết này nhé!`;
-          }
-        } else if (style === 'fomo') {
-          hookText = `Dừng lại 3 giây! Flash sale sập sàn chỉ dành cho ${prodName}!`;
-          if (isRice) {
-            bodyText = `Túi 5kg gạo ST25 chỉ còn đúng 20 suất giá ưu đãi hôm nay.`;
-          } else if (isFurniture) {
-            bodyText = `Bộ bàn ghế 1m6 x 80cm đang giảm trực tiếp 1 triệu cho 5 khách đầu.`;
-          } else {
-            bodyText = `${prodName} chuẩn ${matchedRule.mustHave} đang giảm giá sốc nhất năm.`;
-          }
-          ctaText = `Bấm ngay vào giỏ hàng kẻo hết mã giảm giá nhé!`;
+        ruleStatus.textContent = `Đã áp dụng: ${matchedRule.category} (${matchedRule.mustHave})`;
+        if (matchedRule.category.toLowerCase().includes('gạo')) {
+          scriptText = `Cơm mỗi ngày mà gạo khô, nấu lên không thơm, cả nhà ăn cũng kém ngon? Chọn ngay ${prodName}, hạt gạo chất lượng, giúp bữa cơm gia đình thêm thơm ngon, tròn vị. Một bữa cơm ngon bắt đầu từ hạt gạo tốt!`;
+        } else if (matchedRule.category.toLowerCase().includes('bàn') || matchedRule.category.toLowerCase().includes('ghế')) {
+          scriptText = `Phòng khách chật chội, bàn ghế ọp ẹp làm mất điểm ngôi nhà? Chọn ngay ${prodName} kích thước chuẩn 1m6 x 80cm, gỗ sồi bền đẹp, giúp không gian thêm sang trọng, ấm cúng. Nâng tầm phòng khách ngay hôm nay!`;
+        } else {
+          scriptText = `Bạn đau đầu vì chưa chọn được sản phẩm thật sự ưng ý? Chọn ngay ${prodName}, thiết kế chuẩn ${matchedRule.mustHave}, chất lượng vượt trội. Mua ngay hôm nay để nhận ưu đãi!`;
         }
       } else {
-        document.getElementById('rule-applied-banner').classList.add('hidden');
-        if (style === 'viral') {
-          hookText = `Cảnh báo chiếc deal siêu hời dành riêng cho ${prodName}!`;
-          bodyText = `Chất lượng cao cấp, thiết kế tỉ mỉ từng chi tiết, ai dùng cũng mê!`;
-          ctaText = `Bấm ngay vào liên kết bên dưới để nhận voucher giảm 40%!`;
-        } else if (style === 'specs') {
-          hookText = `Cận cảnh độ hoàn thiện xuất sắc của ${prodName}:`;
-          bodyText = `Gia công chuẩn chỉnh, chất liệu cao cấp bền đẹp, bảo hành uy tín.`;
-          ctaText = `Nhấn vào đường link để xem chi tiết thông số và giá bán!`;
-        } else {
-          hookText = `Sale sốc chớp nhoáng! Cơ hội sở hữu ${prodName} giá tốt nhất!`;
-          bodyText = `Số lượng quà tặng có hạn, hơn 200 người đã thêm vào giỏ.`;
-          ctaText = `Nhanh tay bấm vào link bên dưới để săn deal kẻo lỡ!`;
-        }
+        ruleStatus.textContent = `Chuẩn 10s: Nhu cầu + Nỗi đau`;
+        scriptText = `Cơm mỗi ngày mà gạo khô, nấu lên không thơm, cả nhà ăn cũng kém ngon? Chọn ngay ${prodName}, hạt gạo chất lượng, giúp bữa cơm gia đình thêm thơm ngon, tròn vị. Một bữa cơm ngon bắt đầu từ hạt gạo tốt!`;
       }
 
-      document.getElementById('script-hook').value = hookText;
-      document.getElementById('script-body').value = bodyText;
-      document.getElementById('script-cta').value = ctaText;
+      const contentElem = document.getElementById('full-script-content');
+      if (contentElem) {
+        contentElem.value = scriptText;
+      }
 
-      update10sWordCount();
+      update10sMetrics();
       updateScenePrompts();
-      showToast('Đã tạo kịch bản 10s áp dụng đúng quy tắc AI đã học!');
+      showToast('Đã tạo xong Content 10 giây!');
+    }
+
+    function update10sMetrics() {
+      const contentElem = document.getElementById('full-script-content');
+      if (!contentElem) return;
+
+      const text = contentElem.value.trim();
+      const words = text.length > 0 ? text.split(/\s+/).length : 0;
+      
+      const wordCountElem = document.getElementById('word-count');
+      if (wordCountElem) wordCountElem.textContent = `${words} từ`;
+
+      const estSec = (words / 3.4).toFixed(1);
+      const estDurElem = document.getElementById('est-duration');
+      if (estDurElem) estDurElem.textContent = `~${estSec} giây`;
+
+      const subPreview = document.getElementById('preview-subtitle-text');
+      if (subPreview) {
+        subPreview.textContent = `"${text.substring(0, 85)}..."`;
+      }
+    }
+
+    function speakFull10sScript() {
+      const contentElem = document.getElementById('full-script-content');
+      if (!contentElem) return;
+
+      const text = contentElem.value.trim();
+      if (!('speechSynthesis' in window)) {
+        showToast('Trình duyệt không hỗ trợ đọc âm thanh!', 'error');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'vi-VN';
+      utterance.rate = 1.15;
+      utterance.pitch = 1.0;
+      window.speechSynthesis.speak(utterance);
+      showToast('Đang phát giọng đọc mẫu 10 giây...');
     }
 
     // ==========================================
@@ -1246,17 +1103,17 @@
     // ==========================================
     function updateScenePrompts() {
       const prod = state.productName || 'product';
-      const hook = document.getElementById('script-hook').value;
-      const body = document.getElementById('script-body').value;
+      const contentElem = document.getElementById('full-script-content');
+      const text = contentElem ? contentElem.value : '';
 
       document.getElementById('prompt-scene-1').textContent = 
-        `Cinematic 0-3s high-energy macro zoom shot of [${prod}], dramatic studio lighting, 4k ultra-crisp, bold hook visual. Concept: ${hook}`;
+        `Cinematic 0-3s high-energy macro zoom shot of [${prod}], dramatic rim lighting, 4k ultra-crisp, bold hook concept: ${text.substring(0, 60)}`;
 
       document.getElementById('prompt-scene-2').textContent = 
-        `Smooth 3-7s orbit camera showcase of [${prod}], highlighting exact specs and textures, clean minimalist studio background, 8k commercial quality. Details: ${body}`;
+        `Smooth 3-7s orbit camera showcase of [${prod}], highlighting exact specs and textures, clean minimalist studio background, 8k commercial quality.`;
 
       document.getElementById('prompt-scene-3').textContent = 
-        `Fast 7-10s final call-to-action hero frame of [${prod}], flash sale glowing aura, prominent shop link graphic in corner, cinematic 24fps.`;
+        `Fast 7-10s final call-to-action hero frame of [${prod}], radiant promotional aura, shop link graphic in corner, cinematic 24fps.`;
     }
 
     function syncStep3Preview() {
@@ -1267,31 +1124,10 @@
         generateSampleProduct();
         stageImg.src = state.processedImage;
       }
-      update10sWordCount();
+      update10sMetrics();
       updateScenePrompts();
     }
 
-    // Đọc thử giọng kịch bản 10s
-    function speak10sScript() {
-      const hook = document.getElementById('script-hook').value;
-      const body = document.getElementById('script-body').value;
-      const cta = document.getElementById('script-cta').value;
-      const full = `${hook} ${body} ${cta}`;
-
-      if (!('speechSynthesis' in window)) {
-        showToast('Trình duyệt không hỗ trợ Web Speech Synthesis!', 'error');
-        return;
-      }
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(full);
-      utterance.lang = 'vi-VN';
-      utterance.rate = 1.15; // Tốc độ hơi nhanh để chuẩn 10 giây
-      utterance.pitch = 1.0;
-      window.speechSynthesis.speak(utterance);
-      showToast('Đang phát giọng đọc mẫu 10s...');
-    }
-
-    // Video Simulation Player for 10s
     function togglePlayPreview() {
       const playBtn = document.getElementById('toggle-play-preview-btn');
       const playIcon = document.getElementById('play-icon');
@@ -1307,14 +1143,13 @@
         playIcon.classList.add('hidden');
         pauseIcon.classList.remove('hidden');
         assetContainer.classList.add('animate-pulse');
-        speak10sScript();
+        speakFull10sScript();
 
         state.previewTimeElapsed = 0;
         clearInterval(state.previewTimerInterval);
 
-        const hook = document.getElementById('script-hook').value;
-        const body = document.getElementById('script-body').value;
-        const cta = document.getElementById('script-cta').value;
+        const contentElem = document.getElementById('full-script-content');
+        const text = contentElem ? contentElem.value : '';
 
         state.previewTimerInterval = setInterval(() => {
           state.previewTimeElapsed += 0.1;
@@ -1328,21 +1163,13 @@
             assetContainer.classList.remove('animate-pulse');
             progressBar.style.width = '100%';
             timerDisplay.textContent = '00:10 / 00:10';
-            subtitleBox.textContent = `"${cta}"`;
             return;
           }
 
           const percent = (current / 10.0) * 100;
           progressBar.style.width = `${percent}%`;
           timerDisplay.textContent = `00:0${Math.floor(current)} / 00:10`;
-
-          if (current < 3.0) {
-            subtitleBox.textContent = `"${hook}"`;
-          } else if (current < 7.0) {
-            subtitleBox.textContent = `"${body}"`;
-          } else {
-            subtitleBox.textContent = `"${cta}"`;
-          }
+          subtitleBox.textContent = `"${text.substring(0, 90)}..."`;
         }, 100);
 
       } else {
@@ -1354,20 +1181,14 @@
       }
     }
 
-    // Xuất gói Project JSON
     function exportProjectJSON() {
+      const contentElem = document.getElementById('full-script-content');
       const projectData = {
         title: state.productName,
         productLink: state.productLink,
         targetDuration: '10s',
         learnedRulesApplied: state.learnedRules,
-        script10s: {
-          hook_0_3s: document.getElementById('script-hook').value,
-          body_3_7s: document.getElementById('script-body').value,
-          cta_7_10s: document.getElementById('script-cta').value,
-          wordCount: document.getElementById('word-count').textContent,
-          estDuration: document.getElementById('est-duration').textContent
-        },
+        script10s: contentElem ? contentElem.value : '',
         promptsAI: {
           scene1_0_3s: document.getElementById('prompt-scene-1').textContent,
           scene2_3_7s: document.getElementById('prompt-scene-2').textContent,
@@ -1386,119 +1207,32 @@
       showToast('Đã xuất toàn bộ gói dự án 10s JSON!');
     }
 
+    function downloadSourceHTML() {
+      const htmlStr = document.documentElement.outerHTML;
+      const blob = new Blob([htmlStr], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.download = 'index.html';
+      link.href = url;
+      link.click();
+      URL.revokeObjectURL(url);
+      showToast('Đã tải file index.html! Bạn có thể up trực tiếp lên GitHub.');
+    }
+
     // ==========================================
     // INITIALIZATION & EVENT LISTENERS
     // ==========================================
     window.addEventListener('DOMContentLoaded', () => {
       loadLearnedRules();
 
-      // Step 2 Input Mode Tabs (Photo vs Link vs Text)
-      const tabPhoto = document.getElementById('input-mode-photo');
-      const tabLink = document.getElementById('input-mode-link');
-      const tabText = document.getElementById('input-mode-text');
-      const panelPhoto = document.getElementById('panel-input-photo');
-      const panelLink = document.getElementById('panel-input-link');
-      const panelText = document.getElementById('panel-input-text');
-
-      function switchInputMode(mode) {
-        [tabPhoto, tabLink, tabText].forEach(t => {
-          t.className = 'py-2 px-1 text-center rounded-lg transition text-slate-400 hover:text-white';
-        });
-        [panelPhoto, panelLink, panelText].forEach(p => p.classList.add('hidden'));
-
-        if (mode === 'photo') {
-          tabPhoto.className = 'py-2 px-1 text-center rounded-lg transition bg-indigo-600 text-white shadow';
-          panelPhoto.classList.remove('hidden');
-        } else if (mode === 'link') {
-          tabLink.className = 'py-2 px-1 text-center rounded-lg transition bg-indigo-600 text-white shadow';
-          panelLink.classList.remove('hidden');
-        } else if (mode === 'text') {
-          tabText.className = 'py-2 px-1 text-center rounded-lg transition bg-indigo-600 text-white shadow';
-          panelText.classList.remove('hidden');
-        }
-      }
-
-      tabPhoto.addEventListener('click', () => switchInputMode('photo'));
-      tabLink.addEventListener('click', () => switchInputMode('link'));
-      tabText.addEventListener('click', () => switchInputMode('text'));
-
-      // Script 10s Style Switchers
-      document.getElementById('script-style-viral').addEventListener('click', () => setScriptStyle('viral'));
-      document.getElementById('script-style-specs').addEventListener('click', () => setScriptStyle('specs'));
-      document.getElementById('script-style-fomo').addEventListener('click', () => setScriptStyle('fomo'));
-
-      // Link extract simulation / helper
-      document.getElementById('extract-link-btn').addEventListener('click', () => {
-        const linkVal = document.getElementById('product-link-input').value.trim();
-        if (!linkVal) {
-          showToast('Vui lòng nhập đường link sản phẩm!', 'error');
-          return;
-        }
-        showToast('Đang phân tích link sản phẩm...');
-        setTimeout(() => {
-          // Extract product keyword from link
-          if (linkVal.includes('gao') || linkVal.includes('st25')) {
-            document.getElementById('product-name-input').value = 'Gạo ST25 Ông Cua túi 5kg';
-          } else if (linkVal.includes('ban') || linkVal.includes('ghe')) {
-            document.getElementById('product-name-input').value = 'Bộ bàn ghế phòng khách kích thước 1m6 x 80cm';
-          }
-          generate10sScript();
-          showToast('Đã trích xuất thông số thành công từ link!');
-        }, 600);
-      });
-
-      // Quick Paste text helper
-      document.getElementById('apply-quick-paste-btn').addEventListener('click', () => {
-        const textVal = document.getElementById('quick-paste-desc').value.trim();
-        if (!textVal) {
-          showToast('Vui lòng dán tiêu đề hoặc mô tả sản phẩm!', 'error');
-          return;
-        }
-        document.getElementById('product-name-input').value = textVal.split(/\r?\n/)[0].substring(0, 60);
-        generate10sScript();
-        showToast('Đã nạp tiêu đề vào kịch bản 10s!');
-      });
-
-      // Download HTML buttons
-      function downloadSourceHTML() {
-        const htmlStr = document.documentElement.outerHTML;
-        const blob = new Blob([htmlStr], { type: 'text/html;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.download = 'index.html';
-        link.href = url;
-        link.click();
-        URL.revokeObjectURL(url);
-        showToast('Đã tải file index.html! Bạn có thể up trực tiếp lên GitHub.');
-      }
-      document.getElementById('download-html-top-btn').addEventListener('click', downloadSourceHTML);
-      document.getElementById('modal-download-btn').addEventListener('click', downloadSourceHTML);
-      document.getElementById('apply-rembg-btn').addEventListener('click', () => {
-        processBackgroundRemoval();
-        showToast('Đã làm mới lớp tách nền!');
-      });
-
-      // Model choice buttons
-      document.querySelectorAll('.model-choice-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.model-choice-btn').forEach(b => {
-            b.className = 'model-choice-btn p-2 rounded-xl border border-slate-800 bg-slate-950 text-xs font-bold text-slate-400 hover:text-white text-center';
-          });
-          btn.className = 'model-choice-btn p-2 rounded-xl border border-indigo-500 bg-indigo-950/30 text-xs font-bold text-white text-center';
-          showToast(`Đã chọn mô hình ${btn.textContent.trim()}`);
-        });
-      });
-
-
-      // 3 Nút nằm ngang: Bấm bước nào cũng được
+      // 3 Nút nằm ngang
       document.getElementById('tab-step-1').addEventListener('click', () => switchStep(1));
       document.getElementById('tab-step-2').addEventListener('click', () => switchStep(2));
       document.getElementById('tab-step-3').addEventListener('click', () => switchStep(3));
 
-      // Nút điều hướng tuần tự
+      // Nút tuần tự
       document.getElementById('goto-step-2-btn').addEventListener('click', () => switchStep(2));
       document.getElementById('goto-step-3-btn').addEventListener('click', () => switchStep(3));
-      document.getElementById('back-to-step-1-btn').addEventListener('click', () => switchStep(1));
 
       // Step 1: Dropzone & File Input
       const dropzone = document.getElementById('dropzone');
@@ -1547,7 +1281,7 @@
         });
       });
 
-      // Tolerance Slider
+      // Sliders
       const tolSlider = document.getElementById('tolerance-slider');
       tolSlider.addEventListener('input', (e) => {
         state.tolerance = parseInt(e.target.value);
@@ -1555,7 +1289,6 @@
         processBackgroundRemoval();
       });
 
-      // Feather Slider
       const featherSlider = document.getElementById('feather-slider');
       featherSlider.addEventListener('input', (e) => {
         state.feather = parseInt(e.target.value);
@@ -1584,7 +1317,7 @@
         });
       });
 
-      // Reset Button
+      // Reset Button & Apply
       document.getElementById('reset-controls-btn').addEventListener('click', () => {
         colorInput.value = '#ffffff';
         state.targetColor = { r: 255, g: 255, b: 255 };
@@ -1599,24 +1332,43 @@
         showToast('Đã đặt lại các thông số tách nền.');
       });
 
+      document.getElementById('apply-rembg-btn').addEventListener('click', () => {
+        processBackgroundRemoval();
+        showToast('Đã làm mới lớp tách nền!');
+      });
+
       document.getElementById('download-png-btn').addEventListener('click', downloadTransparentPNG);
 
-      // Step 2 Listeners & Presets
-      document.getElementById('generate-script-btn').addEventListener('click', generate10sScript);
+      // STEP 2 CLEAN LISTENERS
+      const toggleAddRuleBtn = document.getElementById('toggle-add-rule-btn');
+      const addRuleFormRow = document.getElementById('add-rule-form-row');
+      if (toggleAddRuleBtn && addRuleFormRow) {
+        toggleAddRuleBtn.addEventListener('click', () => {
+          addRuleFormRow.classList.toggle('hidden');
+        });
+      }
 
-      document.getElementById('quick-preset-rice-btn').addEventListener('click', () => {
-        document.getElementById('product-name-input').value = 'Gạo ST25 Ông Cua Thượng Hạng';
-        document.getElementById('product-link-input').value = 'https://shopee.vn/gao-st25-ong-cua-chinh-hang-5kg';
-        generate10sScript();
+      document.getElementById('add-learning-rule-btn').addEventListener('click', () => {
+        const catInput = document.getElementById('new-rule-category');
+        const mustInput = document.getElementById('new-rule-musthave');
+        const cat = catInput.value.trim();
+        const must = mustInput.value.trim();
+        if (!cat || !must) {
+          showToast('Vui lòng điền đủ Tên loại SP và Cấu trúc bắt buộc!', 'error');
+          return;
+        }
+        state.learnedRules.push({
+          id: `rule-${Date.now()}`,
+          category: cat,
+          mustHave: must
+        });
+        saveLearnedRules();
+        catInput.value = '';
+        mustInput.value = '';
+        addRuleFormRow.classList.add('hidden');
+        showToast(`AI đã học: "${cat}" bắt buộc "${must}"!`);
       });
 
-      document.getElementById('quick-preset-table-btn').addEventListener('click', () => {
-        document.getElementById('product-name-input').value = 'Bộ bàn ghế phòng khách gỗ sồi tự nhiên';
-        document.getElementById('product-link-input').value = 'https://shopee.vn/bo-ban-ghe-go-soi-phong-khach';
-        generate10sScript();
-      });
-
-      // Step 2 Change Image Button
       const step2ImgInput = document.getElementById('step2-image-input');
       document.getElementById('choose-other-img-btn').addEventListener('click', () => step2ImgInput.click());
       step2ImgInput.addEventListener('change', (e) => {
@@ -1625,54 +1377,48 @@
           reader.onload = (ev) => {
             state.processedImage = ev.target.result;
             syncStep2Thumbnail();
-            showToast('Đã nạp ảnh mới cho kịch bản 10s!');
+            showToast('Đã nạp ảnh mới cho kịch bản!');
           };
           reader.readAsDataURL(e.target.files[0]);
         }
       });
 
-      // Add New Rule to AI Memory
-      document.getElementById('add-learning-rule-btn').addEventListener('click', () => {
-        const catInput = document.getElementById('new-rule-category');
-        const mustInput = document.getElementById('new-rule-musthave');
-        const cat = catInput.value.trim();
-        const must = mustInput.value.trim();
+      document.getElementById('generate-script-btn').addEventListener('click', generate10sScript);
 
-        if (!cat || !must) {
-          showToast('Vui lòng điền đủ Tên loại SP và Cấu trúc bắt buộc!', 'error');
-          return;
-        }
-
-        const newRule = {
-          id: `rule-${Date.now()}`,
-          category: cat,
-          mustHave: must
-        };
-
-        state.learnedRules.push(newRule);
-        saveLearnedRules();
-        catInput.value = '';
-        mustInput.value = '';
-        showToast(`AI đã học thành công: Sản phẩm "${cat}" bắt buộc "${must}"!`);
-      });
-
-      // Input changes on script
-      ['script-hook', 'script-body', 'script-cta'].forEach(id => {
-        document.getElementById(id).addEventListener('input', () => {
-          update10sWordCount();
+      const fullScriptElem = document.getElementById('full-script-content');
+      if (fullScriptElem) {
+        fullScriptElem.addEventListener('input', () => {
+          update10sMetrics();
           updateScenePrompts();
         });
+      }
+
+      const copyFn = () => {
+        const content = document.getElementById('full-script-content').value;
+        copyText(content, 'Đã sao chép kịch bản 10 giây!');
+      };
+      document.getElementById('card-top-copy-btn').addEventListener('click', copyFn);
+      document.getElementById('card-bot-copy-btn').addEventListener('click', copyFn);
+      document.getElementById('card-speak-btn').addEventListener('click', speakFull10sScript);
+
+      document.getElementById('card-like-btn').addEventListener('click', () => showToast('Cảm ơn bạn đã thích kịch bản này!'));
+      document.getElementById('card-dislike-btn').addEventListener('click', () => {
+        generate10sScript();
+        showToast('Đã tạo một biến thể kịch bản khác!');
       });
 
-      // Copy 10s script
-      document.getElementById('copy-script-btn').addEventListener('click', () => {
-        const fullScript = `[KỊCH BẢN VIDEO 10S - ${state.productName}]\nLink SP: ${state.productLink}\n\n[00:00 - 00:03]: ${document.getElementById('script-hook').value}\n[00:03 - 00:07]: ${document.getElementById('script-body').value}\n[00:07 - 00:10]: ${document.getElementById('script-cta').value}`;
-        copyText(fullScript, 'Đã sao chép kịch bản 10s chuẩn!');
-      });
+      const shareFn = () => {
+        const text = document.getElementById('full-script-content').value;
+        if (navigator.share) {
+          navigator.share({ title: 'Content 10s', text: text }).catch(() => {});
+        } else {
+          copyFn();
+        }
+      };
+      document.getElementById('card-top-share-btn').addEventListener('click', shareFn);
+      document.getElementById('card-share-btn').addEventListener('click', shareFn);
 
-      document.getElementById('listen-10s-btn').addEventListener('click', speak10sScript);
-
-      // Step 3 Video Listeners
+      // STEP 3 LISTENERS
       document.querySelectorAll('.copy-scene-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const targetId = btn.getAttribute('data-target');
@@ -1682,12 +1428,13 @@
       });
 
       document.getElementById('copy-all-prompts-btn').addEventListener('click', () => {
-        const allPrompts = `--- AI VIDEO 10S PROMPTS PACK ---\nSản phẩm: ${state.productName}\nLink: ${state.productLink}\n\n[SCENE 1 (0-3s)]:\n${document.getElementById('prompt-scene-1').textContent}\n\n[SCENE 2 (3-7s)]:\n${document.getElementById('prompt-scene-2').textContent}\n\n[SCENE 3 (7-10s)]:\n${document.getElementById('prompt-scene-3').textContent}\n\n[LỜI THOẠI 10S]:\n${document.getElementById('script-hook').value} ${document.getElementById('script-body').value} ${document.getElementById('script-cta').value}`;
+        const content = document.getElementById('full-script-content').value;
+        const allPrompts = `--- AI VIDEO 10S PROMPTS PACK ---\nSản phẩm: ${state.productName}\nLink: ${state.productLink}\n\n[SCENE 1 (0-3s)]:\n${document.getElementById('prompt-scene-1').textContent}\n\n[SCENE 2 (3-7s)]:\n${document.getElementById('prompt-scene-2').textContent}\n\n[SCENE 3 (7-10s)]:\n${document.getElementById('prompt-scene-3').textContent}\n\n[LỜI THOẠI 10S]:\n${content}`;
         copyText(allPrompts, 'Đã sao chép toàn bộ Prompt & Kịch bản 10s!');
       });
 
       document.getElementById('toggle-play-preview-btn').addEventListener('click', togglePlayPreview);
-      document.getElementById('speak-audio-btn').addEventListener('click', speak10sScript);
+      document.getElementById('speak-audio-btn').addEventListener('click', speakFull10sScript);
       document.getElementById('export-project-btn').addEventListener('click', exportProjectJSON);
 
       // Aspect Ratio
@@ -1706,6 +1453,17 @@
             aspect === '9/16' ? 'aspect-[9/16]' : aspect === '16/9' ? 'aspect-[16/9] max-h-[220px]' : 'aspect-square'
           }`;
           showToast(`Đã đổi tỉ lệ khung hình sang ${aspect}`);
+        });
+      });
+
+      // Model choice buttons
+      document.querySelectorAll('.model-choice-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.model-choice-btn').forEach(b => {
+            b.className = 'model-choice-btn p-2 rounded-xl border border-slate-800 bg-slate-950 text-xs font-bold text-slate-400 hover:text-white text-center';
+          });
+          btn.className = 'model-choice-btn p-2 rounded-xl border border-indigo-500 bg-indigo-950/30 text-xs font-bold text-white text-center';
+          showToast(`Đã chọn mô hình ${btn.textContent.trim()}`);
         });
       });
 
@@ -1728,7 +1486,10 @@
         if (e.target === modal) modal.classList.add('hidden');
       });
 
-      // Auto-load sample product initially
+      document.getElementById('download-html-top-btn').addEventListener('click', downloadSourceHTML);
+      document.getElementById('modal-download-btn').addEventListener('click', downloadSourceHTML);
+
+      // Auto-load sample initially
       generateSampleProduct();
       generate10sScript();
     });
