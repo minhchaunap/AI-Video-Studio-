@@ -108,7 +108,7 @@
         </div>
         <div>
           <span class="font-bold text-lg bg-gradient-to-r from-white via-indigo-100 to-rose-300 bg-clip-text text-transparent">AI Video Pipeline Studio</span>
-          <span class="hidden sm:inline-block ml-2 text-xs px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/20">Content 10s • Nhu cầu + Nỗi đau</span>
+          <span class="hidden sm:inline-block ml-2 text-xs px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/20">Tạo 5 Sản Phẩm Hàng Loạt</span>
         </div>
       </div>
 
@@ -143,7 +143,7 @@
           <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center font-bold text-xs sm:text-sm shrink-0">2</span>
           <div class="text-left">
             <span class="text-[10px] uppercase font-bold tracking-wider block opacity-80 leading-none">Bước 2</span>
-            <span class="text-xs sm:text-sm font-bold block truncate mt-0.5">Content 10s</span>
+            <span class="text-xs sm:text-sm font-bold block truncate mt-0.5">Content 10s (5 SP)</span>
           </div>
         </button>
 
@@ -292,12 +292,12 @@
       </div>
     </section>
 
-    <!-- ======================================================= -->
-    <!-- STEP 2: CONTENT 10S - THIẾT KẾ GỌN GÀNG THEO HÌNH MẪU -->
-    <!-- ======================================================= -->
+    <!-- =================================================================== -->
+    <!-- STEP 2: CONTENT 10S - 5 SẢN PHẨM HÀNG LOẠT (ẢNH + THÔNG TIN 1 -> 5) -->
+    <!-- =================================================================== -->
     <section id="step-panel-2" class="step-panel hidden space-y-6 max-w-4xl mx-auto">
       
-      <!-- Ô HỌC HỎI CỦA AI: THIẾT KẾ SIÊU GỌN GÀNG (COMPACT AI MEMORY BAR) -->
+      <!-- Ô HỌC HỎI CỦA AI: THIẾT KẾ SIÊU GỌN GÀNG -->
       <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-md">
         <div class="flex flex-wrap items-center justify-between gap-3 pb-2.5 border-b border-slate-800/80">
           <div class="flex items-center gap-2">
@@ -305,7 +305,7 @@
             <span class="text-xs font-bold text-white flex items-center gap-1.5">
               🧠 Ô Học Hỏi Của AI (AI Memory)
             </span>
-            <span class="text-[10px] text-slate-400 font-medium hidden sm:inline">• Học 1 lần, ghi nhớ mãi mãi</span>
+            <span class="text-[10px] text-slate-400 font-medium hidden sm:inline">• Nhớ quy tắc từng loại sản phẩm</span>
           </div>
           <button id="toggle-add-rule-btn" type="button" class="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1 transition">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
@@ -313,12 +313,12 @@
           </button>
         </div>
 
-        <!-- Các tag quy tắc AI đã học (gọn gàng, bấm xóa nhanh) -->
+        <!-- Các tag quy tắc AI đã học -->
         <div class="pt-3 flex flex-wrap items-center gap-2" id="compact-rules-container">
           <!-- Rendered via JS -->
         </div>
 
-        <!-- Form thêm quy tắc mới (thu gọn, chỉ hiện khi bấm) -->
+        <!-- Form thêm quy tắc mới (thu gọn) -->
         <div id="add-rule-form-row" class="hidden mt-3 pt-3 border-t border-slate-800/60 grid grid-cols-1 sm:grid-cols-12 gap-2">
           <input type="text" id="new-rule-category" placeholder="Tên loại SP (VD: Gạo, Bàn ghế, Mỹ phẩm...)" class="sm:col-span-4 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
           <input type="text" id="new-rule-musthave" placeholder="Cấu trúc bắt buộc (VD: Bao nhiêu ký, Kích thước DxRxC...)" class="sm:col-span-6 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
@@ -328,144 +328,85 @@
         </div>
       </div>
 
-      <!-- KHU VỰC NHẬP: LINK, ẢNH, YÊU CẦU (GIỐNG HÌNH CHỤP 12507.jpg) -->
+      <!-- KHU VỰC NHẬP 5 SẢN PHẨM: ẢNH + THÔNG TIN (XẾP TỪ 1 ĐẾN 5) -->
       <div class="space-y-3">
-        <!-- Badge Hồng: NHẬP: Link, Ảnh -->
-        <div class="flex items-center gap-2">
-          <span class="px-3 py-1 rounded-lg bg-rose-500 text-white font-black text-xs uppercase tracking-wider shadow-sm shadow-rose-500/30">
-            NHẬP: Link, Ảnh
-          </span>
-          <span class="text-xs text-slate-400">Gõ yêu cầu hoặc dán link/ảnh sản phẩm</span>
+        
+        <!-- Header & Nút tải 5 ảnh 1 lần -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <span class="px-3 py-1 rounded-lg bg-rose-500 text-white font-black text-xs uppercase tracking-wider shadow-sm shadow-rose-500/30">
+              NHẬP 5 SẢN PHẨM: ẢNH & THÔNG TIN
+            </span>
+          </div>
+
+          <!-- Nút chọn 5 ảnh cùng lúc -->
+          <div class="flex items-center gap-2">
+            <button id="batch-upload-trigger-btn" type="button" class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-md shadow-indigo-600/30 flex items-center gap-1.5 transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <span>Chọn 5 ảnh cùng 1 lúc</span>
+            </button>
+            <input type="file" id="batch-file-input" multiple accept="image/*" class="hidden">
+            <button id="load-sample-5-btn" type="button" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-semibold transition">
+              Nạp mẫu 5 SP
+            </button>
+          </div>
         </div>
 
-        <!-- Khung chat/nhập liệu phong cách thẻ hội thoại -->
+        <!-- Khung 5 Hàng Sản phẩm xếp từ 1 đến 5 (Đúng theo hình 12513.jpg) -->
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xl space-y-3">
           
-          <!-- Ô gõ nội dung / Tên sản phẩm chính -->
-          <div class="bg-slate-950/80 border border-slate-800 focus-within:border-rose-500 rounded-xl p-3 transition">
-            <textarea id="prompt-input" rows="2" class="w-full bg-transparent text-sm sm:text-base text-slate-100 placeholder-slate-500 focus:outline-none resize-none leading-relaxed font-medium" placeholder="Ví dụ: Viet content 10s nhu cầu nỗi đau - Gạo Quảng Trị">Viet content 10s nhu cầu nỗi đau
-Gạo Quảng Trị</textarea>
+          <div class="hidden sm:grid grid-cols-12 gap-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider px-2">
+            <div class="col-span-1 text-center">STT</div>
+            <div class="col-span-3 text-center">Ảnh sản phẩm</div>
+            <div class="col-span-8">Thông tin sản phẩm (Tên, số kg, kích thước...)</div>
           </div>
 
-          <!-- Hàng đính kèm: Link + Tải Ảnh sản phẩm (Gọn gàng trong 1 hàng) -->
-          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 items-center">
-            
-            <!-- Ô dán Link sản phẩm -->
-            <div class="sm:col-span-7 relative">
-              <input type="url" id="product-link-input" placeholder="Dán link sản phẩm (Shopee, TikTok, Web...)" value="https://shopee.vn/gao-quang-tri-chinh-hang" class="w-full bg-slate-950 border border-slate-800 focus:border-rose-500 rounded-xl pl-8 pr-3 py-2 text-xs text-slate-200 focus:outline-none truncate">
-              <svg class="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
-            </div>
-
-            <!-- Nút Tải ảnh sản phẩm + Preview nhỏ -->
-            <div class="sm:col-span-5 flex items-center gap-2">
-              <button id="choose-other-img-btn" type="button" class="flex-1 py-2 px-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-200 rounded-xl flex items-center justify-center gap-1.5 transition">
-                <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                <span id="thumb-status-text">Up/Đổi ảnh SP</span>
-              </button>
-              <div class="w-9 h-9 rounded-lg bg-slate-950 border border-slate-800 checkerboard flex items-center justify-center overflow-hidden shrink-0">
-                <img id="content-input-thumb" src="" alt="" class="max-w-full max-h-full object-contain">
-              </div>
-              <input type="file" id="step2-image-input" accept="image/*" class="hidden">
-            </div>
-
+          <!-- Danh sách 5 dòng sản phẩm -->
+          <div id="product-rows-container" class="space-y-2.5">
+            <!-- 5 rows will be generated here -->
           </div>
 
-          <!-- Nút TẠO to rõ ràng -->
-          <div class="pt-1">
-            <button id="generate-script-btn" type="button" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-rose-500 via-pink-600 to-rose-600 hover:from-rose-600 hover:to-pink-700 text-white text-sm sm:text-base font-black shadow-lg shadow-rose-500/25 transition duration-200 flex items-center justify-center gap-2 cursor-pointer">
+          <!-- Hàng Nút Hành Động: Tạo hàng loạt 5 SP & Đổi Content khác -->
+          <div class="pt-3 flex flex-col sm:flex-row items-center gap-3">
+            <button id="generate-script-btn" type="button" class="w-full sm:flex-1 py-3.5 rounded-xl bg-gradient-to-r from-rose-500 via-pink-600 to-rose-600 hover:from-rose-600 hover:to-pink-700 text-white text-sm sm:text-base font-black shadow-lg shadow-rose-500/25 transition duration-200 flex items-center justify-center gap-2 cursor-pointer">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-              <span>TẠO CONTENT 10 GIÂY NGAY</span>
+              <span>TẠO HÀNG LOẠT 5 CONTENT 10 GIÂY</span>
+            </button>
+
+            <button id="next-variation-all-btn" type="button" class="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 shadow">
+              <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              <span>Đổi content khác (Biến thể mới)</span>
             </button>
           </div>
 
         </div>
       </div>
 
-      <!-- KHU VỰC KẾT QUẢ: GIỐNG HỆT HÌNH ẢNH MẪU 12507.jpg -->
-      <div class="space-y-3 pt-2">
+      <!-- KHU VỰC KẾT QUẢ: HÀNG LOẠT 5 CARD KỊCH BẢN (1 -> 5) -->
+      <div class="space-y-4 pt-3">
         
-        <!-- Tiêu đề kết quả & Badge TẠO -->
-        <div class="flex flex-wrap items-center gap-2">
-          <span class="px-2.5 py-0.5 rounded-md bg-rose-500 text-white font-black text-[11px] uppercase tracking-wider shadow-sm">
-            TẠO
-          </span>
-          <h2 id="result-title-display" class="text-base sm:text-lg font-bold text-white">
-            Content 10 giây – Gạo Quảng Trị (Nhu cầu + Nỗi đau)
-          </h2>
+        <!-- Header kết quả -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-md bg-rose-500 text-white font-black text-[11px] uppercase tracking-wider shadow-sm">
+              TẠO XONG
+            </span>
+            <h2 class="text-base sm:text-lg font-bold text-white">
+              Kết Quả Hàng Loạt 5 Kịch Bản (Chuẩn 10s • Nhu cầu + Nỗi đau)
+            </h2>
+          </div>
+
+          <button id="copy-all-5-scripts-btn" type="button" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-emerald-300 flex items-center gap-1.5 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            Sao chép cả 5 kịch bản
+          </button>
         </div>
 
-        <!-- Card kết quả theo chuẩn giao diện mẫu trong ảnh -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-2xl relative space-y-4">
-          
-          <!-- Thanh trên cùng của Card: "Viết" & Các nút Copy/Share -->
-          <div class="flex items-center justify-between pb-3 border-b border-slate-800/80 text-xs">
-            <div class="flex items-center gap-2 text-slate-300 font-semibold">
-              <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-              <span>Viết (Có thể sửa trực tiếp)</span>
-            </div>
-            
-            <div class="flex items-center gap-3 text-slate-400">
-              <button id="card-top-copy-btn" type="button" class="hover:text-white p-1 transition" title="Sao chép kịch bản">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-              </button>
-              <button id="card-top-share-btn" type="button" class="hover:text-white p-1 transition" title="Chia sẻ">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
-              </button>
-            </div>
-          </div>
-
-          <!-- Nội dung kịch bản 10 giây (Font chữ dễ đọc, chuẩn 10 giây) -->
-          <div class="relative">
-            <textarea id="full-script-content" rows="4" class="w-full bg-slate-950/60 border border-slate-800/80 focus:border-rose-500/80 rounded-xl p-3.5 sm:p-4 text-slate-100 text-sm sm:text-base leading-relaxed focus:outline-none resize-none font-normal" placeholder="Nội dung kịch bản 10 giây sẽ hiển thị ở đây...">Cơm mỗi ngày mà gạo khô, nấu lên không thơm, cả nhà ăn cũng kém ngon? Chọn ngay gạo Quảng Trị, hạt gạo chất lượng, giúp bữa cơm gia đình thêm thơm ngon, tròn vị. Một bữa cơm ngon bắt đầu từ hạt gạo tốt!</textarea>
-          </div>
-
-          <!-- Thông số thời gian & Số từ -->
-          <div class="flex items-center justify-between text-xs text-slate-400 px-1">
-            <div class="flex items-center gap-2">
-              <span>Độ dài: <strong id="word-count" class="text-white font-mono">37 từ</strong></span>
-              <span>•</span>
-              <span>Thời lượng ước tính: <strong id="est-duration" class="text-emerald-400 font-mono">~10.5 giây</strong></span>
-            </div>
-            <span id="rule-status-badge" class="text-amber-400 text-[11px] font-medium truncate max-w-[200px]">Đã áp dụng: Gạo</span>
-          </div>
-
-          <!-- Thanh công cụ dưới đáy Card (Giống hệt hình chụp) -->
-          <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
-            <div class="flex items-center gap-1 sm:gap-3 text-slate-400">
-              <!-- Copy Button -->
-              <button id="card-bot-copy-btn" type="button" class="p-2 hover:text-white rounded-lg hover:bg-slate-800 transition" title="Sao chép kịch bản">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-              </button>
-              
-              <!-- Thumbs Up -->
-              <button id="card-like-btn" type="button" class="p-2 hover:text-emerald-400 rounded-lg hover:bg-slate-800 transition" title="Thích">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
-              </button>
-
-              <!-- Thumbs Down (Tạo lại biến thể khác) -->
-              <button id="card-dislike-btn" type="button" class="p-2 hover:text-rose-400 rounded-lg hover:bg-slate-800 transition" title="Tạo biến thể khác">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.765.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5"/></svg>
-              </button>
-
-              <!-- Loa phát âm thanh đọc 10s TTS -->
-              <button id="card-speak-btn" type="button" class="p-2 hover:text-rose-400 rounded-lg hover:bg-slate-800 transition" title="Nghe đọc thử giọng 10s">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
-              </button>
-
-              <!-- Share Button -->
-              <button id="card-share-btn" type="button" class="p-2 hover:text-white rounded-lg hover:bg-slate-800 transition" title="Chia sẻ">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
-              </button>
-            </div>
-
-            <!-- Nút chuyển sang Bước 3 -->
-            <button id="goto-step-3-btn" type="button" class="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white text-xs font-bold shadow-md shadow-indigo-600/30 flex items-center gap-1.5 transition">
-              <span>Đưa sang Bước 3 (Tạo Video)</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </button>
-          </div>
-
+        <!-- Container chứa 5 Card kịch bản -->
+        <div id="batch-results-container" class="space-y-4">
+          <!-- 5 result cards will be rendered here -->
         </div>
+
       </div>
 
     </section>
@@ -642,11 +583,11 @@ Gạo Quảng Trị</textarea>
   <!-- Global Footer -->
   <footer class="border-t border-slate-900 bg-slate-950/80 py-6 text-center text-xs text-slate-500">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p>AI Video Production Pipeline • 3 Nút Ngang • Content 10s Nhu Cầu Nỗi Đau • Bộ Nhớ AI</p>
+      <p>AI Video Production Pipeline • 3 Nút Ngang • 5 Sản Phẩm Hàng Loạt 10s • Bộ Nhớ AI</p>
       <div class="flex items-center gap-4">
         <span>Bước 1: Tách nền</span>
         <span>&bull;</span>
-        <span>Bước 2: Content 10s</span>
+        <span>Bước 2: 5 Sản phẩm hàng loạt</span>
         <span>&bull;</span>
         <span>Bước 3: Tạo video</span>
       </div>
@@ -667,8 +608,17 @@ Gạo Quảng Trị</textarea>
       isPlayingPreview: false,
       previewTimerInterval: null,
       previewTimeElapsed: 0,
-      productName: 'Gạo Quảng Trị',
-      productLink: 'https://shopee.vn/gao-quang-tri-chinh-hang',
+      activeProductIdx: 0,
+      variationSeed: 0,
+      // 5 Sản phẩm hàng loạt (Mặc định 5 mẫu để test ngay)
+      batchProducts: [
+        { id: 1, name: 'Gạo Quảng Trị', info: 'Túi 5kg dẻo thơm, không hóa chất', image: '' },
+        { id: 2, name: 'Bàn ghế phòng khách', info: 'Gỗ sồi tự nhiên kích thước 1m6 x 80cm', image: '' },
+        { id: 3, name: 'Nồi chiên không dầu', info: 'Dung tích lớn 6.5 lít chống dính', image: '' },
+        { id: 4, name: 'Áo thun form rộng', info: 'Chất cotton 100% 4 chiều mát mịn', image: '' },
+        { id: 5, name: 'Serum cấp ẩm phục hồi B5', info: 'Dung tích 30ml lành tính cho mọi loại da', image: '' }
+      ],
+      generatedScripts: [],
       learnedRules: [
         {
           id: 'rule-rice',
@@ -817,7 +767,7 @@ Gạo Quảng Trị</textarea>
       }
 
       if (stepNum === 2) {
-        syncStep2Thumbnail();
+        renderProductRows();
       }
 
       if (stepNum === 3) {
@@ -970,7 +920,11 @@ Gạo Quảng Trị</textarea>
       ctx.putImageData(imgData, 0, 0);
 
       state.processedImage = canvas.toDataURL('image/png');
-      syncStep2Thumbnail();
+      
+      // Gán ảnh đã tách vào sản phẩm 1 nếu chưa có
+      if (state.batchProducts[0]) {
+        state.batchProducts[0].image = state.processedImage;
+      }
     }
 
     function downloadTransparentPNG() {
@@ -985,46 +939,115 @@ Gạo Quảng Trị</textarea>
       showToast('Đã tải ảnh PNG không nền về máy!');
     }
 
-    function syncStep2Thumbnail() {
-      const thumb = document.getElementById('content-input-thumb');
-      const status = document.getElementById('thumb-status-text');
-      if (state.processedImage) {
-        thumb.src = state.processedImage;
-        status.textContent = 'Ảnh đã sẵn sàng';
-      } else {
-        thumb.src = '';
-        status.textContent = 'Up/Đổi ảnh SP';
-      }
+    // ===================================================================
+    // STEP 2: CONTENT 10S - 5 SẢN PHẨM HÀNG LOẠT (ẢNH + THÔNG TIN 1 -> 5)
+    // ===================================================================
+
+    // Render danh sách 5 hàng sản phẩm
+    function renderProductRows() {
+      const container = document.getElementById('product-rows-container');
+      if (!container) return;
+
+      container.innerHTML = '';
+
+      state.batchProducts.forEach((prod, index) => {
+        const num = index + 1;
+        const row = document.createElement('div');
+        row.className = 'grid grid-cols-12 gap-2 sm:gap-3 items-center p-2.5 rounded-xl bg-slate-950/80 border border-slate-800/90 hover:border-slate-700 transition';
+        
+        row.innerHTML = `
+          <!-- Số thứ tự 1 -> 5 -->
+          <div class="col-span-2 sm:col-span-1 flex items-center justify-center">
+            <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-black text-sm flex items-center justify-center shadow">
+              ${num}
+            </span>
+          </div>
+
+          <!-- Ảnh sản phẩm (Thumbnail + nút đổi ảnh riêng) -->
+          <div class="col-span-4 sm:col-span-3 flex items-center gap-2">
+            <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-700 checkerboard flex items-center justify-center overflow-hidden shrink-0 relative cursor-pointer" title="Bấm để đổi ảnh cho SP ${num}">
+              <img id="prod-thumb-${index}" src="${prod.image || ''}" alt="" class="${prod.image ? '' : 'hidden'} max-w-full max-h-full object-contain">
+              <span id="prod-thumb-placeholder-${index}" class="${prod.image ? 'hidden' : ''} text-[10px] text-slate-500 font-bold text-center px-1">Ảnh ${num}</span>
+            </div>
+            <button type="button" class="single-upload-btn text-[11px] px-2 py-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 rounded-lg shrink-0" data-index="${index}">
+              Đổi ảnh
+            </button>
+            <input type="file" id="single-file-input-${index}" accept="image/*" class="hidden">
+          </div>
+
+          <!-- Ô nhập thông tin sản phẩm -->
+          <div class="col-span-6 sm:col-span-8">
+            <input type="text" id="prod-info-input-${index}" value="${prod.name}${prod.info ? ' - ' + prod.info : ''}" placeholder="Nhập tên sản phẩm & thông số (VD: Gạo Quảng Trị túi 5kg, Bàn ghế 1m6x80cm...)" class="w-full bg-slate-900 border border-slate-700/80 focus:border-rose-500 rounded-xl px-3 py-2 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none transition">
+          </div>
+        `;
+
+        container.appendChild(row);
+
+        // Gắn sự kiện đổi ảnh riêng cho từng dòng
+        const singleBtn = row.querySelector('.single-upload-btn');
+        const singleInput = row.querySelector(`#single-file-input-${index}`);
+        const singleThumbBox = row.querySelector('.checkerboard');
+
+        const triggerSingleUpload = () => singleInput.click();
+        singleBtn.addEventListener('click', triggerSingleUpload);
+        singleThumbBox.addEventListener('click', triggerSingleUpload);
+
+        singleInput.addEventListener('change', (e) => {
+          if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+              state.batchProducts[index].image = ev.target.result;
+              const imgElem = document.getElementById(`prod-thumb-${index}`);
+              const placeholder = document.getElementById(`prod-thumb-placeholder-${index}`);
+              imgElem.src = ev.target.result;
+              imgElem.classList.remove('hidden');
+              placeholder.classList.add('hidden');
+              showToast(`Đã tải ảnh cho Sản phẩm ${num}!`);
+            };
+            reader.readAsDataURL(e.target.files[0]);
+          }
+        });
+
+        // Lắng nghe thay đổi thông tin
+        const infoInput = row.querySelector(`#prod-info-input-${index}`);
+        infoInput.addEventListener('input', (e) => {
+          state.batchProducts[index].name = e.target.value.split(/[-–:]/)[0].trim();
+          state.batchProducts[index].info = e.target.value;
+        });
+      });
     }
 
-    // ========================================================
-    // STEP 2: CONTENT 10S - LOGIC THEO HÌNH MẪU 12507.jpg
-    // ========================================================
-    function generate10sScript() {
-      const promptText = document.getElementById('prompt-input').value.trim();
-      const prodLink = document.getElementById('product-link-input').value.trim();
-      state.productLink = prodLink;
+    // Xử lý nạp 5 ảnh cùng một lúc
+    function handleBatchFiles(files) {
+      if (!files || files.length === 0) return;
+      const count = Math.min(files.length, 5);
+      showToast(`Đang nạp ${count} ảnh vào danh sách 1 đến ${count}...`);
 
-      // Trích xuất tên sản phẩm từ nội dung người dùng gõ
-      let prodName = 'Gạo Quảng Trị';
-      const lines = promptText.split(/[\r\n]+/);
-      for (const line of lines) {
-        const clean = line.replace(/viet content 10s/i, '').replace(/nhu cầu/i, '').replace(/nỗi đau/i, '').replace(/[-–:]/g, '').trim();
-        if (clean.length > 2) {
-          prodName = clean;
-          break;
-        }
-      }
-      state.productName = prodName;
+      Array.from(files).slice(0, 5).forEach((file, index) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          state.batchProducts[index].image = e.target.result;
+          const imgElem = document.getElementById(`prod-thumb-${index}`);
+          const placeholder = document.getElementById(`prod-thumb-placeholder-${index}`);
+          if (imgElem) {
+            imgElem.src = e.target.result;
+            imgElem.classList.remove('hidden');
+          }
+          if (placeholder) {
+            placeholder.classList.add('hidden');
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+      showToast(`Đã tự động xếp ${count} ảnh từ vị trí 1 đến ${count}!`);
+    }
 
-      // Cập nhật tiêu đề giống hình: Content 10 giây – [Tên SP] (Nhu cầu + Nỗi đau)
-      const titleElem = document.getElementById('result-title-display');
-      if (titleElem) {
-        titleElem.textContent = `Content 10 giây – ${prodName} (Nhu cầu + Nỗi đau)`;
-      }
+    // Sinh kịch bản 10s cho 1 sản phẩm dựa trên tên, thông tin và quy tắc AI
+    function generateSingle10sScript(prod, seed = 0) {
+      const fullText = prod.info || prod.name || 'Sản phẩm';
+      const lower = fullText.toLowerCase();
 
-      // Kiểm tra quy tắc đã học
-      const lower = prodName.toLowerCase();
+      // Kiểm tra xem sản phẩm có khớp quy tắc học hỏi nào không
       let matchedRule = null;
       for (const rule of state.learnedRules) {
         if (lower.includes(rule.category.toLowerCase())) {
@@ -1033,58 +1056,185 @@ Gạo Quảng Trị</textarea>
         }
       }
 
-      let scriptText = '';
-      const ruleStatus = document.getElementById('rule-status-badge');
+      const pName = prod.name || 'Sản phẩm';
+      const variant = (seed) % 3;
 
-      if (matchedRule) {
-        ruleStatus.textContent = `Đã áp dụng: ${matchedRule.category} (${matchedRule.mustHave})`;
-        if (matchedRule.category.toLowerCase().includes('gạo')) {
-          scriptText = `Cơm mỗi ngày mà gạo khô, nấu lên không thơm, cả nhà ăn cũng kém ngon? Chọn ngay ${prodName}, hạt gạo chất lượng, giúp bữa cơm gia đình thêm thơm ngon, tròn vị. Một bữa cơm ngon bắt đầu từ hạt gạo tốt!`;
-        } else if (matchedRule.category.toLowerCase().includes('bàn') || matchedRule.category.toLowerCase().includes('ghế')) {
-          scriptText = `Phòng khách chật chội, bàn ghế ọp ẹp làm mất điểm ngôi nhà? Chọn ngay ${prodName} kích thước chuẩn 1m6 x 80cm, gỗ sồi bền đẹp, giúp không gian thêm sang trọng, ấm cúng. Nâng tầm phòng khách ngay hôm nay!`;
+      if (lower.includes('gạo')) {
+        const kgInfo = lower.includes('kg') ? '' : ' túi 5kg';
+        if (variant === 0) {
+          return `Cơm mỗi ngày mà gạo khô, nấu lên không thơm, cả nhà ăn cũng kém ngon? Chọn ngay ${pName}${kgInfo}, hạt gạo chất lượng, giúp bữa cơm gia đình thêm thơm ngon, tròn vị. Một bữa cơm ngon bắt đầu từ hạt gạo tốt!`;
+        } else if (variant === 1) {
+          return `Đừng để cả nhà mất ngon chỉ vì chọn nhầm gạo kém chất lượng! Thử ngay ${pName}${kgInfo} chuẩn cơm dẻo ngọt, thơm đậm đà từng hạt ngọc trời. Nâng tầm bữa cơm gia đình ngay hôm nay!`;
         } else {
-          scriptText = `Bạn đau đầu vì chưa chọn được sản phẩm thật sự ưng ý? Chọn ngay ${prodName}, thiết kế chuẩn ${matchedRule.mustHave}, chất lượng vượt trội. Mua ngay hôm nay để nhận ưu đãi!`;
+          return `Bí quyết giữ lửa hạnh phúc bắt đầu từ bát cơm thơm dẻo mỗi tối. ${pName}${kgInfo} cam kết không pha trộn, dẻo mềm đến muỗng cuối cùng. Đổi gạo ngon cho cả nhà ngay nhé!`;
         }
+      } else if (lower.includes('bàn') || lower.includes('ghế')) {
+        const sizeInfo = lower.includes('1m') || lower.includes('cm') ? '' : ' kích thước chuẩn 1m6 x 80cm';
+        if (variant === 0) {
+          return `Phòng khách chật chội, bàn ghế ọp ẹp làm mất điểm ngôi nhà? Chọn ngay ${pName}${sizeInfo}, gỗ sồi bền đẹp, giúp không gian thêm sang trọng, ấm cúng. Nâng tầm phòng khách ngay hôm nay!`;
+        } else if (variant === 1) {
+          return `Ghé thăm nhà ai cũng khen nức nở với bộ bàn ghế siêu sang này! ${pName}${sizeInfo}, chịu lực bền bỉ 10 năm không mối mọt. Đặt ngay để nâng cấp phòng khách của bạn!`;
+        } else {
+          return `Đang tìm mẫu bàn ghế vừa vặn, chuẩn phong thủy và thanh lịch? ${pName}${sizeInfo} chính là lựa chọn hoàn hảo, bảo hành chính hãng. Mua ngay hôm nay để nhận ưu đãi!`;
+        }
+      } else if (lower.includes('nồi') || lower.includes('chiên')) {
+        if (variant === 0) {
+          return `Nấu nướng dầu mỡ ngán ngẩm, tốn thời gian dọn dẹp mỗi ngày? Chọn ngay ${pName}, công nghệ đối lưu giòn rụm giảm 85% chất béo, ăn ngon không lo tăng cân. Rinh về bếp ngay hôm nay!`;
+        } else {
+          return `Bí kíp nấu vạn món ngon chỉ với một nút bấm cho người bận rộn! ${pName} nướng gà nguyên con cực đỉnh, giòn da ngọt thịt. Bấm mua ngay để giải phóng đôi tay!`;
+        }
+      } else if (lower.includes('serum') || lower.includes('da')) {
+        return `Da khô ráp, sần sùi và đổ dầu mất tự tin khi ra ngoài? Dùng ngay ${pName}, cấp ẩm tức thì, phục hồi da mịn màng căng bóng sau 7 ngày. Chăm sóc làn da hoàn hảo ngay hôm nay!`;
+      } else if (lower.includes('áo') || lower.includes('thun') || lower.includes('quần')) {
+        return `Mặc áo bí bách, giặt vài lần đã bai xù mất dáng? Chọn ngay ${pName}, chất cotton 100% thoáng mát, form đứng cực chuẩn. Mặc là đẹp, tự tin dạo phố mỗi ngày!`;
       } else {
-        ruleStatus.textContent = `Chuẩn 10s: Nhu cầu + Nỗi đau`;
-        scriptText = `Cơm mỗi ngày mà gạo khô, nấu lên không thơm, cả nhà ăn cũng kém ngon? Chọn ngay ${prodName}, hạt gạo chất lượng, giúp bữa cơm gia đình thêm thơm ngon, tròn vị. Một bữa cơm ngon bắt đầu từ hạt gạo tốt!`;
-      }
-
-      const contentElem = document.getElementById('full-script-content');
-      if (contentElem) {
-        contentElem.value = scriptText;
-      }
-
-      update10sMetrics();
-      updateScenePrompts();
-      showToast('Đã tạo xong Content 10 giây!');
-    }
-
-    function update10sMetrics() {
-      const contentElem = document.getElementById('full-script-content');
-      if (!contentElem) return;
-
-      const text = contentElem.value.trim();
-      const words = text.length > 0 ? text.split(/\s+/).length : 0;
-      
-      const wordCountElem = document.getElementById('word-count');
-      if (wordCountElem) wordCountElem.textContent = `${words} từ`;
-
-      const estSec = (words / 3.4).toFixed(1);
-      const estDurElem = document.getElementById('est-duration');
-      if (estDurElem) estDurElem.textContent = `~${estSec} giây`;
-
-      const subPreview = document.getElementById('preview-subtitle-text');
-      if (subPreview) {
-        subPreview.textContent = `"${text.substring(0, 85)}..."`;
+        if (matchedRule) {
+          return `Bạn đau đầu vì chưa chọn được sản phẩm thật sự ưng ý? Chọn ngay ${pName}, thiết kế chuẩn ${matchedRule.mustHave}, chất lượng vượt trội. Mua ngay hôm nay để nhận ưu đãi!`;
+        } else {
+          return `Đang tìm kiếm sản phẩm chất lượng để nâng cấp cuộc sống? Chọn ngay ${pName}, bền bỉ tiện lợi, giải quyết dứt điểm nỗi lo của bạn. Mua ngay kẻo lỡ ưu đãi tốt nhất!`;
+        }
       }
     }
 
-    function speakFull10sScript() {
-      const contentElem = document.getElementById('full-script-content');
-      if (!contentElem) return;
+    // Tạo hàng loạt 5 content
+    function generateBatch5Scripts(increaseSeed = false) {
+      if (increaseSeed) {
+        state.variationSeed += 1;
+      }
 
-      const text = contentElem.value.trim();
+      state.generatedScripts = [];
+
+      state.batchProducts.forEach((prod, index) => {
+        // Cập nhật lại thông tin từ ô input
+        const inputElem = document.getElementById(`prod-info-input-${index}`);
+        if (inputElem) {
+          const val = inputElem.value.trim();
+          if (val) {
+            prod.name = val.split(/[-–:]/)[0].trim();
+            prod.info = val;
+          }
+        }
+        const script = generateSingle10sScript(prod, state.variationSeed + index);
+        state.generatedScripts.push(script);
+      });
+
+      renderBatchResults();
+      showToast(increaseSeed ? 'Đã đổi toàn bộ content mới cho cả 5 sản phẩm!' : 'Đã tạo xong hàng loạt 5 kịch bản 10 giây!');
+    }
+
+    // Render 5 Card kết quả
+    function renderBatchResults() {
+      const container = document.getElementById('batch-results-container');
+      if (!container) return;
+
+      container.innerHTML = '';
+
+      state.batchProducts.forEach((prod, index) => {
+        const num = index + 1;
+        const script = state.generatedScripts[index] || '';
+        const words = script.trim().length > 0 ? script.trim().split(/\s+/).length : 0;
+        const estSec = (words / 3.4).toFixed(1);
+
+        const card = document.createElement('div');
+        card.className = 'bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-2xl relative space-y-3';
+        
+        card.innerHTML = `
+          <!-- Header Card: STT + Tên SP + Thumbnail + Nút Copy -->
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800/80">
+            <div class="flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-rose-500 text-white font-black text-xs flex items-center justify-center shadow">
+                ${num}
+              </span>
+              <div class="w-8 h-8 rounded-lg bg-slate-950 border border-slate-800 checkerboard flex items-center justify-center overflow-hidden shrink-0">
+                <img src="${prod.image || ''}" alt="" class="${prod.image ? '' : 'hidden'} max-w-full max-h-full object-contain">
+                <span class="${prod.image ? 'hidden' : ''} text-[10px] text-slate-500 font-bold">#${num}</span>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-white truncate max-w-[200px] sm:max-w-md">${prod.name || 'Sản phẩm ' + num}</h3>
+                <span class="text-[10px] text-emerald-400 font-medium">Content 10s • Nhu cầu + Nỗi đau</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button type="button" class="copy-single-card-btn text-xs font-semibold text-slate-300 hover:text-white px-2.5 py-1 bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 transition flex items-center gap-1" data-index="${index}">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                Copy
+              </button>
+            </div>
+          </div>
+
+          <!-- Nội dung kịch bản 10 giây -->
+          <div class="relative">
+            <textarea id="script-textarea-${index}" rows="3" class="w-full bg-slate-950/60 border border-slate-800/80 focus:border-rose-500/80 rounded-xl p-3 text-slate-100 text-xs sm:text-sm leading-relaxed focus:outline-none resize-none">${script}</textarea>
+          </div>
+
+          <!-- Footer Card: Thời lượng + Loa + Đổi biến thể riêng + Gửi vào Step 3 -->
+          <div class="pt-2 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 border-t border-slate-800/60">
+            <div class="flex items-center gap-2">
+              <span>Độ dài: <strong class="text-white font-mono">${words} từ</strong></span>
+              <span>•</span>
+              <span>Thời lượng: <strong class="text-emerald-400 font-mono">~${estSec}s</strong></span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <!-- Nghe đọc TTS -->
+              <button type="button" class="speak-single-card-btn p-1.5 hover:text-rose-400 rounded-lg hover:bg-slate-800 transition" data-index="${index}" title="Nghe đọc thử giọng 10s">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+              </button>
+
+              <!-- Đổi content riêng cho SP này -->
+              <button type="button" class="refresh-single-card-btn text-[11px] px-2 py-1 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded-lg border border-slate-700 transition flex items-center gap-1" data-index="${index}" title="Đổi kịch bản khác cho sản phẩm này">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                Đổi mẫu khác
+              </button>
+
+              <!-- Đưa sang Bước 3 -->
+              <button type="button" class="use-in-step3-btn text-[11px] px-2.5 py-1 bg-indigo-600/80 hover:bg-indigo-600 text-white rounded-lg font-bold transition flex items-center gap-1" data-index="${index}">
+                <span>Dựng Video</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+
+        // Gắn sự kiện các nút trên từng Card
+        const copyBtn = card.querySelector('.copy-single-card-btn');
+        copyBtn.addEventListener('click', () => {
+          const txt = card.querySelector(`#script-textarea-${index}`).value;
+          copyText(txt, `Đã sao chép kịch bản Sản phẩm ${num}!`);
+        });
+
+        const speakBtn = card.querySelector('.speak-single-card-btn');
+        speakBtn.addEventListener('click', () => {
+          const txt = card.querySelector(`#script-textarea-${index}`).value;
+          speakSpecificText(txt);
+        });
+
+        const refreshBtn = card.querySelector('.refresh-single-card-btn');
+        refreshBtn.addEventListener('click', () => {
+          state.variationSeed += 1;
+          const newScript = generateSingle10sScript(prod, state.variationSeed + index);
+          state.generatedScripts[index] = newScript;
+          card.querySelector(`#script-textarea-${index}`).value = newScript;
+          showToast(`Đã đổi kịch bản mới cho Sản phẩm ${num}!`);
+        });
+
+        const useInStep3Btn = card.querySelector('.use-in-step3-btn');
+        useInStep3Btn.addEventListener('click', () => {
+          state.activeProductIdx = index;
+          if (prod.image) {
+            state.processedImage = prod.image;
+          }
+          state.productName = prod.name;
+          switchStep(3);
+          showToast(`Đã đưa Sản phẩm ${num} sang Bước 3!`);
+        });
+      });
+    }
+
+    function speakSpecificText(text) {
       if (!('speechSynthesis' in window)) {
         showToast('Trình duyệt không hỗ trợ đọc âm thanh!', 'error');
         return;
@@ -1095,36 +1245,46 @@ Gạo Quảng Trị</textarea>
       utterance.rate = 1.15;
       utterance.pitch = 1.0;
       window.speechSynthesis.speak(utterance);
-      showToast('Đang phát giọng đọc mẫu 10 giây...');
+      showToast('Đang đọc thử kịch bản 10 giây...');
     }
 
     // ==========================================
     // STEP 3: VIDEO STUDIO & 10S PREVIEW
     // ==========================================
     function updateScenePrompts() {
-      const prod = state.productName || 'product';
-      const contentElem = document.getElementById('full-script-content');
-      const text = contentElem ? contentElem.value : '';
+      const activeProd = state.batchProducts[state.activeProductIdx] || state.batchProducts[0];
+      const prodName = activeProd ? activeProd.name : 'Sản phẩm';
+      const script = state.generatedScripts[state.activeProductIdx] || '';
 
       document.getElementById('prompt-scene-1').textContent = 
-        `Cinematic 0-3s high-energy macro zoom shot of [${prod}], dramatic rim lighting, 4k ultra-crisp, bold hook concept: ${text.substring(0, 60)}`;
+        `Cinematic 0-3s high-energy macro zoom shot of [${prodName}], dramatic rim lighting, 4k ultra-crisp commercial hook. Concept: ${script.substring(0, 50)}`;
 
       document.getElementById('prompt-scene-2').textContent = 
-        `Smooth 3-7s orbit camera showcase of [${prod}], highlighting exact specs and textures, clean minimalist studio background, 8k commercial quality.`;
+        `Smooth 3-7s orbit camera showcase of [${prodName}], highlighting exact specs and textures, clean minimalist studio background, 8k commercial quality.`;
 
       document.getElementById('prompt-scene-3').textContent = 
-        `Fast 7-10s final call-to-action hero frame of [${prod}], radiant promotional aura, shop link graphic in corner, cinematic 24fps.`;
+        `Fast 7-10s final call-to-action hero frame of [${prodName}], radiant promotional aura, shop link graphic in corner, cinematic 24fps.`;
     }
 
     function syncStep3Preview() {
+      const activeProd = state.batchProducts[state.activeProductIdx] || state.batchProducts[0];
       const stageImg = document.getElementById('stage-product-img');
-      if (state.processedImage) {
+      
+      if (activeProd && activeProd.image) {
+        stageImg.src = activeProd.image;
+      } else if (state.processedImage) {
         stageImg.src = state.processedImage;
       } else {
         generateSampleProduct();
         stageImg.src = state.processedImage;
       }
-      update10sMetrics();
+
+      const script = state.generatedScripts[state.activeProductIdx] || (state.generatedScripts[0] || '');
+      const subPreview = document.getElementById('preview-subtitle-text');
+      if (subPreview) {
+        subPreview.textContent = script ? `"${script.substring(0, 85)}..."` : '"Đang nạp kịch bản 10 giây..."';
+      }
+
       updateScenePrompts();
     }
 
@@ -1143,13 +1303,12 @@ Gạo Quảng Trị</textarea>
         playIcon.classList.add('hidden');
         pauseIcon.classList.remove('hidden');
         assetContainer.classList.add('animate-pulse');
-        speakFull10sScript();
+        
+        const script = state.generatedScripts[state.activeProductIdx] || (state.generatedScripts[0] || '');
+        speakSpecificText(script);
 
         state.previewTimeElapsed = 0;
         clearInterval(state.previewTimerInterval);
-
-        const contentElem = document.getElementById('full-script-content');
-        const text = contentElem ? contentElem.value : '';
 
         state.previewTimerInterval = setInterval(() => {
           state.previewTimeElapsed += 0.1;
@@ -1169,7 +1328,7 @@ Gạo Quảng Trị</textarea>
           const percent = (current / 10.0) * 100;
           progressBar.style.width = `${percent}%`;
           timerDisplay.textContent = `00:0${Math.floor(current)} / 00:10`;
-          subtitleBox.textContent = `"${text.substring(0, 90)}..."`;
+          subtitleBox.textContent = `"${script.substring(0, 90)}..."`;
         }, 100);
 
       } else {
@@ -1182,13 +1341,16 @@ Gạo Quảng Trị</textarea>
     }
 
     function exportProjectJSON() {
-      const contentElem = document.getElementById('full-script-content');
       const projectData = {
-        title: state.productName,
-        productLink: state.productLink,
+        title: '5 Sản phẩm hàng loạt 10s',
         targetDuration: '10s',
         learnedRulesApplied: state.learnedRules,
-        script10s: contentElem ? contentElem.value : '',
+        products: state.batchProducts.map((p, i) => ({
+          stt: i + 1,
+          name: p.name,
+          info: p.info,
+          script10s: state.generatedScripts[i] || ''
+        })),
         promptsAI: {
           scene1_0_3s: document.getElementById('prompt-scene-1').textContent,
           scene2_3_7s: document.getElementById('prompt-scene-2').textContent,
@@ -1200,11 +1362,11 @@ Gạo Quảng Trị</textarea>
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(projectData, null, 2));
       const downloadAnchor = document.createElement('a');
       downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `ai-video-10s-${Date.now()}.json`);
+      downloadAnchor.setAttribute("download", `ai-video-batch-5-${Date.now()}.json`);
       document.body.appendChild(downloadAnchor);
       downloadAnchor.click();
       downloadAnchor.remove();
-      showToast('Đã xuất toàn bộ gói dự án 10s JSON!');
+      showToast('Đã xuất toàn bộ gói dự án 5 sản phẩm JSON!');
     }
 
     function downloadSourceHTML() {
@@ -1232,7 +1394,6 @@ Gạo Quảng Trị</textarea>
 
       // Nút tuần tự
       document.getElementById('goto-step-2-btn').addEventListener('click', () => switchStep(2));
-      document.getElementById('goto-step-3-btn').addEventListener('click', () => switchStep(3));
 
       // Step 1: Dropzone & File Input
       const dropzone = document.getElementById('dropzone');
@@ -1339,7 +1500,7 @@ Gạo Quảng Trị</textarea>
 
       document.getElementById('download-png-btn').addEventListener('click', downloadTransparentPNG);
 
-      // STEP 2 CLEAN LISTENERS
+      // STEP 2 BATCH 5 LISTENERS
       const toggleAddRuleBtn = document.getElementById('toggle-add-rule-btn');
       const addRuleFormRow = document.getElementById('add-rule-form-row');
       if (toggleAddRuleBtn && addRuleFormRow) {
@@ -1369,54 +1530,40 @@ Gạo Quảng Trị</textarea>
         showToast(`AI đã học: "${cat}" bắt buộc "${must}"!`);
       });
 
-      const step2ImgInput = document.getElementById('step2-image-input');
-      document.getElementById('choose-other-img-btn').addEventListener('click', () => step2ImgInput.click());
-      step2ImgInput.addEventListener('change', (e) => {
-        if (e.target.files && e.target.files[0]) {
-          const reader = new FileReader();
-          reader.onload = (ev) => {
-            state.processedImage = ev.target.result;
-            syncStep2Thumbnail();
-            showToast('Đã nạp ảnh mới cho kịch bản!');
-          };
-          reader.readAsDataURL(e.target.files[0]);
-        }
+      // Nút trigger chọn 5 ảnh cùng 1 lúc
+      const batchTriggerBtn = document.getElementById('batch-upload-trigger-btn');
+      const batchFileInput = document.getElementById('batch-file-input');
+      batchTriggerBtn.addEventListener('click', () => batchFileInput.click());
+      batchFileInput.addEventListener('change', (e) => {
+        handleBatchFiles(e.target.files);
       });
 
-      document.getElementById('generate-script-btn').addEventListener('click', generate10sScript);
+      // Nút nạp 5 mẫu test
+      document.getElementById('load-sample-5-btn').addEventListener('click', () => {
+        state.batchProducts = [
+          { id: 1, name: 'Gạo Quảng Trị', info: 'Túi 5kg dẻo thơm, không hóa chất', image: state.processedImage || '' },
+          { id: 2, name: 'Bàn ghế phòng khách', info: 'Gỗ sồi tự nhiên kích thước 1m6 x 80cm', image: '' },
+          { id: 3, name: 'Nồi chiên không dầu', info: 'Dung tích lớn 6.5 lít chống dính', image: '' },
+          { id: 4, name: 'Áo thun form rộng', info: 'Chất cotton 100% 4 chiều mát mịn', image: '' },
+          { id: 5, name: 'Serum cấp ẩm phục hồi B5', info: 'Dung tích 30ml lành tính cho da', image: '' }
+        ];
+        renderProductRows();
+        generateBatch5Scripts();
+        showToast('Đã nạp 5 sản phẩm mẫu thành công!');
+      });
 
-      const fullScriptElem = document.getElementById('full-script-content');
-      if (fullScriptElem) {
-        fullScriptElem.addEventListener('input', () => {
-          update10sMetrics();
-          updateScenePrompts();
+      // Nút Tạo hàng loạt 5 content
+      document.getElementById('generate-script-btn').addEventListener('click', () => generateBatch5Scripts(false));
+      document.getElementById('next-variation-all-btn').addEventListener('click', () => generateBatch5Scripts(true));
+
+      // Nút Sao chép cả 5 kịch bản
+      document.getElementById('copy-all-5-scripts-btn').addEventListener('click', () => {
+        let fullBundle = '=== DANH SÁCH 5 KỊCH BẢN VIDEO 10S ===\n\n';
+        state.batchProducts.forEach((p, idx) => {
+          fullBundle += `[SẢN PHẨM ${idx + 1}: ${p.name}]\n${state.generatedScripts[idx] || ''}\n\n--------------------\n\n`;
         });
-      }
-
-      const copyFn = () => {
-        const content = document.getElementById('full-script-content').value;
-        copyText(content, 'Đã sao chép kịch bản 10 giây!');
-      };
-      document.getElementById('card-top-copy-btn').addEventListener('click', copyFn);
-      document.getElementById('card-bot-copy-btn').addEventListener('click', copyFn);
-      document.getElementById('card-speak-btn').addEventListener('click', speakFull10sScript);
-
-      document.getElementById('card-like-btn').addEventListener('click', () => showToast('Cảm ơn bạn đã thích kịch bản này!'));
-      document.getElementById('card-dislike-btn').addEventListener('click', () => {
-        generate10sScript();
-        showToast('Đã tạo một biến thể kịch bản khác!');
+        copyText(fullBundle, 'Đã sao chép toàn bộ 5 kịch bản 10 giây vào clipboard!');
       });
-
-      const shareFn = () => {
-        const text = document.getElementById('full-script-content').value;
-        if (navigator.share) {
-          navigator.share({ title: 'Content 10s', text: text }).catch(() => {});
-        } else {
-          copyFn();
-        }
-      };
-      document.getElementById('card-top-share-btn').addEventListener('click', shareFn);
-      document.getElementById('card-share-btn').addEventListener('click', shareFn);
 
       // STEP 3 LISTENERS
       document.querySelectorAll('.copy-scene-btn').forEach(btn => {
@@ -1428,13 +1575,16 @@ Gạo Quảng Trị</textarea>
       });
 
       document.getElementById('copy-all-prompts-btn').addEventListener('click', () => {
-        const content = document.getElementById('full-script-content').value;
-        const allPrompts = `--- AI VIDEO 10S PROMPTS PACK ---\nSản phẩm: ${state.productName}\nLink: ${state.productLink}\n\n[SCENE 1 (0-3s)]:\n${document.getElementById('prompt-scene-1').textContent}\n\n[SCENE 2 (3-7s)]:\n${document.getElementById('prompt-scene-2').textContent}\n\n[SCENE 3 (7-10s)]:\n${document.getElementById('prompt-scene-3').textContent}\n\n[LỜI THOẠI 10S]:\n${content}`;
+        const activeScript = state.generatedScripts[state.activeProductIdx] || '';
+        const allPrompts = `--- AI VIDEO 10S PROMPTS PACK ---\nSản phẩm: ${state.batchProducts[state.activeProductIdx].name}\n\n[SCENE 1 (0-3s)]:\n${document.getElementById('prompt-scene-1').textContent}\n\n[SCENE 2 (3-7s)]:\n${document.getElementById('prompt-scene-2').textContent}\n\n[SCENE 3 (7-10s)]:\n${document.getElementById('prompt-scene-3').textContent}\n\n[LỜI THOẠI 10S]:\n${activeScript}`;
         copyText(allPrompts, 'Đã sao chép toàn bộ Prompt & Kịch bản 10s!');
       });
 
       document.getElementById('toggle-play-preview-btn').addEventListener('click', togglePlayPreview);
-      document.getElementById('speak-audio-btn').addEventListener('click', speakFull10sScript);
+      document.getElementById('speak-audio-btn').addEventListener('click', () => {
+        const script = state.generatedScripts[state.activeProductIdx] || '';
+        speakSpecificText(script);
+      });
       document.getElementById('export-project-btn').addEventListener('click', exportProjectJSON);
 
       // Aspect Ratio
@@ -1491,7 +1641,8 @@ Gạo Quảng Trị</textarea>
 
       // Auto-load sample initially
       generateSampleProduct();
-      generate10sScript();
+      renderProductRows();
+      generateBatch5Scripts(false);
     });
   </script>
 </body>
