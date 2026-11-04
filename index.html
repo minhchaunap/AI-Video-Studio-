@@ -292,8 +292,8 @@
       </div>
     </section>
 
-    <!-- =================================================================== -->
-    <!-- STEP 2: CONTENT 10S - 5 SẢN PHẨM HÀNG LOẠT (ẢNH + THÔNG TIN 1 -> 5) -->
+        <!-- =================================================================== -->
+    <!-- STEP 2: CONTENT 10S - 5 SẢN PHẨM: UP ẢNH KHÔNG GIỚI HẠN & TỰ ĐỔI TÊN -->
     <!-- =================================================================== -->
     <section id="step-panel-2" class="step-panel hidden space-y-6 max-w-4xl mx-auto">
       
@@ -328,10 +328,10 @@
         </div>
       </div>
 
-      <!-- KHU VỰC NHẬP 5 SẢN PHẨM: ẢNH + THÔNG TIN (XẾP TỪ 1 ĐẾN 5) -->
+      <!-- KHU VỰC NHẬP 5 SẢN PHẨM: ẢNH & THÔNG TIN -->
       <div class="space-y-3">
         
-        <!-- Header & Nút tải 5 ảnh 1 lần -->
+        <!-- Header & Nút tải 5 ảnh 1 lần (Tự cập nhật tên) -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div class="flex items-center gap-2">
             <span class="px-3 py-1 rounded-lg bg-rose-500 text-white font-black text-xs uppercase tracking-wider shadow-sm shadow-rose-500/30">
@@ -343,7 +343,7 @@
           <div class="flex items-center gap-2">
             <button id="batch-upload-trigger-btn" type="button" class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-md shadow-indigo-600/30 flex items-center gap-1.5 transition">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-              <span>Chọn 5 ảnh cùng 1 lúc</span>
+              <span>Chọn 5 ảnh cùng 1 lúc (Tự cập nhật tên)</span>
             </button>
             <input type="file" id="batch-file-input" multiple accept="image/*" class="hidden">
             <button id="load-sample-5-btn" type="button" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-semibold transition">
@@ -352,34 +352,28 @@
           </div>
         </div>
 
-        <!-- Khung 5 Hàng Sản phẩm xếp từ 1 đến 5 (Đúng theo hình 12513.jpg) -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xl space-y-3">
-          
-          <div class="hidden sm:grid grid-cols-12 gap-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider px-2">
-            <div class="col-span-1 text-center">STT</div>
-            <div class="col-span-3 text-center">Ảnh sản phẩm</div>
-            <div class="col-span-8">Thông tin sản phẩm (Tên, số kg, kích thước...)</div>
-          </div>
+        <p class="text-xs text-slate-400">
+          💡 Khi chọn 5 ảnh, hệ thống tự động xếp 1 đến 5 và lấy tên file đặt tên sản phẩm. Bạn có thể bấm <strong class="text-rose-400">"Sửa tên"</strong> hoặc bấm <strong class="text-indigo-400">"+ Up ảnh thông tin"</strong> không giới hạn cho từng sản phẩm!
+        </p>
 
-          <!-- Danh sách 5 dòng sản phẩm -->
-          <div id="product-rows-container" class="space-y-2.5">
-            <!-- 5 rows will be generated here -->
-          </div>
-
-          <!-- Hàng Nút Hành Động: Tạo hàng loạt 5 SP & Đổi Content khác -->
-          <div class="pt-3 flex flex-col sm:flex-row items-center gap-3">
-            <button id="generate-script-btn" type="button" class="w-full sm:flex-1 py-3.5 rounded-xl bg-gradient-to-r from-rose-500 via-pink-600 to-rose-600 hover:from-rose-600 hover:to-pink-700 text-white text-sm sm:text-base font-black shadow-lg shadow-rose-500/25 transition duration-200 flex items-center justify-center gap-2 cursor-pointer">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-              <span>TẠO HÀNG LOẠT 5 CONTENT 10 GIÂY</span>
-            </button>
-
-            <button id="next-variation-all-btn" type="button" class="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 shadow">
-              <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-              <span>Đổi content khác (Biến thể mới)</span>
-            </button>
-          </div>
-
+        <!-- Danh sách 5 Card Sản Phẩm (Sản phẩm 1 -> 5) -->
+        <div id="product-cards-container" class="space-y-4">
+          <!-- 5 product cards rendered dynamically via JS -->
         </div>
+
+        <!-- Hàng Nút Hành Động: Tạo hàng loạt 5 SP & Đổi Content khác -->
+        <div class="pt-3 flex flex-col sm:flex-row items-center gap-3">
+          <button id="generate-script-btn" type="button" class="w-full sm:flex-1 py-3.5 rounded-xl bg-gradient-to-r from-rose-500 via-pink-600 to-rose-600 hover:from-rose-600 hover:to-pink-700 text-white text-sm sm:text-base font-black shadow-lg shadow-rose-500/25 transition duration-200 flex items-center justify-center gap-2 cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <span>TẠO HÀNG LOẠT 5 CONTENT 10 GIÂY</span>
+          </button>
+
+          <button id="next-variation-all-btn" type="button" class="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 shadow">
+            <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            <span>Đổi content khác (Biến thể mới)</span>
+          </button>
+        </div>
+
       </div>
 
       <!-- KHU VỰC KẾT QUẢ: HÀNG LOẠT 5 CARD KỊCH BẢN (1 -> 5) -->
@@ -939,54 +933,152 @@
       showToast('Đã tải ảnh PNG không nền về máy!');
     }
 
-    // ===================================================================
-    // STEP 2: CONTENT 10S - 5 SẢN PHẨM HÀNG LOẠT (ẢNH + THÔNG TIN 1 -> 5)
+        // ===================================================================
+    // STEP 2: CONTENT 10S - 5 SẢN PHẨM: UP ẢNH KHÔNG GIỚI HẠN & TỰ ĐỔI TÊN
     // ===================================================================
 
-    // Render danh sách 5 hàng sản phẩm
+    // Làm sạch tên file để thành tên sản phẩm đẹp mắt
+    function cleanNameFromFileName(filename) {
+      if (!filename) return 'Sản phẩm mới';
+      let name = filename.replace(/\.[^/.]+$/, "");
+      name = name.replace(/[_-]+/g, " ");
+      name = name.trim();
+      if (name.length > 0) {
+        name = name.charAt(0).toUpperCase() + name.slice(1);
+      }
+      return name;
+    }
+
+    // Render danh sách 5 Card sản phẩm
     function renderProductRows() {
-      const container = document.getElementById('product-rows-container');
+      const container = document.getElementById('product-cards-container');
       if (!container) return;
 
       container.innerHTML = '';
 
       state.batchProducts.forEach((prod, index) => {
         const num = index + 1;
-        const row = document.createElement('div');
-        row.className = 'grid grid-cols-12 gap-2 sm:gap-3 items-center p-2.5 rounded-xl bg-slate-950/80 border border-slate-800/90 hover:border-slate-700 transition';
+        const card = document.createElement('div');
+        card.className = 'bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-4 shadow-xl space-y-3 transition';
         
-        row.innerHTML = `
-          <!-- Số thứ tự 1 -> 5 -->
-          <div class="col-span-2 sm:col-span-1 flex items-center justify-center">
-            <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-black text-sm flex items-center justify-center shadow">
-              ${num}
-            </span>
-          </div>
+        // Count extra images
+        const extraCount = (prod.extraImages && prod.extraImages.length) || 0;
 
-          <!-- Ảnh sản phẩm (Thumbnail + nút đổi ảnh riêng) -->
-          <div class="col-span-4 sm:col-span-3 flex items-center gap-2">
-            <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-700 checkerboard flex items-center justify-center overflow-hidden shrink-0 relative cursor-pointer" title="Bấm để đổi ảnh cho SP ${num}">
-              <img id="prod-thumb-${index}" src="${prod.image || ''}" alt="" class="${prod.image ? '' : 'hidden'} max-w-full max-h-full object-contain">
-              <span id="prod-thumb-placeholder-${index}" class="${prod.image ? 'hidden' : ''} text-[10px] text-slate-500 font-bold text-center px-1">Ảnh ${num}</span>
+        card.innerHTML = `
+          <!-- Header Hàng: STT + Tên sản phẩm + Nút Sửa Tên -->
+          <div class="flex items-center justify-between gap-2 pb-2.5 border-b border-slate-800">
+            <div class="flex items-center gap-2.5 flex-1 min-w-0">
+              <span class="w-7 h-7 rounded-full bg-rose-500 text-white font-black text-xs flex items-center justify-center shadow shrink-0">
+                ${num}
+              </span>
+
+              <!-- Hiển thị tên sản phẩm & Ô chỉnh sửa tên -->
+              <div class="flex-1 min-w-0">
+                <span id="name-display-${index}" class="text-sm sm:text-base font-extrabold text-white block truncate">
+                  ${prod.name || 'Sản phẩm ' + num}
+                </span>
+                <div id="name-edit-box-${index}" class="hidden flex items-center gap-2 mt-1">
+                  <input type="text" id="name-edit-input-${index}" value="${prod.name || ''}" class="bg-slate-950 border border-rose-500 rounded-lg px-2.5 py-1 text-xs text-white focus:outline-none w-full max-w-xs">
+                  <button type="button" class="save-name-btn px-2.5 py-1 bg-rose-600 hover:bg-rose-500 text-white rounded-lg text-xs font-bold shrink-0" data-index="${index}">
+                    Lưu
+                  </button>
+                </div>
+              </div>
             </div>
-            <button type="button" class="single-upload-btn text-[11px] px-2 py-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 rounded-lg shrink-0" data-index="${index}">
-              Đổi ảnh
+
+            <!-- Nút bấm Sửa tên -->
+            <button type="button" class="edit-name-toggle-btn text-xs font-semibold text-rose-400 hover:text-rose-300 flex items-center gap-1 px-2.5 py-1 bg-rose-500/10 hover:bg-rose-500/20 rounded-lg border border-rose-500/20 transition shrink-0" data-index="${index}">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+              <span>Sửa tên</span>
             </button>
-            <input type="file" id="single-file-input-${index}" accept="image/*" class="hidden">
           </div>
 
-          <!-- Ô nhập thông tin sản phẩm -->
-          <div class="col-span-6 sm:col-span-8">
-            <input type="text" id="prod-info-input-${index}" value="${prod.name}${prod.info ? ' - ' + prod.info : ''}" placeholder="Nhập tên sản phẩm & thông số (VD: Gạo Quảng Trị túi 5kg, Bàn ghế 1m6x80cm...)" class="w-full bg-slate-900 border border-slate-700/80 focus:border-rose-500 rounded-xl px-3 py-2 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none transition">
+          <!-- Khu vực Ảnh chính & Thông tin sản phẩm -->
+          <div class="grid grid-cols-12 gap-3 items-center">
+            
+            <!-- Ảnh đại diện chính -->
+            <div class="col-span-4 sm:col-span-3 flex items-center gap-2">
+              <div class="w-14 h-14 rounded-xl bg-slate-950 border border-slate-700 checkerboard flex items-center justify-center overflow-hidden shrink-0 relative cursor-pointer" title="Bấm để đổi ảnh chính">
+                <img id="prod-thumb-${index}" src="${prod.image || ''}" alt="" class="${prod.image ? '' : 'hidden'} max-w-full max-h-full object-contain">
+                <span id="prod-thumb-placeholder-${index}" class="${prod.image ? 'hidden' : ''} text-[10px] text-slate-500 font-bold text-center px-1">Ảnh chính ${num}</span>
+              </div>
+              <button type="button" class="single-upload-btn text-[11px] px-2 py-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 rounded-lg shrink-0" data-index="${index}">
+                Đổi ảnh
+              </button>
+              <input type="file" id="single-file-input-${index}" accept="image/*" class="hidden">
+            </div>
+
+            <!-- Ô nhập thông tin chi tiết (số kg, kích thước...) -->
+            <div class="col-span-8 sm:col-span-9">
+              <input type="text" id="prod-info-input-${index}" value="${prod.info || ''}" placeholder="Nhập thêm thông tin (VD: Túi 5kg dẻo thơm, kích thước 1m6x80cm, bảo hành 12 tháng...)" class="w-full bg-slate-950 border border-slate-700/80 focus:border-rose-500 rounded-xl px-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none transition">
+            </div>
+
+          </div>
+
+          <!-- KHU VỰC UP THÊM ẢNH THÔNG TIN SẢN PHẨM (KHÔNG GIỚI HẠN) -->
+          <div class="p-3 bg-slate-950/70 border border-slate-800/80 rounded-xl space-y-2">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-2 text-xs">
+                <span class="text-slate-300 font-semibold flex items-center gap-1">
+                  📸 Ảnh thông tin sản phẩm:
+                </span>
+                <span id="extra-count-badge-${index}" class="text-[11px] font-mono px-2 py-0.5 rounded-full ${extraCount > 0 ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' : 'text-slate-500'}">
+                  ${extraCount > 0 ? `Đã thêm ${extraCount} ảnh chi tiết` : 'Chưa có ảnh thông tin'}
+                </span>
+              </div>
+
+              <!-- Nút tải ảnh thông tin không giới hạn -->
+              <button type="button" class="upload-extra-imgs-btn px-3 py-1 bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-300 hover:text-white rounded-lg border border-indigo-500/30 text-xs font-semibold flex items-center gap-1.5 transition" data-index="${index}">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                <span>Up thêm ảnh thông tin (Không giới hạn)</span>
+              </button>
+              <input type="file" id="extra-file-input-${index}" multiple accept="image/*" class="hidden">
+            </div>
+
+            <!-- Dải thumbnail các ảnh thông tin đã up (có nút xóa x) -->
+            <div id="extra-thumbs-strip-${index}" class="flex flex-wrap items-center gap-2 pt-1 min-h-[32px]">
+              <!-- Extra thumbnails rendered here -->
+            </div>
           </div>
         `;
 
-        container.appendChild(row);
+        container.appendChild(card);
 
-        // Gắn sự kiện đổi ảnh riêng cho từng dòng
-        const singleBtn = row.querySelector('.single-upload-btn');
-        const singleInput = row.querySelector(`#single-file-input-${index}`);
-        const singleThumbBox = row.querySelector('.checkerboard');
+        // Render existing extra images for this product
+        renderExtraThumbnails(index);
+
+        // Toggle edit name
+        const editBtn = card.querySelector('.edit-name-toggle-btn');
+        const nameDisplay = card.querySelector(`#name-display-${index}`);
+        const nameEditBox = card.querySelector(`#name-edit-box-${index}`);
+        const nameEditInput = card.querySelector(`#name-edit-input-${index}`);
+        const saveNameBtn = card.querySelector('.save-name-btn');
+
+        editBtn.addEventListener('click', () => {
+          nameEditBox.classList.toggle('hidden');
+          nameDisplay.classList.toggle('hidden');
+          if (!nameEditBox.classList.contains('hidden')) {
+            nameEditInput.focus();
+          }
+        });
+
+        const saveNameFn = () => {
+          const newName = nameEditInput.value.trim() || `Sản phẩm ${num}`;
+          state.batchProducts[index].name = newName;
+          nameDisplay.textContent = newName;
+          nameEditBox.classList.add('hidden');
+          nameDisplay.classList.remove('hidden');
+          showToast(`Đã đổi tên Sản phẩm ${num} thành: "${newName}"`);
+        };
+        saveNameBtn.addEventListener('click', saveNameFn);
+        nameEditInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') saveNameFn();
+        });
+
+        // Single image upload
+        const singleBtn = card.querySelector('.single-upload-btn');
+        const singleInput = card.querySelector(`#single-file-input-${index}`);
+        const singleThumbBox = card.querySelector('.checkerboard');
 
         const triggerSingleUpload = () => singleInput.click();
         singleBtn.addEventListener('click', triggerSingleUpload);
@@ -994,60 +1086,147 @@
 
         singleInput.addEventListener('change', (e) => {
           if (e.target.files && e.target.files[0]) {
+            const file = e.target.files[0];
             const reader = new FileReader();
             reader.onload = (ev) => {
               state.batchProducts[index].image = ev.target.result;
+              // Tự cập nhật tên từ tên file
+              const cleanName = cleanNameFromFileName(file.name);
+              state.batchProducts[index].name = cleanName;
+              nameDisplay.textContent = cleanName;
+              nameEditInput.value = cleanName;
+
               const imgElem = document.getElementById(`prod-thumb-${index}`);
               const placeholder = document.getElementById(`prod-thumb-placeholder-${index}`);
               imgElem.src = ev.target.result;
               imgElem.classList.remove('hidden');
               placeholder.classList.add('hidden');
-              showToast(`Đã tải ảnh cho Sản phẩm ${num}!`);
+              showToast(`Đã nạp ảnh và cập nhật tên: "${cleanName}"!`);
             };
-            reader.readAsDataURL(e.target.files[0]);
+            reader.readAsDataURL(file);
           }
         });
 
-        // Lắng nghe thay đổi thông tin
-        const infoInput = row.querySelector(`#prod-info-input-${index}`);
+        // Extra unlimited images upload
+        const extraBtn = card.querySelector('.upload-extra-imgs-btn');
+        const extraInput = card.querySelector(`#extra-file-input-${index}`);
+        extraBtn.addEventListener('click', () => extraInput.click());
+        extraInput.addEventListener('change', (e) => {
+          if (e.target.files && e.target.files.length > 0) {
+            handleExtraFilesUpload(index, e.target.files);
+          }
+        });
+
+        // Info input listener
+        const infoInput = card.querySelector(`#prod-info-input-${index}`);
         infoInput.addEventListener('input', (e) => {
-          state.batchProducts[index].name = e.target.value.split(/[-–:]/)[0].trim();
           state.batchProducts[index].info = e.target.value;
         });
       });
     }
 
-    // Xử lý nạp 5 ảnh cùng một lúc
-    function handleBatchFiles(files) {
+    // Xử lý nạp ảnh thông tin bổ sung không giới hạn cho sản phẩm [index]
+    function handleExtraFilesUpload(prodIndex, files) {
       if (!files || files.length === 0) return;
-      const count = Math.min(files.length, 5);
-      showToast(`Đang nạp ${count} ảnh vào danh sách 1 đến ${count}...`);
+      if (!state.batchProducts[prodIndex].extraImages) {
+        state.batchProducts[prodIndex].extraImages = [];
+      }
 
-      Array.from(files).slice(0, 5).forEach((file, index) => {
+      const fileArr = Array.from(files);
+      let loaded = 0;
+
+      fileArr.forEach(file => {
         const reader = new FileReader();
         reader.onload = (e) => {
-          state.batchProducts[index].image = e.target.result;
-          const imgElem = document.getElementById(`prod-thumb-${index}`);
-          const placeholder = document.getElementById(`prod-thumb-placeholder-${index}`);
-          if (imgElem) {
-            imgElem.src = e.target.result;
-            imgElem.classList.remove('hidden');
-          }
-          if (placeholder) {
-            placeholder.classList.add('hidden');
+          state.batchProducts[prodIndex].extraImages.push({
+            name: file.name,
+            dataUrl: e.target.result
+          });
+          loaded++;
+          if (loaded === fileArr.length) {
+            renderExtraThumbnails(prodIndex);
+            showToast(`Đã thêm ${fileArr.length} ảnh thông tin cho Sản phẩm ${prodIndex + 1}!`);
           }
         };
         reader.readAsDataURL(file);
       });
-      showToast(`Đã tự động xếp ${count} ảnh từ vị trí 1 đến ${count}!`);
+    }
+
+    // Render dải thumbnail các ảnh thông tin bổ sung
+    function renderExtraThumbnails(prodIndex) {
+      const container = document.getElementById(`extra-thumbs-strip-${prodIndex}`);
+      const badge = document.getElementById(`extra-count-badge-${prodIndex}`);
+      if (!container) return;
+
+      container.innerHTML = '';
+      const extras = state.batchProducts[prodIndex].extraImages || [];
+
+      if (badge) {
+        if (extras.length > 0) {
+          badge.textContent = `Đã thêm ${extras.length} ảnh thông tin`;
+          badge.className = 'text-[11px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30';
+        } else {
+          badge.textContent = 'Chưa có ảnh thông tin phụ';
+          badge.className = 'text-[11px] font-mono px-2 py-0.5 rounded-full text-slate-500';
+        }
+      }
+
+      if (extras.length === 0) {
+        container.innerHTML = '<span class="text-[11px] text-slate-500 italic">Bấm nút trên để up thêm ảnh chụp thông số, nhãn mác...</span>';
+        return;
+      }
+
+      extras.forEach((imgObj, imgIdx) => {
+        const item = document.createElement('div');
+        item.className = 'w-10 h-10 rounded-lg bg-slate-950 border border-slate-700 checkerboard relative flex items-center justify-center overflow-hidden shrink-0 group';
+        item.innerHTML = `
+          <img src="${imgObj.dataUrl}" alt="" class="max-w-full max-h-full object-contain">
+          <button type="button" class="del-extra-img-btn absolute -top-1 -right-1 w-4 h-4 bg-rose-600 text-white rounded-full text-[10px] font-black flex items-center justify-center shadow" data-prod="${prodIndex}" data-img="${imgIdx}" title="Xóa ảnh này">
+            &times;
+          </button>
+        `;
+        container.appendChild(item);
+      });
+
+      // Lắng nghe sự kiện xóa ảnh thông tin
+      container.querySelectorAll('.del-extra-img-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const pIdx = parseInt(btn.getAttribute('data-prod'));
+          const iIdx = parseInt(btn.getAttribute('data-img'));
+          state.batchProducts[pIdx].extraImages.splice(iIdx, 1);
+          renderExtraThumbnails(pIdx);
+          showToast('Đã xóa 1 ảnh thông tin.');
+        });
+      });
+    }
+
+    // Xử lý khi chọn 5 ảnh cùng một lúc: tự động xếp 1 -> 5 và cập nhật tên sản phẩm từ tên file!
+    function handleBatchFiles(files) {
+      if (!files || files.length === 0) return;
+      const count = Math.min(files.length, 5);
+      showToast(`Đang nạp ${count} ảnh và tự động cập nhật tên 1 đến ${count}...`);
+
+      Array.from(files).slice(0, 5).forEach((file, index) => {
+        const cleanName = cleanNameFromFileName(file.name);
+        state.batchProducts[index].name = cleanName;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          state.batchProducts[index].image = e.target.result;
+          renderProductRows();
+        };
+        reader.readAsDataURL(file);
+      });
+      showToast(`Đã tự động cập nhật tên và xếp 5 sản phẩm thành công!`);
     }
 
     // Sinh kịch bản 10s cho 1 sản phẩm dựa trên tên, thông tin và quy tắc AI
     function generateSingle10sScript(prod, seed = 0) {
-      const fullText = prod.info || prod.name || 'Sản phẩm';
+      const fullText = (prod.name + ' ' + (prod.info || '')).trim();
       const lower = fullText.toLowerCase();
 
-      // Kiểm tra xem sản phẩm có khớp quy tắc học hỏi nào không
+      // Kiểm tra quy tắc học hỏi
       let matchedRule = null;
       for (const rule of state.learnedRules) {
         if (lower.includes(rule.category.toLowerCase())) {
@@ -1105,14 +1284,9 @@
       state.generatedScripts = [];
 
       state.batchProducts.forEach((prod, index) => {
-        // Cập nhật lại thông tin từ ô input
-        const inputElem = document.getElementById(`prod-info-input-${index}`);
-        if (inputElem) {
-          const val = inputElem.value.trim();
-          if (val) {
-            prod.name = val.split(/[-–:]/)[0].trim();
-            prod.info = val;
-          }
+        const infoInput = document.getElementById(`prod-info-input-${index}`);
+        if (infoInput) {
+          prod.info = infoInput.value.trim();
         }
         const script = generateSingle10sScript(prod, state.variationSeed + index);
         state.generatedScripts.push(script);
@@ -1134,6 +1308,7 @@
         const script = state.generatedScripts[index] || '';
         const words = script.trim().length > 0 ? script.trim().split(/\s+/).length : 0;
         const estSec = (words / 3.4).toFixed(1);
+        const extraCount = (prod.extraImages && prod.extraImages.length) || 0;
 
         const card = document.createElement('div');
         card.className = 'bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-2xl relative space-y-3';
@@ -1145,13 +1320,16 @@
               <span class="w-6 h-6 rounded-full bg-rose-500 text-white font-black text-xs flex items-center justify-center shadow">
                 ${num}
               </span>
-              <div class="w-8 h-8 rounded-lg bg-slate-950 border border-slate-800 checkerboard flex items-center justify-center overflow-hidden shrink-0">
+              <div class="w-9 h-9 rounded-lg bg-slate-950 border border-slate-800 checkerboard flex items-center justify-center overflow-hidden shrink-0">
                 <img src="${prod.image || ''}" alt="" class="${prod.image ? '' : 'hidden'} max-w-full max-h-full object-contain">
                 <span class="${prod.image ? 'hidden' : ''} text-[10px] text-slate-500 font-bold">#${num}</span>
               </div>
               <div>
-                <h3 class="text-sm font-bold text-white truncate max-w-[200px] sm:max-w-md">${prod.name || 'Sản phẩm ' + num}</h3>
-                <span class="text-[10px] text-emerald-400 font-medium">Content 10s • Nhu cầu + Nỗi đau</span>
+                <h3 class="text-sm font-bold text-white truncate max-w-[180px] sm:max-w-md">${prod.name || 'Sản phẩm ' + num}</h3>
+                <div class="flex items-center gap-2 text-[10px] text-slate-400">
+                  <span class="text-emerald-400 font-medium">Content 10s • Nhu cầu + Nỗi đau</span>
+                  ${extraCount > 0 ? `<span class="text-indigo-400 font-mono">• Đã kèm ${extraCount} ảnh thông số</span>` : ''}
+                </div>
               </div>
             </div>
 
@@ -1199,7 +1377,6 @@
 
         container.appendChild(card);
 
-        // Gắn sự kiện các nút trên từng Card
         const copyBtn = card.querySelector('.copy-single-card-btn');
         copyBtn.addEventListener('click', () => {
           const txt = card.querySelector(`#script-textarea-${index}`).value;
@@ -1232,20 +1409,6 @@
           showToast(`Đã đưa Sản phẩm ${num} sang Bước 3!`);
         });
       });
-    }
-
-    function speakSpecificText(text) {
-      if (!('speechSynthesis' in window)) {
-        showToast('Trình duyệt không hỗ trợ đọc âm thanh!', 'error');
-        return;
-      }
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'vi-VN';
-      utterance.rate = 1.15;
-      utterance.pitch = 1.0;
-      window.speechSynthesis.speak(utterance);
-      showToast('Đang đọc thử kịch bản 10 giây...');
     }
 
     // ==========================================
