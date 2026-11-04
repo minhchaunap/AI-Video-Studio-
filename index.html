@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
   <title>AI Video Studio — Quy trình 3 Bước (GitHub Pages)</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script>
@@ -292,12 +293,44 @@
       </div>
     </section>
 
-        <!-- =================================================================== -->
-    <!-- STEP 2: CONTENT 10S - 5 SẢN PHẨM: UP ẢNH KHÔNG GIỚI HẠN & TỰ ĐỔI TÊN -->
+            <!-- =================================================================== -->
+    <!-- STEP 2: CONTENT 10S - NHẬN DIỆN ẢNH THÔNG MINH & 5 SP HÀNG LOẠT -->
     <!-- =================================================================== -->
     <section id="step-panel-2" class="step-panel hidden space-y-6 max-w-4xl mx-auto">
       
-      <!-- Ô HỌC HỎI CỦA AI: THIẾT KẾ SIÊU GỌN GÀNG -->
+      <!-- KHUNG KẾT NỐI AI VISION (TÙY CHỌN NÂNG CAO ĐỂ ĐỌC ẢNH 100% NHƯ NGƯỜI THẬT) -->
+      <div class="bg-gradient-to-r from-slate-900 via-indigo-950/60 to-slate-900 border border-indigo-500/30 rounded-2xl p-4 shadow-xl">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-2.5 border-b border-indigo-900/40">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-xs font-bold text-white flex items-center gap-1.5">
+              🤖 "Mắt Thần" AI Vision Đọc Chữ Từ Ảnh
+            </span>
+            <span class="text-[10px] text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">OCR Tự Động + Gemini AI</span>
+          </div>
+          <button id="toggle-ai-key-btn" type="button" class="text-xs font-semibold text-indigo-300 hover:text-white flex items-center gap-1 transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <span id="ai-key-status-text">Cài đặt API Key AI (Tùy chọn)</span>
+          </button>
+        </div>
+
+        <div id="ai-key-panel" class="hidden mt-3 pt-3 border-t border-indigo-900/40 space-y-2">
+          <p class="text-xs text-slate-300">
+            💡 <strong>Mẹo để AI viết sắc bén nhất:</strong> Nhập mã <strong>Gemini API Key miễn phí</strong> của bạn. AI sẽ nhìn trực tiếp vào ảnh chụp bao bì/thông số, đọc sạch từng chữ và viết kịch bản đánh trúng nỗi đau thực tế:
+          </p>
+          <div class="flex items-center gap-2">
+            <input type="password" id="gemini-api-key-input" placeholder="Dán Gemini API Key (AIzaSy...)" class="flex-1 bg-slate-950 border border-indigo-700/60 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-400">
+            <button id="save-gemini-key-btn" type="button" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition shadow">
+              Lưu Key
+            </button>
+          </div>
+          <p class="text-[11px] text-slate-400">
+            * Nhận API Key hoàn toàn miễn phí tại <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-indigo-400 underline">aistudio.google.com</a> (Không mất phí). Nếu không có Key, hệ thống vẫn dùng bộ quét chữ OCR tự động.
+          </p>
+        </div>
+      </div>
+
+      <!-- Ô HỌC HỎI CỦA AI (COMPACT MEMORY BAR) -->
       <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-md">
         <div class="flex flex-wrap items-center justify-between gap-3 pb-2.5 border-b border-slate-800/80">
           <div class="flex items-center gap-2">
@@ -305,7 +338,7 @@
             <span class="text-xs font-bold text-white flex items-center gap-1.5">
               🧠 Ô Học Hỏi Của AI (AI Memory)
             </span>
-            <span class="text-[10px] text-slate-400 font-medium hidden sm:inline">• Nhớ quy tắc từng loại sản phẩm</span>
+            <span class="text-[10px] text-slate-400 font-medium hidden sm:inline">• Quy tắc bắt buộc theo ngành hàng</span>
           </div>
           <button id="toggle-add-rule-btn" type="button" class="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1 transition">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
@@ -320,8 +353,8 @@
 
         <!-- Form thêm quy tắc mới (thu gọn) -->
         <div id="add-rule-form-row" class="hidden mt-3 pt-3 border-t border-slate-800/60 grid grid-cols-1 sm:grid-cols-12 gap-2">
-          <input type="text" id="new-rule-category" placeholder="Tên loại SP (VD: Gạo, Bàn ghế, Mỹ phẩm...)" class="sm:col-span-4 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
-          <input type="text" id="new-rule-musthave" placeholder="Cấu trúc bắt buộc (VD: Bao nhiêu ký, Kích thước DxRxC...)" class="sm:col-span-6 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
+          <input type="text" id="new-rule-category" placeholder="Tên loại SP (VD: Gạo, Bàn ghế, Nồi chiên...)" class="sm:col-span-4 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
+          <input type="text" id="new-rule-musthave" placeholder="Cấu trúc bắt buộc (VD: Bắt buộc có số kg, Kích thước DxRxC...)" class="sm:col-span-6 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
           <button id="add-learning-rule-btn" type="button" class="sm:col-span-2 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition shadow">
             Lưu nhớ
           </button>
@@ -331,19 +364,17 @@
       <!-- KHU VỰC NHẬP 5 SẢN PHẨM: ẢNH & THÔNG TIN -->
       <div class="space-y-3">
         
-        <!-- Header & Nút tải 5 ảnh 1 lần (Tự cập nhật tên) -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div class="flex items-center gap-2">
             <span class="px-3 py-1 rounded-lg bg-rose-500 text-white font-black text-xs uppercase tracking-wider shadow-sm shadow-rose-500/30">
-              NHẬP 5 SẢN PHẨM: ẢNH & THÔNG TIN
+              NHẬP 5 SẢN PHẨM (TỰ ĐỌC ẢNH & CẬP NHẬT TÊN)
             </span>
           </div>
 
-          <!-- Nút chọn 5 ảnh cùng lúc -->
           <div class="flex items-center gap-2">
             <button id="batch-upload-trigger-btn" type="button" class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-md shadow-indigo-600/30 flex items-center gap-1.5 transition">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-              <span>Chọn 5 ảnh cùng 1 lúc (Tự cập nhật tên)</span>
+              <span>Chọn 5 ảnh cùng 1 lúc</span>
             </button>
             <input type="file" id="batch-file-input" multiple accept="image/*" class="hidden">
             <button id="load-sample-5-btn" type="button" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-semibold transition">
@@ -352,25 +383,21 @@
           </div>
         </div>
 
-        <p class="text-xs text-slate-400">
-          💡 Khi chọn 5 ảnh, hệ thống tự động xếp 1 đến 5 và lấy tên file đặt tên sản phẩm. Bạn có thể bấm <strong class="text-rose-400">"Sửa tên"</strong> hoặc bấm <strong class="text-indigo-400">"+ Up ảnh thông tin"</strong> không giới hạn cho từng sản phẩm!
-        </p>
-
-        <!-- Danh sách 5 Card Sản Phẩm (Sản phẩm 1 -> 5) -->
+        <!-- Danh sách 5 Card Sản Phẩm -->
         <div id="product-cards-container" class="space-y-4">
           <!-- 5 product cards rendered dynamically via JS -->
         </div>
 
-        <!-- Hàng Nút Hành Động: Tạo hàng loạt 5 SP & Đổi Content khác -->
+        <!-- Hàng Nút Hành Động -->
         <div class="pt-3 flex flex-col sm:flex-row items-center gap-3">
           <button id="generate-script-btn" type="button" class="w-full sm:flex-1 py-3.5 rounded-xl bg-gradient-to-r from-rose-500 via-pink-600 to-rose-600 hover:from-rose-600 hover:to-pink-700 text-white text-sm sm:text-base font-black shadow-lg shadow-rose-500/25 transition duration-200 flex items-center justify-center gap-2 cursor-pointer">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            <span>TẠO HÀNG LOẠT 5 CONTENT 10 GIÂY</span>
+            <span id="gen-btn-label">TẠO HÀNG LOẠT 5 CONTENT 10 GIÂY (CHẮT LỌC TỪ ẢNH)</span>
           </button>
 
           <button id="next-variation-all-btn" type="button" class="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 shadow">
             <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-            <span>Đổi content khác (Biến thể mới)</span>
+            <span>Đổi góc tiếp cận khác (Biến thể mới)</span>
           </button>
         </div>
 
@@ -379,14 +406,13 @@
       <!-- KHU VỰC KẾT QUẢ: HÀNG LOẠT 5 CARD KỊCH BẢN (1 -> 5) -->
       <div class="space-y-4 pt-3">
         
-        <!-- Header kết quả -->
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
             <span class="px-2.5 py-0.5 rounded-md bg-rose-500 text-white font-black text-[11px] uppercase tracking-wider shadow-sm">
               TẠO XONG
             </span>
             <h2 class="text-base sm:text-lg font-bold text-white">
-              Kết Quả Hàng Loạt 5 Kịch Bản (Chuẩn 10s • Nhu cầu + Nỗi đau)
+              Kết Quả 5 Kịch Bản 10s (Bám Sát Thông Số Thực Tế Từ Ảnh)
             </h2>
           </div>
 
@@ -396,7 +422,6 @@
           </button>
         </div>
 
-        <!-- Container chứa 5 Card kịch bản -->
         <div id="batch-results-container" class="space-y-4">
           <!-- 5 result cards will be rendered here -->
         </div>
@@ -933,20 +958,132 @@
       showToast('Đã tải ảnh PNG không nền về máy!');
     }
 
-        // ===================================================================
-    // STEP 2: CONTENT 10S - 5 SẢN PHẨM: UP ẢNH KHÔNG GIỚI HẠN & TỰ ĐỔI TÊN
+            // ===================================================================
+    // STEP 2: CONTENT 10S - OCR QUÉT ẢNH + GEMINI VISION + 5 SP HÀNG LOẠT
     // ===================================================================
 
-    // Làm sạch tên file để thành tên sản phẩm đẹp mắt
+    // Tải và lưu Gemini API Key
+    function loadGeminiKey() {
+      try {
+        const key = localStorage.getItem('ai_video_gemini_key');
+        if (key) {
+          const input = document.getElementById('gemini-api-key-input');
+          const status = document.getElementById('ai-key-status-text');
+          if (input) input.value = key;
+          if (status) status.innerHTML = '✅ <span class="text-emerald-300">Đã kích hoạt AI Vision</span>';
+        }
+      } catch (e) {}
+    }
+
+    // Làm sạch tên file nếu tên file có chữ có nghĩa
     function cleanNameFromFileName(filename) {
-      if (!filename) return 'Sản phẩm mới';
+      if (!filename) return '';
       let name = filename.replace(/\.[^/.]+$/, "");
-      name = name.replace(/[_-]+/g, " ");
-      name = name.trim();
-      if (name.length > 0) {
-        name = name.charAt(0).toUpperCase() + name.slice(1);
+      // Nếu tên file là dạng IMG_2024..., Screenshot_..., image(1)... thì bỏ qua
+      if (/^(img|image|screenshot|photo|file|download|pasted|scan|\d+)[_\-\s\d]*/i.test(name)) {
+        return '';
       }
-      return name;
+      name = name.replace(/[_-]+/g, " ").trim();
+      if (name.length > 2) {
+        return name.charAt(0).toUpperCase() + name.slice(1);
+      }
+      return '';
+    }
+
+    // Trích xuất các thông số thực tế từ chữ (số kg, kích thước, dung tích, giá...)
+    function extractRealSpecsFromText(rawText) {
+      if (!rawText) return {};
+      const specs = {};
+
+      // Cân nặng (kg, gam)
+      const kgMatch = rawText.match(/(\d+(\.\d+)?\s*(kg|kí|ký|kilogram|g|gam))/i);
+      if (kgMatch) specs.weight = kgMatch[0].trim();
+
+      // Kích thước (m, cm, DxRxC)
+      const dimMatch = rawText.match(/(\d+([.,]\d+)?\s*(m|cm|mm)?\s*[xX*]\s*\d+([.,]\d+)?(\s*[xX*]\s*\d+([.,]\d+)?)?\s*(cm|m|mm)?)/i);
+      if (dimMatch) specs.dimension = dimMatch[0].trim();
+
+      // Dung tích (lít, ml)
+      const volMatch = rawText.match(/(\d+(\.\d+)?\s*(lít|lit|l|ml))/i);
+      if (volMatch) specs.volume = volMatch[0].trim();
+
+      // Giá hoặc giảm giá
+      const discountMatch = rawText.match(/(giảm\s*\d+%|\d+%\s*off|\d{1,3}(\.\d{3})+\s*(đ|k|vnđ))/i);
+      if (discountMatch) specs.discount = discountMatch[0].trim();
+
+      return specs;
+    }
+
+    // Quét OCR ảnh trực tiếp trên trình duyệt bằng Tesseract.js
+    async function scanImageForText(dataUrl) {
+      if (typeof Tesseract === 'undefined') {
+        return '';
+      }
+      try {
+        const result = await Tesseract.recognize(dataUrl, 'vie+eng', {
+          logger: () => {}
+        });
+        return result?.data?.text || '';
+      } catch (e) {
+        console.warn('OCR error:', e);
+        return '';
+      }
+    }
+
+    // Gọi Gemini Vision API (nếu người dùng có Key) để bóc tách 100% chính xác
+    async function callGeminiVision(apiKey, prod) {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+      const parts = [];
+
+      // Ảnh chính
+      if (prod.image && prod.image.startsWith('data:')) {
+        const mime = prod.image.match(/data:([^;]+);/)?.[1] || 'image/jpeg';
+        const raw = prod.image.split(',')[1];
+        parts.push({ inlineData: { mimeType: mime, data: raw } });
+      }
+
+      // Các ảnh thông tin bổ sung (tối đa 4 ảnh gửi lên API)
+      if (prod.extraImages && prod.extraImages.length > 0) {
+        prod.extraImages.slice(0, 4).forEach(img => {
+          if (img.dataUrl && img.dataUrl.startsWith('data:')) {
+            const mime = img.dataUrl.match(/data:([^;]+);/)?.[1] || 'image/jpeg';
+            const raw = img.dataUrl.split(',')[1];
+            parts.push({ inlineData: { mimeType: mime, data: raw } });
+          }
+        });
+      }
+
+      const promptDirective = `Bạn là biên kịch video ngắn triệu view TikTok thực chiến.
+Nhiệm vụ của bạn là xem kỹ hình ảnh sản phẩm được gửi lên (đọc nhãn mác bao bì, thông số kỹ thuật, số kg, kích thước, thành phần, giá cả).
+Yêu cầu:
+1. Đọc đúng TÊN SẢN PHẨM và CÁC THÔNG SỐ ĐẮT GIÁ NHẤT có trong ảnh.
+2. Viết một kịch bản video ngắn đúng chuẩn 10 GIÂY (độ dài đúng khoảng 26 đến 32 từ tiếng Việt).
+3. Tuyệt đối KHÔNG viết chung chung sáo rỗng! Bám sát sự thật có trong ảnh:
+   - 0-3s: Hook giật gân đánh trúng nỗi đau thực tế (khó chịu, mất ngon, phiền toái khi dùng hàng dởm).
+   - 3-7s: Nêu giải pháp và BẮT BUỘC ĐỌC ĐÍCH DANH THÔNG SỐ CỤ THỂ từ ảnh (ví dụ số kg, kích thước, công nghệ).
+   - 7-10s: Kêu gọi hành động (CTA) dứt khoát.
+
+Trả về duy nhất JSON:
+{
+  "productName": "Tên sản phẩm đọc từ ảnh",
+  "keySpecs": "Thông số đắt giá đọc từ ảnh",
+  "script10s": "Toàn bộ kịch bản 10 giây (26-32 từ)"
+}`;
+
+      parts.push({ text: promptDirective });
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: parts }],
+          generationConfig: { responseMimeType: "application/json" }
+        })
+      });
+
+      const resData = await response.json();
+      const text = resData.candidates?.[0]?.content?.parts?.[0]?.text;
+      return JSON.parse(text);
     }
 
     // Render danh sách 5 Card sản phẩm
@@ -961,12 +1098,11 @@
         const card = document.createElement('div');
         card.className = 'bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-4 shadow-xl space-y-3 transition';
         
-        // Count extra images
         const extraCount = (prod.extraImages && prod.extraImages.length) || 0;
 
         card.innerHTML = `
-          <!-- Header Hàng: STT + Tên sản phẩm + Nút Sửa Tên -->
-          <div class="flex items-center justify-between gap-2 pb-2.5 border-b border-slate-800">
+          <!-- Header Hàng: STT + Tên sản phẩm + Nút Quét OCR + Nút Sửa Tên -->
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-slate-800">
             <div class="flex items-center gap-2.5 flex-1 min-w-0">
               <span class="w-7 h-7 rounded-full bg-rose-500 text-white font-black text-xs flex items-center justify-center shadow shrink-0">
                 ${num}
@@ -974,7 +1110,7 @@
 
               <!-- Hiển thị tên sản phẩm & Ô chỉnh sửa tên -->
               <div class="flex-1 min-w-0">
-                <span id="name-display-${index}" class="text-sm sm:text-base font-extrabold text-white block truncate">
+                <span id="name-display-${index}" class="text-sm sm:text-base font-extrabold text-white block truncate cursor-pointer hover:text-rose-300" title="Bấm để sửa tên">
                   ${prod.name || 'Sản phẩm ' + num}
                 </span>
                 <div id="name-edit-box-${index}" class="hidden flex items-center gap-2 mt-1">
@@ -986,11 +1122,19 @@
               </div>
             </div>
 
-            <!-- Nút bấm Sửa tên -->
-            <button type="button" class="edit-name-toggle-btn text-xs font-semibold text-rose-400 hover:text-rose-300 flex items-center gap-1 px-2.5 py-1 bg-rose-500/10 hover:bg-rose-500/20 rounded-lg border border-rose-500/20 transition shrink-0" data-index="${index}">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
-              <span>Sửa tên</span>
-            </button>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <!-- Nút Quét chữ tự động từ ảnh -->
+              <button type="button" class="ocr-scan-btn text-[11px] font-semibold text-indigo-300 hover:text-white px-2.5 py-1 bg-indigo-500/10 hover:bg-indigo-500/20 rounded-lg border border-indigo-500/30 transition flex items-center gap-1" data-index="${index}" title="Quét chữ trong ảnh để tự lấy tên và thông số">
+                <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <span>Quét ảnh lấy tên</span>
+              </button>
+
+              <!-- Nút bấm Sửa tên -->
+              <button type="button" class="edit-name-toggle-btn text-xs font-semibold text-rose-400 hover:text-rose-300 flex items-center gap-1 px-2.5 py-1 bg-rose-500/10 hover:bg-rose-500/20 rounded-lg border border-rose-500/20 transition" data-index="${index}">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+                <span>Sửa tên</span>
+              </button>
+            </div>
           </div>
 
           <!-- Khu vực Ảnh chính & Thông tin sản phẩm -->
@@ -1008,9 +1152,9 @@
               <input type="file" id="single-file-input-${index}" accept="image/*" class="hidden">
             </div>
 
-            <!-- Ô nhập thông tin chi tiết (số kg, kích thước...) -->
+            <!-- Ô nhập thông tin chi tiết -->
             <div class="col-span-8 sm:col-span-9">
-              <input type="text" id="prod-info-input-${index}" value="${prod.info || ''}" placeholder="Nhập thêm thông tin (VD: Túi 5kg dẻo thơm, kích thước 1m6x80cm, bảo hành 12 tháng...)" class="w-full bg-slate-950 border border-slate-700/80 focus:border-rose-500 rounded-xl px-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none transition">
+              <input type="text" id="prod-info-input-${index}" value="${prod.info || ''}" placeholder="Thông tin chi tiết (VD: Túi 5kg dẻo thơm, kích thước 1m6x80cm, bảo hành 12 tháng...)" class="w-full bg-slate-950 border border-slate-700/80 focus:border-rose-500 rounded-xl px-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none transition">
             </div>
 
           </div>
@@ -1020,7 +1164,7 @@
             <div class="flex flex-wrap items-center justify-between gap-2">
               <div class="flex items-center gap-2 text-xs">
                 <span class="text-slate-300 font-semibold flex items-center gap-1">
-                  📸 Ảnh thông tin sản phẩm:
+                  📸 Ảnh thông tin, thông số sản phẩm:
                 </span>
                 <span id="extra-count-badge-${index}" class="text-[11px] font-mono px-2 py-0.5 rounded-full ${extraCount > 0 ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' : 'text-slate-500'}">
                   ${extraCount > 0 ? `Đã thêm ${extraCount} ảnh chi tiết` : 'Chưa có ảnh thông tin'}
@@ -1030,12 +1174,12 @@
               <!-- Nút tải ảnh thông tin không giới hạn -->
               <button type="button" class="upload-extra-imgs-btn px-3 py-1 bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-300 hover:text-white rounded-lg border border-indigo-500/30 text-xs font-semibold flex items-center gap-1.5 transition" data-index="${index}">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                <span>Up thêm ảnh thông tin (Không giới hạn)</span>
+                <span>Up thêm ảnh thông số (Không giới hạn)</span>
               </button>
               <input type="file" id="extra-file-input-${index}" multiple accept="image/*" class="hidden">
             </div>
 
-            <!-- Dải thumbnail các ảnh thông tin đã up (có nút xóa x) -->
+            <!-- Dải thumbnail các ảnh thông tin đã up -->
             <div id="extra-thumbs-strip-${index}" class="flex flex-wrap items-center gap-2 pt-1 min-h-[32px]">
               <!-- Extra thumbnails rendered here -->
             </div>
@@ -1043,24 +1187,25 @@
         `;
 
         container.appendChild(card);
-
-        // Render existing extra images for this product
         renderExtraThumbnails(index);
 
-        // Toggle edit name
+        // Nút bấm sửa tên
         const editBtn = card.querySelector('.edit-name-toggle-btn');
         const nameDisplay = card.querySelector(`#name-display-${index}`);
         const nameEditBox = card.querySelector(`#name-edit-box-${index}`);
         const nameEditInput = card.querySelector(`#name-edit-input-${index}`);
         const saveNameBtn = card.querySelector('.save-name-btn');
 
-        editBtn.addEventListener('click', () => {
+        const toggleEdit = () => {
           nameEditBox.classList.toggle('hidden');
           nameDisplay.classList.toggle('hidden');
           if (!nameEditBox.classList.contains('hidden')) {
             nameEditInput.focus();
           }
-        });
+        };
+
+        editBtn.addEventListener('click', toggleEdit);
+        nameDisplay.addEventListener('click', toggleEdit);
 
         const saveNameFn = () => {
           const newName = nameEditInput.value.trim() || `Sản phẩm ${num}`;
@@ -1068,14 +1213,74 @@
           nameDisplay.textContent = newName;
           nameEditBox.classList.add('hidden');
           nameDisplay.classList.remove('hidden');
-          showToast(`Đã đổi tên Sản phẩm ${num} thành: "${newName}"`);
+          showToast(`Đã lưu tên Sản phẩm ${num}: "${newName}"`);
         };
         saveNameBtn.addEventListener('click', saveNameFn);
         nameEditInput.addEventListener('keydown', (e) => {
           if (e.key === 'Enter') saveNameFn();
         });
 
-        // Single image upload
+        // Nút OCR Quét ảnh để tìm tên thật
+        const ocrBtn = card.querySelector('.ocr-scan-btn');
+        ocrBtn.addEventListener('click', async () => {
+          if (!prod.image) {
+            showToast(`Vui lòng up ảnh cho Sản phẩm ${num} trước khi quét!`, 'error');
+            return;
+          }
+          showToast(`Đang quét chữ từ ảnh Sản phẩm ${num}...`);
+          ocrBtn.innerHTML = '<span>Đang quét...</span>';
+
+          try {
+            const apiKey = localStorage.getItem('ai_video_gemini_key');
+            if (apiKey) {
+              const res = await callGeminiVision(apiKey, prod);
+              if (res?.productName) {
+                state.batchProducts[index].name = res.productName;
+                nameDisplay.textContent = res.productName;
+                nameEditInput.value = res.productName;
+              }
+              if (res?.keySpecs) {
+                state.batchProducts[index].info = res.keySpecs;
+                card.querySelector(`#prod-info-input-${index}`).value = res.keySpecs;
+              }
+              showToast(`AI đã nhận diện: "${res.productName}"`);
+            } else {
+              // Dùng OCR Tesseract
+              const scannedText = await scanImageForText(prod.image);
+              if (scannedText && scannedText.trim().length > 3) {
+                const lines = scannedText.split(/[\r\n]+/).map(l => l.trim()).filter(l => l.length > 2);
+                if (lines.length > 0) {
+                  // Lấy dòng chữ đầu tiên có ý nghĩa làm tên
+                  const detectedName = lines[0].substring(0, 45);
+                  state.batchProducts[index].name = detectedName;
+                  nameDisplay.textContent = detectedName;
+                  nameEditInput.value = detectedName;
+                }
+                // Trích xuất thông số
+                const specs = extractRealSpecsFromText(scannedText);
+                const specParts = [];
+                if (specs.weight) specParts.push(`Khối lượng: ${specs.weight}`);
+                if (specs.dimension) specParts.push(`Kích thước: ${specs.dimension}`);
+                if (specs.volume) specParts.push(`Dung tích: ${specs.volume}`);
+                if (specs.discount) specParts.push(`Ưu đãi: ${specs.discount}`);
+                if (specParts.length > 0) {
+                  const specStr = specParts.join(' • ');
+                  state.batchProducts[index].info = specStr;
+                  card.querySelector(`#prod-info-input-${index}`).value = specStr;
+                }
+                showToast(`Đã quét được chữ từ ảnh Sản phẩm ${num}!`);
+              } else {
+                showToast(`Không tìm thấy chữ rõ ràng trong ảnh Sản phẩm ${num}. Hãy bấm "Sửa tên" để gõ tay!`, 'error');
+              }
+            }
+          } catch (err) {
+            showToast('Lỗi khi quét ảnh. Bạn có thể bấm "Sửa tên" để gõ!', 'error');
+          } finally {
+            ocrBtn.innerHTML = '<svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg><span>Quét ảnh lấy tên</span>';
+          }
+        });
+
+        // Upload ảnh chính
         const singleBtn = card.querySelector('.single-upload-btn');
         const singleInput = card.querySelector(`#single-file-input-${index}`);
         const singleThumbBox = card.querySelector('.checkerboard');
@@ -1090,24 +1295,27 @@
             const reader = new FileReader();
             reader.onload = (ev) => {
               state.batchProducts[index].image = ev.target.result;
-              // Tự cập nhật tên từ tên file
+              
+              // Nếu tên file có nghĩa, cập nhật tên
               const cleanName = cleanNameFromFileName(file.name);
-              state.batchProducts[index].name = cleanName;
-              nameDisplay.textContent = cleanName;
-              nameEditInput.value = cleanName;
+              if (cleanName) {
+                state.batchProducts[index].name = cleanName;
+                nameDisplay.textContent = cleanName;
+                nameEditInput.value = cleanName;
+              }
 
               const imgElem = document.getElementById(`prod-thumb-${index}`);
               const placeholder = document.getElementById(`prod-thumb-placeholder-${index}`);
               imgElem.src = ev.target.result;
               imgElem.classList.remove('hidden');
               placeholder.classList.add('hidden');
-              showToast(`Đã nạp ảnh và cập nhật tên: "${cleanName}"!`);
+              showToast(`Đã tải ảnh cho Sản phẩm ${num}! Bấm "Quét ảnh lấy tên" nếu muốn đọc chữ trên ảnh.`);
             };
             reader.readAsDataURL(file);
           }
         });
 
-        // Extra unlimited images upload
+        // Upload ảnh thông tin bổ sung không giới hạn
         const extraBtn = card.querySelector('.upload-extra-imgs-btn');
         const extraInput = card.querySelector(`#extra-file-input-${index}`);
         extraBtn.addEventListener('click', () => extraInput.click());
@@ -1117,7 +1325,6 @@
           }
         });
 
-        // Info input listener
         const infoInput = card.querySelector(`#prod-info-input-${index}`);
         infoInput.addEventListener('input', (e) => {
           state.batchProducts[index].info = e.target.value;
@@ -1125,7 +1332,7 @@
       });
     }
 
-    // Xử lý nạp ảnh thông tin bổ sung không giới hạn cho sản phẩm [index]
+    // Xử lý nạp ảnh thông tin bổ sung không giới hạn
     function handleExtraFilesUpload(prodIndex, files) {
       if (!files || files.length === 0) return;
       if (!state.batchProducts[prodIndex].extraImages) {
@@ -1152,7 +1359,6 @@
       });
     }
 
-    // Render dải thumbnail các ảnh thông tin bổ sung
     function renderExtraThumbnails(prodIndex) {
       const container = document.getElementById(`extra-thumbs-strip-${prodIndex}`);
       const badge = document.getElementById(`extra-count-badge-${prodIndex}`);
@@ -1163,16 +1369,16 @@
 
       if (badge) {
         if (extras.length > 0) {
-          badge.textContent = `Đã thêm ${extras.length} ảnh thông tin`;
+          badge.textContent = `Đã thêm ${extras.length} ảnh chi tiết`;
           badge.className = 'text-[11px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30';
         } else {
-          badge.textContent = 'Chưa có ảnh thông tin phụ';
+          badge.textContent = 'Chưa có ảnh thông tin';
           badge.className = 'text-[11px] font-mono px-2 py-0.5 rounded-full text-slate-500';
         }
       }
 
       if (extras.length === 0) {
-        container.innerHTML = '<span class="text-[11px] text-slate-500 italic">Bấm nút trên để up thêm ảnh chụp thông số, nhãn mác...</span>';
+        container.innerHTML = '<span class="text-[11px] text-slate-500 italic">Bấm nút trên để up thêm ảnh thông số, bảng thành phần...</span>';
         return;
       }
 
@@ -1188,7 +1394,6 @@
         container.appendChild(item);
       });
 
-      // Lắng nghe sự kiện xóa ảnh thông tin
       container.querySelectorAll('.del-extra-img-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -1201,15 +1406,17 @@
       });
     }
 
-    // Xử lý khi chọn 5 ảnh cùng một lúc: tự động xếp 1 -> 5 và cập nhật tên sản phẩm từ tên file!
+    // Tải 5 ảnh đầu
     function handleBatchFiles(files) {
       if (!files || files.length === 0) return;
       const count = Math.min(files.length, 5);
-      showToast(`Đang nạp ${count} ảnh và tự động cập nhật tên 1 đến ${count}...`);
+      showToast(`Đang nạp ${count} ảnh...`);
 
       Array.from(files).slice(0, 5).forEach((file, index) => {
         const cleanName = cleanNameFromFileName(file.name);
-        state.batchProducts[index].name = cleanName;
+        if (cleanName) {
+          state.batchProducts[index].name = cleanName;
+        }
 
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -1218,13 +1425,14 @@
         };
         reader.readAsDataURL(file);
       });
-      showToast(`Đã tự động cập nhật tên và xếp 5 sản phẩm thành công!`);
+      showToast(`Đã nạp 5 ảnh vào danh sách! Bấm "Quét ảnh lấy tên" ở từng sản phẩm để nhận diện chữ trên bao bì.`);
     }
 
-    // Sinh kịch bản 10s cho 1 sản phẩm dựa trên tên, thông tin và quy tắc AI
-    function generateSingle10sScript(prod, seed = 0) {
+    // BỘ SINH CONTENT 10S THỰC CHIẾN (CHẮT LỌC THÔNG SỐ, ĐÁNH TRÚNG NỖI ĐAU, KHÔNG SÁO RỖNG)
+    function generatePractical10sScript(prod, seed = 0) {
       const fullText = (prod.name + ' ' + (prod.info || '')).trim();
       const lower = fullText.toLowerCase();
+      const specs = extractRealSpecsFromText(fullText);
 
       // Kiểm tra quy tắc học hỏi
       let matchedRule = null;
@@ -1238,62 +1446,106 @@
       const pName = prod.name || 'Sản phẩm';
       const variant = (seed) % 3;
 
+      // 1. NGÀNH GẠO / NÔNG SẢN
       if (lower.includes('gạo')) {
-        const kgInfo = lower.includes('kg') ? '' : ' túi 5kg';
+        const kgVal = specs.weight || 'túi 5kg';
         if (variant === 0) {
-          return `Cơm mỗi ngày mà gạo khô, nấu lên không thơm, cả nhà ăn cũng kém ngon? Chọn ngay ${pName}${kgInfo}, hạt gạo chất lượng, giúp bữa cơm gia đình thêm thơm ngon, tròn vị. Một bữa cơm ngon bắt đầu từ hạt gạo tốt!`;
+          return `Cơm nấu lên khô khốc, nhai bã miệng nuốt nghẹn cổ? Đổi ngay ${pName} chuẩn ${kgVal}, từng hạt dẻo thơm ngào ngạt, để nguội vẫn mềm tan. Ăn là mê, đặt ngay nhé!`;
         } else if (variant === 1) {
-          return `Đừng để cả nhà mất ngon chỉ vì chọn nhầm gạo kém chất lượng! Thử ngay ${pName}${kgInfo} chuẩn cơm dẻo ngọt, thơm đậm đà từng hạt ngọc trời. Nâng tầm bữa cơm gia đình ngay hôm nay!`;
+          return `Đừng để cả nhà mất ngon chỉ vì nồi cơm khô cứng pha tạp! Chọn ngay ${pName} đóng gói ${kgVal}, cơm dẻo ngọt đậm đà, chuẩn vị ngon tròn bữa. Thử ngay hôm nay!`;
         } else {
-          return `Bí quyết giữ lửa hạnh phúc bắt đầu từ bát cơm thơm dẻo mỗi tối. ${pName}${kgInfo} cam kết không pha trộn, dẻo mềm đến muỗng cuối cùng. Đổi gạo ngon cho cả nhà ngay nhé!`;
-        }
-      } else if (lower.includes('bàn') || lower.includes('ghế')) {
-        const sizeInfo = lower.includes('1m') || lower.includes('cm') ? '' : ' kích thước chuẩn 1m6 x 80cm';
-        if (variant === 0) {
-          return `Phòng khách chật chội, bàn ghế ọp ẹp làm mất điểm ngôi nhà? Chọn ngay ${pName}${sizeInfo}, gỗ sồi bền đẹp, giúp không gian thêm sang trọng, ấm cúng. Nâng tầm phòng khách ngay hôm nay!`;
-        } else if (variant === 1) {
-          return `Ghé thăm nhà ai cũng khen nức nở với bộ bàn ghế siêu sang này! ${pName}${sizeInfo}, chịu lực bền bỉ 10 năm không mối mọt. Đặt ngay để nâng cấp phòng khách của bạn!`;
-        } else {
-          return `Đang tìm mẫu bàn ghế vừa vặn, chuẩn phong thủy và thanh lịch? ${pName}${sizeInfo} chính là lựa chọn hoàn hảo, bảo hành chính hãng. Mua ngay hôm nay để nhận ưu đãi!`;
-        }
-      } else if (lower.includes('nồi') || lower.includes('chiên')) {
-        if (variant === 0) {
-          return `Nấu nướng dầu mỡ ngán ngẩm, tốn thời gian dọn dẹp mỗi ngày? Chọn ngay ${pName}, công nghệ đối lưu giòn rụm giảm 85% chất béo, ăn ngon không lo tăng cân. Rinh về bếp ngay hôm nay!`;
-        } else {
-          return `Bí kíp nấu vạn món ngon chỉ với một nút bấm cho người bận rộn! ${pName} nướng gà nguyên con cực đỉnh, giòn da ngọt thịt. Bấm mua ngay để giải phóng đôi tay!`;
-        }
-      } else if (lower.includes('serum') || lower.includes('da')) {
-        return `Da khô ráp, sần sùi và đổ dầu mất tự tin khi ra ngoài? Dùng ngay ${pName}, cấp ẩm tức thì, phục hồi da mịn màng căng bóng sau 7 ngày. Chăm sóc làn da hoàn hảo ngay hôm nay!`;
-      } else if (lower.includes('áo') || lower.includes('thun') || lower.includes('quần')) {
-        return `Mặc áo bí bách, giặt vài lần đã bai xù mất dáng? Chọn ngay ${pName}, chất cotton 100% thoáng mát, form đứng cực chuẩn. Mặc là đẹp, tự tin dạo phố mỗi ngày!`;
-      } else {
-        if (matchedRule) {
-          return `Bạn đau đầu vì chưa chọn được sản phẩm thật sự ưng ý? Chọn ngay ${pName}, thiết kế chuẩn ${matchedRule.mustHave}, chất lượng vượt trội. Mua ngay hôm nay để nhận ưu đãi!`;
-        } else {
-          return `Đang tìm kiếm sản phẩm chất lượng để nâng cấp cuộc sống? Chọn ngay ${pName}, bền bỉ tiện lợi, giải quyết dứt điểm nỗi lo của bạn. Mua ngay kẻo lỡ ưu đãi tốt nhất!`;
+          return `Bữa cơm gia đình ấm cúng bắt đầu từ bát cơm thơm dẻo chuẩn vị. ${pName} đóng ${kgVal} hút chân không sạch tinh tươm, hạt thon đều tăm tắp. Đặt mua ăn thử ngay!`;
         }
       }
+
+      // 2. NGÀNH BÀN GHẾ / NỘI THẤT
+      if (lower.includes('bàn') || lower.includes('ghế')) {
+        const dimVal = specs.dimension || '1m6 x 80cm';
+        if (variant === 0) {
+          return `Bàn ghế cũ kỹ ọp ẹp, kênh chân cập kê làm mất mặt khi khách đến chơi? Rước ngay ${pName} kích thước ${dimVal}, khung sườn chắc nịch, phòng khách sang bừng. Mua ngay nhận ưu đãi!`;
+        } else if (variant === 1) {
+          return `Phòng khách chật chội mà muốn sang trọng, tinh tế? ${pName} kích thước chuẩn ${dimVal}, thiết kế tối ưu diện tích, vân gỗ sắc nét bền bỉ 10 năm. Chốt đơn nhận giá hời!`;
+        } else {
+          return `Bỏ ngay mẫu bàn cập kê ọp ẹp! ${pName} kích thước ${dimVal} gỗ dày dặn chịu lực cực đỉnh, tôn vinh đẳng cấp không gian sống. Bấm mua ngay kẻo hết sale!`;
+        }
+      }
+
+      // 3. ĐỒ GIA DỤNG / BẾP / NỒI CHIÊN
+      if (lower.includes('nồi') || lower.includes('chiên') || lower.includes('bếp') || lower.includes('máy')) {
+        const volVal = specs.volume || 'dung tích lớn';
+        if (variant === 0) {
+          return `Thèm đồ chiên mà sợ dầu mỡ ngấy cổ, nấu nướng ám mùi cả nhà? Rinh ngay ${pName} ${volVal}, giòn rụm giảm 85% dầu mỡ, nướng gà nguyên con cực nhàn. Mua ngay giải phóng đôi tay!`;
+        } else {
+          return `Chiên rán bắn tung tóe bỏng rát tay, dọn dẹp mất cả tiếng? Có ngay ${pName} ${volVal}, chín đều 360 độ chỉ một nút bấm, vỏ giòn thịt mọng nước. Đặt hàng ngay hôm nay!`;
+        }
+      }
+
+      // 4. MỸ PHẨM / SKINCARE
+      if (lower.includes('serum') || lower.includes('da') || lower.includes('kem') || lower.includes('son')) {
+        const volVal = specs.volume || '30ml';
+        if (variant === 0) {
+          return `Da khô ráp sần sùi, đổ dầu bết dính đánh phấn mốc meo? Thoa ngay ${pName} ${volVal}, cấp ẩm căng bóng tức thì, phục hồi màng ẩm mịn màng sau 7 ngày. Dùng là nghiện!`;
+        } else {
+          return `Mặt nổi mụn ẩn, thâm sạm khiến bạn mất tự tin giao tiếp? Trải nghiệm ngay ${pName} ${volVal}, công thức dịu nhẹ thẩm thấu sâu, da khỏe mịn màng rõ rệt. Thử ngay!`;
+        }
+      }
+
+      // 5. THỜI TRANG / QUẦN ÁO
+      if (lower.includes('áo') || lower.includes('quần') || lower.includes('thun') || lower.includes('váy')) {
+        return `Mặc áo bí bách ngứa ngáy, giặt vài lần đã bai xù mất dáng? Chọn ngay ${pName}, chất vải co giãn 4 chiều thoáng mát, form đứng tôn dáng tự tin dạo phố. Mua ngay!`;
+      }
+
+      // 6. CÁC SẢN PHẨM KHÁC
+      if (matchedRule) {
+        return `Bạn khó chịu vì mua nhầm sản phẩm kém bền dùng vài bữa đã hỏng? Chọn ngay ${pName} chuẩn ${matchedRule.mustHave}, vật liệu cao cấp, giải quyết triệt để nỗi lo. Mua ngay hôm nay!`;
+      }
+
+      return `Đừng phí tiền cho những sản phẩm ọp ẹp dùng vài lần đã chán! Chọn ngay ${pName}, chuẩn từng thông số, giải quyết dứt điểm phiền toái cho bạn. Đặt ngay kẻo lỡ giá tốt!`;
     }
 
-    // Tạo hàng loạt 5 content
-    function generateBatch5Scripts(increaseSeed = false) {
+    // TẠO HÀNG LOẠT 5 CONTENT
+    async function generateBatch5Scripts(increaseSeed = false) {
       if (increaseSeed) {
         state.variationSeed += 1;
       }
 
-      state.generatedScripts = [];
+      const genBtnLabel = document.getElementById('gen-btn-label');
+      if (genBtnLabel) genBtnLabel.textContent = 'ĐANG PHÂN TÍCH ẢNH & TẠO KỊCH BẢN...';
 
-      state.batchProducts.forEach((prod, index) => {
-        const infoInput = document.getElementById(`prod-info-input-${index}`);
-        if (infoInput) {
-          prod.info = infoInput.value.trim();
+      state.generatedScripts = [];
+      const apiKey = localStorage.getItem('ai_video_gemini_key');
+
+      for (let i = 0; i < state.batchProducts.length; i++) {
+        const prod = state.batchProducts[i];
+        const infoInput = document.getElementById(`prod-info-input-${i}`);
+        if (infoInput) prod.info = infoInput.value.trim();
+
+        let script = '';
+
+        // Nếu có Gemini API Key và có ảnh: Sử dụng AI Vision đọc ảnh thật
+        if (apiKey && (prod.image || (prod.extraImages && prod.extraImages.length > 0))) {
+          try {
+            const aiRes = await callGeminiVision(apiKey, prod);
+            if (aiRes?.productName && !prod.name.includes(aiRes.productName)) {
+              prod.name = aiRes.productName;
+              const nameDisp = document.getElementById(`name-display-${i}`);
+              if (nameDisp) nameDisp.textContent = aiRes.productName;
+            }
+            script = aiRes?.script10s || generatePractical10sScript(prod, state.variationSeed + i);
+          } catch (e) {
+            script = generatePractical10sScript(prod, state.variationSeed + i);
+          }
+        } else {
+          script = generatePractical10sScript(prod, state.variationSeed + i);
         }
-        const script = generateSingle10sScript(prod, state.variationSeed + index);
+
         state.generatedScripts.push(script);
-      });
+      }
 
       renderBatchResults();
-      showToast(increaseSeed ? 'Đã đổi toàn bộ content mới cho cả 5 sản phẩm!' : 'Đã tạo xong hàng loạt 5 kịch bản 10 giây!');
+
+      if (genBtnLabel) genBtnLabel.textContent = 'TẠO HÀNG LOẠT 5 CONTENT 10 GIÂY (CHẮT LỌC TỪ ẢNH)';
+      showToast(increaseSeed ? 'Đã đổi toàn bộ content mới cho cả 5 sản phẩm!' : 'Đã tạo xong hàng loạt 5 kịch bản 10 giây bám sát thông số!');
     }
 
     // Render 5 Card kết quả
@@ -1327,7 +1579,7 @@
               <div>
                 <h3 class="text-sm font-bold text-white truncate max-w-[180px] sm:max-w-md">${prod.name || 'Sản phẩm ' + num}</h3>
                 <div class="flex items-center gap-2 text-[10px] text-slate-400">
-                  <span class="text-emerald-400 font-medium">Content 10s • Nhu cầu + Nỗi đau</span>
+                  <span class="text-emerald-400 font-medium">Content 10s • Nhu cầu + Nỗi đau thực tế</span>
                   ${extraCount > 0 ? `<span class="text-indigo-400 font-mono">• Đã kèm ${extraCount} ảnh thông số</span>` : ''}
                 </div>
               </div>
@@ -1341,7 +1593,7 @@
             </div>
           </div>
 
-          <!-- Nội dung kịch bản 10 giây -->
+          <!-- Nội dung kịch bản 10 giây (Sửa trực tiếp) -->
           <div class="relative">
             <textarea id="script-textarea-${index}" rows="3" class="w-full bg-slate-950/60 border border-slate-800/80 focus:border-rose-500/80 rounded-xl p-3 text-slate-100 text-xs sm:text-sm leading-relaxed focus:outline-none resize-none">${script}</textarea>
           </div>
@@ -1392,7 +1644,7 @@
         const refreshBtn = card.querySelector('.refresh-single-card-btn');
         refreshBtn.addEventListener('click', () => {
           state.variationSeed += 1;
-          const newScript = generateSingle10sScript(prod, state.variationSeed + index);
+          const newScript = generatePractical10sScript(prod, state.variationSeed + index);
           state.generatedScripts[index] = newScript;
           card.querySelector(`#script-textarea-${index}`).value = newScript;
           showToast(`Đã đổi kịch bản mới cho Sản phẩm ${num}!`);
@@ -1549,6 +1801,33 @@
     // ==========================================
     window.addEventListener('DOMContentLoaded', () => {
       loadLearnedRules();
+
+      // AI Key listeners
+      loadGeminiKey();
+      const toggleAiKeyBtn = document.getElementById('toggle-ai-key-btn');
+      const aiKeyPanel = document.getElementById('ai-key-panel');
+      if (toggleAiKeyBtn && aiKeyPanel) {
+        toggleAiKeyBtn.addEventListener('click', () => {
+          aiKeyPanel.classList.toggle('hidden');
+        });
+      }
+      const saveKeyBtn = document.getElementById('save-gemini-key-btn');
+      if (saveKeyBtn) {
+        saveKeyBtn.addEventListener('click', () => {
+          const val = document.getElementById('gemini-api-key-input').value.trim();
+          if (val) {
+            localStorage.setItem('ai_video_gemini_key', val);
+            document.getElementById('ai-key-status-text').innerHTML = '✅ <span class="text-emerald-300">Đã kích hoạt AI Vision</span>';
+            aiKeyPanel.classList.add('hidden');
+            showToast('Đã lưu API Key AI! Giờ đây AI sẽ đọc sạch chữ từ ảnh của bạn.');
+          } else {
+            localStorage.removeItem('ai_video_gemini_key');
+            document.getElementById('ai-key-status-text').textContent = 'Cài đặt API Key AI (Tùy chọn)';
+            showToast('Đã gỡ bỏ API Key.');
+          }
+        });
+      }
+
 
       // 3 Nút nằm ngang
       document.getElementById('tab-step-1').addEventListener('click', () => switchStep(1));
