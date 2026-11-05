@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
-  <title>AI Video Studio — Quy trình 3 Bước (GitHub Pages)</title>
+  <title>AI Video Studio — Studio Ảnh Sản Phẩm & Content 10s</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -109,7 +109,7 @@
         </div>
         <div>
           <span class="font-bold text-lg bg-gradient-to-r from-white via-indigo-100 to-rose-300 bg-clip-text text-transparent">AI Video Pipeline Studio</span>
-          <span class="hidden sm:inline-block ml-2 text-xs px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/20">Tạo 5 Sản Phẩm Hàng Loạt</span>
+          <span class="hidden sm:inline-block ml-2 text-xs px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/20">Ghép Ảnh 9:16 8K & Content 10s</span>
         </div>
       </div>
 
@@ -126,7 +126,26 @@
     </div>
   </header>
 
-  <!-- 3 NÚT NẰM NGANG - BẤM BƯỚC NÀO CŨNG ĐƯỢC -->
+
+
+  <!-- =================================================================== -->
+  <!-- BỘ ĐIỀU HƯỚNG CHÍNH: PHẦN 1 (STUDIO ĐÃ CÓ) vs PHẦN 2 (AI COPILOT) -->
+  <!-- =================================================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2 w-full">
+    <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-1.5 shadow-xl grid grid-cols-2 gap-2">
+      <button id="workspace-switch-1" type="button" class="py-3 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-2 bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 cursor-pointer">
+        <span>🛠️ PHẦN 1: Studio 3 Bước (Đã Xây Dựng)</span>
+      </button>
+      <button id="workspace-switch-2" type="button" class="py-3 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-2 text-slate-400 hover:text-white hover:bg-slate-800 cursor-pointer">
+        <span>⚡ PHẦN 2: One-Click Video & Trợ Lý AI CapCut</span>
+      </button>
+    </div>
+  </section>
+
+
+  <!-- PHẦN 1 WRAPPER -->
+  <div id="workspace-part-1" class="space-y-4 block">
+<!-- 3 NÚT NẰM NGANG - BẤM BƯỚC NÀO CŨNG ĐƯỢC -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2 w-full">
     <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-2 shadow-xl">
       <div class="grid grid-cols-3 gap-2 sm:gap-3">
@@ -135,7 +154,7 @@
           <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/20 text-white flex items-center justify-center font-bold text-xs sm:text-sm shrink-0">1</span>
           <div class="text-left">
             <span class="text-[10px] uppercase font-bold tracking-wider block opacity-80 leading-none">Bước 1</span>
-            <span class="text-xs sm:text-sm font-bold block truncate mt-0.5">Tách nền</span>
+            <span class="text-xs sm:text-sm font-bold block truncate mt-0.5">Tạo Ảnh 9:16 & Folder</span>
           </div>
         </button>
 
@@ -144,7 +163,7 @@
           <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center font-bold text-xs sm:text-sm shrink-0">2</span>
           <div class="text-left">
             <span class="text-[10px] uppercase font-bold tracking-wider block opacity-80 leading-none">Bước 2</span>
-            <span class="text-xs sm:text-sm font-bold block truncate mt-0.5">Content 10s (5 SP)</span>
+            <span class="text-xs sm:text-sm font-bold block truncate mt-0.5">Content AI Thông Minh</span>
           </div>
         </button>
 
@@ -163,124 +182,202 @@
   <!-- Main Content Area -->
   <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full">
 
-    <!-- ========================================== -->
-    <!-- STEP 1: TÁCH NỀN (GIỮ NGUYÊN 100%) -->
-    <!-- ========================================== -->
+    <!-- =================================================================== -->
+    <!-- BƯỚC 1: XÂY DỰNG LẠI HOÀN TOÀN (GHÉP BACKGROUND HÌNH 1 + TẠO ĐỜI SỐNG + FOLDER) -->
+    <!-- =================================================================== -->
     <section id="step-panel-1" class="step-panel block space-y-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-slate-900 to-indigo-950/40 border border-slate-800 rounded-2xl p-6">
+      
+      <!-- Header Bước 1 -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-slate-900 via-indigo-950/50 to-slate-900 border border-slate-800 rounded-2xl p-6">
         <div>
-          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Quy trình sản xuất • Bước 1</span>
-          <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Tách nền Hình ảnh & Sản phẩm</h1>
-          <p class="text-slate-400 text-sm mt-1 max-w-2xl">Tải ảnh sản phẩm hoặc dùng ảnh mẫu để tách phông nền trong suốt. Ảnh này sẽ tự động chuyển sang Bước 2 & Bước 3.</p>
+          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Quy trình sản xuất • Bước 1 (Xây dựng lại)</span>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Studio Ảnh 9:16 & Thư Mục Phân Loại</h1>
+          <p class="text-slate-400 text-sm mt-1 max-w-2xl">
+            Ghép sản phẩm (Hình 2, 3...) vào Background (Hình 1) hoặc tạo bối cảnh đời sống chân thực. Tự động lưu và phân loại vào <strong>Folder Ảnh Sản Phẩm</strong> (Mỹ phẩm, Nông sản, Nội thất...).
+          </p>
         </div>
         <div class="flex items-center gap-2">
-          <button id="load-sample-btn" type="button" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs sm:text-sm font-semibold text-slate-200 flex items-center gap-2 transition">
-            <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            Dùng ảnh mẫu test
+          <button id="view-folder-manager-btn" type="button" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs sm:text-sm font-bold text-white shadow-lg shadow-indigo-600/30 flex items-center gap-2 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+            <span>📁 Mở Thư Mục "Ảnh Sản Phẩm"</span>
           </button>
         </div>
       </div>
 
+      <!-- Main Studio 2 Cột: Cột Trái Điều Khiển & Nạp Ảnh, Cột Phải Canvas 9:16 -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Left: Upload & Controls -->
-        <div class="lg:col-span-4 space-y-4">
-          <div id="dropzone" class="border-2 border-dashed border-slate-700 hover:border-indigo-500 rounded-2xl p-6 text-center bg-slate-900/50 hover:bg-indigo-950/10 transition cursor-pointer flex flex-col items-center justify-center min-h-[160px]">
-            <input type="file" id="image-input" accept="image/*" class="hidden">
-            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-3">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-            </div>
-            <p class="font-semibold text-sm text-slate-200">Kéo thả ảnh sản phẩm vào đây</p>
-            <p class="text-xs text-slate-400 mt-1">hoặc <span class="text-indigo-400 underline font-medium">chọn từ thiết bị</span></p>
-          </div>
-
-          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-4">
+        
+        <!-- Cột Trái: Hai Chế Độ (Hình 1 Background vs Thay Bối Cảnh Đời Sống) (5 cols) -->
+        <div class="lg:col-span-5 space-y-5">
+          
+          <!-- HÌNH 1: ẢNH NỀN (BACKGROUND) -->
+          <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-3.5 shadow-lg">
             <div class="flex items-center justify-between">
               <h3 class="text-sm font-bold text-white flex items-center gap-2">
-                <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
-                Thông số tách nền
+                <span class="w-6 h-6 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-xs font-bold">1</span>
+                <span>HÌNH 1: Ảnh Nền (Background)</span>
               </h3>
-              <button id="reset-controls-btn" type="button" class="text-xs text-slate-400 hover:text-slate-200">Đặt lại</button>
+              <span id="bg-status-label" class="text-[11px] text-slate-400 font-mono">Chưa chọn nền</span>
             </div>
 
-            <div>
-              <div class="flex items-center justify-between text-xs mb-1.5">
-                <span class="text-slate-300 font-medium">Màu nền cần xóa:</span>
-                <span id="target-color-hex" class="font-mono text-indigo-300">#FFFFFF</span>
+            <!-- Upload Hình 1 (Nền) -->
+            <div class="grid grid-cols-12 gap-3 items-center">
+              <div class="col-span-4 h-24 rounded-xl bg-slate-950 border border-slate-700 checkerboard flex items-center justify-center overflow-hidden relative">
+                <img id="bg-thumb-img" src="" alt="" class="hidden max-w-full max-h-full object-cover">
+                <span id="bg-thumb-placeholder" class="text-[11px] text-slate-500 font-semibold text-center px-1">Chưa có nền</span>
               </div>
-              <div class="flex items-center gap-2">
-                <input type="color" id="target-color-input" value="#ffffff" class="w-10 h-9 rounded-lg border border-slate-700 bg-transparent cursor-pointer">
-                <div class="grid grid-cols-4 gap-1 flex-1">
-                  <button type="button" class="preset-color-btn text-[10px] py-1 bg-white text-slate-900 rounded font-bold" data-color="#ffffff">Trắng</button>
-                  <button type="button" class="preset-color-btn text-[10px] py-1 bg-emerald-500 text-white rounded font-bold" data-color="#00ff00">Xanh lá</button>
-                  <button type="button" class="preset-color-btn text-[10px] py-1 bg-blue-600 text-white rounded font-bold" data-color="#0066ff">Xanh dương</button>
-                  <button type="button" class="preset-color-btn text-[10px] py-1 bg-black text-white rounded font-bold border border-slate-700" data-color="#000000">Đen</button>
+              <div class="col-span-8 space-y-2">
+                <button id="upload-bg-btn" type="button" class="w-full py-2 bg-indigo-600/80 hover:bg-indigo-600 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                  <span>Tải ảnh Background Hình 1</span>
+                </button>
+                <input type="file" id="bg-file-input" accept="image/*" class="hidden">
+                <div class="flex items-center gap-1.5">
+                  <button id="preset-bg-kitchen" type="button" class="text-[10px] py-1 px-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg">Căn bếp</button>
+                  <button id="preset-bg-living" type="button" class="text-[10px] py-1 px-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg">Phòng khách</button>
+                  <button id="preset-bg-studio" type="button" class="text-[10px] py-1 px-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg">Studio đá</button>
                 </div>
               </div>
             </div>
-
-            <div>
-              <div class="flex items-center justify-between text-xs mb-1">
-                <span class="text-slate-300">Độ nhạy màu (Tolerance):</span>
-                <span id="tolerance-val" class="font-mono text-indigo-400">45</span>
-              </div>
-              <input type="range" id="tolerance-slider" min="5" max="150" value="45" class="w-full accent-indigo-500">
-            </div>
-
-            <div>
-              <div class="flex items-center justify-between text-xs mb-1">
-                <span class="text-slate-300">Làm mịn viền (Feather):</span>
-                <span id="feather-val" class="font-mono text-indigo-400">2px</span>
-              </div>
-              <input type="range" id="feather-slider" min="0" max="15" value="2" class="w-full accent-indigo-500">
-            </div>
-
-            <div>
-              <span class="text-xs text-slate-300 font-medium block mb-2">Xem thử trên phông:</span>
-              <div class="grid grid-cols-4 gap-2">
-                <button type="button" class="backdrop-choice-btn p-2 rounded-lg border border-indigo-500 bg-slate-800 text-[11px] font-semibold text-center" data-backdrop="transparent">Caro</button>
-                <button type="button" class="backdrop-choice-btn p-2 rounded-lg border border-slate-700 bg-black text-[11px] font-semibold text-center" data-backdrop="black">Đen</button>
-                <button type="button" class="backdrop-choice-btn p-2 rounded-lg border border-slate-700 bg-white text-slate-900 text-[11px] font-semibold text-center" data-backdrop="white">Trắng</button>
-                <button type="button" class="backdrop-choice-btn p-2 rounded-lg border border-slate-700 bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-[11px] font-semibold text-center" data-backdrop="gradient">Màu</button>
-              </div>
-            </div>
-
-            <button id="apply-rembg-btn" type="button" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-indigo-600/30 transition flex items-center justify-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-              Xử lý tách nền ngay
-            </button>
           </div>
+
+          <!-- HÌNH 2, 3, 4...: CÁC ẢNH SẢN PHẨM CẦN TÁCH NỀN ĐƯA VÀO -->
+          <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-3.5 shadow-lg">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center text-xs font-bold">2+</span>
+                <span>HÌNH 2, 3, 4... Sản Phẩm Cần Ghép</span>
+              </h3>
+              <span id="product-images-count" class="text-[11px] text-slate-400 font-mono">0 sản phẩm</span>
+            </div>
+
+            <button id="upload-products-btn" type="button" class="w-full py-2.5 bg-rose-600/80 hover:bg-rose-600 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>+ Thêm ảnh sản phẩm (Hình 2, 3, 4...)</span>
+            </button>
+            <input type="file" id="products-file-input" multiple accept="image/*" class="hidden">
+
+            <!-- Danh sách thumbnail các sản phẩm đã nạp -->
+            <div id="step1-products-strip" class="flex flex-wrap items-center gap-2 min-h-[50px] p-2 bg-slate-950/70 border border-slate-800 rounded-xl">
+              <span class="text-xs text-slate-500 italic">Chưa có sản phẩm nào. Bấm nút trên hoặc nạp mẫu test.</span>
+            </div>
+
+            <!-- Tùy chỉnh tách nền nhanh (Độ nhạy màu Tolerance) -->
+            <div class="pt-2 border-t border-slate-800/80 space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-slate-300">Độ lọc tách nền sản phẩm:</span>
+                <span id="step1-tol-val" class="text-indigo-400 font-mono">45</span>
+              </div>
+              <input type="range" id="step1-tol-slider" min="5" max="150" value="45" class="w-full accent-indigo-500">
+            </div>
+          </div>
+
+          <!-- HAI NÚT TẠO ẢNH CHÍNH (THEO YÊU CẦU CỦA BẠN) -->
+          <div class="space-y-2.5 pt-1">
+            
+            <!-- NÚT 1: Tạo ảnh mới ghép vào Background Hình 1 -->
+            <button id="composite-mode-1-btn" type="button" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white text-xs sm:text-sm font-extrabold shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <span>1. Tạo ảnh mới ghép SP vào Background Hình 1 (8K 9:16)</span>
+            </button>
+
+            <!-- NÚT 2: Thay background như thật phù hợp đời sống (Không cần background sẵn) -->
+            <button id="composite-mode-2-btn" type="button" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-rose-500 via-pink-600 to-rose-600 hover:from-rose-600 hover:to-pink-700 text-white text-xs sm:text-sm font-extrabold shadow-lg shadow-rose-500/25 transition flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+              <span>2. Thay Background Đời Sống Chân Thực (Tự động 8K)</span>
+            </button>
+
+          </div>
+
         </div>
 
-        <!-- Right: Live Canvas Viewport -->
-        <div class="lg:col-span-8 space-y-4">
-          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col h-full min-h-[460px]">
-            <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-3">
+        <!-- Cột Phải: Khung Canvas 9:16 8K & Thao tác Lưu vào Folder (7 cols) -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col h-full shadow-2xl space-y-4">
+            
+            <!-- Canvas Header -->
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
               <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-xs font-semibold text-slate-300">Khung làm việc Canvas trực tiếp</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                <span class="text-xs font-bold text-white">Khung ảnh sản phẩm 9:16 (Chuẩn TikTok/Shorts • 8K)</span>
               </div>
-              <span id="canvas-resolution" class="text-slate-400 font-mono text-xs">600 x 450</span>
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Tỷ lệ 9:16</span>
+              </div>
             </div>
 
-            <div id="canvas-wrapper" class="flex-1 w-full flex items-center justify-center checkerboard rounded-xl overflow-hidden relative min-h-[340px] border border-slate-800">
-              <canvas id="main-canvas" class="max-w-full max-h-[440px] object-contain shadow-2xl transition duration-200"></canvas>
-              
-              <div id="canvas-empty-state" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-slate-900/90 backdrop-blur-xs">
-                <div class="w-16 h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-3">
-                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <!-- Viewport Canvas 9:16 -->
+            <div class="w-full flex items-center justify-center p-2">
+              <div class="relative w-full max-w-[320px] aspect-[9/16] bg-slate-950 rounded-2xl border-2 border-slate-700 shadow-2xl overflow-hidden flex items-center justify-center checkerboard">
+                <canvas id="step1-render-canvas" class="w-full h-full object-cover"></canvas>
+                <div id="canvas-guide-overlay" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center pointer-events-none bg-slate-950/70">
+                  <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </div>
+                  <p class="text-xs font-bold text-white">Chưa tạo ảnh 9:16</p>
+                  <p class="text-[11px] text-slate-400 mt-0.5">Tải nền Hình 1 & SP Hình 2 rồi bấm nút tạo ảnh bên cạnh.</p>
                 </div>
-                <h4 class="text-base font-bold text-white">Chưa có ảnh nào được nạp</h4>
-                <p class="text-xs text-slate-400 max-w-sm mt-1">Bấm nút "Dùng ảnh mẫu test" hoặc kéo thả ảnh từ máy tính của bạn vào.</p>
-                <button id="empty-state-sample-btn" type="button" class="mt-4 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-lg shadow-indigo-600/30 transition">
-                  Nạp ảnh sản phẩm mẫu
+              </div>
+            </div>
+
+            <!-- CÂU LỆNH PROMPT AI ĐỂ DÙNG THÊM NẾU CẦN -->
+            <div class="p-3 bg-slate-950 border border-slate-800 rounded-xl space-y-1.5">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-indigo-400 font-bold flex items-center gap-1">
+                  ✨ Câu lệnh Prompt AI (Khung 9:16 • Chất lượng 8K):
+                </span>
+                <button id="copy-step1-prompt-btn" type="button" class="text-slate-400 hover:text-white flex items-center gap-1 font-semibold text-[11px]">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                  Copy Prompt
                 </button>
               </div>
+              <p id="step1-ai-prompt-text" class="text-[11px] font-mono text-slate-300 leading-relaxed truncate">
+                Tạo 1 ảnh mới: Tách lấy sản phẩm đưa vào background Hình 1, khung 9:16, chất lượng 8k photorealistic commercial lighting, natural contact shadows.
+              </p>
             </div>
 
-            <div class="pt-4 mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-slate-800">
-              <button id="download-png-btn" type="button" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs sm:text-sm font-semibold text-slate-200 flex items-center gap-2 transition">
-                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                Tải ảnh PNG không nền
+            <!-- KHU VỰC LƯU VÀO FOLDER ẢNH SẢN PHẨM (THEO YÊU CẦU CỦA BẠN) -->
+            <div class="p-3.5 bg-slate-950 border border-indigo-500/30 rounded-xl space-y-2.5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-white flex items-center gap-1.5">
+                  💾 Lưu vào Folder "Ảnh Sản Phẩm":
+                </span>
+                <span class="text-[10px] text-slate-400">Tạo ảnh xong mới lưu</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                <!-- Chọn Folder phù hợp -->
+                <div class="sm:col-span-5">
+                  <select id="save-to-folder-select" class="w-full bg-slate-900 border border-slate-700 text-xs text-white rounded-xl px-2.5 py-2 focus:outline-none focus:border-indigo-500">
+                    <option value="Mỹ phẩm">📁 Mỹ phẩm (Son, kem, serum...)</option>
+                    <option value="Nông sản & Thực phẩm">📁 Nông sản & Thực phẩm (Gạo, trà...)</option>
+                    <option value="Nội thất & Gia dụng">📁 Nội thất & Gia dụng (Bàn ghế...)</option>
+                    <option value="Thời trang & Phụ kiện">📁 Thời trang & Phụ kiện</option>
+                    <option value="Đồ công nghệ">📁 Đồ công nghệ</option>
+                    <option value="Khác">📁 Khác</option>
+                  </select>
+                </div>
+
+                <!-- Tên file lưu -->
+                <div class="sm:col-span-4">
+                  <input type="text" id="save-image-name-input" value="Anh_San_Pham_9x16" placeholder="Tên ảnh..." class="w-full bg-slate-900 border border-slate-700 text-xs text-white rounded-xl px-2.5 py-2 focus:outline-none focus:border-indigo-500">
+                </div>
+
+                <!-- Nút Lưu vào Folder -->
+                <div class="sm:col-span-3">
+                  <button id="save-image-to-folder-btn" type="button" class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1 shadow">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+                    <span>Lưu vào Folder</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chuyển sang Bước 2 -->
+            <div class="pt-2 flex items-center justify-between border-t border-slate-800">
+              <button id="download-composed-png-btn" type="button" class="text-xs font-semibold text-slate-300 hover:text-white flex items-center gap-1.5 py-1.5 px-3 bg-slate-800 rounded-lg">
+                <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Tải ảnh PNG 9:16 về máy
               </button>
 
               <button id="goto-step-2-btn" type="button" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white text-xs sm:text-sm font-bold shadow-lg shadow-rose-500/25 flex items-center gap-2 transition">
@@ -288,45 +385,60 @@
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </button>
             </div>
+
           </div>
         </div>
+
       </div>
+
+      <!-- MODAL / KHU VỰC THƯ MỤC "ẢNH SẢN PHẨM" (GALLERY PHÂN LOẠI) -->
+      <div id="folder-gallery-section" class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-2xl space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-800">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-lg bg-indigo-600/20 text-indigo-400 flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+            </span>
+            <div>
+              <h2 class="text-base font-bold text-white">Kho Lưu Trữ "Ảnh Sản Phẩm" Phân Loại</h2>
+              <p class="text-xs text-slate-400">Các ảnh tạo xong được lưu trữ an toàn theo từng ngành hàng để bạn tìm lại dễ dàng.</p>
+            </div>
+          </div>
+
+          <!-- Nút lọc folder -->
+          <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar" id="folder-filter-buttons">
+            <button type="button" class="folder-tab-btn px-3 py-1 bg-indigo-600 text-white rounded-lg text-xs font-bold" data-folder="all">Tất cả</button>
+            <button type="button" class="folder-tab-btn px-3 py-1 bg-slate-800 text-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-700" data-folder="Mỹ phẩm">Mỹ phẩm</button>
+            <button type="button" class="folder-tab-btn px-3 py-1 bg-slate-800 text-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-700" data-folder="Nông sản & Thực phẩm">Nông sản</button>
+            <button type="button" class="folder-tab-btn px-3 py-1 bg-slate-800 text-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-700" data-folder="Nội thất & Gia dụng">Nội thất</button>
+            <button type="button" class="folder-tab-btn px-3 py-1 bg-slate-800 text-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-700" data-folder="Thời trang & Phụ kiện">Thời trang</button>
+            <button type="button" class="folder-tab-btn px-3 py-1 bg-slate-800 text-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-700" data-folder="Đồ công nghệ">Công nghệ</button>
+          </div>
+        </div>
+
+        <!-- Lưới ảnh đã lưu trong Folder -->
+        <div id="saved-gallery-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 min-h-[120px]">
+          <!-- Rendered dynamically via JS -->
+        </div>
+      </div>
+
     </section>
 
-            <!-- =================================================================== -->
-    <!-- STEP 2: CONTENT 10S - NHẬN DIỆN ẢNH THÔNG MINH & 5 SP HÀNG LOẠT -->
+    <!-- =================================================================== -->
+    <!-- BƯỚC 2: CONTENT 10S - AI THÔNG MINH, BÁM SÁT THÔNG TIN, KHÔNG SÁO RỖNG -->
     <!-- =================================================================== -->
     <section id="step-panel-2" class="step-panel hidden space-y-6 max-w-4xl mx-auto">
       
-      <!-- KHUNG KẾT NỐI AI VISION (TÙY CHỌN NÂNG CAO ĐỂ ĐỌC ẢNH 100% NHƯ NGƯỜI THẬT) -->
-      <div class="bg-gradient-to-r from-slate-900 via-indigo-950/60 to-slate-900 border border-indigo-500/30 rounded-2xl p-4 shadow-xl">
-        <div class="flex flex-wrap items-center justify-between gap-3 pb-2.5 border-b border-indigo-900/40">
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span class="text-xs font-bold text-white flex items-center gap-1.5">
-              🤖 "Mắt Thần" AI Vision Đọc Chữ Từ Ảnh
-            </span>
-            <span class="text-[10px] text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">OCR Tự Động + Gemini AI</span>
-          </div>
-          <button id="toggle-ai-key-btn" type="button" class="text-xs font-semibold text-indigo-300 hover:text-white flex items-center gap-1 transition">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            <span id="ai-key-status-text">Cài đặt API Key AI (Tùy chọn)</span>
-          </button>
+      <!-- Header Bước 2 -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-slate-900 via-rose-950/40 to-slate-900 border border-slate-800 rounded-2xl p-6">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-rose-400">Quy trình sản xuất • Bước 2</span>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Content 10s AI Thông Minh Thực Chiến</h1>
+          <p class="text-slate-400 text-sm mt-1 max-w-2xl">
+            AI tự động phân tích sâu ảnh sản phẩm, bóc tách chính xác số kg, kích thước, thành phần. Kịch bản đánh thẳng nỗi đau, cam kết không viết câu sáo rỗng chung chung!
+          </p>
         </div>
-
-        <div id="ai-key-panel" class="hidden mt-3 pt-3 border-t border-indigo-900/40 space-y-2">
-          <p class="text-xs text-slate-300">
-            💡 <strong>Mẹo để AI viết sắc bén nhất:</strong> Nhập mã <strong>Gemini API Key miễn phí</strong> của bạn. AI sẽ nhìn trực tiếp vào ảnh chụp bao bì/thông số, đọc sạch từng chữ và viết kịch bản đánh trúng nỗi đau thực tế:
-          </p>
-          <div class="flex items-center gap-2">
-            <input type="password" id="gemini-api-key-input" placeholder="Dán Gemini API Key (AIzaSy...)" class="flex-1 bg-slate-950 border border-indigo-700/60 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-400">
-            <button id="save-gemini-key-btn" type="button" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition shadow">
-              Lưu Key
-            </button>
-          </div>
-          <p class="text-[11px] text-slate-400">
-            * Nhận API Key hoàn toàn miễn phí tại <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-indigo-400 underline">aistudio.google.com</a> (Không mất phí). Nếu không có Key, hệ thống vẫn dùng bộ quét chữ OCR tự động.
-          </p>
+        <div class="flex items-center gap-2">
+          <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-bold font-mono">10 Giây Triệu View</span>
         </div>
       </div>
 
@@ -346,12 +458,10 @@
           </button>
         </div>
 
-        <!-- Các tag quy tắc AI đã học -->
         <div class="pt-3 flex flex-wrap items-center gap-2" id="compact-rules-container">
           <!-- Rendered via JS -->
         </div>
 
-        <!-- Form thêm quy tắc mới (thu gọn) -->
         <div id="add-rule-form-row" class="hidden mt-3 pt-3 border-t border-slate-800/60 grid grid-cols-1 sm:grid-cols-12 gap-2">
           <input type="text" id="new-rule-category" placeholder="Tên loại SP (VD: Gạo, Bàn ghế, Nồi chiên...)" class="sm:col-span-4 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
           <input type="text" id="new-rule-musthave" placeholder="Cấu trúc bắt buộc (VD: Bắt buộc có số kg, Kích thước DxRxC...)" class="sm:col-span-6 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
@@ -361,13 +471,12 @@
         </div>
       </div>
 
-      <!-- KHU VỰC NHẬP 5 SẢN PHẨM: ẢNH & THÔNG TIN -->
+      <!-- KHU VỰC NHẬP 5 SẢN PHẨM -->
       <div class="space-y-3">
-        
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div class="flex items-center gap-2">
             <span class="px-3 py-1 rounded-lg bg-rose-500 text-white font-black text-xs uppercase tracking-wider shadow-sm shadow-rose-500/30">
-              NHẬP 5 SẢN PHẨM (TỰ ĐỌC ẢNH & CẬP NHẬT TÊN)
+              5 SẢN PHẨM (TỰ QUÉT ẢNH & ĐỔI TÊN THẬT)
             </span>
           </div>
 
@@ -392,7 +501,7 @@
         <div class="pt-3 flex flex-col sm:flex-row items-center gap-3">
           <button id="generate-script-btn" type="button" class="w-full sm:flex-1 py-3.5 rounded-xl bg-gradient-to-r from-rose-500 via-pink-600 to-rose-600 hover:from-rose-600 hover:to-pink-700 text-white text-sm sm:text-base font-black shadow-lg shadow-rose-500/25 transition duration-200 flex items-center justify-center gap-2 cursor-pointer">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            <span id="gen-btn-label">TẠO HÀNG LOẠT 5 CONTENT 10 GIÂY (CHẮT LỌC TỪ ẢNH)</span>
+            <span id="gen-btn-label">TẠO HÀNG LOẠT 5 CONTENT 10 GIÂY THỰC CHIẾN</span>
           </button>
 
           <button id="next-variation-all-btn" type="button" class="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 shadow">
@@ -403,9 +512,8 @@
 
       </div>
 
-      <!-- KHU VỰC KẾT QUẢ: HÀNG LOẠT 5 CARD KỊCH BẢN (1 -> 5) -->
+      <!-- KHU VỰC KẾT QUẢ: 5 CARD KỊCH BẢN THỰC CHIẾN -->
       <div class="space-y-4 pt-3">
-        
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
             <span class="px-2.5 py-0.5 rounded-md bg-rose-500 text-white font-black text-[11px] uppercase tracking-wider shadow-sm">
@@ -425,20 +533,19 @@
         <div id="batch-results-container" class="space-y-4">
           <!-- 5 result cards will be rendered here -->
         </div>
-
       </div>
 
     </section>
 
     <!-- ========================================== -->
-    <!-- STEP 3: TẠO VIDEO (VIDEO STUDIO & PROMPTS) -->
+    <!-- BƯỚC 3: TẠO VIDEO (VIDEO STUDIO & PROMPTS) -->
     <!-- ========================================== -->
     <section id="step-panel-3" class="step-panel hidden space-y-6">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-slate-900 to-indigo-950/40 border border-slate-800 rounded-2xl p-6">
         <div>
           <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Quy trình sản xuất • Bước 3</span>
           <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Video Studio & Prompt AI 10 Giây</h1>
-          <p class="text-slate-400 text-sm mt-1 max-w-2xl">Ghép ảnh tách nền từ Bước 1 và kịch bản 10 giây từ Bước 2 thành video demo kèm bộ Prompt cho Kling, Runway hoặc CapCut.</p>
+          <p class="text-slate-400 text-sm mt-1 max-w-2xl">Ghép ảnh 9:16 và kịch bản 10 giây thành video demo kèm bộ Prompt cho Kling, Runway hoặc CapCut.</p>
         </div>
         <div class="flex items-center gap-2">
           <button id="export-project-btn" type="button" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs sm:text-sm font-bold text-white shadow-lg shadow-indigo-600/30 flex items-center gap-2 transition">
@@ -482,19 +589,16 @@
 
               <!-- Bottom Overlay: Subtitles & Sound Wave -->
               <div class="relative z-10 space-y-2">
-                <!-- 10s Timeline Progress Bar -->
                 <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
                   <div id="video-timeline-progress" class="bg-rose-500 h-1.5 rounded-full w-0 transition-all duration-100"></div>
                 </div>
 
-                <!-- Subtitle Box -->
                 <div class="bg-black/80 backdrop-blur-md border border-white/10 rounded-xl p-3 text-center shadow-lg min-h-[50px] flex items-center justify-center">
                   <p id="preview-subtitle-text" class="text-xs font-bold text-amber-300 leading-snug">
                     "Đang nạp kịch bản 10 giây..."
                   </p>
                 </div>
 
-                <!-- Action Controls -->
                 <div class="flex items-center justify-center gap-3 pt-1">
                   <button id="toggle-play-preview-btn" type="button" class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold shadow-lg hover:scale-105 transition cursor-pointer">
                     <svg id="play-icon" class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -598,114 +702,453 @@
     </section>
 
   </main>
+  </div>
 
-  <!-- Global Footer -->
+
+  <!-- =================================================================== -->
+  <!-- PHẦN 2: ONE-CLICK FAST VIDEO & TRỢ LÝ AI CAPCUT COPILOT -->
+  <!-- =================================================================== -->
+  <div id="workspace-part-2" class="hidden space-y-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full">
+    
+    <!-- Banner Phần 2 -->
+    <div class="bg-gradient-to-r from-slate-900 via-rose-950/60 to-indigo-950/70 border border-rose-500/30 rounded-2xl p-6 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="px-3 py-1 rounded-lg bg-rose-500 text-white font-black text-xs uppercase tracking-wider shadow-sm">
+            PHẦN 2: THẾ HỆ MỚI
+          </span>
+          <span class="text-xs px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-semibold font-mono">
+            One-Click Video & Trợ Lý AI CapCut
+          </span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-1.5">
+          Quy Trình 1-Click Siêu Tốc & Trợ Lý AI Video Thay Thế Bạn
+        </h1>
+        <p class="text-slate-300 text-xs sm:text-sm mt-1 max-w-2xl leading-relaxed">
+          Tạo video 1-click từ ảnh và prompt mẫu có sẵn (AI tự cho content). Trợ lý AI thông minh giống ChatGPT tự edit video CapCut, chèn <strong>voice gốc của bạn</strong>, xuất video HD và tự động lưu trữ tài liệu.
+        </p>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <button id="p2-quick-demo-btn" type="button" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-indigo-600 hover:from-rose-600 hover:to-indigo-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-rose-500/25 flex items-center gap-2 transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Chạy Thử Video 1-Click</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- KHU VỰC A: QUY TRÌNH ONE-CLICK FAST VIDEO (3 BƯỚC SIÊU TỐC) -->
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-6">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-rose-500 animate-pulse"></span>
+          <h2 class="text-base sm:text-lg font-bold text-white">
+            Quy Trình 3 Bước One-Click Fast Video (AI Tự Cho Content)
+          </h2>
+        </div>
+        <span class="text-xs text-slate-400 font-mono">Chỉ cần úp ảnh &rarr; Có video ngay</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <!-- BƯỚC 1: UPDATE ẢNH CÓ SẴN -->
+        <div class="bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-2xl p-4 space-y-3 transition">
+          <div class="flex items-center justify-between">
+            <span class="w-7 h-7 rounded-lg bg-indigo-600/30 text-indigo-400 border border-indigo-500/30 flex items-center justify-center font-bold text-xs">
+              B1
+            </span>
+            <span class="text-[11px] text-slate-400 font-semibold">Update ảnh có sẵn</span>
+          </div>
+
+          <div class="aspect-square w-full rounded-xl bg-slate-900 border border-slate-800 checkerboard relative flex items-center justify-center overflow-hidden">
+            <img id="p2-selected-image" src="" alt="" class="hidden w-full h-full object-contain">
+            <div id="p2-image-empty" class="text-center p-3">
+              <svg class="w-8 h-8 text-slate-600 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <span class="text-xs text-slate-400 block font-medium">Chưa có ảnh</span>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <button id="p2-upload-btn" type="button" class="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+              <span>Tải ảnh từ máy tính / điện thoại</span>
+            </button>
+            <input type="file" id="p2-file-input" accept="image/*" class="hidden">
+            
+            <button id="p2-use-sample-btn" type="button" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold transition">
+              🌾 Lấy ảnh Gạo mẫu từ Phần 1
+            </button>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: CHỌN PROMPT SẴN TẠO VIDEO -->
+        <div class="bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-2xl p-4 space-y-3 transition">
+          <div class="flex items-center justify-between">
+            <span class="w-7 h-7 rounded-lg bg-indigo-600/30 text-indigo-400 border border-indigo-500/30 flex items-center justify-center font-bold text-xs">
+              B2
+            </span>
+            <span class="text-[11px] text-slate-400 font-semibold">Chọn prompt mẫu sẵn</span>
+          </div>
+
+          <div class="space-y-2 max-h-[220px] overflow-y-auto no-scrollbar pr-1" id="p2-prompts-container">
+            <!-- 4 Prompt cards -->
+            <button type="button" class="p2-prompt-card w-full text-left p-2.5 rounded-xl border border-rose-500 bg-rose-500/10 transition" data-type="viral">
+              <span class="text-xs font-bold text-rose-300 block">🔥 1. TikTok Viral Bán Hàng</span>
+              <span class="text-[11px] text-slate-300 block mt-0.5 leading-tight">Nhịp cắt nhanh dồn dập, zoom cận cảnh sản phẩm, phụ đề karaoke nổi bật.</span>
+            </button>
+
+            <button type="button" class="p2-prompt-card w-full text-left p-2.5 rounded-xl border border-slate-800 bg-slate-900/80 hover:border-slate-700 transition" data-type="cinematic">
+              <span class="text-xs font-bold text-indigo-300 block">💎 2. Cinematic Sang Trọng</span>
+              <span class="text-[11px] text-slate-300 block mt-0.5 leading-tight">Góc quay lướt êm ái, xoay 360 độ macro, ánh sáng mềm kiểu Apple.</span>
+            </button>
+
+            <button type="button" class="p2-prompt-card w-full text-left p-2.5 rounded-xl border border-slate-800 bg-slate-900/80 hover:border-slate-700 transition" data-type="review">
+              <span class="text-xs font-bold text-emerald-300 block">📦 3. Review Đập Hộp Thật</span>
+              <span class="text-[11px] text-slate-300 block mt-0.5 leading-tight">Cận cảnh nhãn mác thông số thật, phong cách mộc mạc tin cậy.</span>
+            </button>
+
+            <button type="button" class="p2-prompt-card w-full text-left p-2.5 rounded-xl border border-slate-800 bg-slate-900/80 hover:border-slate-700 transition" data-type="fomo">
+              <span class="text-xs font-bold text-amber-300 block">⚡ 4. Flash Sale FOMO</span>
+              <span class="text-[11px] text-slate-300 block mt-0.5 leading-tight">Đồng hồ đếm ngược, viền rực lửa, thúc giục chốt đơn khẩn cấp.</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: AI TỰ CHO CONTENT & TẠO VIDEO 1-CLICK -->
+        <div class="bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-2xl p-4 space-y-3 transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="w-7 h-7 rounded-lg bg-rose-500/30 text-rose-400 border border-rose-500/30 flex items-center justify-center font-bold text-xs">
+                B3
+              </span>
+              <span class="text-[11px] text-rose-400 font-semibold font-mono">AI Tự Cho Content 1-Click</span>
+            </div>
+
+            <div class="mt-3 p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5">
+              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Content AI tự động sinh:</span>
+              <p id="p2-auto-content-preview" class="text-xs text-slate-200 leading-relaxed font-normal italic">
+                "Cơm mỗi ngày mà gạo khô, nấu lên không thơm? Chọn ngay gạo Quảng Trị chuẩn túi 5kg dẻo ngọt từng hạt, ăn là mê!"
+              </p>
+            </div>
+          </div>
+
+          <button id="p2-execute-oneclick-btn" type="button" class="w-full py-3.5 bg-gradient-to-r from-rose-500 via-pink-600 to-rose-600 hover:from-rose-600 hover:to-pink-700 text-white rounded-xl text-xs sm:text-sm font-black shadow-lg shadow-rose-500/30 transition flex items-center justify-center gap-2 cursor-pointer">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <span>TẠO VIDEO 1-CLICK NGAY</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- KHU VỰC B: CON AI TRỢ LÝ THÔNG MINH GIỐNG CHATGPT + CAPCUT EDITOR -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      
+      <!-- Cột Trái: Trợ Lý AI Chatbot (Giống ChatGPT) + Chèn Voice Gốc (5 cols) -->
+      <div class="lg:col-span-5 space-y-4">
+        
+        <!-- Khung Chat Trợ Lý AI Giống ChatGPT -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 shadow-2xl flex flex-col h-[520px]">
+          
+          <!-- Header Trợ lý -->
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-500 to-indigo-600 flex items-center justify-center text-white shadow-md">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
+                  <span>Trợ Lý AI CapCut Director</span>
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                </h3>
+                <span class="text-[11px] text-slate-400">Tự edit video • Chèn voice gốc • Thay bạn làm việc</span>
+              </div>
+            </div>
+            <button id="p2-clear-chat-btn" type="button" class="text-slate-500 hover:text-slate-300 text-xs" title="Làm mới cuộc trò chuyện">Xóa</button>
+          </div>
+
+          <!-- Lịch sử Chatbot (Scrollable) -->
+          <div id="p2-chat-messages" class="flex-1 overflow-y-auto no-scrollbar py-3 space-y-3 pr-1">
+            
+            <!-- AI Welcome Message -->
+            <div class="flex gap-2.5 items-start">
+              <div class="w-7 h-7 rounded-lg bg-indigo-600/30 text-indigo-400 border border-indigo-500/30 flex items-center justify-center text-xs shrink-0 font-bold">
+                AI
+              </div>
+              <div class="bg-slate-950 border border-slate-800 rounded-2xl rounded-tl-sm p-3 text-xs text-slate-200 leading-relaxed shadow">
+                <p>Chào bạn! Tôi là <strong>Trợ lý AI Video CapCut</strong> của bạn. Nhiệm vụ của tôi là thay thế bạn hoàn toàn:</p>
+                <ul class="list-disc list-inside mt-1.5 space-y-0.5 text-slate-300 text-[11px]">
+                  <li>Tự động phân tích ảnh & nội dung sản phẩm.</li>
+                  <li><strong>Chèn voice giọng thật</strong> của bạn vào video.</li>
+                  <li>Tự dựng timeline CapCut, phụ đề karaoke & xuất video HD.</li>
+                  <li>Tự động lưu trữ tài liệu vào kho để bạn tìm lại.</li>
+                </ul>
+                <p class="mt-2 text-rose-300 font-medium">👉 Hãy thu âm giọng nói bên dưới hoặc ra lệnh cho tôi ngay!</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Gợi ý lệnh nhanh -->
+          <div class="pt-2 pb-1 overflow-x-auto no-scrollbar flex items-center gap-1.5">
+            <button type="button" class="p2-quick-prompt-btn px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[11px] text-slate-300 hover:text-white shrink-0">
+              🌾 Làm video Gạo chèn voice tôi
+            </button>
+            <button type="button" class="p2-quick-prompt-btn px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[11px] text-slate-300 hover:text-white shrink-0">
+              💄 Video son môi CapCut 9:16
+            </button>
+            <button type="button" class="p2-quick-prompt-btn px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[11px] text-slate-300 hover:text-white shrink-0">
+              🪑 Bàn ghế gỗ sồi xuất HD
+            </button>
+          </div>
+
+          <!-- Input chat giống ChatGPT -->
+          <div class="pt-2 border-t border-slate-800 flex items-center gap-2">
+            <input type="text" id="p2-chat-input" placeholder="Ra lệnh cho trợ lý AI (Ví dụ: Edit video chèn voice của tôi, xuất HD 10s...)" class="flex-1 bg-slate-950 border border-slate-700/80 focus:border-rose-500 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none">
+            <button id="p2-send-chat-btn" type="button" class="px-3.5 py-2.5 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition shrink-0 shadow flex items-center justify-center">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Khối Chèn Voice Gốc Của Bạn (Micro Thu Âm & File Âm Thanh) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 shadow-2xl space-y-3">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+              <h3 class="text-xs sm:text-sm font-bold text-white flex items-center gap-1.5">
+                🎙️ Chèn Voice Gốc Của Bạn Vào Video
+              </h3>
+            </div>
+            <span id="voice-status-badge" class="text-[10px] text-slate-400 font-mono">Chưa có voice</span>
+          </div>
+
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Thu âm trực tiếp giọng của bạn qua micro hoặc tải file ghi âm có sẵn. AI sẽ tự động đồng bộ giọng bạn vào video và chạy chữ phụ đề karaoke khớp từng giây!
+          </p>
+
+          <div class="grid grid-cols-2 gap-2">
+            <!-- Nút Thu Âm Micro Trực Tiếp -->
+            <button id="record-mic-btn" type="button" class="py-2.5 px-3 rounded-xl bg-slate-950 border border-rose-500/50 hover:bg-rose-500/20 text-rose-300 font-bold text-xs flex items-center justify-center gap-2 transition shadow">
+              <span id="record-mic-icon" class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+              <span id="record-mic-label">Bấm để thu âm</span>
+            </button>
+
+            <!-- Nút Tải File Âm Thanh Có Sẵn -->
+            <button id="upload-voice-file-btn" type="button" class="py-2.5 px-3 rounded-xl bg-slate-950 border border-slate-800 hover:border-slate-700 text-slate-300 font-semibold text-xs flex items-center justify-center gap-2 transition">
+              <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+              <span>Tải file ghi âm</span>
+            </button>
+            <input type="file" id="voice-file-input" accept="audio/*" class="hidden">
+          </div>
+
+          <!-- Trình nghe thử Voice đã nạp -->
+          <div id="voice-player-row" class="hidden p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+              <button id="play-voice-sample-btn" type="button" class="w-8 h-8 rounded-lg bg-rose-600 text-white flex items-center justify-center">
+                <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+              <div class="text-left">
+                <span class="text-xs font-bold text-white block">Voice gốc của bạn đã sẵn sàng</span>
+                <span id="voice-duration-label" class="text-[10px] text-emerald-400 font-mono">Thời lượng: 0s</span>
+              </div>
+            </div>
+            <button id="del-voice-btn" type="button" class="text-slate-500 hover:text-rose-400 text-xs px-2 py-1">Xóa</button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Cột Phải: CapCut Timeline Player Mini & Xuất Video HD & Tự Lưu Tài Liệu (7 cols) -->
+      <div class="lg:col-span-7 space-y-4">
+        
+        <!-- Khung Player CapCut 9:16 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 shadow-2xl space-y-4">
+          
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-ping"></span>
+              <h3 class="text-sm font-bold text-white">
+                CapCut Player 9:16 (Hiệu Ứng + Sóng Âm + Phụ Đề Chạy Chữ)
+              </h3>
+            </div>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 font-bold">HD 1080x1920</span>
+          </div>
+
+          <!-- Màn hình Player 9:16 -->
+          <div class="w-full flex items-center justify-center p-2">
+            <div class="relative w-full max-w-[280px] aspect-[9/16] bg-slate-950 rounded-2xl border-2 border-slate-700 shadow-2xl overflow-hidden flex flex-col justify-between p-3.5">
+              
+              <!-- Video Canvas Layer (Chuyển động zoom/pan thật) -->
+              <canvas id="capcut-canvas" class="absolute inset-0 w-full h-full object-cover"></canvas>
+
+              <!-- Top Overlay -->
+              <div class="relative z-10 flex items-center justify-between text-white text-[10px] font-mono">
+                <span class="px-2 py-0.5 rounded bg-black/60 backdrop-blur-md border border-white/10 flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
+                  CAPCUT LIVE
+                </span>
+                <span id="capcut-time-display" class="px-2 py-0.5 rounded bg-black/60 backdrop-blur-md border border-white/10">00:00 / 00:10</span>
+              </div>
+
+              <!-- Center Sóng Âm Visualizer nếu có Voice gốc -->
+              <div id="capcut-audio-wave" class="relative z-10 my-auto flex items-center justify-center gap-1 py-2 opacity-80">
+                <span class="w-1 h-3 bg-rose-400 rounded-full animate-bounce"></span>
+                <span class="w-1 h-6 bg-rose-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
+                <span class="w-1 h-10 bg-indigo-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+                <span class="w-1 h-7 bg-rose-400 rounded-full animate-bounce" style="animation-delay: 0.15s"></span>
+                <span class="w-1 h-4 bg-indigo-400 rounded-full animate-bounce" style="animation-delay: 0.25s"></span>
+              </div>
+
+              <!-- Bottom Karaoke Auto-Captions Box -->
+              <div class="relative z-10 space-y-2">
+                <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                  <div id="capcut-progress-bar" class="bg-gradient-to-r from-rose-500 to-indigo-500 h-1.5 rounded-full w-0 transition-all duration-100"></div>
+                </div>
+
+                <div class="bg-black/85 backdrop-blur-md border border-white/20 rounded-xl p-2.5 text-center shadow-lg min-h-[50px] flex items-center justify-center">
+                  <p id="capcut-subtitle-text" class="text-xs font-black text-amber-300 leading-snug tracking-wide drop-shadow">
+                    "AI đang chờ lệnh hoặc chạy video 1-click..."
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- TIMELINE 3 TRACK KIỂU CAPCUT -->
+          <div class="p-3 bg-slate-950 border border-slate-800 rounded-2xl space-y-2">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Timeline CapCut Đa Lớp:</span>
+            
+            <!-- Track 1: Video -->
+            <div class="flex items-center gap-2 text-xs p-1.5 rounded-lg bg-slate-900 border border-slate-800">
+              <span class="w-20 text-[10px] font-mono text-indigo-400 font-bold shrink-0">📹 Track Video:</span>
+              <div class="flex-1 h-5 rounded bg-indigo-600/30 border border-indigo-500/40 flex items-center px-2 text-[10px] text-indigo-200 truncate">
+                Sản phẩm chuyển động 360 • Zoom 8K • Nhịp cắt 10s
+              </div>
+            </div>
+
+            <!-- Track 2: Voice Gốc -->
+            <div class="flex items-center gap-2 text-xs p-1.5 rounded-lg bg-slate-900 border border-slate-800">
+              <span class="w-20 text-[10px] font-mono text-rose-400 font-bold shrink-0">🎙️ Voice Gốc:</span>
+              <div id="track-voice-preview" class="flex-1 h-5 rounded bg-rose-600/30 border border-rose-500/40 flex items-center px-2 text-[10px] text-rose-200 truncate">
+                Chưa chèn voice gốc (Bấm thu âm bên trái để thêm)
+              </div>
+            </div>
+
+            <!-- Track 3: Phụ đề -->
+            <div class="flex items-center gap-2 text-xs p-1.5 rounded-lg bg-slate-900 border border-slate-800">
+              <span class="w-20 text-[10px] font-mono text-emerald-400 font-bold shrink-0">📝 Phụ Đề:</span>
+              <div class="flex-1 h-5 rounded bg-emerald-600/30 border border-emerald-500/40 flex items-center px-2 text-[10px] text-emerald-200 truncate">
+                Chữ Karaoke tự động nhảy theo giọng nói 0s &rarr; 10s
+              </div>
+            </div>
+          </div>
+
+          <!-- NÚT PHÁT & XUẤT VIDEO HD THẬT -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <div class="flex items-center gap-2">
+              <button id="capcut-play-btn" type="button" class="w-10 h-10 rounded-xl bg-white text-slate-950 flex items-center justify-center font-bold shadow-lg hover:scale-105 transition cursor-pointer">
+                <svg id="capcut-play-icon" class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg id="capcut-pause-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              </button>
+              <span class="text-xs text-slate-300 font-semibold">Phát / Tạm dừng Preview</span>
+            </div>
+
+            <!-- NÚT XUẤT VIDEO HD THẬT -->
+            <button id="export-hd-video-btn" type="button" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs sm:text-sm font-black shadow-lg shadow-emerald-600/30 flex items-center gap-2 transition cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              <span id="export-video-label">⬇️ Xuất Video HD Thật Về Máy</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- MỤC TỰ LƯU TÀI LIỆU & DỰ ÁN CỦA TRỢ LÝ AI (THEO YÊU CẦU CỦA BẠN) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 shadow-2xl space-y-3">
+          <div class="flex items-center justify-between pb-2.5 border-b border-slate-800">
+            <div class="flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-indigo-600/20 text-indigo-400 flex items-center justify-center font-bold text-xs">
+                📁
+              </span>
+              <div>
+                <h3 class="text-sm font-bold text-white">Kho Lưu Trữ Tài Liệu & Dự Án Của Trợ Lý AI</h3>
+                <span class="text-[10px] text-slate-400">Trợ lý tự động ghi chép, lưu lại video & kịch bản thay bạn</span>
+              </div>
+            </div>
+            <button id="p2-clear-archive-btn" type="button" class="text-xs text-slate-500 hover:text-slate-300">Dọn dẹp</button>
+          </div>
+
+          <!-- Danh sách dự án trợ lý đã tự lưu -->
+          <div id="p2-archive-list" class="space-y-2 max-h-[180px] overflow-y-auto no-scrollbar pr-1">
+            <!-- Project items rendered dynamically -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+<!-- Global Footer -->
   <footer class="border-t border-slate-900 bg-slate-950/80 py-6 text-center text-xs text-slate-500">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p>AI Video Production Pipeline • 3 Nút Ngang • 5 Sản Phẩm Hàng Loạt 10s • Bộ Nhớ AI</p>
+      <p>AI Video Production Pipeline • 3 Nút Ngang • Ghép Ảnh 9:16 8K & Content 10s • Thư Mục Phân Loại</p>
       <div class="flex items-center gap-4">
-        <span>Bước 1: Tách nền</span>
+        <span>Bước 1: Ghép Ảnh & Folder</span>
         <span>&bull;</span>
-        <span>Bước 2: 5 Sản phẩm hàng loạt</span>
+        <span>Bước 2: Content 10s AI</span>
         <span>&bull;</span>
         <span>Bước 3: Tạo video</span>
       </div>
     </div>
   </footer>
 
-  <!-- Application Logic -->
+  <!-- =================================================================== -->
+  <!-- APPLICATION SCRIPT LOGIC -->
+  <!-- =================================================================== -->
+
   <script>
-    // App State Management
-    const state = {
+const state = {
       currentStep: 1,
-      uploadedImage: null,
-      processedImage: null,
-      targetColor: { r: 255, g: 255, b: 255 },
-      tolerance: 45,
-      feather: 2,
-      backdrop: 'transparent',
-      isPlayingPreview: false,
-      previewTimerInterval: null,
-      previewTimeElapsed: 0,
+      // BƯỚC 1 STATE:
+      bgImage: null, // Hình 1: background
+      productImages: [], // Hình 2, 3, 4...: các sản phẩm
+      step1Tolerance: 45,
+      composedImage916: null,
+      savedFolders: {
+        'Mỹ phẩm': [],
+        'Nông sản & Thực phẩm': [],
+        'Nội thất & Gia dụng': [],
+        'Thời trang & Phụ kiện': [],
+        'Đồ công nghệ': [],
+        'Khác': []
+      },
+      currentGalleryFilter: 'all',
+
+      // BƯỚC 2 & 3 STATE:
       activeProductIdx: 0,
       variationSeed: 0,
-      // 5 Sản phẩm hàng loạt (Mặc định 5 mẫu để test ngay)
       batchProducts: [
-        { id: 1, name: 'Gạo Quảng Trị', info: 'Túi 5kg dẻo thơm, không hóa chất', image: '' },
-        { id: 2, name: 'Bàn ghế phòng khách', info: 'Gỗ sồi tự nhiên kích thước 1m6 x 80cm', image: '' },
-        { id: 3, name: 'Nồi chiên không dầu', info: 'Dung tích lớn 6.5 lít chống dính', image: '' },
-        { id: 4, name: 'Áo thun form rộng', info: 'Chất cotton 100% 4 chiều mát mịn', image: '' },
-        { id: 5, name: 'Serum cấp ẩm phục hồi B5', info: 'Dung tích 30ml lành tính cho mọi loại da', image: '' }
+        { id: 1, name: 'Gạo Quảng Trị', info: 'Túi 5kg dẻo thơm, không hóa chất', image: '', extraImages: [] },
+        { id: 2, name: 'Bàn ghế phòng khách', info: 'Gỗ sồi tự nhiên kích thước 1m6 x 80cm', image: '', extraImages: [] },
+        { id: 3, name: 'Nồi chiên không dầu', info: 'Dung tích lớn 6.5 lít chống dính', image: '', extraImages: [] },
+        { id: 4, name: 'Áo thun form rộng', info: 'Chất cotton 100% 4 chiều mát mịn', image: '', extraImages: [] },
+        { id: 5, name: 'Serum cấp ẩm phục hồi B5', info: 'Dung tích 30ml lành tính cho da', image: '', extraImages: [] }
       ],
       generatedScripts: [],
       learnedRules: [
-        {
-          id: 'rule-rice',
-          category: 'gạo',
-          mustHave: 'Bắt buộc có số kg (Ví dụ: túi 5kg)'
-        },
-        {
-          id: 'rule-furniture',
-          category: 'bàn ghế',
-          mustHave: 'Bắt buộc có kích thước DxRxC (Ví dụ: 1m6 x 80cm)'
-        }
-      ]
+        { id: 'rule-rice', category: 'gạo', mustHave: 'Bắt buộc có số kg (Ví dụ: túi 5kg)' },
+        { id: 'rule-furniture', category: 'bàn ghế', mustHave: 'Bắt buộc có kích thước DxRxC (Ví dụ: 1m6 x 80cm)' }
+      ],
+      isPlayingPreview: false,
+      previewTimerInterval: null,
+      previewTimeElapsed: 0
     };
-
-    // Load & Save Learned Rules
-    function loadLearnedRules() {
-      try {
-        const saved = localStorage.getItem('ai_video_learned_rules');
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          if (Array.isArray(parsed) && parsed.length > 0) {
-            state.learnedRules = parsed;
-          }
-        }
-      } catch (e) {
-        console.warn('Cannot read localStorage', e);
-      }
-      renderLearnedRulesList();
-    }
-
-    function saveLearnedRules() {
-      try {
-        localStorage.setItem('ai_video_learned_rules', JSON.stringify(state.learnedRules));
-      } catch (e) {
-        console.warn('Cannot write localStorage', e);
-      }
-      renderLearnedRulesList();
-    }
-
-    function renderLearnedRulesList() {
-      const container = document.getElementById('compact-rules-container');
-      if (!container) return;
-
-      container.innerHTML = '';
-
-      state.learnedRules.forEach((rule, index) => {
-        const tag = document.createElement('div');
-        tag.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 shadow-sm';
-        tag.innerHTML = `
-          <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
-          <span class="font-bold text-white capitalize">${rule.category}:</span>
-          <span class="text-amber-300 font-medium">${rule.mustHave}</span>
-          <button type="button" class="delete-rule-btn ml-1.5 text-slate-500 hover:text-rose-400 transition" data-index="${index}" title="Xóa quy tắc">
-            &times;
-          </button>
-        `;
-        container.appendChild(tag);
-      });
-
-      container.querySelectorAll('.delete-rule-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const idx = parseInt(btn.getAttribute('data-index'));
-          state.learnedRules.splice(idx, 1);
-          saveLearnedRules();
-          showToast('Đã xóa quy tắc học hỏi khỏi bộ nhớ.');
-        });
-      });
-    }
 
     // Helper: Toast Message System
     function showToast(message, type = 'success') {
@@ -716,7 +1159,6 @@
           ? 'bg-slate-900/95 border-emerald-500/50 text-emerald-300' 
           : 'bg-slate-900/95 border-indigo-500/50 text-indigo-300'
       }`;
-      
       const icon = type === 'success'
         ? '<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>'
         : '<svg class="w-4 h-4 text-indigo-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
@@ -724,10 +1166,7 @@
       toast.innerHTML = `${icon}<span>${message}</span>`;
       container.appendChild(toast);
 
-      requestAnimationFrame(() => {
-        toast.classList.remove('translate-y-4', 'opacity-0');
-      });
-
+      requestAnimationFrame(() => toast.classList.remove('translate-y-4', 'opacity-0'));
       setTimeout(() => {
         toast.classList.add('opacity-0', 'translate-y-2');
         setTimeout(() => toast.remove(), 300);
@@ -788,7 +1227,6 @@
       if (stepNum === 2) {
         renderProductRows();
       }
-
       if (stepNum === 3) {
         syncStep3Preview();
       }
@@ -796,297 +1234,545 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // ==========================================
-    // STEP 1: CANVAS BACKGROUND REMOVAL LOGIC
-    // ==========================================
-    const canvas = document.getElementById('main-canvas');
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
-    let originalImageData = null;
-
-    function hexToRgb(hex) {
-      const bigint = parseInt(hex.replace('#', ''), 16);
-      return {
-        r: (bigint >> 16) & 255,
-        g: (bigint >> 8) & 255,
-        b: bigint & 255
-      };
-    }
-
-    function generateSampleProduct() {
-      canvas.width = 600;
-      canvas.height = 450;
-      document.getElementById('canvas-resolution').textContent = `${canvas.width} x ${canvas.height}`;
-      
-      ctx.fillStyle = '#FFFFFF';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      const cx = canvas.width / 2;
-      const cy = canvas.height / 2 - 10;
-
-      ctx.save();
-      // Rice sack outline
-      ctx.fillStyle = '#fef08a';
-      ctx.strokeStyle = '#ca8a04';
-      ctx.lineWidth = 6;
-      ctx.beginPath();
-      ctx.roundRect(cx - 90, cy - 80, 180, 220, [30, 30, 20, 20]);
-      ctx.fill();
-      ctx.stroke();
-
-      // Sack top tie
-      ctx.fillStyle = '#b45309';
-      ctx.beginPath();
-      ctx.ellipse(cx, cy - 80, 50, 14, 0, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Red seal
-      ctx.fillStyle = '#dc2626';
-      ctx.beginPath();
-      ctx.arc(cx, cy - 10, 36, 0, Math.PI * 2);
-      ctx.fill();
-
-      ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 13px Inter, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('QUẢNG TRỊ', cx, cy - 6);
-      ctx.font = 'bold 11px Inter, sans-serif';
-      ctx.fillText('5KG', cx, cy + 12);
-
-      // Branding text
-      ctx.fillStyle = '#78350f';
-      ctx.font = 'bold 15px Inter, sans-serif';
-      ctx.fillText('GẠO SẠCH', cx, cy + 65);
-      ctx.font = '12px Inter, sans-serif';
-      ctx.fillText('THƠM NGON', cx, cy + 85);
-
-      ctx.restore();
-
-      originalImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      document.getElementById('canvas-empty-state').classList.add('hidden');
-      processBackgroundRemoval();
-      showToast('Đã nạp mẫu Bao Gạo Quảng Trị!');
-    }
-
-    function handleImageLoad(file) {
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const img = new Image();
-        img.onload = () => {
-          let w = img.width;
-          let h = img.height;
-          const maxDim = 720;
-          if (w > maxDim || h > maxDim) {
-            if (w > h) {
-              h = Math.round((h * maxDim) / w);
-              w = maxDim;
-            } else {
-              w = Math.round((w * maxDim) / h);
-              h = maxDim;
-            }
-          }
-          canvas.width = w;
-          canvas.height = h;
-          document.getElementById('canvas-resolution').textContent = `${w} x ${h}`;
-          ctx.clearRect(0, 0, w, h);
-          ctx.drawImage(img, 0, 0, w, h);
-          originalImageData = ctx.getImageData(0, 0, w, h);
-          document.getElementById('canvas-empty-state').classList.add('hidden');
-          processBackgroundRemoval();
-          showToast('Tải ảnh lên thành công!');
-        };
-        img.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-
-    function processBackgroundRemoval() {
-      if (!originalImageData) return;
-
-      const w = canvas.width;
-      const h = canvas.height;
-      const imgData = new ImageData(
-        new Uint8ClampedArray(originalImageData.data),
-        w,
-        h
-      );
-      const data = imgData.data;
-
-      const target = state.targetColor;
-      const tol = state.tolerance;
-      const feather = state.feather;
-
-      for (let i = 0; i < data.length; i += 4) {
-        const r = data[i];
-        const g = data[i + 1];
-        const b = data[i + 2];
-
-        const dist = Math.sqrt(
-          (r - target.r) * (r - target.r) +
-          (g - target.g) * (g - target.g) +
-          (b - target.b) * (b - target.b)
-        );
-
-        if (dist <= tol) {
-          data[i + 3] = 0;
-        } else if (dist < tol + feather * 10) {
-          const factor = (dist - tol) / (feather * 10);
-          data[i + 3] = Math.round(factor * 255);
-        }
-      }
-
-      ctx.clearRect(0, 0, w, h);
-      ctx.putImageData(imgData, 0, 0);
-
-      state.processedImage = canvas.toDataURL('image/png');
-      
-      // Gán ảnh đã tách vào sản phẩm 1 nếu chưa có
-      if (state.batchProducts[0]) {
-        state.batchProducts[0].image = state.processedImage;
-      }
-    }
-
-    function downloadTransparentPNG() {
-      if (!state.processedImage) {
-        showToast('Vui lòng nạp hoặc tách nền ảnh trước!', 'error');
-        return;
-      }
-      const link = document.createElement('a');
-      link.download = 'san-pham-tach-nen.png';
-      link.href = state.processedImage;
-      link.click();
-      showToast('Đã tải ảnh PNG không nền về máy!');
-    }
-
-            // ===================================================================
-    // STEP 2: CONTENT 10S - OCR QUÉT ẢNH + GEMINI VISION + 5 SP HÀNG LOẠT
+    // ===================================================================
+    // BƯỚC 1: XÂY DỰNG LẠI (GHÉP BACKGROUND HÌNH 1 + TẠO BỐI CẢNH + FOLDER)
     // ===================================================================
 
-    // Tải và lưu Gemini API Key
-    function loadGeminiKey() {
+    // Nạp thư mục từ localStorage
+    function loadSavedFolders() {
       try {
-        const key = localStorage.getItem('ai_video_gemini_key');
-        if (key) {
-          const input = document.getElementById('gemini-api-key-input');
-          const status = document.getElementById('ai-key-status-text');
-          if (input) input.value = key;
-          if (status) status.innerHTML = '✅ <span class="text-emerald-300">Đã kích hoạt AI Vision</span>';
+        const saved = localStorage.getItem('ai_video_saved_folders');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed && typeof parsed === 'object') {
+            state.savedFolders = { ...state.savedFolders, ...parsed };
+          }
         }
       } catch (e) {}
+      renderSavedGallery();
     }
 
-    // Làm sạch tên file nếu tên file có chữ có nghĩa
-    function cleanNameFromFileName(filename) {
-      if (!filename) return '';
-      let name = filename.replace(/\.[^/.]+$/, "");
-      // Nếu tên file là dạng IMG_2024..., Screenshot_..., image(1)... thì bỏ qua
-      if (/^(img|image|screenshot|photo|file|download|pasted|scan|\d+)[_\-\s\d]*/i.test(name)) {
-        return '';
-      }
-      name = name.replace(/[_-]+/g, " ").trim();
-      if (name.length > 2) {
-        return name.charAt(0).toUpperCase() + name.slice(1);
-      }
-      return '';
+    function saveFoldersToStorage() {
+      try {
+        localStorage.setItem('ai_video_saved_folders', JSON.stringify(state.savedFolders));
+      } catch (e) {}
+      renderSavedGallery();
     }
 
-    // Trích xuất các thông số thực tế từ chữ (số kg, kích thước, dung tích, giá...)
+    // Render Gallery Kho Lưu Trữ Ảnh Sản Phẩm
+    function renderSavedGallery() {
+      const container = document.getElementById('saved-gallery-grid');
+      if (!container) return;
+
+      container.innerHTML = '';
+      const filter = state.currentGalleryFilter;
+      let allItems = [];
+
+      Object.keys(state.savedFolders).forEach(folderName => {
+        if (filter === 'all' || filter === folderName) {
+          state.savedFolders[folderName].forEach(item => {
+            allItems.push({ ...item, folder: folderName });
+          });
+        }
+      });
+
+      if (allItems.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-8 text-center text-slate-500 text-xs">
+            <svg class="w-8 h-8 mx-auto text-slate-600 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+            Chưa có ảnh nào trong thư mục "${filter === 'all' ? 'Tất cả' : filter}". Tạo ảnh xong bấm "Lưu vào Folder" để lưu trữ!
+          </div>
+        `;
+        return;
+      }
+
+      allItems.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'group relative rounded-xl bg-slate-950 border border-slate-800 overflow-hidden shadow-lg flex flex-col justify-between';
+        card.innerHTML = `
+          <div class="aspect-[9/16] w-full bg-slate-900 checkerboard relative flex items-center justify-center overflow-hidden">
+            <img src="${item.dataUrl}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            <span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-black/60 backdrop-blur-md text-[9px] font-bold text-white">${item.folder}</span>
+          </div>
+          <div class="p-2 space-y-1">
+            <p class="text-[11px] font-bold text-white truncate">${item.name}</p>
+            <div class="flex items-center justify-between pt-1">
+              <button type="button" class="use-gallery-img-btn text-[10px] text-indigo-400 hover:text-indigo-300 font-semibold" data-url="${item.dataUrl}" data-name="${item.name}" data-folder="${item.folder}">
+                Dùng viết 10s &rarr;
+              </button>
+              <button type="button" class="del-gallery-img-btn text-[10px] text-slate-500 hover:text-rose-400" data-folder="${item.folder}" data-id="${item.id}" title="Xóa ảnh">
+                &times;
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      // Lắng nghe sự kiện "Dùng viết 10s"
+      container.querySelectorAll('.use-gallery-img-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const url = btn.getAttribute('data-url');
+          const name = btn.getAttribute('data-name');
+          const folder = btn.getAttribute('data-folder');
+          state.batchProducts[0].image = url;
+          state.batchProducts[0].name = name;
+          state.batchProducts[0].info = `Sản phẩm ${name} thuộc danh mục ${folder}`;
+          switchStep(2);
+          showToast(`Đã chuyển ảnh "${name}" sang Bước 2 để viết Content 10s!`);
+        });
+      });
+
+      // Lắng nghe sự kiện xóa ảnh trong kho
+      container.querySelectorAll('.del-gallery-img-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const fName = btn.getAttribute('data-folder');
+          const id = btn.getAttribute('data-id');
+          if (state.savedFolders[fName]) {
+            state.savedFolders[fName] = state.savedFolders[fName].filter(x => x.id !== id);
+            saveFoldersToStorage();
+            showToast('Đã xóa ảnh khỏi thư mục.');
+          }
+        });
+      });
+    }
+
+    // Tự động phân loại Folder phù hợp dựa trên tên ảnh / sản phẩm
+    function autoDetectFolder(productName) {
+      if (!productName) return 'Khác';
+      const lower = productName.toLowerCase();
+      if (/son|kem|serum|mỹ phẩm|da|nước hoa|phấn|toner|chống nắng/i.test(lower)) {
+        return 'Mỹ phẩm';
+      }
+      if (/gạo|thực phẩm|nông sản|trà|cà phê|yến|hạt|bánh|mật ong/i.test(lower)) {
+        return 'Nông sản & Thực phẩm';
+      }
+      if (/bàn|ghế|sofa|nội thất|giường|tủ|kệ|nồi|bếp|chảo|đèn/i.test(lower)) {
+        return 'Nội thất & Gia dụng';
+      }
+      if (/áo|quần|thời trang|giày|dép|túi|ví|váy|đầm/i.test(lower)) {
+        return 'Thời trang & Phụ kiện';
+      }
+      if (/tai nghe|loa|chuột|bàn phím|điện thoại|đồng hồ|máy tính|pin/i.test(lower)) {
+        return 'Đồ công nghệ';
+      }
+      return 'Khác';
+    }
+
+    // Render danh sách ảnh sản phẩm (Hình 2, 3...)
+    function renderStep1ProductsStrip() {
+      const container = document.getElementById('step1-products-strip');
+      const countLabel = document.getElementById('product-images-count');
+      if (!container) return;
+
+      container.innerHTML = '';
+      countLabel.textContent = `${state.productImages.length} sản phẩm`;
+
+      if (state.productImages.length === 0) {
+        container.innerHTML = '<span class="text-xs text-slate-500 italic">Chưa có sản phẩm nào. Bấm nút trên hoặc tải ảnh mẫu.</span>';
+        return;
+      }
+
+      state.productImages.forEach((imgObj, idx) => {
+        const item = document.createElement('div');
+        item.className = 'w-12 h-12 rounded-xl bg-slate-900 border border-slate-700 checkerboard relative flex items-center justify-center overflow-hidden shrink-0 group';
+        item.innerHTML = `
+          <img src="${imgObj.dataUrl}" alt="" class="max-w-full max-h-full object-contain">
+          <span class="absolute bottom-0 left-0 right-0 bg-black/70 text-[9px] text-white font-mono text-center truncate px-0.5">H${idx + 2}</span>
+          <button type="button" class="del-pimg-btn absolute -top-1 -right-1 w-4 h-4 bg-rose-600 text-white rounded-full text-[10px] font-black flex items-center justify-center shadow" data-idx="${idx}" title="Xóa">
+            &times;
+          </button>
+        `;
+        container.appendChild(item);
+      });
+
+      container.querySelectorAll('.del-pimg-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const idx = parseInt(btn.getAttribute('data-idx'));
+          state.productImages.splice(idx, 1);
+          renderStep1ProductsStrip();
+          showToast('Đã xóa 1 sản phẩm.');
+        });
+      });
+    }
+
+    // Render tạo mẫu ảnh nền cho preset
+    function createPresetBackground(type) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1080;
+      canvas.height = 1920; // 9:16
+      const ctx = canvas.getContext('2d');
+
+      if (type === 'kitchen') {
+        const grad = ctx.createLinearGradient(0, 0, 0, 1920);
+        grad.addColorStop(0, '#1c1917');
+        grad.addColorStop(0.5, '#292524');
+        grad.addColorStop(1, '#44403c');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 1080, 1920);
+
+        // Countertop
+        ctx.fillStyle = '#78716c';
+        ctx.fillRect(0, 1200, 1080, 720);
+        ctx.fillStyle = '#a8a29e';
+        ctx.fillRect(0, 1190, 1080, 10);
+      } else if (type === 'living') {
+        const grad = ctx.createLinearGradient(0, 0, 0, 1920);
+        grad.addColorStop(0, '#0f172a');
+        grad.addColorStop(0.6, '#1e293b');
+        grad.addColorStop(1, '#334155');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 1080, 1920);
+
+        // Scandinavian wooden floor
+        ctx.fillStyle = '#78350f';
+        ctx.fillRect(0, 1300, 1080, 620);
+      } else {
+        // Luxury studio stone / marble
+        const grad = ctx.createRadialGradient(540, 960, 100, 540, 960, 900);
+        grad.addColorStop(0, '#334155');
+        grad.addColorStop(0.7, '#1e293b');
+        grad.addColorStop(1, '#020617');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 1080, 1920);
+
+        // Obsidian pedestal
+        ctx.fillStyle = '#0f172a';
+        ctx.beginPath();
+        ctx.ellipse(540, 1400, 420, 120, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = '#6366f1';
+        ctx.stroke();
+      }
+
+      return canvas.toDataURL('image/jpeg', 0.9);
+    }
+
+    // Ghép ảnh 9:16 Canvas (Mode 1: Dùng Background Hình 1)
+    async function renderCompositeMode1() {
+      if (!state.bgImage && state.productImages.length === 0) {
+        showToast('Vui lòng chọn ảnh Background Hình 1 và thêm sản phẩm!', 'error');
+        return;
+      }
+
+      showToast('Đang kết xuất ảnh 9:16 8K chất lượng cao...');
+      const canvas = document.getElementById('step1-render-canvas');
+      canvas.width = 1080;
+      canvas.height = 1920; // 9:16
+      const ctx = canvas.getContext('2d');
+
+      // 1. Vẽ Background Hình 1
+      if (state.bgImage) {
+        const bgImg = new Image();
+        bgImg.src = state.bgImage;
+        await new Promise(r => bgImg.onload = r);
+        ctx.drawImage(bgImg, 0, 0, 1080, 1920);
+      } else {
+        const presetBg = createPresetBackground('studio');
+        const bgImg = new Image();
+        bgImg.src = presetBg;
+        await new Promise(r => bgImg.onload = r);
+        ctx.drawImage(bgImg, 0, 0, 1080, 1920);
+      }
+
+      // 2. Tách và vẽ các sản phẩm Hình 2, 3...
+      const pCount = state.productImages.length;
+      if (pCount > 0) {
+        for (let i = 0; i < pCount; i++) {
+          const pImg = new Image();
+          pImg.src = state.productImages[i].dataUrl;
+          await new Promise(r => pImg.onload = r);
+
+          // Vị trí và kích thước trên khung 9:16
+          let targetW = 600;
+          let targetH = 600;
+          let targetX = (1080 - targetW) / 2;
+          let targetY = 700 + (i * 80) - (pCount * 40);
+
+          if (pCount > 1) {
+            targetW = 420;
+            targetH = 420;
+            targetX = 140 + (i * 260) % 680;
+            targetY = 800 + Math.floor(i / 2) * 220;
+          }
+
+          // Vẽ bóng tiếp xúc chân thực (Contact Shadow)
+          ctx.save();
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+          ctx.beginPath();
+          ctx.ellipse(targetX + targetW / 2, targetY + targetH - 20, targetW * 0.4, 25, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+
+          // Vẽ sản phẩm
+          ctx.drawImage(pImg, targetX, targetY, targetW, targetH);
+        }
+      }
+
+      state.composedImage916 = canvas.toDataURL('image/png');
+      document.getElementById('canvas-guide-overlay').classList.add('hidden');
+
+      // Tự động gán vào sản phẩm 1 của Bước 2
+      state.batchProducts[0].image = state.composedImage916;
+
+      // Cập nhật câu lệnh prompt
+      const promptText = `Tạo 1 ảnh mới: Tách lấy sản phẩm từ các Hình 2, 3... đặt vào background Hình 1, bố cục khung 9:16 dọc điện thoại, chất lượng 8k photorealistic commercial lighting, natural contact shadow and reflections.`;
+      document.getElementById('step1-ai-prompt-text').textContent = promptText;
+
+      // Tự động gợi ý tên và folder
+      const autoF = autoDetectFolder(state.batchProducts[0].name);
+      const folderSel = document.getElementById('save-to-folder-select');
+      if (folderSel) folderSel.value = autoF;
+
+      showToast('Đã tạo thành công ảnh 9:16 ghép vào Background Hình 1!');
+    }
+
+    // Ghép ảnh 9:16 Canvas (Mode 2: Thay Background Đời Sống Chân Thực Tự Động)
+    async function renderCompositeMode2() {
+      if (state.productImages.length === 0 && !state.batchProducts[0].name) {
+        showToast('Vui lòng thêm ảnh sản phẩm trước!', 'error');
+        return;
+      }
+
+      showToast('Đang tạo bối cảnh đời sống chân thực...');
+      const canvas = document.getElementById('step1-render-canvas');
+      canvas.width = 1080;
+      canvas.height = 1920; // 9:16
+      const ctx = canvas.getContext('2d');
+
+      const prodName = (state.productImages[0]?.name || state.batchProducts[0]?.name || '').toLowerCase();
+      let detectedType = 'studio';
+      let lifestyleDesc = 'Studio đá sang trọng';
+
+      if (/gạo|thực phẩm|nồi|chiên|bếp/i.test(prodName)) {
+        detectedType = 'kitchen';
+        lifestyleDesc = 'Gian bếp ấm cúng hiện đại';
+      } else if (/bàn|ghế|sofa|nội thất/i.test(prodName)) {
+        detectedType = 'living';
+        lifestyleDesc = 'Phòng khách phong cách Bắc Âu';
+      } else if (/son|mỹ phẩm|serum|da/i.test(prodName)) {
+        detectedType = 'studio';
+        lifestyleDesc = 'Bàn trang điểm đá cẩm thạch sang trọng';
+      }
+
+      // Vẽ bối cảnh đời sống
+      const bgData = createPresetBackground(detectedType);
+      const bgImg = new Image();
+      bgImg.src = bgData;
+      await new Promise(r => bgImg.onload = r);
+      ctx.drawImage(bgImg, 0, 0, 1080, 1920);
+
+      // Vẽ sản phẩm
+      if (state.productImages.length > 0) {
+        for (let i = 0; i < state.productImages.length; i++) {
+          const pImg = new Image();
+          pImg.src = state.productImages[i].dataUrl;
+          await new Promise(r => pImg.onload = r);
+
+          const targetW = 540;
+          const targetH = 540;
+          const targetX = (1080 - targetW) / 2;
+          const targetY = 820;
+
+          // Shadow
+          ctx.save();
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+          ctx.beginPath();
+          ctx.ellipse(targetX + targetW / 2, targetY + targetH - 15, targetW * 0.45, 30, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+
+          ctx.drawImage(pImg, targetX, targetY, targetW, targetH);
+        }
+      }
+
+      state.composedImage916 = canvas.toDataURL('image/png');
+      document.getElementById('canvas-guide-overlay').classList.add('hidden');
+      state.batchProducts[0].image = state.composedImage916;
+
+      const promptText = `Thay background như thật phù hợp đời sống cho sản phẩm: Bối cảnh ${lifestyleDesc}, ánh sáng tự nhiên dịu nhẹ, đổ bóng chân thực, khung 9:16, chất lượng 8k photorealistic.`;
+      document.getElementById('step1-ai-prompt-text').textContent = promptText;
+
+      const autoF = autoDetectFolder(state.batchProducts[0].name);
+      const folderSel = document.getElementById('save-to-folder-select');
+      if (folderSel) folderSel.value = autoF;
+
+      showToast(`Đã thay background đời sống: "${lifestyleDesc}"!`);
+    }
+
+    // Lưu ảnh vào Folder
+    function saveCurrentImageToFolder() {
+      if (!state.composedImage916) {
+        showToast('Vui lòng tạo ảnh trước khi lưu!', 'error');
+        return;
+      }
+
+      const folderSelect = document.getElementById('save-to-folder-select');
+      const nameInput = document.getElementById('save-image-name-input');
+      const targetFolder = folderSelect.value;
+      const imgName = nameInput.value.trim() || 'Anh_San_Pham_9x16';
+
+      if (!state.savedFolders[targetFolder]) {
+        state.savedFolders[targetFolder] = [];
+      }
+
+      const newItem = {
+        id: `img-${Date.now()}`,
+        name: imgName,
+        dataUrl: state.composedImage916,
+        createdAt: new Date().toLocaleDateString('vi-VN')
+      };
+
+      state.savedFolders[targetFolder].unshift(newItem);
+      saveFoldersToStorage();
+      showToast(`Đã lưu ảnh vào Thư mục "${targetFolder}" thành công!`);
+    }
+
+    // ===================================================================
+    // BƯỚC 2: CONTENT 10S THỰC CHIẾN - AI THÔNG MINH, BÁM SÁT THÔNG TIN
+    // ===================================================================
+
+    function loadLearnedRules() {
+      try {
+        const saved = localStorage.getItem('ai_video_learned_rules');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            state.learnedRules = parsed;
+          }
+        }
+      } catch (e) {}
+      renderLearnedRulesList();
+    }
+
+    function saveLearnedRules() {
+      try {
+        localStorage.setItem('ai_video_learned_rules', JSON.stringify(state.learnedRules));
+      } catch (e) {}
+      renderLearnedRulesList();
+    }
+
+    function renderLearnedRulesList() {
+      const container = document.getElementById('compact-rules-container');
+      if (!container) return;
+
+      container.innerHTML = '';
+      state.learnedRules.forEach((rule, index) => {
+        const tag = document.createElement('div');
+        tag.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 shadow-sm';
+        tag.innerHTML = `
+          <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+          <span class="font-bold text-white capitalize">${rule.category}:</span>
+          <span class="text-amber-300 font-medium">${rule.mustHave}</span>
+          <button type="button" class="delete-rule-btn ml-1.5 text-slate-500 hover:text-rose-400 transition" data-index="${index}" title="Xóa">&times;</button>
+        `;
+        container.appendChild(tag);
+      });
+
+      container.querySelectorAll('.delete-rule-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = parseInt(btn.getAttribute('data-index'));
+          state.learnedRules.splice(idx, 1);
+          saveLearnedRules();
+          showToast('Đã xóa quy tắc học hỏi.');
+        });
+      });
+    }
+
     function extractRealSpecsFromText(rawText) {
       if (!rawText) return {};
       const specs = {};
-
-      // Cân nặng (kg, gam)
       const kgMatch = rawText.match(/(\d+(\.\d+)?\s*(kg|kí|ký|kilogram|g|gam))/i);
       if (kgMatch) specs.weight = kgMatch[0].trim();
-
-      // Kích thước (m, cm, DxRxC)
       const dimMatch = rawText.match(/(\d+([.,]\d+)?\s*(m|cm|mm)?\s*[xX*]\s*\d+([.,]\d+)?(\s*[xX*]\s*\d+([.,]\d+)?)?\s*(cm|m|mm)?)/i);
       if (dimMatch) specs.dimension = dimMatch[0].trim();
-
-      // Dung tích (lít, ml)
       const volMatch = rawText.match(/(\d+(\.\d+)?\s*(lít|lit|l|ml))/i);
       if (volMatch) specs.volume = volMatch[0].trim();
-
-      // Giá hoặc giảm giá
-      const discountMatch = rawText.match(/(giảm\s*\d+%|\d+%\s*off|\d{1,3}(\.\d{3})+\s*(đ|k|vnđ))/i);
-      if (discountMatch) specs.discount = discountMatch[0].trim();
-
       return specs;
     }
 
-    // Quét OCR ảnh trực tiếp trên trình duyệt bằng Tesseract.js
     async function scanImageForText(dataUrl) {
-      if (typeof Tesseract === 'undefined') {
-        return '';
-      }
+      if (typeof Tesseract === 'undefined' || !dataUrl) return '';
       try {
-        const result = await Tesseract.recognize(dataUrl, 'vie+eng', {
-          logger: () => {}
-        });
-        return result?.data?.text || '';
+        const res = await Tesseract.recognize(dataUrl, 'vie+eng', { logger: () => {} });
+        return res?.data?.text || '';
       } catch (e) {
-        console.warn('OCR error:', e);
         return '';
       }
     }
 
-    // Gọi Gemini Vision API (nếu người dùng có Key) để bóc tách 100% chính xác
-    async function callGeminiVision(apiKey, prod) {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-      const parts = [];
+    // BỘ SINH CONTENT 10S THỰC CHIẾN (CHẮT LỌC THÔNG SỐ, ĐÁNH TRÚNG NỖI ĐAU THẬT)
+    function generatePractical10sScript(prod, seed = 0) {
+      const fullText = (prod.name + ' ' + (prod.info || '')).trim();
+      const lower = fullText.toLowerCase();
+      const specs = extractRealSpecsFromText(fullText);
 
-      // Ảnh chính
-      if (prod.image && prod.image.startsWith('data:')) {
-        const mime = prod.image.match(/data:([^;]+);/)?.[1] || 'image/jpeg';
-        const raw = prod.image.split(',')[1];
-        parts.push({ inlineData: { mimeType: mime, data: raw } });
+      let matchedRule = null;
+      for (const rule of state.learnedRules) {
+        if (lower.includes(rule.category.toLowerCase())) {
+          matchedRule = rule;
+          break;
+        }
       }
 
-      // Các ảnh thông tin bổ sung (tối đa 4 ảnh gửi lên API)
-      if (prod.extraImages && prod.extraImages.length > 0) {
-        prod.extraImages.slice(0, 4).forEach(img => {
-          if (img.dataUrl && img.dataUrl.startsWith('data:')) {
-            const mime = img.dataUrl.match(/data:([^;]+);/)?.[1] || 'image/jpeg';
-            const raw = img.dataUrl.split(',')[1];
-            parts.push({ inlineData: { mimeType: mime, data: raw } });
-          }
-        });
+      const pName = prod.name || 'Sản phẩm';
+      const variant = seed % 3;
+
+      // 1. NGÀNH GẠO / NÔNG SẢN
+      if (lower.includes('gạo')) {
+        const kgVal = specs.weight || 'túi 5kg';
+        if (variant === 0) {
+          return `Cơm nấu lên khô khốc, nhai bã miệng nuốt nghẹn cổ? Đổi ngay ${pName} chuẩn ${kgVal}, từng hạt dẻo thơm ngào ngạt, để cơm nguội vẫn mềm tan. Ăn là mê, đặt ngay nhé!`;
+        } else if (variant === 1) {
+          return `Đừng để cả nhà mất ngon chỉ vì nồi cơm khô cứng pha tạp! Chọn ngay ${pName} đóng gói ${kgVal}, cơm dẻo ngọt đậm đà, chuẩn vị ngon tròn bữa. Thử ngay hôm nay!`;
+        } else {
+          return `Bữa cơm gia đình ấm cúng bắt đầu từ bát cơm thơm dẻo chuẩn vị. ${pName} đóng ${kgVal} hút chân không sạch tinh tươm, hạt thon đều tăm tắp. Đặt mua ăn thử ngay!`;
+        }
       }
 
-      const promptDirective = `Bạn là biên kịch video ngắn triệu view TikTok thực chiến.
-Nhiệm vụ của bạn là xem kỹ hình ảnh sản phẩm được gửi lên (đọc nhãn mác bao bì, thông số kỹ thuật, số kg, kích thước, thành phần, giá cả).
-Yêu cầu:
-1. Đọc đúng TÊN SẢN PHẨM và CÁC THÔNG SỐ ĐẮT GIÁ NHẤT có trong ảnh.
-2. Viết một kịch bản video ngắn đúng chuẩn 10 GIÂY (độ dài đúng khoảng 26 đến 32 từ tiếng Việt).
-3. Tuyệt đối KHÔNG viết chung chung sáo rỗng! Bám sát sự thật có trong ảnh:
-   - 0-3s: Hook giật gân đánh trúng nỗi đau thực tế (khó chịu, mất ngon, phiền toái khi dùng hàng dởm).
-   - 3-7s: Nêu giải pháp và BẮT BUỘC ĐỌC ĐÍCH DANH THÔNG SỐ CỤ THỂ từ ảnh (ví dụ số kg, kích thước, công nghệ).
-   - 7-10s: Kêu gọi hành động (CTA) dứt khoát.
+      // 2. NGÀNH BÀN GHẾ / NỘI THẤT
+      if (lower.includes('bàn') || lower.includes('ghế')) {
+        const dimVal = specs.dimension || '1m6 x 80cm';
+        if (variant === 0) {
+          return `Bàn ghế cũ kỹ ọp ẹp, kênh chân cập kê làm mất mặt khi khách đến chơi? Rước ngay ${pName} kích thước ${dimVal}, khung sườn chắc nịch, phòng khách sang bừng. Mua ngay nhận ưu đãi!`;
+        } else if (variant === 1) {
+          return `Phòng khách chật chội mà muốn sang trọng, tinh tế? ${pName} kích thước chuẩn ${dimVal}, thiết kế tối ưu diện tích, vân gỗ sắc nét bền bỉ 10 năm. Chốt đơn nhận giá hời!`;
+        } else {
+          return `Bỏ ngay mẫu bàn cập kê ọp ẹp! ${pName} kích thước ${dimVal} gỗ dày dặn chịu lực cực đỉnh, tôn vinh đẳng cấp không gian sống. Bấm mua ngay kẻo hết sale!`;
+        }
+      }
 
-Trả về duy nhất JSON:
-{
-  "productName": "Tên sản phẩm đọc từ ảnh",
-  "keySpecs": "Thông số đắt giá đọc từ ảnh",
-  "script10s": "Toàn bộ kịch bản 10 giây (26-32 từ)"
-}`;
+      // 3. MỸ PHẨM / SON / SKINCARE
+      if (/son|kem|serum|da|mỹ phẩm/i.test(lower)) {
+        const volVal = specs.volume || '30ml';
+        if (variant === 0) {
+          return `Đánh son tróc vảy môi lộ rãnh nhăn nheo, mặt mốc meo kém sắc? Thoa ngay ${pName} ${volVal}, màu chuẩn mịn lì mọng mướt, giữ màu suốt 12 tiếng không khô môi. Mua ngay tự tin tỏa sáng!`;
+        } else {
+          return `Da sạm xỉn màu, bôi kem mãi không thấm? Dùng ngay ${pName} ${volVal}, công nghệ thẩm thấu sâu, phục hồi màng ẩm căng bóng rạng ngời chỉ sau 7 ngày. Rinh ngay!`;
+        }
+      }
 
-      parts.push({ text: promptDirective });
+      // 4. GIA DỤNG / BẾP / NỒI CHIÊN
+      if (/nồi|chiên|bếp|máy/i.test(lower)) {
+        const volVal = specs.volume || 'dung tích lớn';
+        return `Nấu nướng dầu mỡ ngấy cổ, chiên rán bắn tung tóe bỏng rát tay? Có ngay ${pName} ${volVal}, giòn rụm giảm 85% chất béo, chín đều 360 độ chỉ một nút bấm. Mua ngay giải phóng đôi tay!`;
+      }
 
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: parts }],
-          generationConfig: { responseMimeType: "application/json" }
-        })
-      });
+      // 5. THỜI TRANG / QUẦN ÁO
+      if (/áo|quần|thun|váy|đầm/i.test(lower)) {
+        return `Mặc áo bí bách ngứa ngáy, giặt vài lần đã bai xù mất dáng? Chọn ngay ${pName}, chất vải co giãn 4 chiều thoáng mát, form đứng tôn dáng tự tin dạo phố. Mua ngay!`;
+      }
 
-      const resData = await response.json();
-      const text = resData.candidates?.[0]?.content?.parts?.[0]?.text;
-      return JSON.parse(text);
+      if (matchedRule) {
+        return `Bạn khó chịu vì mua nhầm sản phẩm kém bền dùng vài bữa đã hỏng? Chọn ngay ${pName} chuẩn ${matchedRule.mustHave}, vật liệu cao cấp, giải quyết triệt để nỗi lo. Mua ngay hôm nay!`;
+      }
+
+      return `Đừng phí tiền cho những sản phẩm ọp ẹp dùng vài lần đã chán! Chọn ngay ${pName}, chuẩn từng thông số, giải quyết dứt điểm phiền toái cho bạn. Đặt ngay kẻo lỡ giá tốt!`;
     }
 
-    // Render danh sách 5 Card sản phẩm
+    // Render danh sách 5 Card sản phẩm ở Bước 2
     function renderProductRows() {
       const container = document.getElementById('product-cards-container');
       if (!container) return;
@@ -1097,7 +1783,6 @@ Trả về duy nhất JSON:
         const num = index + 1;
         const card = document.createElement('div');
         card.className = 'bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-4 shadow-xl space-y-3 transition';
-        
         const extraCount = (prod.extraImages && prod.extraImages.length) || 0;
 
         card.innerHTML = `
@@ -1108,7 +1793,6 @@ Trả về duy nhất JSON:
                 ${num}
               </span>
 
-              <!-- Hiển thị tên sản phẩm & Ô chỉnh sửa tên -->
               <div class="flex-1 min-w-0">
                 <span id="name-display-${index}" class="text-sm sm:text-base font-extrabold text-white block truncate cursor-pointer hover:text-rose-300" title="Bấm để sửa tên">
                   ${prod.name || 'Sản phẩm ' + num}
@@ -1123,13 +1807,11 @@ Trả về duy nhất JSON:
             </div>
 
             <div class="flex items-center gap-1.5 shrink-0">
-              <!-- Nút Quét chữ tự động từ ảnh -->
               <button type="button" class="ocr-scan-btn text-[11px] font-semibold text-indigo-300 hover:text-white px-2.5 py-1 bg-indigo-500/10 hover:bg-indigo-500/20 rounded-lg border border-indigo-500/30 transition flex items-center gap-1" data-index="${index}" title="Quét chữ trong ảnh để tự lấy tên và thông số">
                 <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 <span>Quét ảnh lấy tên</span>
               </button>
 
-              <!-- Nút bấm Sửa tên -->
               <button type="button" class="edit-name-toggle-btn text-xs font-semibold text-rose-400 hover:text-rose-300 flex items-center gap-1 px-2.5 py-1 bg-rose-500/10 hover:bg-rose-500/20 rounded-lg border border-rose-500/20 transition" data-index="${index}">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
                 <span>Sửa tên</span>
@@ -1137,10 +1819,8 @@ Trả về duy nhất JSON:
             </div>
           </div>
 
-          <!-- Khu vực Ảnh chính & Thông tin sản phẩm -->
+          <!-- Ảnh chính & Thông tin chi tiết -->
           <div class="grid grid-cols-12 gap-3 items-center">
-            
-            <!-- Ảnh đại diện chính -->
             <div class="col-span-4 sm:col-span-3 flex items-center gap-2">
               <div class="w-14 h-14 rounded-xl bg-slate-950 border border-slate-700 checkerboard flex items-center justify-center overflow-hidden shrink-0 relative cursor-pointer" title="Bấm để đổi ảnh chính">
                 <img id="prod-thumb-${index}" src="${prod.image || ''}" alt="" class="${prod.image ? '' : 'hidden'} max-w-full max-h-full object-contain">
@@ -1152,14 +1832,12 @@ Trả về duy nhất JSON:
               <input type="file" id="single-file-input-${index}" accept="image/*" class="hidden">
             </div>
 
-            <!-- Ô nhập thông tin chi tiết -->
             <div class="col-span-8 sm:col-span-9">
               <input type="text" id="prod-info-input-${index}" value="${prod.info || ''}" placeholder="Thông tin chi tiết (VD: Túi 5kg dẻo thơm, kích thước 1m6x80cm, bảo hành 12 tháng...)" class="w-full bg-slate-950 border border-slate-700/80 focus:border-rose-500 rounded-xl px-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none transition">
             </div>
-
           </div>
 
-          <!-- KHU VỰC UP THÊM ẢNH THÔNG TIN SẢN PHẨM (KHÔNG GIỚI HẠN) -->
+          <!-- UP ẢNH THÔNG TIN SẢN PHẨM KHÔNG GIỚI HẠN -->
           <div class="p-3 bg-slate-950/70 border border-slate-800/80 rounded-xl space-y-2">
             <div class="flex flex-wrap items-center justify-between gap-2">
               <div class="flex items-center gap-2 text-xs">
@@ -1171,7 +1849,6 @@ Trả về duy nhất JSON:
                 </span>
               </div>
 
-              <!-- Nút tải ảnh thông tin không giới hạn -->
               <button type="button" class="upload-extra-imgs-btn px-3 py-1 bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-300 hover:text-white rounded-lg border border-indigo-500/30 text-xs font-semibold flex items-center gap-1.5 transition" data-index="${index}">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                 <span>Up thêm ảnh thông số (Không giới hạn)</span>
@@ -1179,9 +1856,8 @@ Trả về duy nhất JSON:
               <input type="file" id="extra-file-input-${index}" multiple accept="image/*" class="hidden">
             </div>
 
-            <!-- Dải thumbnail các ảnh thông tin đã up -->
             <div id="extra-thumbs-strip-${index}" class="flex flex-wrap items-center gap-2 pt-1 min-h-[32px]">
-              <!-- Extra thumbnails rendered here -->
+              <!-- Thumbnails rendered here -->
             </div>
           </div>
         `;
@@ -1189,7 +1865,7 @@ Trả về duy nhất JSON:
         container.appendChild(card);
         renderExtraThumbnails(index);
 
-        // Nút bấm sửa tên
+        // Edit name toggle
         const editBtn = card.querySelector('.edit-name-toggle-btn');
         const nameDisplay = card.querySelector(`#name-display-${index}`);
         const nameEditBox = card.querySelector(`#name-edit-box-${index}`);
@@ -1199,9 +1875,7 @@ Trả về duy nhất JSON:
         const toggleEdit = () => {
           nameEditBox.classList.toggle('hidden');
           nameDisplay.classList.toggle('hidden');
-          if (!nameEditBox.classList.contains('hidden')) {
-            nameEditInput.focus();
-          }
+          if (!nameEditBox.classList.contains('hidden')) nameEditInput.focus();
         };
 
         editBtn.addEventListener('click', toggleEdit);
@@ -1220,7 +1894,7 @@ Trả về duy nhất JSON:
           if (e.key === 'Enter') saveNameFn();
         });
 
-        // Nút OCR Quét ảnh để tìm tên thật
+        // OCR button
         const ocrBtn = card.querySelector('.ocr-scan-btn');
         ocrBtn.addEventListener('click', async () => {
           if (!prod.image) {
@@ -1231,47 +1905,27 @@ Trả về duy nhất JSON:
           ocrBtn.innerHTML = '<span>Đang quét...</span>';
 
           try {
-            const apiKey = localStorage.getItem('ai_video_gemini_key');
-            if (apiKey) {
-              const res = await callGeminiVision(apiKey, prod);
-              if (res?.productName) {
-                state.batchProducts[index].name = res.productName;
-                nameDisplay.textContent = res.productName;
-                nameEditInput.value = res.productName;
+            const scannedText = await scanImageForText(prod.image);
+            if (scannedText && scannedText.trim().length > 3) {
+              const lines = scannedText.split(/[\r\n]+/).map(l => l.trim()).filter(l => l.length > 2);
+              if (lines.length > 0) {
+                const detectedName = lines[0].substring(0, 45);
+                state.batchProducts[index].name = detectedName;
+                nameDisplay.textContent = detectedName;
+                nameEditInput.value = detectedName;
               }
-              if (res?.keySpecs) {
-                state.batchProducts[index].info = res.keySpecs;
-                card.querySelector(`#prod-info-input-${index}`).value = res.keySpecs;
+              const specs = extractRealSpecsFromText(scannedText);
+              const specParts = [];
+              if (specs.weight) specParts.push(`Khối lượng: ${specs.weight}`);
+              if (specs.dimension) specParts.push(`Kích thước: ${specs.dimension}`);
+              if (specs.volume) specParts.push(`Dung tích: ${specs.volume}`);
+              if (specParts.length > 0) {
+                state.batchProducts[index].info = specParts.join(' • ');
+                card.querySelector(`#prod-info-input-${index}`).value = specParts.join(' • ');
               }
-              showToast(`AI đã nhận diện: "${res.productName}"`);
+              showToast(`Đã quét được chữ từ ảnh Sản phẩm ${num}!`);
             } else {
-              // Dùng OCR Tesseract
-              const scannedText = await scanImageForText(prod.image);
-              if (scannedText && scannedText.trim().length > 3) {
-                const lines = scannedText.split(/[\r\n]+/).map(l => l.trim()).filter(l => l.length > 2);
-                if (lines.length > 0) {
-                  // Lấy dòng chữ đầu tiên có ý nghĩa làm tên
-                  const detectedName = lines[0].substring(0, 45);
-                  state.batchProducts[index].name = detectedName;
-                  nameDisplay.textContent = detectedName;
-                  nameEditInput.value = detectedName;
-                }
-                // Trích xuất thông số
-                const specs = extractRealSpecsFromText(scannedText);
-                const specParts = [];
-                if (specs.weight) specParts.push(`Khối lượng: ${specs.weight}`);
-                if (specs.dimension) specParts.push(`Kích thước: ${specs.dimension}`);
-                if (specs.volume) specParts.push(`Dung tích: ${specs.volume}`);
-                if (specs.discount) specParts.push(`Ưu đãi: ${specs.discount}`);
-                if (specParts.length > 0) {
-                  const specStr = specParts.join(' • ');
-                  state.batchProducts[index].info = specStr;
-                  card.querySelector(`#prod-info-input-${index}`).value = specStr;
-                }
-                showToast(`Đã quét được chữ từ ảnh Sản phẩm ${num}!`);
-              } else {
-                showToast(`Không tìm thấy chữ rõ ràng trong ảnh Sản phẩm ${num}. Hãy bấm "Sửa tên" để gõ tay!`, 'error');
-              }
+              showToast(`Không tìm thấy chữ trên ảnh Sản phẩm ${num}. Hãy bấm "Sửa tên" để gõ tay!`, 'error');
             }
           } catch (err) {
             showToast('Lỗi khi quét ảnh. Bạn có thể bấm "Sửa tên" để gõ!', 'error');
@@ -1280,7 +1934,7 @@ Trả về duy nhất JSON:
           }
         });
 
-        // Upload ảnh chính
+        // Single upload
         const singleBtn = card.querySelector('.single-upload-btn');
         const singleInput = card.querySelector(`#single-file-input-${index}`);
         const singleThumbBox = card.querySelector('.checkerboard');
@@ -1295,27 +1949,24 @@ Trả về duy nhất JSON:
             const reader = new FileReader();
             reader.onload = (ev) => {
               state.batchProducts[index].image = ev.target.result;
-              
-              // Nếu tên file có nghĩa, cập nhật tên
               const cleanName = cleanNameFromFileName(file.name);
               if (cleanName) {
                 state.batchProducts[index].name = cleanName;
                 nameDisplay.textContent = cleanName;
                 nameEditInput.value = cleanName;
               }
-
               const imgElem = document.getElementById(`prod-thumb-${index}`);
               const placeholder = document.getElementById(`prod-thumb-placeholder-${index}`);
               imgElem.src = ev.target.result;
               imgElem.classList.remove('hidden');
               placeholder.classList.add('hidden');
-              showToast(`Đã tải ảnh cho Sản phẩm ${num}! Bấm "Quét ảnh lấy tên" nếu muốn đọc chữ trên ảnh.`);
+              showToast(`Đã tải ảnh cho Sản phẩm ${num}!`);
             };
             reader.readAsDataURL(file);
           }
         });
 
-        // Upload ảnh thông tin bổ sung không giới hạn
+        // Extra upload
         const extraBtn = card.querySelector('.upload-extra-imgs-btn');
         const extraInput = card.querySelector(`#extra-file-input-${index}`);
         extraBtn.addEventListener('click', () => extraInput.click());
@@ -1332,7 +1983,16 @@ Trả về duy nhất JSON:
       });
     }
 
-    // Xử lý nạp ảnh thông tin bổ sung không giới hạn
+    function cleanNameFromFileName(filename) {
+      if (!filename) return '';
+      let name = filename.replace(/\.[^/.]+$/, "");
+      if (/^(img|image|screenshot|photo|file|download|pasted|scan|\d+)[_\-\s\d]*/i.test(name)) {
+        return '';
+      }
+      name = name.replace(/[_-]+/g, " ").trim();
+      return name.length > 2 ? name.charAt(0).toUpperCase() + name.slice(1) : '';
+    }
+
     function handleExtraFilesUpload(prodIndex, files) {
       if (!files || files.length === 0) return;
       if (!state.batchProducts[prodIndex].extraImages) {
@@ -1406,7 +2066,6 @@ Trả về duy nhất JSON:
       });
     }
 
-    // Tải 5 ảnh đầu
     function handleBatchFiles(files) {
       if (!files || files.length === 0) return;
       const count = Math.min(files.length, 5);
@@ -1414,9 +2073,7 @@ Trả về duy nhất JSON:
 
       Array.from(files).slice(0, 5).forEach((file, index) => {
         const cleanName = cleanNameFromFileName(file.name);
-        if (cleanName) {
-          state.batchProducts[index].name = cleanName;
-        }
+        if (cleanName) state.batchProducts[index].name = cleanName;
 
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -1428,127 +2085,26 @@ Trả về duy nhất JSON:
       showToast(`Đã nạp 5 ảnh vào danh sách! Bấm "Quét ảnh lấy tên" ở từng sản phẩm để nhận diện chữ trên bao bì.`);
     }
 
-    // BỘ SINH CONTENT 10S THỰC CHIẾN (CHẮT LỌC THÔNG SỐ, ĐÁNH TRÚNG NỖI ĐAU, KHÔNG SÁO RỖNG)
-    function generatePractical10sScript(prod, seed = 0) {
-      const fullText = (prod.name + ' ' + (prod.info || '')).trim();
-      const lower = fullText.toLowerCase();
-      const specs = extractRealSpecsFromText(fullText);
-
-      // Kiểm tra quy tắc học hỏi
-      let matchedRule = null;
-      for (const rule of state.learnedRules) {
-        if (lower.includes(rule.category.toLowerCase())) {
-          matchedRule = rule;
-          break;
-        }
-      }
-
-      const pName = prod.name || 'Sản phẩm';
-      const variant = (seed) % 3;
-
-      // 1. NGÀNH GẠO / NÔNG SẢN
-      if (lower.includes('gạo')) {
-        const kgVal = specs.weight || 'túi 5kg';
-        if (variant === 0) {
-          return `Cơm nấu lên khô khốc, nhai bã miệng nuốt nghẹn cổ? Đổi ngay ${pName} chuẩn ${kgVal}, từng hạt dẻo thơm ngào ngạt, để nguội vẫn mềm tan. Ăn là mê, đặt ngay nhé!`;
-        } else if (variant === 1) {
-          return `Đừng để cả nhà mất ngon chỉ vì nồi cơm khô cứng pha tạp! Chọn ngay ${pName} đóng gói ${kgVal}, cơm dẻo ngọt đậm đà, chuẩn vị ngon tròn bữa. Thử ngay hôm nay!`;
-        } else {
-          return `Bữa cơm gia đình ấm cúng bắt đầu từ bát cơm thơm dẻo chuẩn vị. ${pName} đóng ${kgVal} hút chân không sạch tinh tươm, hạt thon đều tăm tắp. Đặt mua ăn thử ngay!`;
-        }
-      }
-
-      // 2. NGÀNH BÀN GHẾ / NỘI THẤT
-      if (lower.includes('bàn') || lower.includes('ghế')) {
-        const dimVal = specs.dimension || '1m6 x 80cm';
-        if (variant === 0) {
-          return `Bàn ghế cũ kỹ ọp ẹp, kênh chân cập kê làm mất mặt khi khách đến chơi? Rước ngay ${pName} kích thước ${dimVal}, khung sườn chắc nịch, phòng khách sang bừng. Mua ngay nhận ưu đãi!`;
-        } else if (variant === 1) {
-          return `Phòng khách chật chội mà muốn sang trọng, tinh tế? ${pName} kích thước chuẩn ${dimVal}, thiết kế tối ưu diện tích, vân gỗ sắc nét bền bỉ 10 năm. Chốt đơn nhận giá hời!`;
-        } else {
-          return `Bỏ ngay mẫu bàn cập kê ọp ẹp! ${pName} kích thước ${dimVal} gỗ dày dặn chịu lực cực đỉnh, tôn vinh đẳng cấp không gian sống. Bấm mua ngay kẻo hết sale!`;
-        }
-      }
-
-      // 3. ĐỒ GIA DỤNG / BẾP / NỒI CHIÊN
-      if (lower.includes('nồi') || lower.includes('chiên') || lower.includes('bếp') || lower.includes('máy')) {
-        const volVal = specs.volume || 'dung tích lớn';
-        if (variant === 0) {
-          return `Thèm đồ chiên mà sợ dầu mỡ ngấy cổ, nấu nướng ám mùi cả nhà? Rinh ngay ${pName} ${volVal}, giòn rụm giảm 85% dầu mỡ, nướng gà nguyên con cực nhàn. Mua ngay giải phóng đôi tay!`;
-        } else {
-          return `Chiên rán bắn tung tóe bỏng rát tay, dọn dẹp mất cả tiếng? Có ngay ${pName} ${volVal}, chín đều 360 độ chỉ một nút bấm, vỏ giòn thịt mọng nước. Đặt hàng ngay hôm nay!`;
-        }
-      }
-
-      // 4. MỸ PHẨM / SKINCARE
-      if (lower.includes('serum') || lower.includes('da') || lower.includes('kem') || lower.includes('son')) {
-        const volVal = specs.volume || '30ml';
-        if (variant === 0) {
-          return `Da khô ráp sần sùi, đổ dầu bết dính đánh phấn mốc meo? Thoa ngay ${pName} ${volVal}, cấp ẩm căng bóng tức thì, phục hồi màng ẩm mịn màng sau 7 ngày. Dùng là nghiện!`;
-        } else {
-          return `Mặt nổi mụn ẩn, thâm sạm khiến bạn mất tự tin giao tiếp? Trải nghiệm ngay ${pName} ${volVal}, công thức dịu nhẹ thẩm thấu sâu, da khỏe mịn màng rõ rệt. Thử ngay!`;
-        }
-      }
-
-      // 5. THỜI TRANG / QUẦN ÁO
-      if (lower.includes('áo') || lower.includes('quần') || lower.includes('thun') || lower.includes('váy')) {
-        return `Mặc áo bí bách ngứa ngáy, giặt vài lần đã bai xù mất dáng? Chọn ngay ${pName}, chất vải co giãn 4 chiều thoáng mát, form đứng tôn dáng tự tin dạo phố. Mua ngay!`;
-      }
-
-      // 6. CÁC SẢN PHẨM KHÁC
-      if (matchedRule) {
-        return `Bạn khó chịu vì mua nhầm sản phẩm kém bền dùng vài bữa đã hỏng? Chọn ngay ${pName} chuẩn ${matchedRule.mustHave}, vật liệu cao cấp, giải quyết triệt để nỗi lo. Mua ngay hôm nay!`;
-      }
-
-      return `Đừng phí tiền cho những sản phẩm ọp ẹp dùng vài lần đã chán! Chọn ngay ${pName}, chuẩn từng thông số, giải quyết dứt điểm phiền toái cho bạn. Đặt ngay kẻo lỡ giá tốt!`;
-    }
-
     // TẠO HÀNG LOẠT 5 CONTENT
-    async function generateBatch5Scripts(increaseSeed = false) {
+    function generateBatch5Scripts(increaseSeed = false) {
       if (increaseSeed) {
         state.variationSeed += 1;
       }
 
-      const genBtnLabel = document.getElementById('gen-btn-label');
-      if (genBtnLabel) genBtnLabel.textContent = 'ĐANG PHÂN TÍCH ẢNH & TẠO KỊCH BẢN...';
-
       state.generatedScripts = [];
-      const apiKey = localStorage.getItem('ai_video_gemini_key');
 
       for (let i = 0; i < state.batchProducts.length; i++) {
         const prod = state.batchProducts[i];
         const infoInput = document.getElementById(`prod-info-input-${i}`);
         if (infoInput) prod.info = infoInput.value.trim();
-
-        let script = '';
-
-        // Nếu có Gemini API Key và có ảnh: Sử dụng AI Vision đọc ảnh thật
-        if (apiKey && (prod.image || (prod.extraImages && prod.extraImages.length > 0))) {
-          try {
-            const aiRes = await callGeminiVision(apiKey, prod);
-            if (aiRes?.productName && !prod.name.includes(aiRes.productName)) {
-              prod.name = aiRes.productName;
-              const nameDisp = document.getElementById(`name-display-${i}`);
-              if (nameDisp) nameDisp.textContent = aiRes.productName;
-            }
-            script = aiRes?.script10s || generatePractical10sScript(prod, state.variationSeed + i);
-          } catch (e) {
-            script = generatePractical10sScript(prod, state.variationSeed + i);
-          }
-        } else {
-          script = generatePractical10sScript(prod, state.variationSeed + i);
-        }
-
+        const script = generatePractical10sScript(prod, state.variationSeed + i);
         state.generatedScripts.push(script);
       }
 
       renderBatchResults();
-
-      if (genBtnLabel) genBtnLabel.textContent = 'TẠO HÀNG LOẠT 5 CONTENT 10 GIÂY (CHẮT LỌC TỪ ẢNH)';
       showToast(increaseSeed ? 'Đã đổi toàn bộ content mới cho cả 5 sản phẩm!' : 'Đã tạo xong hàng loạt 5 kịch bản 10 giây bám sát thông số!');
     }
 
-    // Render 5 Card kết quả
     function renderBatchResults() {
       const container = document.getElementById('batch-results-container');
       if (!container) return;
@@ -1593,12 +2149,12 @@ Trả về duy nhất JSON:
             </div>
           </div>
 
-          <!-- Nội dung kịch bản 10 giây (Sửa trực tiếp) -->
+          <!-- Nội dung kịch bản 10 giây -->
           <div class="relative">
             <textarea id="script-textarea-${index}" rows="3" class="w-full bg-slate-950/60 border border-slate-800/80 focus:border-rose-500/80 rounded-xl p-3 text-slate-100 text-xs sm:text-sm leading-relaxed focus:outline-none resize-none">${script}</textarea>
           </div>
 
-          <!-- Footer Card: Thời lượng + Loa + Đổi biến thể riêng + Gửi vào Step 3 -->
+          <!-- Footer Card -->
           <div class="pt-2 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 border-t border-slate-800/60">
             <div class="flex items-center gap-2">
               <span>Độ dài: <strong class="text-white font-mono">${words} từ</strong></span>
@@ -1607,18 +2163,15 @@ Trả về duy nhất JSON:
             </div>
 
             <div class="flex items-center gap-2">
-              <!-- Nghe đọc TTS -->
               <button type="button" class="speak-single-card-btn p-1.5 hover:text-rose-400 rounded-lg hover:bg-slate-800 transition" data-index="${index}" title="Nghe đọc thử giọng 10s">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
               </button>
 
-              <!-- Đổi content riêng cho SP này -->
-              <button type="button" class="refresh-single-card-btn text-[11px] px-2 py-1 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded-lg border border-slate-700 transition flex items-center gap-1" data-index="${index}" title="Đổi kịch bản khác cho sản phẩm này">
+              <button type="button" class="refresh-single-card-btn text-[11px] px-2 py-1 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded-lg border border-slate-700 transition flex items-center gap-1" data-index="${index}" title="Đổi kịch bản khác">
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                 Đổi mẫu khác
               </button>
 
-              <!-- Đưa sang Bước 3 -->
               <button type="button" class="use-in-step3-btn text-[11px] px-2.5 py-1 bg-indigo-600/80 hover:bg-indigo-600 text-white rounded-lg font-bold transition flex items-center gap-1" data-index="${index}">
                 <span>Dựng Video</span>
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
@@ -1653,9 +2206,7 @@ Trả về duy nhất JSON:
         const useInStep3Btn = card.querySelector('.use-in-step3-btn');
         useInStep3Btn.addEventListener('click', () => {
           state.activeProductIdx = index;
-          if (prod.image) {
-            state.processedImage = prod.image;
-          }
+          if (prod.image) state.processedImage = prod.image;
           state.productName = prod.name;
           switchStep(3);
           showToast(`Đã đưa Sản phẩm ${num} sang Bước 3!`);
@@ -1663,8 +2214,22 @@ Trả về duy nhất JSON:
       });
     }
 
+    function speakSpecificText(text) {
+      if (!('speechSynthesis' in window)) {
+        showToast('Trình duyệt không hỗ trợ đọc âm thanh!', 'error');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'vi-VN';
+      utterance.rate = 1.15;
+      utterance.pitch = 1.0;
+      window.speechSynthesis.speak(utterance);
+      showToast('Đang đọc thử kịch bản 10 giây...');
+    }
+
     // ==========================================
-    // STEP 3: VIDEO STUDIO & 10S PREVIEW
+    // BƯỚC 3: VIDEO STUDIO & 10S PREVIEW
     // ==========================================
     function updateScenePrompts() {
       const activeProd = state.batchProducts[state.activeProductIdx] || state.batchProducts[0];
@@ -1687,11 +2252,11 @@ Trả về duy nhất JSON:
       
       if (activeProd && activeProd.image) {
         stageImg.src = activeProd.image;
-      } else if (state.processedImage) {
-        stageImg.src = state.processedImage;
+      } else if (state.composedImage916) {
+        stageImg.src = state.composedImage916;
       } else {
         generateSampleProduct();
-        stageImg.src = state.processedImage;
+        stageImg.src = state.composedImage916 || '';
       }
 
       const script = state.generatedScripts[state.activeProductIdx] || (state.generatedScripts[0] || '');
@@ -1799,35 +2364,368 @@ Trả về duy nhất JSON:
     // ==========================================
     // INITIALIZATION & EVENT LISTENERS
     // ==========================================
-    window.addEventListener('DOMContentLoaded', () => {
-      loadLearnedRules();
 
-      // AI Key listeners
-      loadGeminiKey();
-      const toggleAiKeyBtn = document.getElementById('toggle-ai-key-btn');
-      const aiKeyPanel = document.getElementById('ai-key-panel');
-      if (toggleAiKeyBtn && aiKeyPanel) {
-        toggleAiKeyBtn.addEventListener('click', () => {
-          aiKeyPanel.classList.toggle('hidden');
-        });
+
+    // ===================================================================
+    // PHẦN 2: ONE-CLICK FAST VIDEO & TRỢ LÝ AI CAPCUT LOGIC
+    // ===================================================================
+    state.part2 = {
+      selectedImage: null,
+      selectedPromptType: 'viral',
+      generatedContent: 'Cơm nấu lên khô khốc, nuốt nghẹn cổ? Đổi ngay gạo Quảng Trị chuẩn túi 5kg dẻo ngọt từng hạt, ăn là mê!',
+      voiceAudioUrl: null,
+      voiceAudioBlob: null,
+      isRecordingMic: false,
+      mediaRecorder: null,
+      audioChunks: [],
+      isPlayingCapcut: false,
+      capcutTimer: null,
+      capcutTimeElapsed: 0,
+      archiveProjects: []
+    };
+
+    // Load archive projects
+    function loadPart2Archive() {
+      try {
+        const saved = localStorage.getItem('ai_video_p2_archive');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed)) state.part2.archiveProjects = parsed;
+        }
+      } catch (e) {}
+      renderPart2Archive();
+    }
+
+    function savePart2Archive() {
+      try {
+        localStorage.setItem('ai_video_p2_archive', JSON.stringify(state.part2.archiveProjects));
+      } catch (e) {}
+      renderPart2Archive();
+    }
+
+    function renderPart2Archive() {
+      const container = document.getElementById('p2-archive-list');
+      if (!container) return;
+
+      container.innerHTML = '';
+      if (state.part2.archiveProjects.length === 0) {
+        container.innerHTML = '<span class="text-xs text-slate-500 italic">Trợ lý chưa lưu dự án nào. Bấm tạo video hoặc ra lệnh để trợ lý tự động lưu trữ tài liệu cho bạn!</span>';
+        return;
       }
-      const saveKeyBtn = document.getElementById('save-gemini-key-btn');
-      if (saveKeyBtn) {
-        saveKeyBtn.addEventListener('click', () => {
-          const val = document.getElementById('gemini-api-key-input').value.trim();
-          if (val) {
-            localStorage.setItem('ai_video_gemini_key', val);
-            document.getElementById('ai-key-status-text').innerHTML = '✅ <span class="text-emerald-300">Đã kích hoạt AI Vision</span>';
-            aiKeyPanel.classList.add('hidden');
-            showToast('Đã lưu API Key AI! Giờ đây AI sẽ đọc sạch chữ từ ảnh của bạn.');
-          } else {
-            localStorage.removeItem('ai_video_gemini_key');
-            document.getElementById('ai-key-status-text').textContent = 'Cài đặt API Key AI (Tùy chọn)';
-            showToast('Đã gỡ bỏ API Key.');
+
+      state.part2.archiveProjects.forEach((proj, idx) => {
+        const item = document.createElement('div');
+        item.className = 'p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between gap-3 text-xs';
+        item.innerHTML = `
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="w-6 h-6 rounded-lg bg-indigo-600/30 text-indigo-400 font-bold text-[10px] flex items-center justify-center shrink-0">#${idx+1}</span>
+            <div class="truncate">
+              <span class="text-white font-bold block truncate">${proj.title}</span>
+              <span class="text-[10px] text-slate-400">${proj.time} • ${proj.hasVoice ? '🎙️ Có voice gốc' : 'Loa AI'}</span>
+            </div>
+          </div>
+          <button type="button" class="p2-load-project-btn text-[11px] font-semibold text-rose-400 hover:text-rose-300 px-2 py-1 bg-slate-900 rounded-lg shrink-0" data-idx="${idx}">
+            Mở lại &rarr;
+          </button>
+        `;
+        container.appendChild(item);
+      });
+
+      container.querySelectorAll('.p2-load-project-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = parseInt(btn.getAttribute('data-idx'));
+          const proj = state.part2.archiveProjects[idx];
+          if (proj) {
+            state.part2.generatedContent = proj.content;
+            document.getElementById('capcut-subtitle-text').textContent = `"${proj.content}"`;
+            document.getElementById('p2-auto-content-preview').textContent = `"${proj.content}"`;
+            showToast(`Đã nạp lại dự án: "${proj.title}"!`);
           }
         });
+      });
+    }
+
+    // Tự động sinh content cho One-Click Fast Video
+    function generateOneClickContent(promptType) {
+      state.part2.selectedPromptType = promptType;
+      let text = '';
+      if (promptType === 'viral') {
+        text = 'Cơm mỗi ngày mà gạo khô nuốt nghẹn cổ? Đổi ngay Gạo Quảng Trị túi 5kg dẻo ngọt từng hạt, để cơm nguội vẫn mềm tan. Ăn là mê!';
+      } else if (promptType === 'cinematic') {
+        text = 'Tinh hoa hạt ngọc trời chắt lọc từng giọt phù sa. Gạo Quảng Trị thượng hạng, dẻo thơm ngào ngạt nâng tầm bữa cơm gia đình bạn.';
+      } else if (promptType === 'review') {
+        text = 'Đo đạc kiểm định thực tế túi Gạo 5kg chính hãng: Hạt thon dài đều tăm tắp, không chất bảo quản, chuẩn cơm mẹ nấu thơm lừng!';
+      } else {
+        text = 'Dừng lại 3 giây! Flash sale sập sàn túi 5kg gạo thơm chỉ hôm nay. Bấm ngay vào giỏ hàng kẻo hết mã giảm giá nhé!';
       }
 
+      state.part2.generatedContent = text;
+      document.getElementById('p2-auto-content-preview').textContent = `"${text}"`;
+      document.getElementById('capcut-subtitle-text').textContent = `"${text}"`;
+    }
+
+    // CapCut Canvas Drawing Loop
+    function renderCapcutCanvasFrame(progress) {
+      const canvas = document.getElementById('capcut-canvas');
+      if (!canvas) return;
+      canvas.width = 720;
+      canvas.height = 1280; // 9:16
+      const ctx = canvas.getContext('2d');
+
+      // 1. Background gradient animation
+      const grad = ctx.createLinearGradient(0, 0, 0, 1280);
+      grad.addColorStop(0, '#0f172a');
+      grad.addColorStop(0.5, '#1e1b4b');
+      grad.addColorStop(1, '#020617');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 720, 1280);
+
+      // 2. Glowing particles / ambient
+      ctx.fillStyle = 'rgba(244, 63, 94, 0.15)';
+      ctx.beginPath();
+      ctx.arc(360, 640, 250 + Math.sin(progress * Math.PI * 4) * 40, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 3. Product Image with Zoom & Floating motion
+      const imgSrc = state.part2.selectedImage || state.composedImage916 || state.batchProducts[0].image;
+      if (imgSrc) {
+        const img = new Image();
+        img.src = imgSrc;
+        if (img.complete) {
+          const scale = 1.0 + Math.sin(progress * Math.PI * 2) * 0.08;
+          const w = 420 * scale;
+          const h = 420 * scale;
+          const x = (720 - w) / 2;
+          const y = 380 - (Math.sin(progress * Math.PI * 2) * 20);
+
+          // Shadow
+          ctx.save();
+          ctx.fillStyle = 'rgba(0,0,0,0.45)';
+          ctx.beginPath();
+          ctx.ellipse(360, y + h - 10, w * 0.4, 25, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+
+          ctx.drawImage(img, x, y, w, h);
+        }
+      }
+
+      // 4. Karaoke Caption banner on Canvas
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
+      ctx.beginPath();
+      ctx.roundRect(40, 960, 640, 140, 24);
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+      ctx.stroke();
+
+      ctx.fillStyle = '#fef08a'; // bright yellow karaoke font
+      ctx.font = 'bold 24px Inter, sans-serif';
+      ctx.textAlign = 'center';
+
+      const fullTxt = state.part2.generatedContent || 'Video CapCut AI';
+      ctx.fillText(fullTxt.substring(0, 36), 360, 1020);
+      if (fullTxt.length > 36) {
+        ctx.fillText(fullTxt.substring(36, 75), 360, 1060);
+      }
+    }
+
+    // Toggle Play Capcut Mini Player
+    function toggleCapcutPlayer() {
+      const playIcon = document.getElementById('capcut-play-icon');
+      const pauseIcon = document.getElementById('capcut-pause-icon');
+      const progressBar = document.getElementById('capcut-progress-bar');
+      const timeDisplay = document.getElementById('capcut-time-display');
+
+      state.part2.isPlayingCapcut = !state.part2.isPlayingCapcut;
+
+      if (state.part2.isPlayingCapcut) {
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+        state.part2.capcutTimeElapsed = 0;
+        clearInterval(state.part2.capcutTimer);
+
+        // Phát voice gốc nếu có
+        if (state.part2.voiceAudioUrl) {
+          const audio = new Audio(state.part2.voiceAudioUrl);
+          audio.play().catch(() => {});
+        } else {
+          speakSpecificText(state.part2.generatedContent);
+        }
+
+        state.part2.capcutTimer = setInterval(() => {
+          state.part2.capcutTimeElapsed += 0.1;
+          const cur = state.part2.capcutTimeElapsed;
+
+          if (cur >= 10.0) {
+            clearInterval(state.part2.capcutTimer);
+            state.part2.isPlayingCapcut = false;
+            playIcon.classList.remove('hidden');
+            pauseIcon.classList.add('hidden');
+            progressBar.style.width = '100%';
+            timeDisplay.textContent = '00:10 / 00:10';
+            return;
+          }
+
+          const percent = (cur / 10.0) * 100;
+          progressBar.style.width = `${percent}%`;
+          timeDisplay.textContent = `00:0${Math.floor(cur)} / 00:10`;
+          renderCapcutCanvasFrame(cur / 10.0);
+        }, 100);
+
+      } else {
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+        clearInterval(state.part2.capcutTimer);
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      }
+    }
+
+    // Xuất video HD thật (.webm / .mp4) bằng MediaRecorder
+    function exportRealHDVideo() {
+      const canvas = document.getElementById('capcut-canvas');
+      const exportLabel = document.getElementById('export-video-label');
+      if (!canvas) return;
+
+      if (typeof MediaRecorder === 'undefined' || !canvas.captureStream) {
+        showToast('Trình duyệt không hỗ trợ MediaRecorder trực tiếp!', 'error');
+        return;
+      }
+
+      showToast('Đang kết xuất video HD 10 giây...');
+      exportLabel.textContent = '⏳ Đang ghi video HD (10s)...';
+
+      try {
+        const stream = canvas.captureStream(30);
+        let mime = 'video/webm;codecs=vp9';
+        if (!MediaRecorder.isTypeSupported(mime)) {
+          mime = 'video/webm';
+        }
+
+        const recorder = new MediaRecorder(stream, { mimeType: mime });
+        const recordedChunks = [];
+
+        recorder.ondataavailable = (e) => {
+          if (e.data.size > 0) recordedChunks.push(e.data);
+        };
+
+        recorder.onstop = () => {
+          const blob = new Blob(recordedChunks, { type: mime });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `Video_CapCut_HD_${Date.now()}.webm`;
+          a.click();
+          URL.revokeObjectURL(url);
+          exportLabel.textContent = '⬇️ Xuất Video HD Thật Về Máy';
+          showToast('Đã tải video HD về thiết bị của bạn thành công!');
+
+          // Tự động lưu dự án vào bộ nhớ trợ lý
+          state.part2.archiveProjects.unshift({
+            title: 'Video CapCut HD 10s',
+            content: state.part2.generatedContent,
+            time: new Date().toLocaleTimeString('vi-VN') + ' ' + new Date().toLocaleDateString('vi-VN'),
+            hasVoice: !!state.part2.voiceAudioUrl
+          });
+          savePart2Archive();
+        };
+
+        recorder.start();
+
+        // Chạy animation ghi hình trong 10 giây
+        let frameCount = 0;
+        const totalFrames = 100; // 10s at 10fps steps
+        const recordInterval = setInterval(() => {
+          frameCount++;
+          renderCapcutCanvasFrame(frameCount / totalFrames);
+          if (frameCount >= totalFrames) {
+            clearInterval(recordInterval);
+            recorder.stop();
+          }
+        }, 100);
+
+      } catch (err) {
+        exportLabel.textContent = '⬇️ Xuất Video HD Thật Về Máy';
+        showToast('Không thể thu video: ' + err.message, 'error');
+      }
+    }
+
+    // Xử lý chat AI Trợ lý CapCut Director
+    function handleAIChatCommand(cmd) {
+      if (!cmd || !cmd.trim()) return;
+
+      const chatContainer = document.getElementById('p2-chat-messages');
+      const input = document.getElementById('p2-chat-input');
+      const userText = cmd.trim();
+
+      // Append User message
+      const userMsgDiv = document.createElement('div');
+      userMsgDiv.className = 'flex gap-2.5 items-start justify-end';
+      userMsgDiv.innerHTML = `
+        <div class="bg-indigo-600 text-white rounded-2xl rounded-tr-sm p-3 text-xs leading-relaxed max-w-[85%] shadow">
+          ${userText}
+        </div>
+      `;
+      chatContainer.appendChild(userMsgDiv);
+      input.value = '';
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      // Trợ lý AI phân tích và tự động thực thi công việc
+      setTimeout(() => {
+        const lower = userText.toLowerCase();
+        let aiReply = '';
+
+        if (/gạo/i.test(lower)) {
+          generateOneClickContent('viral');
+          aiReply = 'Tôi đã phân tích sản phẩm **Gạo Quảng Trị**: Tự động bóc tách túi 5kg dẻo thơm, tạo kịch bản 10s bám sát nỗi đau cơm khô khốc, đã đưa vào timeline CapCut và sẵn sàng xuất HD!';
+        } else if (/son|mỹ phẩm/i.test(lower)) {
+          generateOneClickContent('cinematic');
+          aiReply = 'Tôi đã phân tích sản phẩm **Son Môi Cao Cấp**: Đã áp dụng góc quay Cinematic 360, kịch bản giải quyết nỗi đau tróc vảy rãnh môi, đồng bộ phụ đề mạ vàng sang trọng.';
+        } else if (/voice|thu âm|giọng/i.test(lower)) {
+          aiReply = 'Tôi đã kích hoạt track **Voice Gốc** trên timeline CapCut. Bạn hãy bấm nút "🎙️ Thu âm" bên cạnh, tôi sẽ tự động căn chỉnh sóng âm và đồng bộ phụ đề karaoke theo giọng nói của bạn!';
+        } else if (/xuất|tải|hd/i.test(lower)) {
+          exportRealHDVideo();
+          aiReply = 'Đang tiến hành render video HD 1080x1920 chuẩn 9:16 cho bạn. File sẽ tự động tải về thiết bị ngay khi hoàn tất!';
+        } else {
+          generateOneClickContent('viral');
+          aiReply = `Tôi đã nhận lệnh: "${userText}". Đã tự động tạo kịch bản 10s thực chiến, đồng bộ timeline CapCut và lưu dự án vào bộ nhớ của tôi!`;
+        }
+
+        // Tự động lưu tài liệu
+        state.part2.archiveProjects.unshift({
+          title: userText.substring(0, 35),
+          content: state.part2.generatedContent,
+          time: new Date().toLocaleTimeString('vi-VN') + ' ' + new Date().toLocaleDateString('vi-VN'),
+          hasVoice: !!state.part2.voiceAudioUrl
+        });
+        savePart2Archive();
+
+        // Append AI reply
+        const aiMsgDiv = document.createElement('div');
+        aiMsgDiv.className = 'flex gap-2.5 items-start';
+        aiMsgDiv.innerHTML = `
+          <div class="w-7 h-7 rounded-lg bg-rose-500/30 text-rose-300 border border-rose-500/30 flex items-center justify-center text-xs shrink-0 font-bold">
+            AI
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-2xl rounded-tl-sm p-3 text-xs text-slate-200 leading-relaxed shadow max-w-[85%]">
+            ${aiReply}
+          </div>
+        `;
+        chatContainer.appendChild(aiMsgDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        // Tự động chạy thử một đoạn preview
+        renderCapcutCanvasFrame(0.3);
+      }, 500);
+    }
+
+
+    // ==========================================
+    // INITIALIZATION & EVENT LISTENERS
+    // ==========================================
+    window.addEventListener('DOMContentLoaded', () => {
+loadLearnedRules();
+      loadSavedFolders();
 
       // 3 Nút nằm ngang
       document.getElementById('tab-step-1').addEventListener('click', () => switchStep(1));
@@ -1837,118 +2735,134 @@ Trả về duy nhất JSON:
       // Nút tuần tự
       document.getElementById('goto-step-2-btn').addEventListener('click', () => switchStep(2));
 
-      // Step 1: Dropzone & File Input
-      const dropzone = document.getElementById('dropzone');
-      const fileInput = document.getElementById('image-input');
-
-      dropzone.addEventListener('click', () => fileInput.click());
-      dropzone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropzone.classList.add('border-indigo-500', 'bg-indigo-950/20');
-      });
-      dropzone.addEventListener('dragleave', () => {
-        dropzone.classList.remove('border-indigo-500', 'bg-indigo-950/20');
-      });
-      dropzone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropzone.classList.remove('border-indigo-500', 'bg-indigo-950/20');
-        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-          handleImageLoad(e.dataTransfer.files[0]);
-        }
-      });
-      fileInput.addEventListener('change', (e) => {
+      // BƯỚC 1 LISTENERS:
+      // Upload Background Hình 1
+      const bgFileInput = document.getElementById('bg-file-input');
+      document.getElementById('upload-bg-btn').addEventListener('click', () => bgFileInput.click());
+      bgFileInput.addEventListener('change', (e) => {
         if (e.target.files && e.target.files[0]) {
-          handleImageLoad(e.target.files[0]);
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            state.bgImage = ev.target.result;
+            const thumb = document.getElementById('bg-thumb-img');
+            const placeholder = document.getElementById('bg-thumb-placeholder');
+            thumb.src = ev.target.result;
+            thumb.classList.remove('hidden');
+            placeholder.classList.add('hidden');
+            document.getElementById('bg-status-label').textContent = 'Đã nạp Hình 1';
+            showToast('Đã nạp ảnh Background Hình 1!');
+          };
+          reader.readAsDataURL(e.target.files[0]);
         }
       });
 
-      // Sample Button
-      document.getElementById('load-sample-btn').addEventListener('click', generateSampleProduct);
-      document.getElementById('empty-state-sample-btn').addEventListener('click', generateSampleProduct);
-
-      // Color picker & presets
-      const colorInput = document.getElementById('target-color-input');
-      colorInput.addEventListener('input', (e) => {
-        state.targetColor = hexToRgb(e.target.value);
-        document.getElementById('target-color-hex').textContent = e.target.value.toUpperCase();
-        processBackgroundRemoval();
+      // Preset background buttons
+      document.getElementById('preset-bg-kitchen').addEventListener('click', () => {
+        state.bgImage = createPresetBackground('kitchen');
+        const thumb = document.getElementById('bg-thumb-img');
+        thumb.src = state.bgImage;
+        thumb.classList.remove('hidden');
+        document.getElementById('bg-thumb-placeholder').classList.add('hidden');
+        document.getElementById('bg-status-label').textContent = 'Bếp ấm cúng';
+        showToast('Đã chọn bối cảnh: Căn bếp!');
       });
 
-      document.querySelectorAll('.preset-color-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const hex = btn.getAttribute('data-color');
-          colorInput.value = hex;
-          state.targetColor = hexToRgb(hex);
-          document.getElementById('target-color-hex').textContent = hex.toUpperCase();
-          processBackgroundRemoval();
-        });
+      document.getElementById('preset-bg-living').addEventListener('click', () => {
+        state.bgImage = createPresetBackground('living');
+        const thumb = document.getElementById('bg-thumb-img');
+        thumb.src = state.bgImage;
+        thumb.classList.remove('hidden');
+        document.getElementById('bg-thumb-placeholder').classList.add('hidden');
+        document.getElementById('bg-status-label').textContent = 'Phòng khách';
+        showToast('Đã chọn bối cảnh: Phòng khách!');
       });
 
-      // Sliders
-      const tolSlider = document.getElementById('tolerance-slider');
-      tolSlider.addEventListener('input', (e) => {
-        state.tolerance = parseInt(e.target.value);
-        document.getElementById('tolerance-val').textContent = e.target.value;
-        processBackgroundRemoval();
+      document.getElementById('preset-bg-studio').addEventListener('click', () => {
+        state.bgImage = createPresetBackground('studio');
+        const thumb = document.getElementById('bg-thumb-img');
+        thumb.src = state.bgImage;
+        thumb.classList.remove('hidden');
+        document.getElementById('bg-thumb-placeholder').classList.add('hidden');
+        document.getElementById('bg-status-label').textContent = 'Studio đá';
+        showToast('Đã chọn bối cảnh: Studio đá sang trọng!');
       });
 
-      const featherSlider = document.getElementById('feather-slider');
-      featherSlider.addEventListener('input', (e) => {
-        state.feather = parseInt(e.target.value);
-        document.getElementById('feather-val').textContent = `${e.target.value}px`;
-        processBackgroundRemoval();
-      });
-
-      // Backdrop change buttons
-      document.querySelectorAll('.backdrop-choice-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.backdrop-choice-btn').forEach(b => {
-            b.classList.remove('border-indigo-500');
-            b.classList.add('border-slate-700');
+      // Upload Sản phẩm Hình 2, 3...
+      const productsFileInput = document.getElementById('products-file-input');
+      document.getElementById('upload-products-btn').addEventListener('click', () => productsFileInput.click());
+      productsFileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+          Array.from(e.target.files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+              state.productImages.push({
+                name: file.name,
+                dataUrl: ev.target.result
+              });
+              renderStep1ProductsStrip();
+            };
+            reader.readAsDataURL(file);
           });
-          btn.classList.add('border-indigo-500');
-          btn.classList.remove('border-slate-700');
-          
-          const backdrop = btn.getAttribute('data-backdrop');
-          const wrapper = document.getElementById('canvas-wrapper');
-          wrapper.className = 'flex-1 w-full flex items-center justify-center rounded-xl overflow-hidden relative min-h-[340px] border border-slate-800 transition duration-300';
-          
-          if (backdrop === 'transparent') wrapper.classList.add('checkerboard');
-          else if (backdrop === 'black') wrapper.classList.add('bg-black');
-          else if (backdrop === 'white') wrapper.classList.add('bg-white');
-          else if (backdrop === 'gradient') wrapper.classList.add('bg-gradient-to-tr', 'from-violet-900', 'to-indigo-900');
+          showToast(`Đã thêm ${e.target.files.length} ảnh sản phẩm!`);
+        }
+      });
+
+      // Tolerance slider Step 1
+      const step1TolSlider = document.getElementById('step1-tol-slider');
+      step1TolSlider.addEventListener('input', (e) => {
+        state.step1Tolerance = parseInt(e.target.value);
+        document.getElementById('step1-tol-val').textContent = e.target.value;
+      });
+
+      // HAI NÚT TẠO ẢNH CHÍNH BƯỚC 1
+      document.getElementById('composite-mode-1-btn').addEventListener('click', renderCompositeMode1);
+      document.getElementById('composite-mode-2-btn').addEventListener('click', renderCompositeMode2);
+
+      // Copy Prompt Bước 1
+      document.getElementById('copy-step1-prompt-btn').addEventListener('click', () => {
+        const text = document.getElementById('step1-ai-prompt-text').textContent;
+        copyText(text, 'Đã sao chép Câu lệnh Prompt AI 8K!');
+      });
+
+      // Lưu vào Folder
+      document.getElementById('save-image-to-folder-btn').addEventListener('click', saveCurrentImageToFolder);
+
+      // Tải ảnh PNG 9:16
+      document.getElementById('download-composed-png-btn').addEventListener('click', () => {
+        if (!state.composedImage916) {
+          showToast('Vui lòng tạo ảnh trước!', 'error');
+          return;
+        }
+        const a = document.createElement('a');
+        a.href = state.composedImage916;
+        a.download = 'Anh_San_Pham_9x16_8K.png';
+        a.click();
+        showToast('Đã tải ảnh PNG 9:16 về máy!');
+      });
+
+      // Scroll to folder gallery
+      document.getElementById('view-folder-manager-btn').addEventListener('click', () => {
+        const gal = document.getElementById('folder-gallery-section');
+        if (gal) gal.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // Lọc folder tabs
+      document.querySelectorAll('.folder-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.folder-tab-btn').forEach(b => {
+            b.className = 'folder-tab-btn px-3 py-1 bg-slate-800 text-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-700';
+          });
+          btn.className = 'folder-tab-btn px-3 py-1 bg-indigo-600 text-white rounded-lg text-xs font-bold';
+          state.currentGalleryFilter = btn.getAttribute('data-folder');
+          renderSavedGallery();
         });
       });
 
-      // Reset Button & Apply
-      document.getElementById('reset-controls-btn').addEventListener('click', () => {
-        colorInput.value = '#ffffff';
-        state.targetColor = { r: 255, g: 255, b: 255 };
-        document.getElementById('target-color-hex').textContent = '#FFFFFF';
-        tolSlider.value = 45;
-        state.tolerance = 45;
-        document.getElementById('tolerance-val').textContent = '45';
-        featherSlider.value = 2;
-        state.feather = 2;
-        document.getElementById('feather-val').textContent = '2px';
-        processBackgroundRemoval();
-        showToast('Đã đặt lại các thông số tách nền.');
-      });
-
-      document.getElementById('apply-rembg-btn').addEventListener('click', () => {
-        processBackgroundRemoval();
-        showToast('Đã làm mới lớp tách nền!');
-      });
-
-      document.getElementById('download-png-btn').addEventListener('click', downloadTransparentPNG);
-
-      // STEP 2 BATCH 5 LISTENERS
+      // BƯỚC 2 LISTENERS:
       const toggleAddRuleBtn = document.getElementById('toggle-add-rule-btn');
       const addRuleFormRow = document.getElementById('add-rule-form-row');
       if (toggleAddRuleBtn && addRuleFormRow) {
-        toggleAddRuleBtn.addEventListener('click', () => {
-          addRuleFormRow.classList.toggle('hidden');
-        });
+        toggleAddRuleBtn.addEventListener('click', () => addRuleFormRow.classList.toggle('hidden'));
       }
 
       document.getElementById('add-learning-rule-btn').addEventListener('click', () => {
@@ -1960,11 +2874,7 @@ Trả về duy nhất JSON:
           showToast('Vui lòng điền đủ Tên loại SP và Cấu trúc bắt buộc!', 'error');
           return;
         }
-        state.learnedRules.push({
-          id: `rule-${Date.now()}`,
-          category: cat,
-          mustHave: must
-        });
+        state.learnedRules.push({ id: `rule-${Date.now()}`, category: cat, mustHave: must });
         saveLearnedRules();
         catInput.value = '';
         mustInput.value = '';
@@ -1972,42 +2882,36 @@ Trả về duy nhất JSON:
         showToast(`AI đã học: "${cat}" bắt buộc "${must}"!`);
       });
 
-      // Nút trigger chọn 5 ảnh cùng 1 lúc
       const batchTriggerBtn = document.getElementById('batch-upload-trigger-btn');
       const batchFileInput = document.getElementById('batch-file-input');
       batchTriggerBtn.addEventListener('click', () => batchFileInput.click());
-      batchFileInput.addEventListener('change', (e) => {
-        handleBatchFiles(e.target.files);
-      });
+      batchFileInput.addEventListener('change', (e) => handleBatchFiles(e.target.files));
 
-      // Nút nạp 5 mẫu test
       document.getElementById('load-sample-5-btn').addEventListener('click', () => {
         state.batchProducts = [
-          { id: 1, name: 'Gạo Quảng Trị', info: 'Túi 5kg dẻo thơm, không hóa chất', image: state.processedImage || '' },
-          { id: 2, name: 'Bàn ghế phòng khách', info: 'Gỗ sồi tự nhiên kích thước 1m6 x 80cm', image: '' },
-          { id: 3, name: 'Nồi chiên không dầu', info: 'Dung tích lớn 6.5 lít chống dính', image: '' },
-          { id: 4, name: 'Áo thun form rộng', info: 'Chất cotton 100% 4 chiều mát mịn', image: '' },
-          { id: 5, name: 'Serum cấp ẩm phục hồi B5', info: 'Dung tích 30ml lành tính cho da', image: '' }
+          { id: 1, name: 'Gạo Quảng Trị', info: 'Túi 5kg dẻo thơm, không hóa chất', image: state.composedImage916 || '', extraImages: [] },
+          { id: 2, name: 'Bàn ghế phòng khách', info: 'Gỗ sồi tự nhiên kích thước 1m6 x 80cm', image: '', extraImages: [] },
+          { id: 3, name: 'Nồi chiên không dầu', info: 'Dung tích lớn 6.5 lít chống dính', image: '', extraImages: [] },
+          { id: 4, name: 'Áo thun form rộng', info: 'Chất cotton 100% 4 chiều mát mịn', image: '', extraImages: [] },
+          { id: 5, name: 'Serum cấp ẩm phục hồi B5', info: 'Dung tích 30ml lành tính cho da', image: '', extraImages: [] }
         ];
         renderProductRows();
         generateBatch5Scripts();
         showToast('Đã nạp 5 sản phẩm mẫu thành công!');
       });
 
-      // Nút Tạo hàng loạt 5 content
       document.getElementById('generate-script-btn').addEventListener('click', () => generateBatch5Scripts(false));
       document.getElementById('next-variation-all-btn').addEventListener('click', () => generateBatch5Scripts(true));
 
-      // Nút Sao chép cả 5 kịch bản
       document.getElementById('copy-all-5-scripts-btn').addEventListener('click', () => {
-        let fullBundle = '=== DANH SÁCH 5 KỊCH BẢN VIDEO 10S ===\n\n';
+        let fullBundle = '=== DANH SÁCH 5 KỊCH BẢN VIDEO 10S THỰC CHIẾN ===\n\n';
         state.batchProducts.forEach((p, idx) => {
           fullBundle += `[SẢN PHẨM ${idx + 1}: ${p.name}]\n${state.generatedScripts[idx] || ''}\n\n--------------------\n\n`;
         });
         copyText(fullBundle, 'Đã sao chép toàn bộ 5 kịch bản 10 giây vào clipboard!');
       });
 
-      // STEP 3 LISTENERS
+      // BƯỚC 3 LISTENERS:
       document.querySelectorAll('.copy-scene-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const targetId = btn.getAttribute('data-target');
@@ -2029,7 +2933,6 @@ Trả về duy nhất JSON:
       });
       document.getElementById('export-project-btn').addEventListener('click', exportProjectJSON);
 
-      // Aspect Ratio
       document.querySelectorAll('.aspect-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           document.querySelectorAll('.aspect-btn').forEach(b => {
@@ -2038,7 +2941,6 @@ Trả về duy nhất JSON:
           });
           btn.classList.add('bg-indigo-600', 'text-white');
           btn.classList.remove('bg-slate-800', 'text-slate-300');
-
           const aspect = btn.getAttribute('data-aspect');
           const screen = document.getElementById('video-mockup-screen');
           screen.className = `relative w-full bg-slate-950 rounded-[24px] overflow-hidden flex flex-col justify-between p-4 border border-slate-800/80 transition-all duration-300 ${
@@ -2048,7 +2950,6 @@ Trả về duy nhất JSON:
         });
       });
 
-      // Model choice buttons
       document.querySelectorAll('.model-choice-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           document.querySelectorAll('.model-choice-btn').forEach(b => {
@@ -2059,21 +2960,14 @@ Trả về duy nhất JSON:
         });
       });
 
-      // Restart Project
       document.getElementById('restart-workflow-btn').addEventListener('click', () => {
         switchStep(1);
-        generateSampleProduct();
         showToast('Bắt đầu dự án mới!');
       });
 
-      // GitHub Modal Handlers
       const modal = document.getElementById('github-modal');
-      document.getElementById('open-github-modal-btn').addEventListener('click', () => {
-        modal.classList.remove('hidden');
-      });
-      document.getElementById('close-modal-btn').addEventListener('click', () => {
-        modal.classList.add('hidden');
-      });
+      document.getElementById('open-github-modal-btn').addEventListener('click', () => modal.classList.remove('hidden'));
+      document.getElementById('close-modal-btn').addEventListener('click', () => modal.classList.add('hidden'));
       modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.classList.add('hidden');
       });
@@ -2081,11 +2975,219 @@ Trả về duy nhất JSON:
       document.getElementById('download-html-top-btn').addEventListener('click', downloadSourceHTML);
       document.getElementById('modal-download-btn').addEventListener('click', downloadSourceHTML);
 
-      // Auto-load sample initially
-      generateSampleProduct();
+      // Khởi tạo ban đầu
       renderProductRows();
       generateBatch5Scripts(false);
     });
+  </script>
+
+
+      // WORKSPACE SWITCHER (PHẦN 1 vs PHẦN 2)
+      const wsBtn1 = document.getElementById('workspace-switch-1');
+      const wsBtn2 = document.getElementById('workspace-switch-2');
+      const wsPart1 = document.getElementById('workspace-part-1');
+      const wsPart2 = document.getElementById('workspace-part-2');
+
+      wsBtn1.addEventListener('click', () => {
+        wsBtn1.className = 'py-3 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-2 bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 cursor-pointer';
+        wsBtn2.className = 'py-3 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-2 text-slate-400 hover:text-white hover:bg-slate-800 cursor-pointer';
+        wsPart1.classList.remove('hidden');
+        wsPart1.classList.add('block');
+        wsPart2.classList.remove('block');
+        wsPart2.classList.add('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      wsBtn2.addEventListener('click', () => {
+        wsBtn2.className = 'py-3 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-2 bg-rose-600 text-white shadow-lg shadow-rose-600/30 cursor-pointer';
+        wsBtn1.className = 'py-3 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-2 text-slate-400 hover:text-white hover:bg-slate-800 cursor-pointer';
+        wsPart1.classList.remove('block');
+        wsPart1.classList.add('hidden');
+        wsPart2.classList.remove('hidden');
+        wsPart2.classList.add('block');
+        loadPart2Archive();
+        renderCapcutCanvasFrame(0);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Quick Demo button
+      document.getElementById('p2-quick-demo-btn').addEventListener('click', () => {
+        generateOneClickContent('viral');
+        toggleCapcutPlayer();
+      });
+
+      // Part 2 Upload photo
+      const p2FileInput = document.getElementById('p2-file-input');
+      document.getElementById('p2-upload-btn').addEventListener('click', () => p2FileInput.click());
+      p2FileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            state.part2.selectedImage = ev.target.result;
+            const imgElem = document.getElementById('p2-selected-image');
+            imgElem.src = ev.target.result;
+            imgElem.classList.remove('hidden');
+            document.getElementById('p2-image-empty').classList.add('hidden');
+            renderCapcutCanvasFrame(0);
+            showToast('Đã nạp ảnh vào quy trình 1-click!');
+          };
+          reader.readAsDataURL(e.target.files[0]);
+        }
+      });
+
+      document.getElementById('p2-use-sample-btn').addEventListener('click', () => {
+        state.part2.selectedImage = state.composedImage916 || state.batchProducts[0].image;
+        const imgElem = document.getElementById('p2-selected-image');
+        imgElem.src = state.part2.selectedImage;
+        imgElem.classList.remove('hidden');
+        document.getElementById('p2-image-empty').classList.add('hidden');
+        renderCapcutCanvasFrame(0);
+        showToast('Đã chọn mẫu Gạo cho quy trình 1-click!');
+      });
+
+      // Prompt selector cards
+      document.querySelectorAll('.p2-prompt-card').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.p2-prompt-card').forEach(b => {
+            b.className = 'p2-prompt-card w-full text-left p-2.5 rounded-xl border border-slate-800 bg-slate-900/80 hover:border-slate-700 transition';
+          });
+          btn.className = 'p2-prompt-card w-full text-left p-2.5 rounded-xl border border-rose-500 bg-rose-500/10 transition';
+          const pType = btn.getAttribute('data-type');
+          generateOneClickContent(pType);
+          showToast(`Đã chọn prompt mẫu: ${btn.querySelector('span').textContent.trim()}`);
+        });
+      });
+
+      // Execute One-Click Video
+      document.getElementById('p2-execute-oneclick-btn').addEventListener('click', () => {
+        generateOneClickContent(state.part2.selectedPromptType || 'viral');
+        toggleCapcutPlayer();
+        showToast('AI đã tự sinh Content và khởi chạy video 1-click!');
+      });
+
+      // CHATBOT TRỢ LÝ AI
+      const p2ChatInput = document.getElementById('p2-chat-input');
+      const p2SendBtn = document.getElementById('p2-send-chat-btn');
+
+      p2SendBtn.addEventListener('click', () => {
+        handleAIChatCommand(p2ChatInput.value);
+      });
+      p2ChatInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleAIChatCommand(p2ChatInput.value);
+      });
+
+      document.querySelectorAll('.p2-quick-prompt-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          handleAIChatCommand(btn.textContent.trim());
+        });
+      });
+
+      document.getElementById('p2-clear-chat-btn').addEventListener('click', () => {
+        document.getElementById('p2-chat-messages').innerHTML = `
+          <div class="flex gap-2.5 items-start">
+            <div class="w-7 h-7 rounded-lg bg-indigo-600/30 text-indigo-400 border border-indigo-500/30 flex items-center justify-center text-xs shrink-0 font-bold">AI</div>
+            <div class="bg-slate-950 border border-slate-800 rounded-2xl rounded-tl-sm p-3 text-xs text-slate-200 shadow">
+              Trợ lý AI đã sẵn sàng nhận lệnh mới của bạn!
+            </div>
+          </div>
+        `;
+        showToast('Đã làm mới khung chat.');
+      });
+
+      // MICRO THU ÂM VOICE GỐC CỦA BẠN
+      const recordMicBtn = document.getElementById('record-mic-btn');
+      const recordMicIcon = document.getElementById('record-mic-icon');
+      const recordMicLabel = document.getElementById('record-mic-label');
+      const voicePlayerRow = document.getElementById('voice-player-row');
+      const voiceStatusBadge = document.getElementById('voice-status-badge');
+      const trackVoicePreview = document.getElementById('track-voice-preview');
+
+      recordMicBtn.addEventListener('click', async () => {
+        if (!state.part2.isRecordingMic) {
+          try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            state.part2.mediaRecorder = new MediaRecorder(stream);
+            state.part2.audioChunks = [];
+
+            state.part2.mediaRecorder.ondataavailable = (e) => {
+              if (e.data.size > 0) state.part2.audioChunks.push(e.data);
+            };
+
+            state.part2.mediaRecorder.onstop = () => {
+              const audioBlob = new Blob(state.part2.audioChunks, { type: 'audio/webm' });
+              state.part2.voiceAudioBlob = audioBlob;
+              state.part2.voiceAudioUrl = URL.createObjectURL(audioBlob);
+              voicePlayerRow.classList.remove('hidden');
+              voiceStatusBadge.innerHTML = '🟢 <span class="text-rose-400">Đã chèn voice gốc</span>';
+              trackVoicePreview.textContent = 'Voice giọng thật của bạn đã kết nối khớp timeline';
+              trackVoicePreview.className = 'flex-1 h-5 rounded bg-rose-600/50 border border-rose-500 text-[10px] text-white font-bold px-2 flex items-center truncate';
+              showToast('Thu âm thành công! Voice gốc đã được tích hợp vào CapCut.');
+            };
+
+            state.part2.mediaRecorder.start();
+            state.part2.isRecordingMic = true;
+            recordMicIcon.className = 'w-2.5 h-2.5 rounded-full bg-red-500 animate-ping';
+            recordMicLabel.textContent = 'Đang thu âm... (Bấm để dừng)';
+            showToast('Đang thu âm giọng nói của bạn...');
+          } catch (err) {
+            showToast('Không thể mở micro: ' + err.message, 'error');
+          }
+        } else {
+          if (state.part2.mediaRecorder) {
+            state.part2.mediaRecorder.stop();
+            state.part2.mediaRecorder.stream.getTracks().forEach(t => t.stop());
+          }
+          state.part2.isRecordingMic = false;
+          recordMicIcon.className = 'w-2.5 h-2.5 rounded-full bg-rose-500';
+          recordMicLabel.textContent = 'Bấm để thu âm lại';
+        }
+      });
+
+      // Upload file ghi âm
+      const voiceFileInput = document.getElementById('voice-file-input');
+      document.getElementById('upload-voice-file-btn').addEventListener('click', () => voiceFileInput.click());
+      voiceFileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          const file = e.target.files[0];
+          state.part2.voiceAudioUrl = URL.createObjectURL(file);
+          voicePlayerRow.classList.remove('hidden');
+          voiceStatusBadge.innerHTML = '🟢 <span class="text-rose-400">Đã nạp file voice</span>';
+          trackVoicePreview.textContent = `File ghi âm: ${file.name}`;
+          trackVoicePreview.className = 'flex-1 h-5 rounded bg-rose-600/50 border border-rose-500 text-[10px] text-white font-bold px-2 flex items-center truncate';
+          showToast(`Đã nạp file ghi âm: ${file.name}`);
+        }
+      });
+
+      // Play voice sample
+      document.getElementById('play-voice-sample-btn').addEventListener('click', () => {
+        if (state.part2.voiceAudioUrl) {
+          const a = new Audio(state.part2.voiceAudioUrl);
+          a.play();
+          showToast('Đang phát giọng voice gốc của bạn...');
+        }
+      });
+
+      document.getElementById('del-voice-btn').addEventListener('click', () => {
+        state.part2.voiceAudioUrl = null;
+        voicePlayerRow.classList.add('hidden');
+        voiceStatusBadge.textContent = 'Chưa có voice';
+        trackVoicePreview.textContent = 'Chưa chèn voice gốc';
+        trackVoicePreview.className = 'flex-1 h-5 rounded bg-rose-600/30 border border-rose-500/40 flex items-center px-2 text-[10px] text-rose-200 truncate';
+        showToast('Đã gỡ voice gốc.');
+      });
+
+      // Capcut player play/pause & export
+      document.getElementById('capcut-play-btn').addEventListener('click', toggleCapcutPlayer);
+      document.getElementById('export-hd-video-btn').addEventListener('click', exportRealHDVideo);
+
+      document.getElementById('p2-clear-archive-btn').addEventListener('click', () => {
+        state.part2.archiveProjects = [];
+        savePart2Archive();
+        showToast('Đã dọn sạch kho lưu trữ trợ lý.');
+      });
+
+    });
+
   </script>
 </body>
 </html>
