@@ -671,16 +671,86 @@
             </div>
           </div>
 
-          <!-- Dòng 2: Nút Tạo Folder Mới & Nút Tải Ảnh Vào Đây -->
-          <div class="grid grid-cols-2 gap-2 pt-1">
-            <button id="inside-create-subfolder-btn" type="button" class="py-2.5 px-3 bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+          <!-- Dòng 2: Thanh Công Cụ Đa Năng Cho Thư Mục: Tải Ảnh, Up Video, Dán Link, Ghi Chú Word, Tạo Folder -->
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-1">
+            <!-- Nút 1: Tải Ảnh -->
+            <button id="inside-upload-files-btn" type="button" class="py-2.5 px-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+              <span>🖼️ Tải Ảnh</span>
+            </button>
+
+            <!-- Nút 2: Up Video (MỚI) -->
+            <button id="inside-upload-video-btn" type="button" class="py-2.5 px-2 bg-purple-600 hover:bg-purple-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span>🎥 Up Video</span>
+            </button>
+            <input type="file" id="inside-video-file-input" accept="video/*" multiple class="hidden">
+
+            <!-- Nút 3: Dán Link (MỚI) -->
+            <button id="inside-add-link-btn" type="button" class="py-2.5 px-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+              <span>🔗 Dán Link</span>
+            </button>
+
+            <!-- Nút 4: Ghi Chú Word (MỚI) -->
+            <button id="inside-add-note-btn" type="button" class="py-2.5 px-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <span>📝 Ghi Chú Word</span>
+            </button>
+
+            <!-- Nút 5: Tạo Folder Mới -->
+            <button id="inside-create-subfolder-btn" type="button" class="col-span-2 sm:col-span-1 py-2.5 px-2 bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
               <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
               <span>+ Tạo Folder Mới</span>
             </button>
-            <button id="inside-upload-files-btn" type="button" class="py-2.5 px-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-              <span>📁 Tải ảnh vào đây</span>
-            </button>
+          </div>
+
+          <!-- Hộp Dán Link Vào Thư Mục (MỚI) -->
+          <div id="add-link-input-row" class="hidden p-3.5 rounded-xl bg-slate-900 border border-emerald-500/40 space-y-2.5 shadow-lg">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
+                <span>🔗</span> Dán Link Sản Phẩm / Nguồn Hàng / Video Tham Khảo
+              </span>
+              <button id="close-add-link-btn" type="button" class="text-slate-400 hover:text-white text-xs">✕ Đóng</button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <input type="url" id="new-link-url-input" placeholder="Dán đường dẫn link (VD: Shopee, TikTok Shop, 1688, Drive...)" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+              <input type="text" id="new-link-title-input" placeholder="Tên gợi nhớ (VD: Nguồn váy xưởng 1688, Video trend mẫu...)" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+            </div>
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-[11px] text-slate-400">💡 Link sẽ được lưu trực tiếp vào thư mục hiện tại để bạn mở lại bất kỳ lúc nào.</span>
+              <div class="flex items-center gap-2">
+                <button id="cancel-save-link-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
+                <button id="confirm-save-link-btn" type="button" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 shadow">
+                  <span>💾 Lưu Link Vào Thư Mục</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hộp Soạn & Tải Ghi Chú Word (MỚI) -->
+          <div id="add-note-input-row" class="hidden p-3.5 rounded-xl bg-slate-900 border border-blue-500/40 space-y-2.5 shadow-lg">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-blue-300 flex items-center gap-1.5">
+                <span class="px-1.5 py-0.5 rounded bg-blue-600 text-white font-serif font-black text-[10px]">W</span>
+                Soạn Ghi Chú Word / Kịch Bản / Thông Tin Sản Phẩm
+              </span>
+              <button id="close-add-note-btn" type="button" class="text-slate-400 hover:text-white text-xs">✕ Đóng</button>
+            </div>
+            <input type="text" id="new-note-title-input" placeholder="Tiêu đề ghi chú (VD: Kịch bản video Son lì #02, Lưu ý chất liệu...)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500">
+            <textarea id="new-note-content-input" rows="4" placeholder="Nhập nội dung ghi chú chi tiết, lời thoại kịch bản, quy cách kích thước, giá bán sỉ..." class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-blue-500 resize-y"></textarea>
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
+              <button id="download-draft-word-btn" type="button" class="px-3 py-1.5 bg-blue-900/60 hover:bg-blue-800 text-blue-200 border border-blue-700/60 rounded-xl text-xs font-semibold transition flex items-center gap-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                <span>📥 Xuất & Tải File Word (.doc) Ngay</span>
+              </button>
+              <div class="flex items-center gap-2">
+                <button id="cancel-save-note-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
+                <button id="confirm-save-note-btn" type="button" class="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 shadow">
+                  <span>💾 Lưu Ghi Chú Vào Thư Mục</span>
+                </button>
+              </div>
+            </div>
           </div>
 
           <!-- Hộp Tạo Folder Mới (Ẩn/Hiện) -->
@@ -729,15 +799,86 @@
           <!-- Rendered dynamically -->
         </div>
 
-        <!-- Hướng dẫn click ảnh -->
-        <p class="text-[11px] text-slate-400 flex items-center gap-1.5">
-          <span>💡 <strong>Mẹo:</strong> Bấm vào bất kỳ ảnh nào để mở menu</span>
-          <span class="text-rose-400 font-bold">Di chuyển, Đổi tên, Thay đồ AI, Thay background & Tạo prompt video</span>!
-        </p>
+        <!-- THANH PHÂN LOẠI TÀI NGUYÊN (ẢNH, VIDEO, LINK, GHI CHÚ WORD) -->
+        <div class="flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-slate-800">
+          <div id="folder-asset-tabs-bar" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+            <button type="button" data-asset-tab="all" class="asset-tab-btn active px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-rose-600 text-white shadow">
+              <span>✨ Tất Cả</span>
+              <span id="badge-count-all" class="px-1.5 py-0.2 rounded-full text-[10px] bg-rose-800 text-white font-mono">0</span>
+            </button>
+            <button type="button" data-asset-tab="photos" class="asset-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800">
+              <span>🖼️ Hình Ảnh</span>
+              <span id="badge-count-photos" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-rose-300 font-mono">0</span>
+            </button>
+            <button type="button" data-asset-tab="videos" class="asset-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800">
+              <span>🎥 Video Clip</span>
+              <span id="badge-count-videos" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-purple-300 font-mono">0</span>
+            </button>
+            <button type="button" data-asset-tab="links" class="asset-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800">
+              <span>🔗 Link Liên Kết</span>
+              <span id="badge-count-links" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-emerald-300 font-mono">0</span>
+            </button>
+            <button type="button" data-asset-tab="notes" class="asset-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800">
+              <span>📝 Ghi Chú Word</span>
+              <span id="badge-count-notes" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-blue-300 font-mono">0</span>
+            </button>
+          </div>
 
-        <!-- Lưới Ảnh Đã Lưu Trong Folder Hiện Tại -->
-        <div id="saved-gallery-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 min-h-[140px]">
-          <!-- Rendered dynamically via JS -->
+          <p id="asset-view-hint" class="text-[11px] text-slate-400">
+            💡 Bấm vào ảnh để mở menu thao tác AI &bull; Bấm vào video để xem/tải &bull; Ghi chú xuất được file Word (.doc)
+          </p>
+        </div>
+
+        <!-- MỤC 1: KHU VỰC HÌNH ẢNH SẢN PHẨM -->
+        <div id="photos-asset-section" class="space-y-2">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-extrabold text-white flex items-center gap-1.5 uppercase tracking-wider">
+              <span>🖼️ Hình Ảnh Sản Phẩm</span>
+              <span class="text-[10px] text-rose-400 font-mono font-normal">(9:16 HD)</span>
+            </h4>
+          </div>
+          <div id="saved-gallery-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 min-h-[100px]">
+            <!-- Rendered dynamically via JS -->
+          </div>
+        </div>
+
+        <!-- MỤC 2: KHU VỰC VIDEO CLIP (MỚI) -->
+        <div id="videos-asset-section" class="space-y-2 pt-2 border-t border-slate-800/80">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-extrabold text-purple-300 flex items-center gap-1.5 uppercase tracking-wider">
+              <span>🎥 Video Clip Sản Phẩm / Mẫu Quay</span>
+              <span id="section-video-count-badge" class="text-[10px] text-slate-400 font-mono font-normal">0 video</span>
+            </h4>
+          </div>
+          <div id="saved-videos-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            <!-- Rendered dynamically via JS -->
+          </div>
+        </div>
+
+        <!-- MỤC 3: KHU VỰC LIÊN KẾT LINK (MỚI) -->
+        <div id="links-asset-section" class="space-y-2 pt-2 border-t border-slate-800/80">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-extrabold text-emerald-300 flex items-center gap-1.5 uppercase tracking-wider">
+              <span>🔗 Danh Sách Link Đã Lưu</span>
+              <span id="section-link-count-badge" class="text-[10px] text-slate-400 font-mono font-normal">0 link</span>
+            </h4>
+          </div>
+          <div id="saved-links-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <!-- Rendered dynamically via JS -->
+          </div>
+        </div>
+
+        <!-- MỤC 4: KHU VỰC GHI CHÚ WORD (MỚI) -->
+        <div id="notes-asset-section" class="space-y-2 pt-2 border-t border-slate-800/80">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-extrabold text-blue-300 flex items-center gap-1.5 uppercase tracking-wider">
+              <span>📝 Ghi Chú & Kịch Bản Word (.doc)</span>
+              <span id="section-note-count-badge" class="text-[10px] text-slate-400 font-mono font-normal">0 ghi chú</span>
+            </h4>
+          </div>
+          <div id="saved-notes-list" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- Rendered dynamically via JS -->
+          </div>
         </div>
 
       </div>
@@ -1565,6 +1706,10 @@ const state = {
         'Khác': []
       },
       currentGalleryFilter: 'all',
+      folderVideos: {},
+      folderLinks: {},
+      folderNotes: {},
+      activeAssetTab: 'all',
 
       // BƯỚC 2 & 3 STATE:
       activeProductIdx: 0,
@@ -1701,6 +1846,458 @@ const state = {
       'Khác': []
     };
 
+    function downloadWordDocument(title, content) {
+      const cleanTitle = (title || 'Ghi_chu_Word').trim();
+      const safeFilename = cleanTitle.replace(/[\\/:*?"<>|]/g, '_');
+      const cleanContent = content || 'Chưa có nội dung ghi chú.';
+      const formattedHtml = `
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+  <meta charset='utf-8'>
+  <title>${escapeHtml(cleanTitle)}</title>
+  <!--[if gte mso 9]>
+  <xml>
+    <w:WordDocument>
+      <w:View>Print</w:View>
+      <w:Zoom>100</w:Zoom>
+      <w:DoNotOptimizeForBrowser/>
+    </w:WordDocument>
+  </xml>
+  <![endif]-->
+  <style>
+    @page { size: 21.0cm 29.7cm; margin: 2.0cm 2.0cm 2.0cm 2.0cm; }
+    body { font-family: 'Calibri', 'Times New Roman', Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #111827; }
+    h1 { font-size: 18pt; color: #1e3a8a; border-bottom: 2px solid #2563eb; padding-bottom: 6px; margin-bottom: 16px; font-weight: bold; }
+    .meta-box { background-color: #f3f4f6; border-left: 4px solid #3b82f6; padding: 10px 14px; margin-bottom: 18px; font-size: 10pt; color: #4b5563; }
+    .content-box { white-space: pre-wrap; font-size: 11pt; line-height: 1.6; }
+    .footer { margin-top: 36px; padding-top: 10px; border-top: 1px solid #e5e7eb; font-size: 9pt; color: #9ca3af; text-align: right; }
+  </style>
+</head>
+<body>
+  <h1>${escapeHtml(cleanTitle)}</h1>
+  <div class="meta-box">
+    <strong>Thư mục lưu trữ:</strong> ${escapeHtml(state.currentPath === 'all' ? 'Toàn bộ' : state.currentPath)}<br>
+    <strong>Thời gian xuất:</strong> ${new Date().toLocaleString('vi-VN')}
+  </div>
+  <div class="content-box">${escapeHtml(cleanContent).replace(/\n/g, '<br>')}</div>
+  <div class="footer">Tạo bởi AI Video Studio & Kho Lưu Trữ Đa Năng</div>
+</body>
+</html>
+      `;
+
+      try {
+        const blob = new Blob(['\ufeff', formattedHtml], { type: 'application/msword;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${safeFilename}.doc`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        showToast(`Đã xuất file Word: ${safeFilename}.doc`);
+      } catch (e) {
+        showToast('Lỗi khi tải file Word: ' + e.message, 'error');
+      }
+    }
+
+    function loadFolderAssets() {
+      try {
+        const v = localStorage.getItem('ai_video_folder_videos');
+        state.folderVideos = v ? JSON.parse(v) : {};
+      } catch (e) { state.folderVideos = {}; }
+
+      try {
+        const l = localStorage.getItem('ai_video_folder_links');
+        state.folderLinks = l ? JSON.parse(l) : {};
+      } catch (e) { state.folderLinks = {}; }
+
+      try {
+        const n = localStorage.getItem('ai_video_folder_notes');
+        state.folderNotes = n ? JSON.parse(n) : {};
+      } catch (e) { state.folderNotes = {}; }
+    }
+
+    function saveFolderAssets() {
+      try {
+        localStorage.setItem('ai_video_folder_videos', JSON.stringify(state.folderVideos));
+      } catch (e) {}
+      try {
+        localStorage.setItem('ai_video_folder_links', JSON.stringify(state.folderLinks));
+      } catch (e) {}
+      try {
+        localStorage.setItem('ai_video_folder_notes', JSON.stringify(state.folderNotes));
+      } catch (e) {}
+
+      renderFolderAssetCounts();
+      renderSavedVideos();
+      renderSavedLinks();
+      renderSavedNotes();
+    }
+
+    function renderFolderAssetCounts() {
+      const cur = state.currentPath;
+      let pCount = 0;
+      let vCount = 0;
+      let lCount = 0;
+      let nCount = 0;
+
+      if (cur === 'all') {
+        Object.keys(state.savedFolders).forEach(k => {
+          pCount += (state.savedFolders[k] || []).length;
+        });
+        Object.keys(state.folderVideos || {}).forEach(k => {
+          vCount += (state.folderVideos[k] || []).length;
+        });
+        Object.keys(state.folderLinks || {}).forEach(k => {
+          lCount += (state.folderLinks[k] || []).length;
+        });
+        Object.keys(state.folderNotes || {}).forEach(k => {
+          nCount += (state.folderNotes[k] || []).length;
+        });
+      } else {
+        pCount = (state.savedFolders[cur] || []).length;
+        vCount = (state.folderVideos[cur] || []).length;
+        lCount = (state.folderLinks[cur] || []).length;
+        nCount = (state.folderNotes[cur] || []).length;
+      }
+
+      const totalCount = pCount + vCount + lCount + nCount;
+
+      const badgeAll = document.getElementById('badge-count-all');
+      const badgePhotos = document.getElementById('badge-count-photos');
+      const badgeVideos = document.getElementById('badge-count-videos');
+      const badgeLinks = document.getElementById('badge-count-links');
+      const badgeNotes = document.getElementById('badge-count-notes');
+
+      if (badgeAll) badgeAll.textContent = totalCount;
+      if (badgePhotos) badgePhotos.textContent = pCount;
+      if (badgeVideos) badgeVideos.textContent = vCount;
+      if (badgeLinks) badgeLinks.textContent = lCount;
+      if (badgeNotes) badgeNotes.textContent = nCount;
+
+      const secVideoBadge = document.getElementById('section-video-count-badge');
+      const secLinkBadge = document.getElementById('section-link-count-badge');
+      const secNoteBadge = document.getElementById('section-note-count-badge');
+      if (secVideoBadge) secVideoBadge.textContent = `${vCount} video`;
+      if (secLinkBadge) secLinkBadge.textContent = `${lCount} link`;
+      if (secNoteBadge) secNoteBadge.textContent = `${nCount} ghi chú`;
+
+      const activeBadge = document.getElementById('active-folder-badge');
+      if (activeBadge) {
+        if (cur === 'all') {
+          activeBadge.textContent = `${totalCount} tài nguyên`;
+        } else {
+          activeBadge.textContent = `${pCount} ảnh • ${vCount} video • ${lCount} link • ${nCount} Word`;
+        }
+      }
+    }
+
+    function switchAssetTab(tab) {
+      state.activeAssetTab = tab || 'all';
+      const btns = document.querySelectorAll('.asset-tab-btn');
+      btns.forEach(btn => {
+        if (btn.getAttribute('data-asset-tab') === state.activeAssetTab) {
+          btn.className = 'asset-tab-btn active px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-rose-600 text-white shadow';
+        } else {
+          btn.className = 'asset-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800';
+        }
+      });
+
+      const secPhotos = document.getElementById('photos-asset-section');
+      const secVideos = document.getElementById('videos-asset-section');
+      const secLinks = document.getElementById('links-asset-section');
+      const secNotes = document.getElementById('notes-asset-section');
+      const hint = document.getElementById('asset-view-hint');
+
+      if (secPhotos) secPhotos.classList.toggle('hidden', state.activeAssetTab !== 'all' && state.activeAssetTab !== 'photos');
+      if (secVideos) secVideos.classList.toggle('hidden', state.activeAssetTab !== 'all' && state.activeAssetTab !== 'videos');
+      if (secLinks) secLinks.classList.toggle('hidden', state.activeAssetTab !== 'all' && state.activeAssetTab !== 'links');
+      if (secNotes) secNotes.classList.toggle('hidden', state.activeAssetTab !== 'all' && state.activeAssetTab !== 'notes');
+
+      if (hint) {
+        if (state.activeAssetTab === 'photos') hint.textContent = '💡 Bấm vào ảnh để mở menu: Di chuyển, Đổi tên, Thay đồ AI, Thay background & Tạo prompt video.';
+        else if (state.activeAssetTab === 'videos') hint.textContent = '💡 Xem video trực tiếp, tải về máy hoặc đưa vào Bước 3 Video Studio.';
+        else if (state.activeAssetTab === 'links') hint.textContent = '💡 Bấm để mở tab mới hoặc sao chép nhanh link nguồn hàng, TikTok Shop, Shopee.';
+        else if (state.activeAssetTab === 'notes') hint.textContent = '💡 Soạn kịch bản, quy cách & tải file Word (.doc) trực tiếp về máy tính/điện thoại.';
+        else hint.textContent = '💡 Hiển thị toàn bộ Hình ảnh, Video clip, Link liên kết và Ghi chú Word trong thư mục.';
+      }
+    }
+
+    function renderSavedVideos() {
+      const container = document.getElementById('saved-videos-grid');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const cur = state.currentPath;
+      let items = [];
+      if (cur === 'all') {
+        Object.keys(state.folderVideos || {}).forEach(k => {
+          (state.folderVideos[k] || []).forEach(v => items.push({ ...v, folderKey: k }));
+        });
+      } else {
+        (state.folderVideos[cur] || []).forEach(v => items.push({ ...v, folderKey: cur }));
+      }
+
+      if (items.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-6 text-center text-slate-500 text-xs bg-slate-950/60 rounded-2xl border border-dashed border-slate-800">
+            <svg class="w-7 h-7 mx-auto text-purple-400/50 mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            Chưa có video nào trong thư mục này. Bấm nút <strong>"🎥 Up Video"</strong> ở trên để tải lên video clip sản phẩm hoặc mẫu video tham khảo!
+          </div>
+        `;
+        return;
+      }
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'p-3 rounded-2xl bg-slate-950 border border-slate-800 hover:border-purple-500/60 transition shadow-lg space-y-2 flex flex-col justify-between';
+        card.innerHTML = `
+          <div class="space-y-1.5">
+            <div class="relative rounded-xl overflow-hidden bg-black aspect-video flex items-center justify-center">
+              <video src="${item.url}" controls playsinline preload="metadata" class="w-full h-full object-contain"></video>
+            </div>
+            <div class="flex items-center justify-between text-[11px] font-bold text-white pt-1">
+              <span class="truncate flex-1 pr-2" title="${item.name}">${item.name}</span>
+              <span class="text-[9px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 shrink-0 font-mono">${item.size || 'Video'}</span>
+            </div>
+            <p class="text-[10px] text-slate-400 flex items-center justify-between">
+              <span>📁 ${item.folderKey ? item.folderKey.split('/').pop() : 'Thư mục'}</span>
+              <span>${item.date || ''}</span>
+            </p>
+          </div>
+          <div class="flex items-center gap-1.5 pt-1 border-t border-slate-800/80">
+            <a href="${item.url}" download="${item.name}" class="flex-1 py-1.5 px-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-[11px] font-semibold text-center transition flex items-center justify-center gap-1">
+              <span>📥 Tải Về</span>
+            </a>
+            <button type="button" class="use-video-studio-btn px-2.5 py-1.5 bg-purple-600/30 hover:bg-purple-600 text-purple-200 hover:text-white rounded-xl text-[11px] font-semibold transition" title="Dùng tạo video Bước 3">
+              🎬 Bước 3
+            </button>
+            <button type="button" class="del-video-btn p-1.5 text-slate-500 hover:text-rose-400 rounded-lg transition" title="Xóa video">
+              🗑️
+            </button>
+          </div>
+        `;
+
+        card.querySelector('.use-video-studio-btn').addEventListener('click', () => {
+          goToStep(3);
+          showToast(`Đã chọn video: ${item.name} sang Bước 3 Studio!`);
+        });
+
+        card.querySelector('.del-video-btn').addEventListener('click', () => {
+          const list = state.folderVideos[item.folderKey] || [];
+            state.folderVideos[item.folderKey] = list.filter(v => v.id !== item.id);
+            saveFolderAssets();
+            showToast(`Đã xóa video: ${item.name}`);
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    function renderSavedLinks() {
+      const container = document.getElementById('saved-links-list');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const cur = state.currentPath;
+      let items = [];
+      if (cur === 'all') {
+        Object.keys(state.folderLinks || {}).forEach(k => {
+          (state.folderLinks[k] || []).forEach(l => items.push({ ...l, folderKey: k }));
+        });
+      } else {
+        (state.folderLinks[cur] || []).forEach(l => items.push({ ...l, folderKey: cur }));
+      }
+
+      if (items.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-6 text-center text-slate-500 text-xs bg-slate-950/60 rounded-2xl border border-dashed border-slate-800">
+            <svg class="w-7 h-7 mx-auto text-emerald-400/50 mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+            Chưa có liên kết nào. Bấm nút <strong>"🔗 Dán Link"</strong> ở trên để lưu link Shopee, TikTok Shop, 1688, Drive... vào thư mục này!
+          </div>
+        `;
+        return;
+      }
+
+      items.forEach(item => {
+        let domainBadge = '🌐 Web';
+        let badgeColor = 'bg-slate-800 text-slate-300';
+        const urlLower = (item.url || '').toLowerCase();
+        if (urlLower.includes('shopee')) { domainBadge = '🟠 Shopee'; badgeColor = 'bg-orange-500/20 text-orange-300 border-orange-500/30'; }
+        else if (urlLower.includes('tiktok')) { domainBadge = '🎵 TikTok'; badgeColor = 'bg-pink-500/20 text-pink-300 border-pink-500/30'; }
+        else if (urlLower.includes('1688') || urlLower.includes('taobao')) { domainBadge = '🇨🇳 1688/Taobao'; badgeColor = 'bg-amber-500/20 text-amber-300 border-amber-500/30'; }
+        else if (urlLower.includes('drive.google')) { domainBadge = '📁 Drive'; badgeColor = 'bg-blue-500/20 text-blue-300 border-blue-500/30'; }
+        else if (urlLower.includes('facebook') || urlLower.includes('fb.com')) { domainBadge = '🔵 Facebook'; badgeColor = 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30'; }
+
+        const card = document.createElement('div');
+        card.className = 'p-3 rounded-2xl bg-slate-950 border border-slate-800 hover:border-emerald-500/50 transition flex items-center justify-between gap-3 shadow';
+        card.innerHTML = `
+          <div class="min-w-0 flex-1 space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] px-2 py-0.5 rounded-full border font-bold ${badgeColor}">${domainBadge}</span>
+              <h5 class="text-xs font-bold text-white truncate" title="${item.title}">${item.title || item.url}</h5>
+            </div>
+            <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="text-[11px] text-emerald-400 hover:underline truncate block" title="${item.url}">
+              ${item.url}
+            </a>
+            <div class="text-[10px] text-slate-500 flex items-center gap-3">
+              <span>📁 ${item.folderKey ? item.folderKey.split('/').pop() : 'Thư mục'}</span>
+              <span>${item.date || ''}</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="p-2 bg-slate-800 hover:bg-slate-700 text-emerald-300 rounded-xl text-xs font-bold transition" title="Mở link trong tab mới">
+              ↗️
+            </a>
+            <button type="button" class="copy-link-btn p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs transition" title="Sao chép liên kết">
+              📋
+            </button>
+            <button type="button" class="del-link-btn p-2 text-slate-500 hover:text-rose-400 rounded-xl text-xs transition" title="Xóa liên kết">
+              🗑️
+            </button>
+          </div>
+        `;
+
+        card.querySelector('.copy-link-btn').addEventListener('click', () => {
+          navigator.clipboard.writeText(item.url).then(() => {
+            showToast('Đã copy link vào bộ nhớ tạm!');
+          });
+        });
+
+        card.querySelector('.del-link-btn').addEventListener('click', () => {
+          const list = state.folderLinks[item.folderKey] || [];
+            state.folderLinks[item.folderKey] = list.filter(l => l.id !== item.id);
+            saveFolderAssets();
+            showToast('Đã xóa liên kết!');
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    function renderSavedNotes() {
+      const container = document.getElementById('saved-notes-list');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const cur = state.currentPath;
+      let items = [];
+      if (cur === 'all') {
+        Object.keys(state.folderNotes || {}).forEach(k => {
+          (state.folderNotes[k] || []).forEach(n => items.push({ ...n, folderKey: k }));
+        });
+      } else {
+        (state.folderNotes[cur] || []).forEach(n => items.push({ ...n, folderKey: cur }));
+      }
+
+      if (items.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-6 text-center text-slate-500 text-xs bg-slate-950/60 rounded-2xl border border-dashed border-slate-800">
+            <span class="w-7 h-7 mx-auto mb-1.5 inline-flex items-center justify-center rounded-lg bg-blue-600/30 text-blue-400 font-serif font-black text-xs">W</span>
+            Chưa có ghi chú Word nào. Bấm nút <strong>"📝 Ghi Chú Word"</strong> ở trên để soạn kịch bản, lưu trữ thông số và xuất file Word (.doc) về máy!
+          </div>
+        `;
+        return;
+      }
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'p-3.5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-blue-500/50 transition flex flex-col justify-between space-y-3 shadow-lg';
+        
+        const previewText = (item.content || '').substring(0, 150) + ((item.content || '').length > 150 ? '...' : '');
+
+        card.innerHTML = `
+          <div class="space-y-2">
+            <div class="flex items-center justify-between gap-2 border-b border-slate-800 pb-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-6 h-6 rounded-lg bg-blue-600 text-white font-serif font-black text-xs flex items-center justify-center shrink-0 shadow">W</span>
+                <h5 class="text-xs font-bold text-white truncate" title="${item.title}">${item.title || 'Ghi chú không tiêu đề'}</h5>
+              </div>
+              <span class="text-[9px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20 shrink-0 font-mono">Word .doc</span>
+            </div>
+            <p class="text-xs text-slate-300 font-sans line-clamp-3 leading-relaxed whitespace-pre-wrap">${escapeHtml(previewText)}</p>
+            <div class="text-[10px] text-slate-500 flex items-center justify-between pt-1">
+              <span>📁 ${item.folderKey ? item.folderKey.split('/').pop() : 'Thư mục'}</span>
+              <span>${item.date || ''}</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-800">
+            <!-- Nút Tải Word .doc -->
+            <button type="button" class="download-doc-btn flex-1 py-1.5 px-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1 shadow">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              <span>Tải .doc</span>
+            </button>
+
+            <!-- Nút Đưa vào Bước 2 viết Content -->
+            <button type="button" class="push-step2-btn py-1.5 px-2.5 bg-slate-800 hover:bg-slate-700 text-rose-300 rounded-xl text-xs font-semibold transition" title="Đưa nội dung này vào ô thông tin Bước 2 để viết bài">
+              ✨ Sang Bước 2
+            </button>
+
+            <!-- Nút Sửa -->
+            <button type="button" class="edit-note-btn py-1.5 px-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs transition" title="Chỉnh sửa ghi chú">
+              ✏️
+            </button>
+
+            <!-- Nút Copy -->
+            <button type="button" class="copy-note-btn py-1.5 px-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs transition" title="Sao chép nội dung">
+              📋
+            </button>
+
+            <!-- Nút Xóa -->
+            <button type="button" class="del-note-btn py-1.5 px-2 text-slate-500 hover:text-rose-400 rounded-xl text-xs transition" title="Xóa ghi chú">
+              🗑️
+            </button>
+          </div>
+        `;
+
+        card.querySelector('.download-doc-btn').addEventListener('click', () => {
+          downloadWordDocument(item.title, item.content);
+        });
+
+        card.querySelector('.push-step2-btn').addEventListener('click', () => {
+          const activeIdx = state.activeProductIdx || 0;
+          if (state.batchProducts && state.batchProducts[activeIdx]) {
+            state.batchProducts[activeIdx].info = (state.batchProducts[activeIdx].info ? state.batchProducts[activeIdx].info + '\n' : '') + `[Ghi chú: ${item.title}]\n` + item.content;
+            renderProductRows();
+          }
+          goToStep(2);
+          showToast(`Đã đưa ghi chú "${item.title}" vào Sản phẩm ${activeIdx + 1} ở Bước 2!`);
+        });
+
+        card.querySelector('.edit-note-btn').addEventListener('click', () => {
+          const row = document.getElementById('add-note-input-row');
+          const tInput = document.getElementById('new-note-title-input');
+          const cInput = document.getElementById('new-note-content-input');
+          if (row && tInput && cInput) {
+            row.classList.remove('hidden');
+            tInput.value = item.title;
+            cInput.value = item.content;
+            row.setAttribute('data-editing-id', item.id);
+            cInput.focus();
+            row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        });
+
+        card.querySelector('.copy-note-btn').addEventListener('click', () => {
+          const full = `${item.title}\n\n${item.content}`;
+          navigator.clipboard.writeText(full).then(() => {
+            showToast('Đã copy nội dung ghi chú!');
+          });
+        });
+
+        card.querySelector('.del-note-btn').addEventListener('click', () => {
+          const list = state.folderNotes[item.folderKey] || [];
+            state.folderNotes[item.folderKey] = list.filter(n => n.id !== item.id);
+            saveFolderAssets();
+            showToast('Đã xóa ghi chú!');
+        });
+
+        container.appendChild(card);
+      });
+    }
+
     function loadSavedFolders() {
       try {
         const saved = localStorage.getItem('ai_video_saved_folders');
@@ -1721,10 +2318,16 @@ const state = {
         state.savedFolders['Thời trang nữ'] = [];
       }
 
+      loadFolderAssets();
+
       renderBreadcrumbs();
       renderSubfolderCards();
       renderFolderFilterButtons();
       renderSavedGallery();
+      renderSavedVideos();
+      renderSavedLinks();
+      renderSavedNotes();
+      renderFolderAssetCounts();
       updateSaveDropdownOptions();
       updateActiveFolderControlBox();
     }
@@ -1737,6 +2340,10 @@ const state = {
       renderSubfolderCards();
       renderFolderFilterButtons();
       renderSavedGallery();
+      renderSavedVideos();
+      renderSavedLinks();
+      renderSavedNotes();
+      renderFolderAssetCounts();
       updateSaveDropdownOptions();
       updateActiveFolderControlBox();
     }
@@ -1840,6 +2447,23 @@ const state = {
         delete state.savedFolders[subK];
       });
 
+      // Di chuyển Video, Link, Ghi chú tương ứng
+      const migrateStore = (store) => {
+        if (!store) return;
+        if (store[oldPath]) { store[newPath] = store[oldPath]; delete store[oldPath]; }
+        Object.keys(store).forEach(k => {
+          if (k.startsWith(oldPrefix)) {
+            const newK = newPath + '/' + k.substring(oldPrefix.length);
+            store[newK] = store[k];
+            delete store[k];
+          }
+        });
+      };
+      migrateStore(state.folderVideos);
+      migrateStore(state.folderLinks);
+      migrateStore(state.folderNotes);
+      saveFolderAssets();
+
       delete state.savedFolders[oldPath];
       state.currentPath = newPath;
       saveFoldersToStorage();
@@ -1879,6 +2503,22 @@ const state = {
         delete state.savedFolders[subK];
       });
 
+      const renameStore = (store) => {
+        if (!store) return;
+        if (store[oldPath]) { store[newPath] = store[oldPath]; delete store[oldPath]; }
+        Object.keys(store).forEach(k => {
+          if (k.startsWith(oldPrefix)) {
+            const newK = newPath + '/' + k.substring(oldPrefix.length);
+            store[newK] = store[k];
+            delete store[k];
+          }
+        });
+      };
+      renameStore(state.folderVideos);
+      renameStore(state.folderLinks);
+      renameStore(state.folderNotes);
+      saveFolderAssets();
+
       delete state.savedFolders[oldPath];
       state.currentPath = newPath;
       saveFoldersToStorage();
@@ -1896,6 +2536,16 @@ const state = {
         if (k.startsWith(prefix)) delete state.savedFolders[k];
       });
       delete state.savedFolders[cur];
+
+      const cleanStore = (store) => {
+        if (!store) return;
+        delete store[cur];
+        Object.keys(store).forEach(k => { if (k.startsWith(prefix)) delete store[k]; });
+      };
+      cleanStore(state.folderVideos);
+      cleanStore(state.folderLinks);
+      cleanStore(state.folderNotes);
+      saveFolderAssets();
 
       const parts = cur.split('/');
       if (parts.length > 1) {
@@ -4512,7 +5162,7 @@ loadLearnedRules();
         });
       }
 
-      // Inside Upload Files
+      // Inside Upload Files (Ảnh)
       const insideUploadBtn = document.getElementById('inside-upload-files-btn');
       const currentFileInputRef = document.getElementById('current-folder-file-input');
       if (insideUploadBtn && currentFileInputRef) {
@@ -4520,6 +5170,229 @@ loadLearnedRules();
           currentFileInputRef.click();
         });
       }
+
+      // Inside Upload Video
+      const insideVideoBtn = document.getElementById('inside-upload-video-btn');
+      const insideVideoInput = document.getElementById('inside-video-file-input');
+      if (insideVideoBtn && insideVideoInput) {
+        insideVideoBtn.addEventListener('click', () => {
+          if (state.currentPath === 'all') {
+            showToast('Vui lòng chọn 1 thư mục cụ thể để tải video vào!', 'error');
+            return;
+          }
+          insideVideoInput.click();
+        });
+
+        insideVideoInput.addEventListener('change', (e) => {
+          const files = Array.from(e.target.files || []);
+          if (!files.length) return;
+          const cur = state.currentPath;
+          if (!state.folderVideos[cur]) state.folderVideos[cur] = [];
+
+          let countAdded = 0;
+          files.forEach(file => {
+            const blobUrl = URL.createObjectURL(file);
+            const sizeStr = (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+            const vidObj = {
+              id: 'vid_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+              name: file.name,
+              url: blobUrl,
+              size: sizeStr,
+              date: new Date().toLocaleDateString('vi-VN')
+            };
+
+            // Lưu dataUrl nếu kích thước vừa phải (< 3MB)
+            if (file.size < 3 * 1024 * 1024) {
+              const reader = new FileReader();
+              reader.onload = (re) => {
+                vidObj.url = re.target.result;
+                try {
+                  localStorage.setItem('ai_video_folder_videos', JSON.stringify(state.folderVideos));
+                } catch(err) {}
+              };
+              reader.readAsDataURL(file);
+            }
+
+            state.folderVideos[cur].unshift(vidObj);
+            countAdded++;
+          });
+
+          saveFolderAssets();
+          showToast(`Đã tải lên ${countAdded} video vào thư mục "${cur.split('/').pop()}"!`);
+          insideVideoInput.value = '';
+        });
+      }
+
+      // Inside Add Link
+      const insideAddLinkBtn = document.getElementById('inside-add-link-btn');
+      const addLinkRow = document.getElementById('add-link-input-row');
+      const newLinkUrlInput = document.getElementById('new-link-url-input');
+      const newLinkTitleInput = document.getElementById('new-link-title-input');
+      const confirmSaveLinkBtn = document.getElementById('confirm-save-link-btn');
+      const cancelSaveLinkBtn = document.getElementById('cancel-save-link-btn');
+      const closeAddLinkBtn = document.getElementById('close-add-link-btn');
+
+      if (insideAddLinkBtn && addLinkRow) {
+        insideAddLinkBtn.addEventListener('click', () => {
+          if (state.currentPath === 'all') {
+            showToast('Vui lòng chọn 1 thư mục cụ thể để lưu link!', 'error');
+            return;
+          }
+          addLinkRow.classList.toggle('hidden');
+          if (!addLinkRow.classList.contains('hidden') && newLinkUrlInput) {
+            newLinkUrlInput.focus();
+          }
+        });
+      }
+
+      [cancelSaveLinkBtn, closeAddLinkBtn].forEach(btn => {
+        if (btn && addLinkRow) {
+          btn.addEventListener('click', () => {
+            addLinkRow.classList.add('hidden');
+          });
+        }
+      });
+
+      if (confirmSaveLinkBtn && newLinkUrlInput) {
+        confirmSaveLinkBtn.addEventListener('click', () => {
+          const rawUrl = newLinkUrlInput.value.trim();
+          if (!rawUrl) {
+            showToast('Vui lòng dán đường dẫn link!', 'error');
+            return;
+          }
+          const cur = state.currentPath;
+          if (cur === 'all') {
+            showToast('Vui lòng chọn 1 thư mục cụ thể để lưu link!', 'error');
+            return;
+          }
+          if (!state.folderLinks[cur]) state.folderLinks[cur] = [];
+
+          let title = newLinkTitleInput.value.trim();
+          if (!title) {
+            try {
+              const u = new URL(rawUrl);
+              title = u.hostname.replace('www.', '');
+            } catch(e) {
+              title = 'Liên kết sản phẩm';
+            }
+          }
+
+          state.folderLinks[cur].unshift({
+            id: 'link_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+            url: rawUrl,
+            title: title,
+            date: new Date().toLocaleDateString('vi-VN')
+          });
+
+          saveFolderAssets();
+          newLinkUrlInput.value = '';
+          newLinkTitleInput.value = '';
+          addLinkRow.classList.add('hidden');
+          showToast(`Đã lưu link vào thư mục "${cur.split('/').pop()}"!`);
+        });
+
+        newLinkUrlInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') confirmSaveLinkBtn.click();
+        });
+      }
+
+      // Inside Word Notes
+      const insideAddNoteBtn = document.getElementById('inside-add-note-btn');
+      const addNoteRow = document.getElementById('add-note-input-row');
+      const newNoteTitleInput = document.getElementById('new-note-title-input');
+      const newNoteContentInput = document.getElementById('new-note-content-input');
+      const confirmSaveNoteBtn = document.getElementById('confirm-save-note-btn');
+      const cancelSaveNoteBtn = document.getElementById('cancel-save-note-btn');
+      const closeAddNoteBtn = document.getElementById('close-add-note-btn');
+      const downloadDraftWordBtn = document.getElementById('download-draft-word-btn');
+
+      if (insideAddNoteBtn && addNoteRow) {
+        insideAddNoteBtn.addEventListener('click', () => {
+          if (state.currentPath === 'all') {
+            showToast('Vui lòng chọn 1 thư mục cụ thể để tạo ghi chú!', 'error');
+            return;
+          }
+          addNoteRow.removeAttribute('data-editing-id');
+          newNoteTitleInput.value = '';
+          newNoteContentInput.value = '';
+          addNoteRow.classList.toggle('hidden');
+          if (!addNoteRow.classList.contains('hidden') && newNoteTitleInput) {
+            newNoteTitleInput.focus();
+          }
+        });
+      }
+
+      [cancelSaveNoteBtn, closeAddNoteBtn].forEach(btn => {
+        if (btn && addNoteRow) {
+          btn.addEventListener('click', () => {
+            addNoteRow.classList.add('hidden');
+            addNoteRow.removeAttribute('data-editing-id');
+          });
+        }
+      });
+
+      if (downloadDraftWordBtn) {
+        downloadDraftWordBtn.addEventListener('click', () => {
+          const t = newNoteTitleInput.value.trim() || 'Ghi_chu_Word';
+          const c = newNoteContentInput.value.trim();
+          if (!c && !newNoteTitleInput.value.trim()) {
+            showToast('Vui lòng nhập nội dung ghi chú trước khi tải file Word!', 'error');
+            return;
+          }
+          downloadWordDocument(t, c);
+        });
+      }
+
+      if (confirmSaveNoteBtn && newNoteContentInput) {
+        confirmSaveNoteBtn.addEventListener('click', () => {
+          const content = newNoteContentInput.value.trim();
+          if (!content && !newNoteTitleInput.value.trim()) {
+            showToast('Vui lòng nhập tiêu đề hoặc nội dung ghi chú!', 'error');
+            return;
+          }
+          const cur = state.currentPath;
+          if (cur === 'all') {
+            showToast('Vui lòng chọn 1 thư mục cụ thể để lưu ghi chú!', 'error');
+            return;
+          }
+          if (!state.folderNotes[cur]) state.folderNotes[cur] = [];
+
+          const title = newNoteTitleInput.value.trim() || 'Ghi chú ' + new Date().toLocaleTimeString('vi-VN');
+          const editId = addNoteRow.getAttribute('data-editing-id');
+
+          if (editId) {
+            const idx = state.folderNotes[cur].findIndex(n => n.id === editId);
+            if (idx !== -1) {
+              state.folderNotes[cur][idx].title = title;
+              state.folderNotes[cur][idx].content = content;
+              state.folderNotes[cur][idx].date = new Date().toLocaleDateString('vi-VN');
+              showToast('Đã cập nhật ghi chú Word!');
+            }
+          } else {
+            state.folderNotes[cur].unshift({
+              id: 'note_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+              title: title,
+              content: content,
+              date: new Date().toLocaleDateString('vi-VN')
+            });
+            showToast(`Đã lưu ghi chú Word vào thư mục "${cur.split('/').pop()}"!`);
+          }
+
+          saveFolderAssets();
+          newNoteTitleInput.value = '';
+          newNoteContentInput.value = '';
+          addNoteRow.removeAttribute('data-editing-id');
+          addNoteRow.classList.add('hidden');
+        });
+      }
+
+      // Asset Switcher Tabs
+      document.querySelectorAll('.asset-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tab = btn.getAttribute('data-asset-tab');
+          switchAssetTab(tab);
+        });
+      });
 
 
       renderProductRows();
