@@ -108,7 +108,225 @@
   <!-- MODAL COMBO THAO TÁC THƯ MỤC (XÓA, ĐỔI TÊN, DI CHUYỂN, PHÂN LOẠI) -->
     <!-- =================================================================== -->
   <!-- MODAL XEM CHI TIẾT NỘI DUNG FILE WORD & CÂU LỆNH PROMPT (MỚI) -->
+    <!-- =================================================================== -->
+  <!-- MODAL HƯỚNG DẪN ĐỒNG BỘ / CHUYỂN DỮ LIỆU SANG ĐIỆN THOẠI KHÁC (MỚI) -->
+    <!-- =================================================================== -->
+  <!-- MODAL CÀI ĐẶT TỰ ĐỘNG ĐỒNG BỘ ĐÁM MÂY (GIỮA NHIỀU ĐIỆN THOẠI & MÁY TÍNH) -->
   <!-- =================================================================== -->
+  <div id="cloud-sync-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4 hidden">
+    <div class="bg-slate-900 border border-slate-700 rounded-t-3xl sm:rounded-3xl max-w-xl w-full p-5 sm:p-6 shadow-2xl space-y-4 max-h-[92vh] overflow-y-auto animate-in fade-in slide-in-from-bottom duration-200">
+      
+      <!-- Header Modal -->
+      <div class="flex items-center justify-between pb-3.5 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center text-xl font-bold shadow-lg shadow-indigo-600/30">
+            ☁️
+          </span>
+          <div>
+            <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
+              <span>Tự Động Đồng Bộ Đám Mây</span>
+              <span id="modal-sync-status-badge" class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-slate-800 text-slate-400 border border-slate-700">Chưa Bật</span>
+            </h3>
+            <p class="text-[11px] text-slate-400">Tự động kết nối và chia sẻ tài liệu giữa các điện thoại</p>
+          </div>
+        </div>
+        <button id="close-cloud-sync-modal-btn" type="button" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center text-sm font-bold transition">
+          ✕
+        </button>
+      </div>
+
+      <!-- Giới thiệu lợi ích -->
+      <div class="p-3 rounded-2xl bg-indigo-950/40 border border-indigo-500/30 text-indigo-200 text-xs space-y-1 leading-relaxed">
+        <p class="font-bold text-indigo-300 flex items-center gap-1.5">
+          <span>✨</span>
+          <span>Bên này tải ảnh, tạo thư mục hoặc lưu prompt &rarr; Máy khác tự động có ngay!</span>
+        </p>
+        <p class="text-slate-300 text-[11px]">
+          Bạn không cần xuất gửi file thủ công nữa. Dữ liệu sẽ tự động đồng bộ thời gian thực thông qua tài khoản Đám Mây của bạn.
+        </p>
+      </div>
+
+      <!-- CHỌN PHƯƠNG THỨC ĐỒNG BỘ -->
+      <div class="space-y-3">
+        <label class="text-xs font-bold text-slate-300 block">Chọn cách đồng bộ bạn muốn sử dụng:</label>
+        
+        <!-- Tab chuyển đổi phương thức -->
+        <div class="grid grid-cols-2 gap-2 bg-slate-950 p-1 rounded-2xl border border-slate-800 text-xs">
+          <button type="button" id="tab-sync-method-github" class="py-2 px-3 rounded-xl font-bold transition text-center bg-indigo-600 text-white shadow">
+            🐙 Kho GitHub Của Bạn
+          </button>
+          <button type="button" id="tab-sync-method-key" class="py-2 px-3 rounded-xl font-bold transition text-center text-slate-400 hover:text-white">
+            🔑 Mã Đồng Bộ Riêng
+          </button>
+        </div>
+
+        <!-- PHƯƠNG THỨC 1: ĐỒNG BỘ TRỰC TIẾP VÀO GITHUB (KHUYÊN DÙNG NHẤT) -->
+        <div id="sync-form-github" class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-bold text-white flex items-center gap-1.5">
+              <span>🐙</span> Đồng bộ qua GitHub Repository:
+            </span>
+            <span class="text-[10px] text-emerald-400 font-mono font-bold">Lưu trữ vĩnh viễn</span>
+          </div>
+
+          <div class="space-y-2">
+            <div>
+              <label class="text-[11px] text-slate-400 block mb-1">Tên Kho GitHub (Repository):</label>
+              <input type="text" id="sync-github-repo" value="minhchaunap/AI-Video-Studio-" placeholder="username/repo-name" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 font-mono">
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <label class="text-[11px] text-slate-400">GitHub Personal Access Token (PAT):</label>
+                <a href="https://github.com/settings/tokens/new" target="_blank" rel="noopener noreferrer" class="text-[10px] text-indigo-400 hover:underline">
+                  Tạo Token mới trên GitHub &rarr;
+                </a>
+              </div>
+              <input type="password" id="sync-github-token" placeholder="Dán mã Token (bắt đầu bằng ghp_...)" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 font-mono">
+              <p class="text-[10px] text-slate-500 mt-1">
+                💡 Token chỉ lưu an toàn trên máy bạn, cấp quyền <code class="text-indigo-300">repo</code> để web tự động ghi dữ liệu vào file <code class="text-indigo-300">data/studio_database.json</code> trên GitHub của bạn.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PHƯƠNG THỨC 2: MÃ ĐỒNG BỘ RIÊNG (SYNC ID) -->
+        <div id="sync-form-key" class="hidden p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-bold text-white flex items-center gap-1.5">
+              <span>🔑</span> Mã Đồng Bộ Đám Mây Cá Nhân:
+            </span>
+            <span class="text-[10px] text-purple-400 font-mono font-bold">Không cần Token</span>
+          </div>
+
+          <div class="space-y-2">
+            <div>
+              <label class="text-[11px] text-slate-400 block mb-1">Nhập Tên Phòng / Mã Đồng Bộ (Ví dụ: số điện thoại hoặc mã riêng):</label>
+              <input type="text" id="sync-custom-key" placeholder="Ví dụ: minhchaunap_studio_2026" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-500 font-mono">
+              <p class="text-[10px] text-slate-500 mt-1">
+                💡 Ở các điện thoại khác, chỉ cần nhập đúng Mã này là toàn bộ tài liệu sẽ được tải về tự động.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TÙY CHỌN TỰ ĐỘNG ĐỒNG BỘ -->
+        <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center justify-between text-xs">
+          <div>
+            <span class="font-bold text-white block">Tự động đồng bộ mỗi khi lưu dữ liệu mới</span>
+            <span class="text-[10px] text-slate-400">Khi bạn tải ảnh, thêm video hoặc viết note, hệ thống sẽ tự cập nhật lên đám mây.</span>
+          </div>
+          <input type="checkbox" id="sync-auto-checkbox" checked class="w-4 h-4 accent-indigo-600 rounded">
+        </div>
+      </div>
+
+      <!-- Nút Thao Tác -->
+      <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-800">
+        <button id="modal-test-sync-btn" type="button" class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow">
+          <span>🔄 Thử Đồng Bộ Ngay</span>
+        </button>
+        <div class="flex items-center gap-2">
+          <button id="modal-disable-sync-btn" type="button" class="py-2.5 px-3 text-slate-400 hover:text-rose-400 text-xs font-semibold transition">
+            Tắt Đồng Bộ
+          </button>
+          <button id="modal-save-sync-btn" type="button" class="py-2.5 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5 shadow-lg shadow-indigo-600/30">
+            <span>💾 Lưu & Bật Đồng Bộ</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<!-- =================================================================== -->
+  <div id="sync-guide-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4 hidden">
+    <div class="bg-slate-900 border border-slate-700 rounded-t-3xl sm:rounded-3xl max-w-xl w-full p-5 sm:p-6 shadow-2xl space-y-4 max-h-[92vh] overflow-y-auto animate-in fade-in slide-in-from-bottom duration-200">
+      
+      <!-- Header Modal -->
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div class="flex items-center gap-2.5">
+          <span class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl font-bold shadow">
+            📲
+          </span>
+          <div>
+            <h3 class="text-sm sm:text-base font-extrabold text-white">Chuyển Dữ Liệu Sang Điện Thoại Khác</h3>
+            <p class="text-[11px] text-slate-400">Cách sao lưu & hiển thị đầy đủ tài liệu trên máy mới</p>
+          </div>
+        </div>
+        <button id="close-sync-modal-btn" type="button" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center text-sm font-bold transition">
+          ✕
+        </button>
+      </div>
+
+      <!-- Giải thích lý do -->
+      <div class="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs space-y-1.5 leading-relaxed">
+        <div class="font-bold flex items-center gap-1.5 text-amber-300">
+          <span>💡</span>
+          <span>Tại sao mở trên điện thoại khác không thấy tài liệu?</span>
+        </div>
+        <p>
+          Trang web chạy trực tiếp trên trình duyệt của bạn và lưu trữ an toàn trong <strong>bộ nhớ riêng của máy bạn</strong> (để bảo mật tuyệt đối, không đẩy ảnh và kịch bản lên máy chủ công cộng).
+        </p>
+        <p>
+          Do đó, khi bạn mở link trên một điện thoại mới, điện thoại đó sẽ có bộ nhớ trắng. Để chuyển toàn bộ tài liệu sang máy mới, bạn chỉ cần <strong>Sao lưu 1 file</strong> theo 3 bước cực kỳ đơn giản bên dưới:
+        </p>
+      </div>
+
+      <!-- 3 Bước Chuyển Dữ Liệu -->
+      <div class="space-y-2.5 text-xs">
+        <!-- Bước 1 -->
+        <div class="p-3 rounded-2xl bg-slate-950 border border-slate-800 flex items-start gap-3">
+          <span class="w-6 h-6 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow">1</span>
+          <div class="space-y-1">
+            <h4 class="font-bold text-white text-xs sm:text-sm">Trên điện thoại hiện tại (Máy cũ):</h4>
+            <p class="text-slate-300 leading-relaxed">
+              Bấm nút <strong>"📤 Xuất Dữ Liệu (Backup)"</strong> ở thanh công cụ. Máy sẽ tải về 1 file sao lưu dạng <code class="bg-slate-800 text-indigo-300 px-1 py-0.5 rounded font-mono text-[11px]">AI_Studio_DuLieu.json</code>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bước 2 -->
+        <div class="p-3 rounded-2xl bg-slate-950 border border-slate-800 flex items-start gap-3">
+          <span class="w-6 h-6 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow">2</span>
+          <div class="space-y-1">
+            <h4 class="font-bold text-white text-xs sm:text-sm">Gửi file sang điện thoại mới:</h4>
+            <p class="text-slate-300 leading-relaxed">
+              Gửi file <code class="bg-slate-800 text-indigo-300 px-1 py-0.5 rounded font-mono text-[11px]">AI_Studio_DuLieu.json</code> đó qua <strong>Zalo</strong>, <strong>Messenger</strong> hoặc <strong>Google Drive</strong> sang máy mới.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bước 3 -->
+        <div class="p-3 rounded-2xl bg-slate-950 border border-slate-800 flex items-start gap-3">
+          <span class="w-6 h-6 rounded-lg bg-emerald-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow">3</span>
+          <div class="space-y-1">
+            <h4 class="font-bold text-white text-xs sm:text-sm">Trên điện thoại mới:</h4>
+            <p class="text-slate-300 leading-relaxed">
+              Mở trang web, bấm nút <strong>"📥 Nhập Dữ Liệu (Restore)"</strong> và chọn file <code class="bg-slate-800 text-emerald-300 px-1 py-0.5 rounded font-mono text-[11px]">.json</code> vừa nhận. Ngay lập tức toàn bộ thư mục, hình ảnh, video và sổ tay ghi chú prompt sẽ xuất hiện đầy đủ 100%!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nút Hành Động Trực Tiếp Trong Modal -->
+      <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-800">
+        <div class="flex items-center gap-2">
+          <button id="modal-export-data-btn" type="button" class="py-2.5 px-3.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-lg shadow-indigo-600/30">
+            <span>📤 Xuất Dữ Liệu Ngay</span>
+          </button>
+          <button id="modal-import-data-btn" type="button" class="py-2.5 px-3.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-lg shadow-emerald-600/30">
+            <span>📥 Nhập Dữ Liệu Ngay</span>
+          </button>
+        </div>
+        <button id="modal-close-sync-btn" type="button" class="px-4 py-2 text-slate-400 hover:text-white text-xs font-semibold">
+          Đã Hiểu & Đóng
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+<!-- =================================================================== -->
   <div id="word-note-viewer-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4 hidden">
     <div class="bg-slate-900 border border-slate-700 rounded-t-3xl sm:rounded-3xl max-w-2xl w-full p-5 sm:p-6 shadow-2xl space-y-4 max-h-[92vh] overflow-y-auto animate-in fade-in slide-in-from-bottom duration-200">
       
@@ -587,15 +805,474 @@
             Ghép sản phẩm (Hình 2, 3...) vào Background (Hình 1) hoặc tạo bối cảnh đời sống chân thực. Tự động lưu và phân loại vào <strong>Folder Ảnh Sản Phẩm</strong> (Mỹ phẩm, Nông sản, Nội thất...).
           </p>
         </div>
-        <div class="flex items-center gap-2">
-          <button id="view-folder-manager-btn" type="button" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs sm:text-sm font-bold text-white shadow-lg shadow-indigo-600/30 flex items-center gap-2 transition">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
-            <span>📁 Mở Thư Mục "Ảnh Sản Phẩm"</span>
+        <div class="flex items-center gap-2 flex-wrap">
+          <button id="view-folder-manager-btn" type="button" class="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs sm:text-sm font-bold text-white shadow-lg shadow-indigo-600/30 flex items-center gap-1.5 transition">
+            <span>📁 Kho Lưu Trữ (Đầu Trang)</span>
+          </button>
+          <button id="scroll-to-studio-btn" type="button" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs sm:text-sm font-bold text-slate-200 hover:text-white transition flex items-center gap-1.5 border border-slate-700">
+            <span>🎨 Cuộn Xuống Studio Ghép Ảnh &darr;</span>
           </button>
         </div>
       </div>
 
-      <!-- Main Studio 2 Cột: Cột Trái Điều Khiển & Nạp Ảnh, Cột Phải Canvas 9:16 -->
+      <!-- =================================================================== -->
+      <!-- KHU VỰC 1: KHO LƯU TRỮ "ẢNH SẢN PHẨM", THƯ MỤC & SỔ TAY NOTE (ĐÃ DỜI LÊN ĐẦU TIÊN) -->
+      <!-- =================================================================== -->
+      <div id="folder-gallery-section" class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-2xl space-y-4">
+        
+        <!-- Header Kho & Breadcrumb Điều Hướng -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-3.5 border-b border-slate-800">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-8 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center shadow">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+              </span>
+              <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                <span>Kho Lưu Trữ "Ảnh Sản Phẩm" Phân Cấp</span>
+              </h2>
+            </div>
+            
+            <!-- Breadcrumbs Navigation -->
+            <div id="folder-breadcrumbs" class="flex flex-wrap items-center gap-1.5 text-xs text-slate-400 font-medium">
+              <!-- Rendered dynamically -->
+            </div>
+
+            <!-- THANH TRẠNG THÁI ĐỒNG BỘ ĐÁM MÂY TỰ ĐỘNG (GIỮA NHIỀU MÁY) -->
+            <div id="cloud-sync-status-bar" class="flex items-center gap-2 flex-wrap pt-1.5">
+              <div id="cloud-sync-indicator" class="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 text-[11px] font-semibold text-slate-400">
+                <span class="w-2 h-2 rounded-full bg-slate-500"></span>
+                <span id="cloud-sync-indicator-text">Đám mây: Chưa bật</span>
+              </div>
+              <button id="open-cloud-sync-btn" type="button" class="px-2.5 py-1 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-300 border border-indigo-500/30 text-[11px] font-bold transition flex items-center gap-1 shadow-sm">
+                <span>☁️ Cài Đặt Đồng Bộ Đám Mây</span>
+              </button>
+              <button id="quick-sync-now-btn" type="button" class="px-2 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 text-[11px] font-bold transition flex items-center gap-1 shadow-sm" title="Tải dữ liệu mới nhất từ đám mây hoặc gửi bản cập nhật lên">
+                <span>🔄 Đồng Bộ Ngay</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Các Nút Thao Tác Thư Mục & Tải Hàng Loạt -->
+          <!-- Các Nút Thao Tác Thư Mục & Sao Lưu / Đồng Bộ Sang Máy Khác -->
+          <div class="flex items-center gap-2 flex-wrap">
+            <!-- Nút Sao Lưu Dữ Liệu (Xuất file chuyển sang máy khác) -->
+            <button id="export-backup-btn" type="button" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-indigo-300 hover:text-white border border-indigo-500/40 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="Xuất file sao lưu toàn bộ thư mục, ảnh, note để chuyển sang điện thoại khác">
+              <span>📤 Xuất Sao Lưu</span>
+            </button>
+
+            <!-- Nút Khôi Phục Dữ Liệu (Nhập file từ máy khác) -->
+            <button id="import-backup-btn" type="button" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-emerald-300 hover:text-white border border-emerald-500/40 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="Nhập file sao lưu để khôi phục tài liệu từ điện thoại khác">
+              <span>📥 Nhập Dữ Liệu</span>
+            </button>
+            <input type="file" id="import-backup-file-input" accept=".json" class="hidden">
+
+            <!-- Nút Hướng Dẫn Sang Máy Khác -->
+            <button id="open-sync-guide-btn" type="button" class="px-2.5 py-2 bg-slate-850 hover:bg-slate-750 text-amber-300 rounded-xl text-xs font-semibold transition flex items-center gap-1 border border-amber-500/30" title="Tại sao mở máy khác không thấy? Bấm để xem cách chuyển!">
+              <span>❓ Sang máy khác?</span>
+            </button>
+
+            <!-- Nút Upload hàng loạt vào thư mục đang đứng -->
+            <!-- Nút Upload hàng loạt vào thư mục đang đứng -->
+            <button id="upload-current-folder-btn" type="button" class="px-3 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+              <span id="upload-folder-btn-label">📁 Tải hàng loạt ảnh vào đây</span>
+            </button>
+            <input type="file" id="current-folder-file-input" multiple accept="image/*" class="hidden">
+
+            <!-- Nút Tạo Folder Con (Khi ở trong 1 folder) -->
+            <button id="create-subfolder-btn" type="button" class="px-3 py-2 bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 rounded-xl text-xs font-bold transition flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>+ Tạo Folder Con</span>
+            </button>
+
+            <!-- Nút Tạo Folder Gốc Mới -->
+            <button id="create-new-folder-btn" type="button" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 rounded-xl text-xs font-bold transition flex items-center gap-1">
+              <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>+ Tạo Thư Mục Gốc</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Form Tạo Folder Con (Ẩn/Hiện) -->
+        <div id="create-subfolder-row" class="hidden p-3 rounded-2xl bg-slate-950 border border-rose-500/40 flex items-center gap-2">
+          <input type="text" id="new-subfolder-name-input" placeholder="Tên thư mục con (VD: Váy đầm, Áo sơ mi, Quần jean...)" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-rose-500">
+          <button id="confirm-create-subfolder-btn" type="button" class="px-4 py-1.5 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition">
+            Tạo Thư Mục Con
+          </button>
+          <button id="cancel-create-subfolder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
+        </div>
+
+        <!-- Form Tạo Folder Gốc (Ẩn/Hiện) -->
+        <div id="create-folder-input-row" class="hidden p-3 rounded-2xl bg-slate-950 border border-slate-800 flex items-center gap-2">
+          <input type="text" id="new-folder-name-input" placeholder="Tên thư mục gốc mới (Ví dụ: Thời trang nữ, Đồ ăn vặt, Trang sức...)" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
+          <button id="confirm-create-folder-btn" type="button" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition">
+            Lưu Folder Gốc
+          </button>
+          <button id="cancel-create-folder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
+        </div>
+
+        <!-- THANH THAO TÁC THƯ MỤC HIỆN TẠI (TẠO FOLDER MỚI & DI CHUYỂN BÊN TRONG FOLDER CON) -->
+        <div id="active-folder-control-box" class="p-4 rounded-2xl bg-slate-950 border border-slate-800 shadow-xl space-y-3">
+          
+          <!-- Dòng 1: Tiêu đề Folder & Nút Di Chuyển & Đổi Tên -->
+          <div class="flex flex-wrap items-center justify-between gap-2.5 pb-2.5 border-b border-slate-800">
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 font-bold text-sm flex items-center justify-center shrink-0">📁</span>
+              <div class="min-w-0">
+                <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2 truncate">
+                  <span id="active-folder-title">Thư mục</span>
+                  <span id="active-folder-badge" class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/20 font-bold shrink-0">0 ảnh</span>
+                </h3>
+                <p class="text-[11px] text-slate-400">Đang ở bên trong thư mục này</p>
+              </div>
+            </div>
+
+            <!-- Nút Di chuyển Folder & Đổi tên & Xóa -->
+            <div class="flex items-center gap-1.5 shrink-0">
+              <!-- NÚT DI CHUYỂN FOLDER -->
+              <button id="move-active-folder-btn" type="button" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded-xl text-xs font-bold border border-slate-700 transition flex items-center gap-1 shadow">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                <span>📦 Di chuyển</span>
+              </button>
+
+              <!-- Nút Đổi tên Folder -->
+              <button id="rename-active-folder-btn" type="button" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold border border-slate-700 transition">
+                ✏️ Đổi tên
+              </button>
+
+              <!-- Nút Xóa Folder -->
+              <button id="delete-active-folder-btn" type="button" class="px-2 py-1.5 text-slate-500 hover:text-rose-400 text-xs transition" title="Xóa thư mục này">
+                🗑️
+              </button>
+            </div>
+          </div>
+
+          <!-- Dòng 2: Thanh Công Cụ Đa Năng Cho Thư Mục: Tải Ảnh, Up Video, Dán Link, Ghi Chú Word, Tạo Folder -->
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-1">
+            <!-- Nút 1: Tải Ảnh -->
+            <button id="inside-upload-files-btn" type="button" class="py-2.5 px-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+              <span>🖼️ Tải Ảnh</span>
+            </button>
+
+            <!-- Nút 2: Up Video (MỚI) -->
+            <button id="inside-upload-video-btn" type="button" class="py-2.5 px-2 bg-purple-600 hover:bg-purple-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span>🎥 Up Video</span>
+            </button>
+            <input type="file" id="inside-video-file-input" accept="video/*" multiple class="hidden">
+
+            <!-- Nút 3: Dán Link (MỚI) -->
+            <button id="inside-add-link-btn" type="button" class="py-2.5 px-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+              <span>🔗 Dán Link</span>
+            </button>
+
+            <!-- Nút 4: Ghi Chú Word (MỚI) -->
+            <button id="inside-add-note-btn" type="button" class="py-2.5 px-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <span>📝 Sổ Tay Note</span>
+            </button>
+
+            <!-- Nút 5: Tạo Folder Mới -->
+            <button id="inside-create-subfolder-btn" type="button" class="col-span-2 sm:col-span-1 py-2.5 px-2 bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+              <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>+ Tạo Folder Mới</span>
+            </button>
+          </div>
+
+          <!-- Hộp Dán Link Vào Thư Mục (MỚI) -->
+          <div id="add-link-input-row" class="hidden p-3.5 rounded-xl bg-slate-900 border border-emerald-500/40 space-y-2.5 shadow-lg">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
+                <span>🔗</span> Dán Link Sản Phẩm / Nguồn Hàng / Video Tham Khảo
+              </span>
+              <button id="close-add-link-btn" type="button" class="text-slate-400 hover:text-white text-xs">✕ Đóng</button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <input type="url" id="new-link-url-input" placeholder="Dán đường dẫn link (VD: Shopee, TikTok Shop, 1688, Drive...)" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+              <input type="text" id="new-link-title-input" placeholder="Tên gợi nhớ (VD: Nguồn váy xưởng 1688, Video trend mẫu...)" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+            </div>
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-[11px] text-slate-400">💡 Link sẽ được lưu trực tiếp vào thư mục hiện tại để bạn mở lại bất kỳ lúc nào.</span>
+              <div class="flex items-center gap-2">
+                <button id="cancel-save-link-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
+                <button id="confirm-save-link-btn" type="button" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 shadow">
+                  <span>💾 Lưu Link Vào Thư Mục</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hộp Soạn & Lưu Sổ Tay Note / Prompt (DỄ MỞ, ĐỌC TRỰC TIẾP TRÊN WEB) -->
+          <div id="add-note-input-row" class="hidden p-3.5 sm:p-4 rounded-2xl bg-slate-900 border border-blue-500/50 space-y-3 shadow-2xl">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+              <span class="text-xs sm:text-sm font-bold text-blue-300 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-lg bg-blue-600 text-white font-serif font-black text-xs flex items-center justify-center shadow">📝</span>
+                <span>Thêm Note Ghi Chú & Lưu Prompt (Mở Đọc Trực Tiếp Không Cần App Ngoài)</span>
+              </span>
+              <button id="close-add-note-btn" type="button" class="text-slate-400 hover:text-white text-xs">✕ Đóng</button>
+            </div>
+
+            <!-- Dòng chọn thư mục lưu (cho phép lưu cả khi ở chế độ Tất Cả) -->
+            <div class="flex items-center justify-between flex-wrap gap-2 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="text-slate-400 font-medium">📁 Lưu vào thư mục:</span>
+                <select id="note-target-folder-select" class="bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1 text-xs text-white focus:outline-none focus:border-blue-500">
+                  <!-- Dynamically populated -->
+                </select>
+              </div>
+
+              <!-- Bộ chọn nhanh loại prompt -->
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <button type="button" id="type-opt-img-prompt" class="note-type-chip px-2.5 py-1 rounded-lg text-xs font-semibold bg-indigo-600/30 text-indigo-300 border border-indigo-500/40 hover:bg-indigo-600 hover:text-white transition">
+                  🎨 Prompt Tách Ảnh
+                </button>
+                <button type="button" id="type-opt-video-prompt" class="note-type-chip px-2.5 py-1 rounded-lg text-xs font-semibold bg-purple-600/30 text-purple-300 border border-purple-500/40 hover:bg-purple-600 hover:text-white transition">
+                  🎬 Prompt Tạo Video
+                </button>
+                <button type="button" id="type-opt-general-doc" class="note-type-chip px-2.5 py-1 rounded-lg text-xs font-semibold bg-blue-600/30 text-blue-300 border border-blue-500/40 hover:bg-blue-600 hover:text-white transition">
+                  📝 Sổ Tay Note
+                </button>
+              </div>
+            </div>
+
+            <div class="space-y-1.5">
+              <input type="text" id="new-note-title-input" placeholder="Tiêu đề Note / Prompt (VD: Prompt Tách Áo Dài 8K, Kịch bản Video Flow, Lưu ý giá sỉ...)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-blue-500 font-medium">
+            </div>
+
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between text-[11px] text-slate-400">
+                <span>Nội dung ghi chú / câu lệnh prompt:</span>
+                <button type="button" id="quick-paste-clipboard-btn" class="text-blue-400 hover:text-blue-300 font-bold flex items-center gap-1">
+                  <span>📋 Dán Nhanh Từ Clipboard</span>
+                </button>
+              </div>
+              <textarea id="new-note-content-input" rows="4" placeholder="Dán câu lệnh prompt vừa copy hoặc gõ kịch bản, ghi chú cần lưu..." class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-blue-500 resize-y font-sans leading-relaxed"></textarea>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-slate-800">
+              <button id="download-draft-word-btn" type="button" class="px-3 py-1.5 bg-blue-900/40 hover:bg-blue-800 text-blue-200 border border-blue-700/50 rounded-xl text-xs font-semibold transition flex items-center gap-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                <span>📥 Xuất File Word (.doc) Nếu Cần</span>
+              </button>
+              <div class="flex items-center gap-2">
+                <button id="cancel-save-note-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
+                <button id="confirm-save-note-btn" type="button" class="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5 shadow-lg shadow-blue-600/30">
+                  <span>💾 Lưu Note / Prompt Ngay</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hộp Tạo Folder Mới (Ẩn/Hiện) -->
+          <div id="create-inside-folder-row" class="hidden p-3 rounded-xl bg-slate-900 border border-rose-500/40 flex items-center gap-2">
+            <input type="text" id="inside-folder-name-input" placeholder="Nhập tên folder mới/con..." class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-rose-500">
+            <button id="confirm-inside-folder-btn" type="button" class="px-4 py-1.5 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition">
+              Lưu Folder
+            </button>
+            <button id="cancel-inside-folder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
+          </div>
+
+          <!-- Hộp Di Chuyển Folder (Ẩn/Hiện) -->
+          <div id="move-active-folder-row" class="hidden p-3 rounded-xl bg-slate-900 border border-amber-500/40 space-y-2">
+            <span class="text-xs font-bold text-amber-300 block">📦 Di chuyển thư mục này vào:</span>
+            <div class="flex items-center gap-2">
+              <select id="move-folder-target-select" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-amber-400">
+                <!-- List of possible parents -->
+              </select>
+              <button id="confirm-move-folder-btn" type="button" class="px-4 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-xl text-xs font-bold transition">
+                Xác nhận
+              </button>
+              <button id="cancel-move-folder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
+            </div>
+          </div>
+
+          <!-- Hộp Đổi Tên Folder (Ẩn/Hiện) -->
+          <div id="rename-active-folder-row" class="hidden p-3 rounded-xl bg-slate-900 border border-slate-700 flex items-center gap-2">
+            <input type="text" id="rename-folder-input" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none">
+            <button id="confirm-rename-folder-btn" type="button" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition">
+              Lưu Tên
+            </button>
+            <button id="cancel-rename-folder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
+          </div>
+
+        </div>
+
+        <!-- KHU VỰC QUẢN LÝ THƯ MỤC: CHẾ ĐỘ XEM LIST CHIỀU DỌC & THANH NGANG -->
+        <div class="p-3.5 sm:p-4 rounded-2xl bg-slate-950 border border-slate-800 shadow-xl space-y-3">
+          
+          <!-- Dòng tiêu đề + Bộ chuyển đổi chế độ xem Dọc/Ngang + Nút quét phân loại AI -->
+          <div class="flex items-center justify-between flex-wrap gap-2.5 pb-2.5 border-b border-slate-800/80">
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="w-7 h-7 rounded-lg bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-sm font-bold shrink-0">📁</span>
+              <div>
+                <h3 class="text-xs sm:text-sm font-extrabold text-white flex items-center gap-1.5">
+                  <span>Kho Thư Mục Sản Phẩm</span>
+                  <span id="folder-total-badge" class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-indigo-300 border border-slate-700">0 thư mục</span>
+                </h3>
+                <p class="text-[11px] text-slate-400">💡 <strong>Mẹo:</strong> Đè ngón tay lên thư mục bất kỳ để mở menu: Xóa &bull; Đổi tên &bull; Di chuyển</p>
+              </div>
+            </div>
+
+            <!-- Các nút điều khiển chế độ xem & phân loại -->
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <!-- Nút Quét & Tự Phân Loại Folder Sp. -->
+              <button id="auto-classify-all-sp-btn" type="button" class="px-2.5 py-1.5 bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 rounded-xl text-xs font-bold transition flex items-center gap-1 shadow" title="Tự động quét các folder Sp. có ít nhất 1 ảnh và chuyển vào ngành hàng phù hợp">
+                <span>⚡ Tự Phân Loại "Sp."</span>
+              </button>
+
+              <!-- Bộ chuyển đổi xem List dọc vs Tabs ngang -->
+              <div class="flex items-center bg-slate-900 border border-slate-800 rounded-xl p-0.5">
+                <button id="view-mode-list-btn" type="button" class="px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 bg-indigo-600 text-white shadow">
+                  <span>📋 List Dọc</span>
+                </button>
+                <button id="view-mode-tabs-btn" type="button" class="px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 text-slate-400 hover:text-white">
+                  <span>🗂️ Thẻ Ngang</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHẾ ĐỘ 1: XEM DANH SÁCH CHIỀU DỌC (VERTICAL LIST VIEW - MẶC ĐỊNH) -->
+          <div id="folder-vertical-list-container" class="space-y-2">
+            <!-- Rendered dynamically via JS -->
+          </div>
+
+          <!-- CHẾ ĐỘ 2: XEM THANH NGANG (HORIZONTAL TABS & SUBFOLDERS) -->
+          <div id="folder-horizontal-container" class="hidden space-y-2">
+            <!-- Khay Các Folder Con Trực Thuộc (Nếu có) -->
+            <div id="subfolders-wrapper" class="space-y-1.5">
+              <div id="subfolders-container" class="flex flex-wrap items-center gap-2">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+
+            <!-- Thanh Tabs Lọc Nhanh Thư Mục Gốc -->
+            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1" id="folder-filter-buttons">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- THANH PHÂN LOẠI TÀI NGUYÊN (ẢNH, VIDEO, LINK, GHI CHÚ WORD) -->
+        <div class="flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-slate-800">
+          <div id="folder-asset-tabs-bar" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+            <button type="button" data-asset-tab="all" class="asset-tab-btn active px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-rose-600 text-white shadow">
+              <span>✨ Tất Cả</span>
+              <span id="badge-count-all" class="px-1.5 py-0.2 rounded-full text-[10px] bg-rose-800 text-white font-mono">0</span>
+            </button>
+            <button type="button" data-asset-tab="photos" class="asset-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800">
+              <span>🖼️ Hình Ảnh</span>
+              <span id="badge-count-photos" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-rose-300 font-mono">0</span>
+            </button>
+            <button type="button" data-asset-tab="videos" class="asset-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800">
+              <span>🎥 Video Clip</span>
+              <span id="badge-count-videos" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-purple-300 font-mono">0</span>
+            </button>
+            <button type="button" data-asset-tab="links" class="asset-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800">
+              <span>🔗 Link Liên Kết</span>
+              <span id="badge-count-links" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-emerald-300 font-mono">0</span>
+            </button>
+            <button type="button" data-asset-tab="notes" class="asset-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800">
+              <span>📝 Sổ Tay Note</span>
+              <span id="badge-count-notes" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-blue-300 font-mono">0</span>
+            </button>
+          </div>
+
+          <p id="asset-view-hint" class="text-[11px] text-slate-400">
+            💡 Bấm vào ảnh để mở menu thao tác AI &bull; Bấm vào video để xem/tải &bull; Ghi chú xuất được file Word (.doc)
+          </p>
+        </div>
+
+        <!-- MỤC 1: KHU VỰC HÌNH ẢNH SẢN PHẨM -->
+        <div id="photos-asset-section" class="space-y-2">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-extrabold text-white flex items-center gap-1.5 uppercase tracking-wider">
+              <span>🖼️ Hình Ảnh Sản Phẩm</span>
+              <span class="text-[10px] text-rose-400 font-mono font-normal">(9:16 HD)</span>
+            </h4>
+          </div>
+          <div id="saved-gallery-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 min-h-[100px]">
+            <!-- Rendered dynamically via JS -->
+          </div>
+        </div>
+
+        <!-- MỤC 2: KHU VỰC VIDEO CLIP (MỚI) -->
+        <div id="videos-asset-section" class="space-y-2 pt-2 border-t border-slate-800/80">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-extrabold text-purple-300 flex items-center gap-1.5 uppercase tracking-wider">
+              <span>🎥 Video Clip Sản Phẩm / Mẫu Quay</span>
+              <span id="section-video-count-badge" class="text-[10px] text-slate-400 font-mono font-normal">0 video</span>
+            </h4>
+          </div>
+          <div id="saved-videos-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            <!-- Rendered dynamically via JS -->
+          </div>
+        </div>
+
+        <!-- MỤC 3: KHU VỰC LIÊN KẾT LINK (MỚI) -->
+        <div id="links-asset-section" class="space-y-2 pt-2 border-t border-slate-800/80">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-extrabold text-emerald-300 flex items-center gap-1.5 uppercase tracking-wider">
+              <span>🔗 Danh Sách Link Đã Lưu</span>
+              <span id="section-link-count-badge" class="text-[10px] text-slate-400 font-mono font-normal">0 link</span>
+            </h4>
+          </div>
+          <div id="saved-links-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <!-- Rendered dynamically via JS -->
+          </div>
+        </div>
+
+        <!-- MỤC 4: SỔ TAY GHI CHÚ & KHO PROMPT (NOTE STUDIO - MỞ ĐỌC TRỰC TIẾP) -->
+        <div id="notes-asset-section" class="space-y-3 pt-3 border-t border-slate-800">
+          <div class="flex items-center justify-between flex-wrap gap-2.5 bg-slate-900/90 p-3 sm:p-4 rounded-2xl border border-slate-800 shadow-md">
+            <div class="min-w-0">
+              <h4 class="text-xs sm:text-sm font-extrabold text-blue-300 flex items-center gap-2 uppercase tracking-wider">
+                <span class="w-6 h-6 rounded-lg bg-blue-600 text-white font-serif font-black text-xs flex items-center justify-center shadow">📝</span>
+                <span>Sổ Tay Ghi Chú & Kho Prompt (Note)</span>
+                <span id="section-note-count-badge" class="text-[10px] text-slate-400 font-mono font-normal normal-case px-2 py-0.5 rounded-full bg-slate-800 border border-slate-700">0 note</span>
+              </h4>
+              <p class="text-[11px] text-slate-400 mt-0.5">
+                💡 <strong>Mở đọc trực tiếp trên màn hình</strong> &bull; Không cần cài app Word &bull; Sao chép prompt 1 chạm để Tách Ảnh hoặc Tạo Video!
+              </p>
+            </div>
+            
+            <!-- Nút Tạo Note Mới Ngay Tại Khu Vực Note -->
+            <button id="section-add-note-btn" type="button" class="px-3.5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-lg shadow-blue-600/30">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>+ Viết Note / Lưu Prompt Mới</span>
+            </button>
+          </div>
+          <!-- DANH SÁCH HIỂN THỊ NOTE & PROMPT MỞ ĐỌC TRỰC TIẾP -->
+          <div id="saved-notes-list" class="space-y-2.5">
+            <!-- Rendered dynamically via JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- KHU VỰC 2: STUDIO GHÉP ẢNH SẢN PHẨM 9:16 (HÌNH 1 BACKGROUND & BỐI CẢNH ĐỜI SỐNG) -->
+      <!-- =================================================================== -->
+      <div id="studio-composition-section" class="space-y-4 pt-4 border-t border-slate-800">
+        <div class="flex items-center justify-between flex-wrap gap-2.5 bg-slate-900/90 p-4 rounded-2xl border border-slate-800">
+          <div class="flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-sm shadow">🎨</span>
+            <div>
+              <h2 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
+                <span>Studio Ghép Sản Phẩm 9:16 (Hình 1 Background & Bối Cảnh Đời Sống)</span>
+              </h2>
+              <p class="text-xs text-slate-400">Tạo ảnh 9:16 chuẩn 8K tự động lưu vào Kho Lưu Trữ ở trên</p>
+            </div>
+          </div>
+          <button id="jump-to-storage-top-btn" type="button" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-indigo-300 hover:text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm border border-slate-700">
+            <span>&uarr; Lên Kho Lưu Trữ (Đầu Trang)</span>
+          </button>
+        </div>
+
+        <!-- Main Studio 2 Cột: Cột Trái Điều Khiển & Nạp Ảnh, Cột Phải Canvas 9:16 -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
         <!-- Cột Trái: Hai Chế Độ (Hình 1 Background vs Thay Bối Cảnh Đời Sống) (5 cols) -->
@@ -781,390 +1458,6 @@
         </div>
 
       </div>
-
-      <!-- KHO LƯU TRỮ "ẢNH SẢN PHẨM" CÓ THƯ MỤC CON & THAO TÁC CHI TIẾT ẢNH -->
-      <div id="folder-gallery-section" class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-2xl space-y-4">
-        
-        <!-- Header Kho & Breadcrumb Điều Hướng -->
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-3.5 border-b border-slate-800">
-          <div class="space-y-1">
-            <div class="flex items-center gap-2">
-              <span class="w-8 h-8 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center shadow">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
-              </span>
-              <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-                <span>Kho Lưu Trữ "Ảnh Sản Phẩm" Phân Cấp</span>
-              </h2>
-            </div>
-            
-            <!-- Breadcrumbs Navigation -->
-            <div id="folder-breadcrumbs" class="flex flex-wrap items-center gap-1.5 text-xs text-slate-400 font-medium">
-              <!-- Rendered dynamically -->
-            </div>
-          </div>
-
-          <!-- Các Nút Thao Tác Thư Mục & Tải Hàng Loạt -->
-          <div class="flex items-center gap-2 flex-wrap">
-            <!-- Nút Upload hàng loạt vào thư mục đang đứng -->
-            <button id="upload-current-folder-btn" type="button" class="px-3 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-              <span id="upload-folder-btn-label">📁 Tải hàng loạt ảnh vào đây</span>
-            </button>
-            <input type="file" id="current-folder-file-input" multiple accept="image/*" class="hidden">
-
-            <!-- Nút Tạo Folder Con (Khi ở trong 1 folder) -->
-            <button id="create-subfolder-btn" type="button" class="px-3 py-2 bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 rounded-xl text-xs font-bold transition flex items-center gap-1">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-              <span>+ Tạo Folder Con</span>
-            </button>
-
-            <!-- Nút Tạo Folder Gốc Mới -->
-            <button id="create-new-folder-btn" type="button" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 rounded-xl text-xs font-bold transition flex items-center gap-1">
-              <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-              <span>+ Tạo Thư Mục Gốc</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Form Tạo Folder Con (Ẩn/Hiện) -->
-        <div id="create-subfolder-row" class="hidden p-3 rounded-2xl bg-slate-950 border border-rose-500/40 flex items-center gap-2">
-          <input type="text" id="new-subfolder-name-input" placeholder="Tên thư mục con (VD: Váy đầm, Áo sơ mi, Quần jean...)" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-rose-500">
-          <button id="confirm-create-subfolder-btn" type="button" class="px-4 py-1.5 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition">
-            Tạo Thư Mục Con
-          </button>
-          <button id="cancel-create-subfolder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
-        </div>
-
-        <!-- Form Tạo Folder Gốc (Ẩn/Hiện) -->
-        <div id="create-folder-input-row" class="hidden p-3 rounded-2xl bg-slate-950 border border-slate-800 flex items-center gap-2">
-          <input type="text" id="new-folder-name-input" placeholder="Tên thư mục gốc mới (Ví dụ: Thời trang nữ, Đồ ăn vặt, Trang sức...)" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
-          <button id="confirm-create-folder-btn" type="button" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition">
-            Lưu Folder Gốc
-          </button>
-          <button id="cancel-create-folder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
-        </div>
-
-        <!-- THANH THAO TÁC THƯ MỤC HIỆN TẠI (TẠO FOLDER MỚI & DI CHUYỂN BÊN TRONG FOLDER CON) -->
-        <div id="active-folder-control-box" class="p-4 rounded-2xl bg-slate-950 border border-slate-800 shadow-xl space-y-3">
-          
-          <!-- Dòng 1: Tiêu đề Folder & Nút Di Chuyển & Đổi Tên -->
-          <div class="flex flex-wrap items-center justify-between gap-2.5 pb-2.5 border-b border-slate-800">
-            <div class="flex items-center gap-2 min-w-0">
-              <span class="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 font-bold text-sm flex items-center justify-center shrink-0">📁</span>
-              <div class="min-w-0">
-                <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2 truncate">
-                  <span id="active-folder-title">Thư mục</span>
-                  <span id="active-folder-badge" class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/20 font-bold shrink-0">0 ảnh</span>
-                </h3>
-                <p class="text-[11px] text-slate-400">Đang ở bên trong thư mục này</p>
-              </div>
-            </div>
-
-            <!-- Nút Di chuyển Folder & Đổi tên & Xóa -->
-            <div class="flex items-center gap-1.5 shrink-0">
-              <!-- NÚT DI CHUYỂN FOLDER -->
-              <button id="move-active-folder-btn" type="button" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded-xl text-xs font-bold border border-slate-700 transition flex items-center gap-1 shadow">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
-                <span>📦 Di chuyển</span>
-              </button>
-
-              <!-- Nút Đổi tên Folder -->
-              <button id="rename-active-folder-btn" type="button" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold border border-slate-700 transition">
-                ✏️ Đổi tên
-              </button>
-
-              <!-- Nút Xóa Folder -->
-              <button id="delete-active-folder-btn" type="button" class="px-2 py-1.5 text-slate-500 hover:text-rose-400 text-xs transition" title="Xóa thư mục này">
-                🗑️
-              </button>
-            </div>
-          </div>
-
-          <!-- Dòng 2: Thanh Công Cụ Đa Năng Cho Thư Mục: Tải Ảnh, Up Video, Dán Link, Ghi Chú Word, Tạo Folder -->
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-1">
-            <!-- Nút 1: Tải Ảnh -->
-            <button id="inside-upload-files-btn" type="button" class="py-2.5 px-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-              <span>🖼️ Tải Ảnh</span>
-            </button>
-
-            <!-- Nút 2: Up Video (MỚI) -->
-            <button id="inside-upload-video-btn" type="button" class="py-2.5 px-2 bg-purple-600 hover:bg-purple-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-              <span>🎥 Up Video</span>
-            </button>
-            <input type="file" id="inside-video-file-input" accept="video/*" multiple class="hidden">
-
-            <!-- Nút 3: Dán Link (MỚI) -->
-            <button id="inside-add-link-btn" type="button" class="py-2.5 px-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
-              <span>🔗 Dán Link</span>
-            </button>
-
-            <!-- Nút 4: Ghi Chú Word (MỚI) -->
-            <button id="inside-add-note-btn" type="button" class="py-2.5 px-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-              <span>📝 Ghi Chú Word</span>
-            </button>
-
-            <!-- Nút 5: Tạo Folder Mới -->
-            <button id="inside-create-subfolder-btn" type="button" class="col-span-2 sm:col-span-1 py-2.5 px-2 bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
-              <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-              <span>+ Tạo Folder Mới</span>
-            </button>
-          </div>
-
-          <!-- Hộp Dán Link Vào Thư Mục (MỚI) -->
-          <div id="add-link-input-row" class="hidden p-3.5 rounded-xl bg-slate-900 border border-emerald-500/40 space-y-2.5 shadow-lg">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
-                <span>🔗</span> Dán Link Sản Phẩm / Nguồn Hàng / Video Tham Khảo
-              </span>
-              <button id="close-add-link-btn" type="button" class="text-slate-400 hover:text-white text-xs">✕ Đóng</button>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <input type="url" id="new-link-url-input" placeholder="Dán đường dẫn link (VD: Shopee, TikTok Shop, 1688, Drive...)" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
-              <input type="text" id="new-link-title-input" placeholder="Tên gợi nhớ (VD: Nguồn váy xưởng 1688, Video trend mẫu...)" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
-            </div>
-            <div class="flex items-center justify-between pt-1">
-              <span class="text-[11px] text-slate-400">💡 Link sẽ được lưu trực tiếp vào thư mục hiện tại để bạn mở lại bất kỳ lúc nào.</span>
-              <div class="flex items-center gap-2">
-                <button id="cancel-save-link-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
-                <button id="confirm-save-link-btn" type="button" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 shadow">
-                  <span>💾 Lưu Link Vào Thư Mục</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hộp Soạn & Lưu File Word / Prompt (MỚI TÍCH HỢP PROMPT & TÁCH ẢNH, VIDEO) -->
-          <div id="add-note-input-row" class="hidden p-3.5 sm:p-4 rounded-2xl bg-slate-900 border border-blue-500/40 space-y-3 shadow-xl">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-blue-300 flex items-center gap-1.5">
-                <span class="px-2 py-0.5 rounded bg-blue-600 text-white font-serif font-black text-xs shadow">W</span>
-                <span>Lưu File Word / Câu Lệnh Prompt (Dùng Tách Ảnh & Tạo Video)</span>
-              </span>
-              <button id="close-add-note-btn" type="button" class="text-slate-400 hover:text-white text-xs">✕ Đóng</button>
-            </div>
-
-            <!-- Bộ Chọn Nhanh Loại Prompt / Tài Liệu -->
-            <div class="flex items-center gap-1.5 flex-wrap">
-              <span class="text-[11px] text-slate-400">Chọn loại:</span>
-              <button type="button" id="type-opt-img-prompt" class="note-type-chip px-2.5 py-1 rounded-lg text-xs font-semibold bg-indigo-600/30 text-indigo-300 border border-indigo-500/40 hover:bg-indigo-600 hover:text-white transition">
-                🎨 Prompt Tách & Ghép Nền
-              </button>
-              <button type="button" id="type-opt-video-prompt" class="note-type-chip px-2.5 py-1 rounded-lg text-xs font-semibold bg-purple-600/30 text-purple-300 border border-purple-500/40 hover:bg-purple-600 hover:text-white transition">
-                🎬 Prompt Tạo Video
-              </button>
-              <button type="button" id="type-opt-general-doc" class="note-type-chip px-2.5 py-1 rounded-lg text-xs font-semibold bg-blue-600/30 text-blue-300 border border-blue-500/40 hover:bg-blue-600 hover:text-white transition">
-                📝 File Word Ghi Chú
-              </button>
-            </div>
-
-            <div class="space-y-1.5">
-              <input type="text" id="new-note-title-input" placeholder="Tiêu đề file Word / Prompt (VD: Prompt Tách Áo Dài 8K, Prompt Video Flow Triệu View...)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500 font-medium">
-            </div>
-
-            <div class="space-y-1.5">
-              <div class="flex items-center justify-between text-[11px] text-slate-400">
-                <span>Nội dung câu lệnh prompt / văn bản ghi chú:</span>
-                <button type="button" id="quick-paste-clipboard-btn" class="text-blue-400 hover:text-blue-300 font-bold flex items-center gap-1">
-                  <span>📋 Dán Nhanh Từ Clipboard</span>
-                </button>
-              </div>
-              <textarea id="new-note-content-input" rows="4" placeholder="Dán nội dung câu lệnh Prompt tách ảnh, prompt tạo video, hoặc kịch bản chi tiết vào đây..." class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-xs text-slate-100 focus:outline-none focus:border-blue-500 resize-y font-mono leading-relaxed"></textarea>
-            </div>
-
-            <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-slate-800">
-              <button id="download-draft-word-btn" type="button" class="px-3 py-1.5 bg-blue-900/60 hover:bg-blue-800 text-blue-200 border border-blue-700/60 rounded-xl text-xs font-semibold transition flex items-center gap-1">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                <span>📥 Xuất File Word (.doc)</span>
-              </button>
-              <div class="flex items-center gap-2">
-                <button id="cancel-save-note-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
-                <button id="confirm-save-note-btn" type="button" class="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 shadow">
-                  <span>💾 Lưu File Word / Prompt</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hộp Tạo Folder Mới (Ẩn/Hiện) -->
-          <div id="create-inside-folder-row" class="hidden p-3 rounded-xl bg-slate-900 border border-rose-500/40 flex items-center gap-2">
-            <input type="text" id="inside-folder-name-input" placeholder="Nhập tên folder mới/con..." class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-rose-500">
-            <button id="confirm-inside-folder-btn" type="button" class="px-4 py-1.5 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition">
-              Lưu Folder
-            </button>
-            <button id="cancel-inside-folder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
-          </div>
-
-          <!-- Hộp Di Chuyển Folder (Ẩn/Hiện) -->
-          <div id="move-active-folder-row" class="hidden p-3 rounded-xl bg-slate-900 border border-amber-500/40 space-y-2">
-            <span class="text-xs font-bold text-amber-300 block">📦 Di chuyển thư mục này vào:</span>
-            <div class="flex items-center gap-2">
-              <select id="move-folder-target-select" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-amber-400">
-                <!-- List of possible parents -->
-              </select>
-              <button id="confirm-move-folder-btn" type="button" class="px-4 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-xl text-xs font-bold transition">
-                Xác nhận
-              </button>
-              <button id="cancel-move-folder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
-            </div>
-          </div>
-
-          <!-- Hộp Đổi Tên Folder (Ẩn/Hiện) -->
-          <div id="rename-active-folder-row" class="hidden p-3 rounded-xl bg-slate-900 border border-slate-700 flex items-center gap-2">
-            <input type="text" id="rename-folder-input" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none">
-            <button id="confirm-rename-folder-btn" type="button" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition">
-              Lưu Tên
-            </button>
-            <button id="cancel-rename-folder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
-          </div>
-
-        </div>
-
-        <!-- KHU VỰC QUẢN LÝ THƯ MỤC: CHẾ ĐỘ XEM LIST CHIỀU DỌC & THANH NGANG -->
-        <div class="p-3.5 sm:p-4 rounded-2xl bg-slate-950 border border-slate-800 shadow-xl space-y-3">
-          
-          <!-- Dòng tiêu đề + Bộ chuyển đổi chế độ xem Dọc/Ngang + Nút quét phân loại AI -->
-          <div class="flex items-center justify-between flex-wrap gap-2.5 pb-2.5 border-b border-slate-800/80">
-            <div class="flex items-center gap-2 min-w-0">
-              <span class="w-7 h-7 rounded-lg bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-sm font-bold shrink-0">📁</span>
-              <div>
-                <h3 class="text-xs sm:text-sm font-extrabold text-white flex items-center gap-1.5">
-                  <span>Kho Thư Mục Sản Phẩm</span>
-                  <span id="folder-total-badge" class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-indigo-300 border border-slate-700">0 thư mục</span>
-                </h3>
-                <p class="text-[11px] text-slate-400">💡 <strong>Mẹo:</strong> Đè ngón tay lên thư mục bất kỳ để mở menu: Xóa &bull; Đổi tên &bull; Di chuyển</p>
-              </div>
-            </div>
-
-            <!-- Các nút điều khiển chế độ xem & phân loại -->
-            <div class="flex items-center gap-1.5 flex-wrap">
-              <!-- Nút Quét & Tự Phân Loại Folder Sp. -->
-              <button id="auto-classify-all-sp-btn" type="button" class="px-2.5 py-1.5 bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 rounded-xl text-xs font-bold transition flex items-center gap-1 shadow" title="Tự động quét các folder Sp. có ít nhất 1 ảnh và chuyển vào ngành hàng phù hợp">
-                <span>⚡ Tự Phân Loại "Sp."</span>
-              </button>
-
-              <!-- Bộ chuyển đổi xem List dọc vs Tabs ngang -->
-              <div class="flex items-center bg-slate-900 border border-slate-800 rounded-xl p-0.5">
-                <button id="view-mode-list-btn" type="button" class="px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 bg-indigo-600 text-white shadow">
-                  <span>📋 List Dọc</span>
-                </button>
-                <button id="view-mode-tabs-btn" type="button" class="px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 text-slate-400 hover:text-white">
-                  <span>🗂️ Thẻ Ngang</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- CHẾ ĐỘ 1: XEM DANH SÁCH CHIỀU DỌC (VERTICAL LIST VIEW - MẶC ĐỊNH) -->
-          <div id="folder-vertical-list-container" class="space-y-2">
-            <!-- Rendered dynamically via JS -->
-          </div>
-
-          <!-- CHẾ ĐỘ 2: XEM THANH NGANG (HORIZONTAL TABS & SUBFOLDERS) -->
-          <div id="folder-horizontal-container" class="hidden space-y-2">
-            <!-- Khay Các Folder Con Trực Thuộc (Nếu có) -->
-            <div id="subfolders-wrapper" class="space-y-1.5">
-              <div id="subfolders-container" class="flex flex-wrap items-center gap-2">
-                <!-- Rendered dynamically -->
-              </div>
-            </div>
-
-            <!-- Thanh Tabs Lọc Nhanh Thư Mục Gốc -->
-            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1" id="folder-filter-buttons">
-              <!-- Rendered dynamically -->
-            </div>
-          </div>
-
-        </div>
-
-        <!-- THANH PHÂN LOẠI TÀI NGUYÊN (ẢNH, VIDEO, LINK, GHI CHÚ WORD) -->
-        <div class="flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-slate-800">
-          <div id="folder-asset-tabs-bar" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
-            <button type="button" data-asset-tab="all" class="asset-tab-btn active px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-rose-600 text-white shadow">
-              <span>✨ Tất Cả</span>
-              <span id="badge-count-all" class="px-1.5 py-0.2 rounded-full text-[10px] bg-rose-800 text-white font-mono">0</span>
-            </button>
-            <button type="button" data-asset-tab="photos" class="asset-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800">
-              <span>🖼️ Hình Ảnh</span>
-              <span id="badge-count-photos" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-rose-300 font-mono">0</span>
-            </button>
-            <button type="button" data-asset-tab="videos" class="asset-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800">
-              <span>🎥 Video Clip</span>
-              <span id="badge-count-videos" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-purple-300 font-mono">0</span>
-            </button>
-            <button type="button" data-asset-tab="links" class="asset-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800">
-              <span>🔗 Link Liên Kết</span>
-              <span id="badge-count-links" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-emerald-300 font-mono">0</span>
-            </button>
-            <button type="button" data-asset-tab="notes" class="asset-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800">
-              <span>📝 Ghi Chú Word</span>
-              <span id="badge-count-notes" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-blue-300 font-mono">0</span>
-            </button>
-          </div>
-
-          <p id="asset-view-hint" class="text-[11px] text-slate-400">
-            💡 Bấm vào ảnh để mở menu thao tác AI &bull; Bấm vào video để xem/tải &bull; Ghi chú xuất được file Word (.doc)
-          </p>
-        </div>
-
-        <!-- MỤC 1: KHU VỰC HÌNH ẢNH SẢN PHẨM -->
-        <div id="photos-asset-section" class="space-y-2">
-          <div class="flex items-center justify-between">
-            <h4 class="text-xs font-extrabold text-white flex items-center gap-1.5 uppercase tracking-wider">
-              <span>🖼️ Hình Ảnh Sản Phẩm</span>
-              <span class="text-[10px] text-rose-400 font-mono font-normal">(9:16 HD)</span>
-            </h4>
-          </div>
-          <div id="saved-gallery-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 min-h-[100px]">
-            <!-- Rendered dynamically via JS -->
-          </div>
-        </div>
-
-        <!-- MỤC 2: KHU VỰC VIDEO CLIP (MỚI) -->
-        <div id="videos-asset-section" class="space-y-2 pt-2 border-t border-slate-800/80">
-          <div class="flex items-center justify-between">
-            <h4 class="text-xs font-extrabold text-purple-300 flex items-center gap-1.5 uppercase tracking-wider">
-              <span>🎥 Video Clip Sản Phẩm / Mẫu Quay</span>
-              <span id="section-video-count-badge" class="text-[10px] text-slate-400 font-mono font-normal">0 video</span>
-            </h4>
-          </div>
-          <div id="saved-videos-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            <!-- Rendered dynamically via JS -->
-          </div>
-        </div>
-
-        <!-- MỤC 3: KHU VỰC LIÊN KẾT LINK (MỚI) -->
-        <div id="links-asset-section" class="space-y-2 pt-2 border-t border-slate-800/80">
-          <div class="flex items-center justify-between">
-            <h4 class="text-xs font-extrabold text-emerald-300 flex items-center gap-1.5 uppercase tracking-wider">
-              <span>🔗 Danh Sách Link Đã Lưu</span>
-              <span id="section-link-count-badge" class="text-[10px] text-slate-400 font-mono font-normal">0 link</span>
-            </h4>
-          </div>
-          <div id="saved-links-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            <!-- Rendered dynamically via JS -->
-          </div>
-        </div>
-
-        <!-- MỤC 4: KHU VỰC DANH SÁCH FILE WORD & PROMPT (MỚI) -->
-        <div id="notes-asset-section" class="space-y-2 pt-2 border-t border-slate-800/80">
-          <div class="flex items-center justify-between flex-wrap gap-2">
-            <h4 class="text-xs font-extrabold text-blue-300 flex items-center gap-1.5 uppercase tracking-wider">
-              <span class="w-5 h-5 rounded bg-blue-600 text-white font-serif font-black text-xs flex items-center justify-center">W</span>
-              <span>Danh Sách File Word & Prompt Câu Lệnh</span>
-              <span id="section-note-count-badge" class="text-[10px] text-slate-400 font-mono font-normal">0 file</span>
-            </h4>
-            <span class="text-[11px] text-slate-400">💡 Bấm vào file bất kỳ để <strong>xem đầy đủ nội dung</strong>, sao chép prompt hoặc chuyển vào Tách Ảnh / Tạo Video!</span>
-          </div>
-          <!-- DANH SÁCH HIỂN THỊ DẠNG LIST (VERTICAL LIST PROMPT & WORD) -->
-          <div id="saved-notes-list" class="space-y-2.5">
-            <!-- Rendered dynamically via JS -->
-          </div>
-        </div>
-
       </div>
 
 
@@ -2207,6 +2500,7 @@ const state = {
       try {
         localStorage.setItem('ai_video_folder_videos', JSON.stringify(state.folderVideos));
       } catch (e) {}
+      triggerAutoCloudSync();
       try {
         localStorage.setItem('ai_video_folder_links', JSON.stringify(state.folderLinks));
       } catch (e) {}
@@ -2542,105 +2836,125 @@ const state = {
       }
 
       if (items.length === 0) {
+        const folderDisplayName = cur === 'all' ? 'kho lưu trữ' : `thư mục "${cur.split('/').pop()}"`;
         container.innerHTML = `
-          <div class="py-8 px-4 text-center text-slate-500 text-xs bg-slate-950/70 rounded-2xl border border-dashed border-slate-800 space-y-2">
-            <span class="w-9 h-9 mx-auto inline-flex items-center justify-center rounded-xl bg-blue-600/20 text-blue-400 font-serif font-black text-sm shadow">W</span>
-            <p class="text-slate-300 font-semibold">Chưa có File Word hoặc Câu Lệnh Prompt nào trong thư mục này.</p>
-            <p class="text-slate-500 text-[11px]">Bấm nút <strong>"📝 Ghi Chú Word"</strong> ở trên để dán và lưu kịch bản, prompt tách ảnh hoặc prompt video!</p>
+          <div class="py-8 px-4 text-center bg-slate-950/70 rounded-2xl border border-dashed border-slate-800 space-y-3">
+            <span class="w-10 h-10 mx-auto inline-flex items-center justify-center rounded-2xl bg-blue-600/20 text-blue-400 font-bold text-lg shadow">📝</span>
+            <div class="space-y-1">
+              <p class="text-slate-200 text-xs sm:text-sm font-bold">Chưa có Ghi Chú hoặc Câu Lệnh Prompt nào trong ${folderDisplayName}.</p>
+              <p class="text-slate-400 text-xs">Bạn có thể viết kịch bản, lưu prompt tách ảnh 9:16 hoặc prompt tạo video để mở đọc và dùng lại bất kỳ lúc nào!</p>
+            </div>
+            <div>
+              <button type="button" id="empty-state-add-note-btn" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition inline-flex items-center gap-1.5 shadow-lg shadow-blue-600/30">
+                <span>➕ Thêm Note / Lưu Prompt Ngay</span>
+              </button>
+            </div>
           </div>
         `;
+        const emptyAddBtn = document.getElementById('empty-state-add-note-btn');
+        if (emptyAddBtn) {
+          emptyAddBtn.addEventListener('click', () => {
+            openNoteComposer();
+          });
+        }
         return;
       }
 
       items.forEach((item, index) => {
         const meta = detectNoteType(item.title, item.content);
-        const previewText = (item.content || '').substring(0, 180) + ((item.content || '').length > 180 ? '...' : '');
+        const folderName = item.folderKey ? item.folderKey.split('/').pop() : 'Prompt';
 
         const card = document.createElement('div');
-        card.className = 'p-3.5 sm:p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-blue-500/60 transition shadow-lg flex flex-col justify-between space-y-2.5 cursor-pointer group select-none relative';
+        card.className = 'p-3.5 sm:p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-blue-500/60 transition shadow-lg space-y-3';
 
         card.innerHTML = `
-          <!-- Dòng tiêu đề, loại prompt & ngày lưu -->
-          <div class="space-y-1.5">
-            <div class="flex items-center justify-between gap-2 flex-wrap">
-              <div class="flex items-center gap-2 min-w-0 flex-1">
-                <span class="w-7 h-7 rounded-lg ${meta.type === 'image_prompt' ? 'bg-indigo-600/20 text-indigo-400' : meta.type === 'video_prompt' ? 'bg-purple-600/20 text-purple-400' : 'bg-blue-600/20 text-blue-400 font-serif font-black'} flex items-center justify-center text-xs shrink-0 shadow">
-                  ${meta.icon}
-                </span>
-                <h5 class="text-xs sm:text-sm font-bold text-white group-hover:text-blue-300 transition truncate" title="${item.title}">${item.title || 'Câu lệnh Prompt không tiêu đề'}</h5>
-              </div>
-              <div class="flex items-center gap-1.5 shrink-0">
-                <span class="text-[9px] px-2 py-0.5 rounded-full font-bold border ${meta.badgeClass}">${meta.label}</span>
-                <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-850 text-slate-400 font-mono">Word .doc</span>
-              </div>
-            </div>
-
-            <!-- Đoạn trích nội dung (Bấm vào thẻ để mở xem toàn bộ) -->
-            <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 group-hover:border-slate-700 transition">
-              <p class="text-xs text-slate-300 font-sans line-clamp-3 leading-relaxed whitespace-pre-wrap">${escapeHtml(previewText)}</p>
-            </div>
-
-            <div class="flex items-center justify-between text-[10px] text-slate-500 pt-0.5">
-              <span>📁 ${item.folderKey ? item.folderKey.split('/').pop() : 'Thư mục'} &bull; ${item.date || ''}</span>
-              <span class="text-blue-400 font-semibold group-hover:underline flex items-center gap-0.5">
-                <span>👁️ Bấm để xem toàn bộ</span> &rarr;
+          <!-- Header Thẻ Note -->
+          <div class="flex items-start justify-between gap-2.5 pb-2 border-b border-slate-800/80">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="w-8 h-8 rounded-xl ${meta.type === 'image_prompt' ? 'bg-indigo-600/20 text-indigo-400' : meta.type === 'video_prompt' ? 'bg-purple-600/20 text-purple-400' : 'bg-blue-600/20 text-blue-400 font-serif font-black'} flex items-center justify-center text-sm shrink-0 shadow">
+                ${meta.icon}
               </span>
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <h5 class="text-xs sm:text-sm font-extrabold text-white truncate" title="${item.title}">${item.title || 'Note Ghi Chú'}</h5>
+                  <span class="text-[9px] px-2 py-0.2 rounded-full font-bold border ${meta.badgeClass}">${meta.label}</span>
+                </div>
+                <p class="text-[10px] text-slate-400 pt-0.5 flex items-center gap-2">
+                  <span>📁 ${folderName}</span>
+                  <span>&bull; ${item.date || 'Hôm nay'}</span>
+                </p>
+              </div>
+            </div>
+
+            <button type="button" class="fullscreen-view-btn px-2.5 py-1 bg-slate-850 hover:bg-slate-750 text-slate-300 hover:text-white rounded-lg text-xs font-semibold transition shrink-0 flex items-center gap-1 border border-slate-700/60" title="Mở cửa sổ đọc lớn">
+              <span>📖 Xem Lớn</span>
+            </button>
+          </div>
+
+          <!-- KHUNG ĐỌC NỘI DUNG TRỰC TIẾP NGAY TRÊN MÀN HÌNH (DỄ MỞ, ĐỌC LIỀN) -->
+          <div class="p-3 sm:p-3.5 rounded-xl bg-slate-900 border border-slate-800/90 shadow-inner">
+            <div class="text-xs sm:text-sm text-slate-100 font-sans leading-relaxed whitespace-pre-wrap select-text cursor-text max-h-[350px] overflow-y-auto">
+              ${escapeHtml(item.content || '(Không có nội dung)')}
             </div>
           </div>
 
-          <!-- DÒNG CÁC NÚT HÀNH ĐỘNG NHANH TRÊN TỪNG ITEM -->
-          <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-800/80">
-            <!-- Nút Copy Prompt -->
-            <button type="button" class="quick-copy-prompt-btn py-1.5 px-2.5 bg-slate-850 hover:bg-slate-750 text-slate-200 hover:text-white rounded-xl text-xs font-semibold transition flex items-center gap-1 shadow-sm" title="Sao chép câu lệnh prompt này">
-              <span>📋 Copy</span>
-            </button>
+          <!-- THANH THAO TÁC 1 CHẠM: COPY, TÁCH ẢNH, TẠO VIDEO, SỬA, XÓA -->
+          <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-slate-800/70">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <!-- Nút Copy -->
+              <button type="button" class="note-action-copy-btn py-1.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-xl text-xs font-bold transition flex items-center gap-1 shadow-sm">
+                <span>📋 Sao Chép</span>
+              </button>
 
-            <!-- Nút Tách Ảnh (Bước 1) -->
-            <button type="button" class="quick-step1-btn py-1.5 px-2.5 bg-indigo-600/30 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/40 rounded-xl text-xs font-semibold transition flex items-center gap-1" title="Dùng prompt này vào Studio Tách & Ghép Nền Ảnh Bước 1">
-              <span>🖼️ Tách Ảnh</span>
-            </button>
+              <!-- Nút Tách Ảnh (Bước 1) -->
+              <button type="button" class="note-action-step1-btn py-1.5 px-3 bg-indigo-600/30 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/40 rounded-xl text-xs font-bold transition flex items-center gap-1 shadow-sm" title="Dùng câu lệnh này sang Bước 1 Studio Tách & Ghép Nền Ảnh">
+                <span>🖼️ Dùng Tách Ảnh</span>
+              </button>
 
-            <!-- Nút Tạo Video (Bước 3) -->
-            <button type="button" class="quick-step3-btn py-1.5 px-2.5 bg-purple-600/30 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/40 rounded-xl text-xs font-semibold transition flex items-center gap-1" title="Dùng prompt này vào Bước 3 Video Studio">
-              <span>🎬 Tạo Video</span>
-            </button>
+              <!-- Nút Tạo Video (Bước 3) -->
+              <button type="button" class="note-action-step3-btn py-1.5 px-3 bg-purple-600/30 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/40 rounded-xl text-xs font-bold transition flex items-center gap-1 shadow-sm" title="Dùng câu lệnh này sang Bước 3 Video Studio">
+                <span>🎬 Dùng Tạo Video</span>
+              </button>
+            </div>
 
-            <!-- Nút Tải Word .doc -->
-            <button type="button" class="quick-doc-btn py-1.5 px-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 shadow-sm" title="Tải file Microsoft Word (.doc) về máy">
-              <span>📥 .doc</span>
-            </button>
+            <div class="flex items-center gap-1.5">
+              <!-- Nút Sửa -->
+              <button type="button" class="note-action-edit-btn py-1.5 px-2 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl text-xs font-semibold transition" title="Chỉnh sửa nội dung">
+                ✏️ Sửa
+              </button>
 
-            <!-- Nút Sửa -->
-            <button type="button" class="quick-edit-btn p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition" title="Chỉnh sửa ghi chú">
-              ✏️
-            </button>
+              <!-- Nút Xóa -->
+              <button type="button" class="note-action-del-btn py-1.5 px-2 text-slate-500 hover:text-rose-400 hover:bg-slate-800 rounded-xl text-xs transition" title="Xóa note này">
+                🗑️
+              </button>
 
-            <!-- Nút Xóa -->
-            <button type="button" class="quick-del-btn p-1.5 text-slate-500 hover:text-rose-400 hover:bg-slate-800 rounded-lg transition" title="Xóa ghi chú">
-              🗑️
-            </button>
+              <!-- Nút Tải Word .doc (nếu cần) -->
+              <button type="button" class="note-action-doc-btn py-1.5 px-2 text-slate-400 hover:text-blue-300 hover:bg-slate-800 rounded-xl text-xs transition font-mono" title="Tải file Microsoft Word .doc">
+                📥 .doc
+              </button>
+            </div>
           </div>
         `;
 
-        // BẤM VÀO ĐÂU TRÊN CARD CŨNG MỞ MODAL XEM CHI TIẾT
-        card.addEventListener('click', () => {
+        // Bấm "Xem Lớn" để mở Modal Reader
+        card.querySelector('.fullscreen-view-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
           openWordNoteViewerModal(item);
         });
 
-        // Nút Copy Prompt
-        card.querySelector('.quick-copy-prompt-btn').addEventListener('click', (e) => {
+        // Nút Sao Chép
+        card.querySelector('.note-action-copy-btn').addEventListener('click', (e) => {
           e.stopPropagation();
           navigator.clipboard.writeText(item.content).then(() => {
-            showToast('Đã sao chép nội dung Prompt vào bộ nhớ tạm!');
+            showToast('Đã sao chép nội dung Note / Prompt vào bộ nhớ tạm!');
           });
         });
 
         // Nút Dùng Tách Ảnh (Bước 1)
-        card.querySelector('.quick-step1-btn').addEventListener('click', (e) => {
+        card.querySelector('.note-action-step1-btn').addEventListener('click', (e) => {
           e.stopPropagation();
           navigator.clipboard.writeText(item.content);
           goToStep(1);
-          // Nạp vào input ghi chú hoặc prompt Bước 1
           const nameInput = document.getElementById('save-image-name-input');
           if (nameInput && !nameInput.value) {
             nameInput.value = item.title.replace(/[^a-zA-Z0-9_]/g, '_');
@@ -2649,7 +2963,7 @@ const state = {
         });
 
         // Nút Dùng Tạo Video (Bước 3)
-        card.querySelector('.quick-step3-btn').addEventListener('click', (e) => {
+        card.querySelector('.note-action-step3-btn').addEventListener('click', (e) => {
           e.stopPropagation();
           goToStep(3);
           const customPrompt = document.getElementById('custom-video-flow-prompt');
@@ -2662,39 +2976,369 @@ const state = {
           showToast(`✨ Đã nạp Prompt: "${item.title}" vào Bước 3 Video Studio!`);
         });
 
+        // Nút Sửa
+        card.querySelector('.note-action-edit-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          openNoteComposer(item);
+        });
+
+        // Nút Xóa
+        card.querySelector('.note-action-del-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          const targetKey = item.folderKey || state.currentPath;
+          const list = state.folderNotes[targetKey] || [];
+          state.folderNotes[targetKey] = list.filter(n => n.id !== item.id);
+          saveFolderAssets();
+          showToast(`Đã xóa Note: "${item.title}"`);
+        });
+
         // Nút Tải Word .doc
-        card.querySelector('.quick-doc-btn').addEventListener('click', (e) => {
+        card.querySelector('.note-action-doc-btn').addEventListener('click', (e) => {
           e.stopPropagation();
           downloadWordDocument(item.title, item.content);
         });
 
-        // Nút Sửa
-        card.querySelector('.quick-edit-btn').addEventListener('click', (e) => {
-          e.stopPropagation();
-          const row = document.getElementById('add-note-input-row');
-          const tInput = document.getElementById('new-note-title-input');
-          const cInput = document.getElementById('new-note-content-input');
-          if (row && tInput && cInput) {
-            row.classList.remove('hidden');
-            tInput.value = item.title;
-            cInput.value = item.content;
-            row.setAttribute('data-editing-id', item.id);
-            cInput.focus();
-            row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
-        });
-
-        // Nút Xóa
-        card.querySelector('.quick-del-btn').addEventListener('click', (e) => {
-          e.stopPropagation();
-          const list = state.folderNotes[item.folderKey] || [];
-          state.folderNotes[item.folderKey] = list.filter(n => n.id !== item.id);
-          saveFolderAssets();
-          showToast(`Đã xóa: "${item.title}"`);
-        });
-
         container.appendChild(card);
       });
+    }
+
+        // ===================================================================
+    // TÍNH NĂNG SAO LƯU & KHÔI PHỤC DỮ LIỆU ĐỂ CHUYỂN SANG ĐIỆN THOẠI KHÁC
+    // ===================================================================
+        // ===================================================================
+    // HỆ THỐNG ĐỒNG BỘ ĐÁM MÂY TỰ ĐỘNG (CLOUD SYNC ENGINE)
+    // ===================================================================
+    const defaultCloudSyncConfig = {
+      enabled: false,
+      method: 'github', // 'github' hoặc 'key'
+      githubRepo: 'minhchaunap/AI-Video-Studio-',
+      githubToken: '',
+      customKey: '',
+      autoSync: true,
+      lastSyncTime: null
+    };
+
+    function loadCloudSyncConfig() {
+      try {
+        const saved = localStorage.getItem('ai_studio_cloud_sync_config');
+        if (saved) {
+          state.cloudSync = { ...defaultCloudSyncConfig, ...JSON.parse(saved) };
+        } else {
+          state.cloudSync = { ...defaultCloudSyncConfig };
+        }
+      } catch (e) {
+        state.cloudSync = { ...defaultCloudSyncConfig };
+      }
+      updateCloudSyncUI();
+    }
+
+    function saveCloudSyncConfig() {
+      try {
+        localStorage.setItem('ai_studio_cloud_sync_config', JSON.stringify(state.cloudSync));
+      } catch (e) {}
+      updateCloudSyncUI();
+    }
+
+    function updateCloudSyncUI() {
+      const ind = document.getElementById('cloud-sync-indicator');
+      const modalBadge = document.getElementById('modal-sync-status-badge');
+      if (!ind) return;
+
+      if (state.cloudSync && state.cloudSync.enabled) {
+        const timeStr = state.cloudSync.lastSyncTime ? new Date(state.cloudSync.lastSyncTime).toLocaleTimeString('vi-VN') : 'Đang bật';
+        ind.className = 'flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-[11px] font-bold text-emerald-300 shadow-sm';
+        ind.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span><span id="cloud-sync-indicator-text">☁️ Đám Mây: Đang Đồng Bộ (${timeStr})</span>`;
+        if (modalBadge) {
+          modalBadge.textContent = 'Đang Bật';
+          modalBadge.className = 'text-[10px] px-2 py-0.5 rounded-full font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+        }
+      } else {
+        ind.className = 'flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 text-[11px] font-semibold text-slate-400';
+        ind.innerHTML = `<span class="w-2 h-2 rounded-full bg-slate-500"></span><span id="cloud-sync-indicator-text">☁️ Đám mây: Chưa bật</span>`;
+        if (modalBadge) {
+          modalBadge.textContent = 'Chưa Bật';
+          modalBadge.className = 'text-[10px] px-2 py-0.5 rounded-full font-bold bg-slate-800 text-slate-400 border border-slate-700';
+        }
+      }
+    }
+
+    // Đẩy dữ liệu lên Đám mây (Push to Cloud)
+    async function pushDataToCloud(silent = false) {
+      if (!state.cloudSync || !state.cloudSync.enabled) return false;
+
+      const payload = {
+        app: 'AI Video Pipeline Studio',
+        version: '2.0',
+        syncDate: new Date().toISOString(),
+        savedFolders: state.savedFolders || {},
+        folderVideos: state.folderVideos || {},
+        folderLinks: state.folderLinks || {},
+        folderNotes: state.folderNotes || {}
+      };
+
+      try {
+        if (!silent) showToast('Đang đồng bộ dữ liệu lên đám mây...');
+
+        // PHƯƠNG THỨC 1: GITHUB API
+        if (state.cloudSync.method === 'github') {
+          const repo = (state.cloudSync.githubRepo || 'minhchaunap/AI-Video-Studio-').trim();
+          const token = (state.cloudSync.githubToken || '').trim();
+          if (!token) {
+            if (!silent) showToast('Vui lòng nhập GitHub Token trong phần Cài đặt!', 'error');
+            return false;
+          }
+
+          const filePath = 'data/studio_database.json';
+          const apiUrl = `https://api.github.com/repos/${repo}/contents/${filePath}`;
+
+          // 1. Lấy SHA hiện tại nếu file đã có
+          let currentSha = null;
+          try {
+            const getRes = await fetch(apiUrl, {
+              headers: {
+                'Authorization': `token ${token}`,
+                'Accept': 'application/vnd.github.v3+json'
+              }
+            });
+            if (getRes.ok) {
+              const fileData = await getRes.json();
+              currentSha = fileData.sha;
+            }
+          } catch(e) {}
+
+          // 2. Ghi file mới lên GitHub
+          const contentJson = JSON.stringify(payload, null, 2);
+          const b64Content = btoa(unescape(encodeURIComponent(contentJson)));
+
+          const bodyData = {
+            message: `Auto-sync Studio Data: ${new Date().toLocaleString('vi-VN')}`,
+            content: b64Content
+          };
+          if (currentSha) bodyData.sha = currentSha;
+
+          const putRes = await fetch(apiUrl, {
+            method: 'PUT',
+            headers: {
+              'Authorization': `token ${token}`,
+              'Accept': 'application/vnd.github.v3+json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bodyData)
+          });
+
+          if (!putRes.ok) {
+            const errJson = await putRes.json().catch(() => ({}));
+            throw new Error(errJson.message || `Lỗi HTTP ${putRes.status}`);
+          }
+        } 
+        // PHƯƠNG THỨC 2: MÃ ĐỒNG BỘ RIÊNG (LOCAL ROOM)
+        else {
+          const customKey = (state.cloudSync.customKey || '').trim();
+          if (!customKey) {
+            if (!silent) showToast('Vui lòng nhập Mã Đồng Bộ!', 'error');
+            return false;
+          }
+          localStorage.setItem(`ai_cloud_room_${customKey}`, JSON.stringify(payload));
+        }
+
+        state.cloudSync.lastSyncTime = new Date().toISOString();
+        saveCloudSyncConfig();
+        if (!silent) showToast('✨ Đã đồng bộ thành công dữ liệu lên Đám Mây!');
+        return true;
+      } catch (err) {
+        console.error('Lỗi đẩy dữ liệu đám mây:', err);
+        if (!silent) showToast('Lỗi đồng bộ đám mây: ' + err.message, 'error');
+        return false;
+      }
+    }
+
+    // Tải dữ liệu từ Đám mây về máy (Pull from Cloud)
+    async function pullDataFromCloud(silent = false) {
+      if (!state.cloudSync || !state.cloudSync.enabled) return false;
+
+      try {
+        if (!silent) showToast('Đang tải dữ liệu mới nhất từ đám mây...');
+
+        let imported = null;
+
+        // PHƯƠNG THỨC 1: GITHUB API HOẶC RAW GITHUB
+        if (state.cloudSync.method === 'github') {
+          const repo = (state.cloudSync.githubRepo || 'minhchaunap/AI-Video-Studio-').trim();
+          const token = (state.cloudSync.githubToken || '').trim();
+          const filePath = 'data/studio_database.json';
+
+          let fetched = false;
+          if (token) {
+            try {
+              const res = await fetch(`https://api.github.com/repos/${repo}/contents/${filePath}?t=${Date.now()}`, {
+                headers: {
+                  'Authorization': `token ${token}`,
+                  'Accept': 'application/vnd.github.v3+json'
+                }
+              });
+              if (res.ok) {
+                const json = await res.json();
+                const decoded = decodeURIComponent(escape(atob(json.content.replace(/\s/g, ''))));
+                imported = JSON.parse(decoded);
+                fetched = true;
+              }
+            } catch(e) {}
+          }
+
+          if (!fetched) {
+            const rawUrl = `https://raw.githubusercontent.com/${repo}/main/${filePath}?t=${Date.now()}`;
+            const rawRes = await fetch(rawUrl);
+            if (rawRes.ok) {
+              imported = await rawRes.json();
+              fetched = true;
+            }
+          }
+
+          if (!fetched || !imported) {
+            if (!silent) showToast('Chưa có bản lưu nào trên GitHub hoặc đang chờ cập nhật!', 'error');
+            return false;
+          }
+        } 
+        // PHƯƠNG THỨC 2: MÃ ĐỒNG BỘ RIÊNG
+        else {
+          const customKey = (state.cloudSync.customKey || '').trim();
+          const localRoom = localStorage.getItem(`ai_cloud_room_${customKey}`);
+          if (localRoom) {
+            imported = JSON.parse(localRoom);
+          } else {
+            if (!silent) showToast('Chưa tìm thấy dữ liệu cho mã đồng bộ này!', 'error');
+            return false;
+          }
+        }
+
+        if (imported && typeof imported === 'object') {
+          let countFolders = 0;
+          let countNotes = 0;
+
+          if (imported.savedFolders && typeof imported.savedFolders === 'object') {
+            state.savedFolders = { ...state.savedFolders, ...imported.savedFolders };
+            countFolders = Object.keys(imported.savedFolders).length;
+          }
+          if (imported.folderVideos && typeof imported.folderVideos === 'object') {
+            state.folderVideos = { ...state.folderVideos, ...imported.folderVideos };
+          }
+          if (imported.folderLinks && typeof imported.folderLinks === 'object') {
+            state.folderLinks = { ...state.folderLinks, ...imported.folderLinks };
+          }
+          if (imported.folderNotes && typeof imported.folderNotes === 'object') {
+            state.folderNotes = { ...state.folderNotes, ...imported.folderNotes };
+            Object.keys(imported.folderNotes).forEach(k => {
+              countNotes += (imported.folderNotes[k] || []).length;
+            });
+          }
+
+          saveFoldersToStorage();
+          saveFolderAssets();
+
+          state.cloudSync.lastSyncTime = new Date().toISOString();
+          saveCloudSyncConfig();
+
+          if (!silent) {
+            showToast(`✨ Đã đồng bộ thành công ${countFolders} thư mục và ${countNotes} note từ Đám Mây!`);
+          }
+          return true;
+        }
+        return false;
+      } catch (err) {
+        console.error('Lỗi tải từ đám mây:', err);
+        if (!silent) showToast('Lỗi tải đám mây: ' + err.message, 'error');
+        return false;
+      }
+    }
+
+    let autoSyncTimer = null;
+    function triggerAutoCloudSync() {
+      if (state.cloudSync && state.cloudSync.enabled && state.cloudSync.autoSync) {
+        clearTimeout(autoSyncTimer);
+        autoSyncTimer = setTimeout(() => {
+          pushDataToCloud(true);
+        }, 3000);
+      }
+    }
+
+function exportAllStudioData() {
+      const backupData = {
+        app: 'AI Video Pipeline Studio',
+        version: '2.0',
+        exportDate: new Date().toISOString(),
+        exportDateFormatted: new Date().toLocaleString('vi-VN'),
+        savedFolders: state.savedFolders || {},
+        folderVideos: state.folderVideos || {},
+        folderLinks: state.folderLinks || {},
+        folderNotes: state.folderNotes || {}
+      };
+
+      try {
+        const jsonStr = JSON.stringify(backupData, null, 2);
+        const blob = new Blob([jsonStr], { type: 'application/json;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        const now = new Date();
+        const dateStr = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`;
+        const fileName = `AI_Studio_DuLieu_${dateStr}.json`;
+
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+        showToast('Đã xuất file sao lưu! Hãy gửi file này (qua Zalo/Drive) sang điện thoại mới để mở.');
+      } catch (err) {
+        showToast('Lỗi khi xuất file sao lưu: ' + err.message, 'error');
+      }
+    }
+
+    function importStudioData(file) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (!imported || typeof imported !== 'object') {
+            showToast('File sao lưu không hợp lệ!', 'error');
+            return;
+          }
+
+          let addedFolders = 0;
+          let addedNotes = 0;
+
+          if (imported.savedFolders && typeof imported.savedFolders === 'object') {
+            state.savedFolders = { ...state.savedFolders, ...imported.savedFolders };
+            addedFolders = Object.keys(imported.savedFolders).length;
+          }
+          if (imported.folderVideos && typeof imported.folderVideos === 'object') {
+            state.folderVideos = { ...state.folderVideos, ...imported.folderVideos };
+          }
+          if (imported.folderLinks && typeof imported.folderLinks === 'object') {
+            state.folderLinks = { ...state.folderLinks, ...imported.folderLinks };
+          }
+          if (imported.folderNotes && typeof imported.folderNotes === 'object') {
+            state.folderNotes = { ...state.folderNotes, ...imported.folderNotes };
+            Object.keys(imported.folderNotes).forEach(k => {
+              addedNotes += (imported.folderNotes[k] || []).length;
+            });
+          }
+
+          saveFoldersToStorage();
+          saveFolderAssets();
+
+          // Đóng modal sync nếu đang mở
+          const syncModal = document.getElementById('sync-guide-modal');
+          if (syncModal) syncModal.classList.add('hidden');
+
+          showToast(`✨ Khôi phục thành công ${addedFolders} thư mục và ${addedNotes} Note từ file sao lưu!`);
+        } catch (err) {
+          showToast('Lỗi khi đọc file sao lưu: ' + err.message, 'error');
+        }
+      };
+      reader.readAsText(file);
     }
 
 function loadSavedFolders() {
@@ -2737,6 +3381,7 @@ function loadSavedFolders() {
       try {
         localStorage.setItem('ai_video_saved_folders', JSON.stringify(state.savedFolders));
       } catch (e) {}
+      triggerAutoCloudSync();
       renderBreadcrumbs();
       renderFolderVerticalList();
       renderSubfolderCards();
@@ -5418,8 +6063,12 @@ Trả về DUY NHẤT một đoạn văn hoàn chỉnh (25-30 từ), không gạ
     // INITIALIZATION & EVENT LISTENERS
     // ==========================================
     window.addEventListener('DOMContentLoaded', () => {
-loadLearnedRules();
+loadCloudSyncConfig();
+      loadLearnedRules();
       loadSavedFolders();
+      if (state.cloudSync && state.cloudSync.enabled) {
+        setTimeout(() => pullDataFromCloud(true), 1500);
+      }
 
       // 3 Nút nằm ngang
       document.getElementById('tab-step-1').addEventListener('click', () => switchStep(1));
@@ -6367,48 +7016,133 @@ loadLearnedRules();
         });
       }
 
-      if (confirmSaveNoteBtn && newNoteContentInput) {
-        confirmSaveNoteBtn.addEventListener('click', () => {
-          const content = newNoteContentInput.value.trim();
-          if (!content && !newNoteTitleInput.value.trim()) {
-            showToast('Vui lòng nhập tiêu đề hoặc nội dung câu lệnh prompt!', 'error');
-            return;
-          }
-          const cur = state.currentPath;
-          if (cur === 'all') {
-            showToast('Vui lòng chọn 1 thư mục cụ thể để lưu prompt!', 'error');
-            return;
-          }
-          if (!state.folderNotes[cur]) state.folderNotes[cur] = [];
+      // Helper mở khung soạn thảo Note (tự động cập nhật danh sách thư mục đích)
+    function openNoteComposer(editItem = null) {
+      const addNoteRow = document.getElementById('add-note-input-row');
+      const newNoteTitleInput = document.getElementById('new-note-title-input');
+      const newNoteContentInput = document.getElementById('new-note-content-input');
+      const folderSelect = document.getElementById('note-target-folder-select');
 
-          const title = newNoteTitleInput.value.trim() || 'Prompt ' + new Date().toLocaleTimeString('vi-VN');
-          const editId = addNoteRow.getAttribute('data-editing-id');
+      if (!addNoteRow || !newNoteTitleInput || !newNoteContentInput) return;
 
-          if (editId) {
-            const idx = state.folderNotes[cur].findIndex(n => n.id === editId);
-            if (idx !== -1) {
-              state.folderNotes[cur][idx].title = title;
-              state.folderNotes[cur][idx].content = content;
-              state.folderNotes[cur][idx].date = new Date().toLocaleDateString('vi-VN');
-              showToast('Đã cập nhật file Word / Prompt!');
-            }
-          } else {
-            state.folderNotes[cur].unshift({
-              id: 'note_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
-              title: title,
-              content: content,
-              date: new Date().toLocaleDateString('vi-VN')
-            });
-            showToast(`Đã lưu file Word / Prompt vào thư mục "${cur.split('/').pop()}"!`);
+      // Đảm bảo có thư mục 'Prompt' nếu kho đang trống
+      if (!state.savedFolders['Prompt']) {
+        state.savedFolders['Prompt'] = [];
+      }
+
+      // Cập nhật danh sách thư mục đích vào select
+      if (folderSelect) {
+        folderSelect.innerHTML = '';
+        const allKeys = Object.keys(state.savedFolders);
+        allKeys.forEach(fKey => {
+          const opt = document.createElement('option');
+          opt.value = fKey;
+          opt.textContent = `📁 ${fKey}`;
+          if (state.currentPath !== 'all' && state.currentPath === fKey) {
+            opt.selected = true;
+          } else if (state.currentPath === 'all' && fKey === 'Prompt') {
+            opt.selected = true;
           }
-
-          saveFolderAssets();
-          newNoteTitleInput.value = '';
-          newNoteContentInput.value = '';
-          addNoteRow.removeAttribute('data-editing-id');
-          addNoteRow.classList.add('hidden');
+          folderSelect.appendChild(opt);
         });
       }
+
+      if (editItem) {
+        addNoteRow.setAttribute('data-editing-id', editItem.id);
+        addNoteRow.setAttribute('data-editing-folder', editItem.folderKey || 'Prompt');
+        newNoteTitleInput.value = editItem.title;
+        newNoteContentInput.value = editItem.content;
+        if (folderSelect && editItem.folderKey) {
+          folderSelect.value = editItem.folderKey;
+        }
+      } else {
+        addNoteRow.removeAttribute('data-editing-id');
+        addNoteRow.removeAttribute('data-editing-folder');
+        newNoteTitleInput.value = '';
+        newNoteContentInput.value = '';
+      }
+
+      // Hiện khung soạn thảo
+      addNoteRow.classList.remove('hidden');
+      addNoteRow.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      newNoteContentInput.focus();
+    }
+
+    // Nút mở soạn note từ thanh công cụ bên trong thư mục
+    if (insideAddNoteBtn) {
+      insideAddNoteBtn.addEventListener('click', () => {
+        openNoteComposer();
+      });
+    }
+
+    // Nút mở soạn note từ phần danh sách Note
+    const sectionAddNoteBtn = document.getElementById('section-add-note-btn');
+    if (sectionAddNoteBtn) {
+      sectionAddNoteBtn.addEventListener('click', () => {
+        openNoteComposer();
+      });
+    }
+
+    if (confirmSaveNoteBtn && newNoteContentInput) {
+      confirmSaveNoteBtn.addEventListener('click', () => {
+        const content = newNoteContentInput.value.trim();
+        if (!content && !newNoteTitleInput.value.trim()) {
+          showToast('Vui lòng nhập tiêu đề hoặc nội dung Note / Prompt!', 'error');
+          return;
+        }
+
+        const folderSelect = document.getElementById('note-target-folder-select');
+        let targetFolder = folderSelect ? folderSelect.value : (state.currentPath !== 'all' ? state.currentPath : 'Prompt');
+
+        if (!targetFolder || targetFolder === 'all') {
+          targetFolder = 'Prompt';
+        }
+
+        // Đảm bảo thư mục tồn tại trong state
+        if (!state.savedFolders[targetFolder]) {
+          state.savedFolders[targetFolder] = [];
+        }
+        if (!state.folderNotes[targetFolder]) {
+          state.folderNotes[targetFolder] = [];
+        }
+
+        const title = newNoteTitleInput.value.trim() || 'Note ' + new Date().toLocaleTimeString('vi-VN');
+        const editId = addNoteRow.getAttribute('data-editing-id');
+        const editFolder = addNoteRow.getAttribute('data-editing-folder') || targetFolder;
+
+        if (editId) {
+          const list = state.folderNotes[editFolder] || [];
+          const idx = list.findIndex(n => n.id === editId);
+          if (idx !== -1) {
+            list[idx].title = title;
+            list[idx].content = content;
+            list[idx].date = new Date().toLocaleDateString('vi-VN');
+            showToast('Đã cập nhật Note!');
+          }
+        } else {
+          state.folderNotes[targetFolder].unshift({
+            id: 'note_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+            title: title,
+            content: content,
+            date: new Date().toLocaleDateString('vi-VN')
+          });
+          showToast(`Đã lưu Note vào thư mục "${targetFolder.split('/').pop()}"!`);
+        }
+
+        saveFolderAssets();
+        newNoteTitleInput.value = '';
+        newNoteContentInput.value = '';
+        addNoteRow.removeAttribute('data-editing-id');
+        addNoteRow.removeAttribute('data-editing-folder');
+        addNoteRow.classList.add('hidden');
+
+        // Tự động cuộn đến danh sách Note
+        const notesSection = document.getElementById('notes-asset-section');
+        if (notesSection) {
+          notesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
 
       // MODAL XEM CHI TIẾT WORD & PROMPT EVENT LISTENERS
       const closeViewerBtn = document.getElementById('close-word-viewer-btn');
@@ -6495,6 +7229,192 @@ loadLearnedRules();
           saveFolderAssets();
           closeWordNoteViewerModal();
           showToast(`Đã xóa: "${item.title}"`);
+        });
+      }
+
+      // CLOUD SYNC UI & MODAL LISTENERS
+      const openCloudSyncBtn = document.getElementById('open-cloud-sync-btn');
+      const closeCloudSyncModalBtn = document.getElementById('close-cloud-sync-modal-btn');
+      const cloudSyncModal = document.getElementById('cloud-sync-modal');
+      const quickSyncNowBtn = document.getElementById('quick-sync-now-btn');
+
+      const tabSyncGithub = document.getElementById('tab-sync-method-github');
+      const tabSyncKey = document.getElementById('tab-sync-method-key');
+      const formSyncGithub = document.getElementById('sync-form-github');
+      const formSyncKey = document.getElementById('sync-form-key');
+
+      const syncGithubRepo = document.getElementById('sync-github-repo');
+      const syncGithubToken = document.getElementById('sync-github-token');
+      const syncCustomKey = document.getElementById('sync-custom-key');
+      const syncAutoCheckbox = document.getElementById('sync-auto-checkbox');
+
+      const modalSaveSyncBtn = document.getElementById('modal-save-sync-btn');
+      const modalDisableSyncBtn = document.getElementById('modal-disable-sync-btn');
+      const modalTestSyncBtn = document.getElementById('modal-test-sync-btn');
+
+      function populateSyncModal() {
+        if (!state.cloudSync) loadCloudSyncConfig();
+        const conf = state.cloudSync || {};
+        if (syncGithubRepo) syncGithubRepo.value = conf.githubRepo || 'minhchaunap/AI-Video-Studio-';
+        if (syncGithubToken) syncGithubToken.value = conf.githubToken || '';
+        if (syncCustomKey) syncCustomKey.value = conf.customKey || '';
+        if (syncAutoCheckbox) syncAutoCheckbox.checked = conf.autoSync !== false;
+
+        const method = conf.method || 'github';
+        if (method === 'github') {
+          if (tabSyncGithub) tabSyncGithub.className = 'py-2 px-3 rounded-xl font-bold transition text-center bg-indigo-600 text-white shadow';
+          if (tabSyncKey) tabSyncKey.className = 'py-2 px-3 rounded-xl font-bold transition text-center text-slate-400 hover:text-white';
+          if (formSyncGithub) formSyncGithub.classList.remove('hidden');
+          if (formSyncKey) formSyncKey.classList.add('hidden');
+        } else {
+          if (tabSyncGithub) tabSyncGithub.className = 'py-2 px-3 rounded-xl font-bold transition text-center text-slate-400 hover:text-white';
+          if (tabSyncKey) tabSyncKey.className = 'py-2 px-3 rounded-xl font-bold transition text-center bg-purple-600 text-white shadow';
+          if (formSyncGithub) formSyncGithub.classList.add('hidden');
+          if (formSyncKey) formSyncKey.classList.remove('hidden');
+        }
+      }
+
+      if (openCloudSyncBtn && cloudSyncModal) {
+        openCloudSyncBtn.addEventListener('click', () => {
+          populateSyncModal();
+          cloudSyncModal.classList.remove('hidden');
+        });
+      }
+      if (closeCloudSyncModalBtn && cloudSyncModal) {
+        closeCloudSyncModalBtn.addEventListener('click', () => {
+          cloudSyncModal.classList.add('hidden');
+        });
+      }
+
+      if (tabSyncGithub) {
+        tabSyncGithub.addEventListener('click', () => {
+          state.cloudSync.method = 'github';
+          tabSyncGithub.className = 'py-2 px-3 rounded-xl font-bold transition text-center bg-indigo-600 text-white shadow';
+          if (tabSyncKey) tabSyncKey.className = 'py-2 px-3 rounded-xl font-bold transition text-center text-slate-400 hover:text-white';
+          if (formSyncGithub) formSyncGithub.classList.remove('hidden');
+          if (formSyncKey) formSyncKey.classList.add('hidden');
+        });
+      }
+      if (tabSyncKey) {
+        tabSyncKey.addEventListener('click', () => {
+          state.cloudSync.method = 'key';
+          if (tabSyncGithub) tabSyncGithub.className = 'py-2 px-3 rounded-xl font-bold transition text-center text-slate-400 hover:text-white';
+          tabSyncKey.className = 'py-2 px-3 rounded-xl font-bold transition text-center bg-purple-600 text-white shadow';
+          if (formSyncGithub) formSyncGithub.classList.add('hidden');
+          if (formSyncKey) formSyncKey.classList.remove('hidden');
+        });
+      }
+
+      if (modalSaveSyncBtn) {
+        modalSaveSyncBtn.addEventListener('click', async () => {
+          state.cloudSync.githubRepo = syncGithubRepo ? syncGithubRepo.value.trim() : 'minhchaunap/AI-Video-Studio-';
+          state.cloudSync.githubToken = syncGithubToken ? syncGithubToken.value.trim() : '';
+          state.cloudSync.customKey = syncCustomKey ? syncCustomKey.value.trim() : '';
+          state.cloudSync.autoSync = syncAutoCheckbox ? syncAutoCheckbox.checked : true;
+          state.cloudSync.enabled = true;
+
+          saveCloudSyncConfig();
+          showToast('Đang kết nối và đồng bộ lần đầu...');
+
+          await pushDataToCloud(false);
+          cloudSyncModal.classList.add('hidden');
+        });
+      }
+
+      if (modalDisableSyncBtn) {
+        modalDisableSyncBtn.addEventListener('click', () => {
+          state.cloudSync.enabled = false;
+          saveCloudSyncConfig();
+          showToast('Đã tắt tính năng tự động đồng bộ đám mây.');
+          cloudSyncModal.classList.add('hidden');
+        });
+      }
+
+      if (modalTestSyncBtn) {
+        modalTestSyncBtn.addEventListener('click', async () => {
+          await pullDataFromCloud(false);
+        });
+      }
+
+      if (quickSyncNowBtn) {
+        quickSyncNowBtn.addEventListener('click', async () => {
+          if (!state.cloudSync || !state.cloudSync.enabled) {
+            populateSyncModal();
+            cloudSyncModal.classList.remove('hidden');
+            showToast('Vui lòng cài đặt Đám mây để bắt đầu đồng bộ!', 'error');
+            return;
+          }
+          await pullDataFromCloud(false);
+          await pushDataToCloud(true);
+        });
+      }
+
+      // Export & Import Backup Data (Chuyển sang điện thoại khác)
+      const exportBackupBtn = document.getElementById('export-backup-btn');
+      const importBackupBtn = document.getElementById('import-backup-btn');
+      const importBackupFileInput = document.getElementById('import-backup-file-input');
+      const openSyncGuideBtn = document.getElementById('open-sync-guide-btn');
+      const syncGuideModal = document.getElementById('sync-guide-modal');
+      const closeSyncModalBtn = document.getElementById('close-sync-modal-btn');
+      const modalCloseSyncBtn = document.getElementById('modal-close-sync-btn');
+      const modalExportDataBtn = document.getElementById('modal-export-data-btn');
+      const modalImportDataBtn = document.getElementById('modal-import-data-btn');
+
+      if (exportBackupBtn) {
+        exportBackupBtn.addEventListener('click', () => exportAllStudioData());
+      }
+      if (modalExportDataBtn) {
+        modalExportDataBtn.addEventListener('click', () => exportAllStudioData());
+      }
+
+      if (importBackupBtn && importBackupFileInput) {
+        importBackupBtn.addEventListener('click', () => importBackupFileInput.click());
+      }
+      if (modalImportDataBtn && importBackupFileInput) {
+        modalImportDataBtn.addEventListener('click', () => importBackupFileInput.click());
+      }
+
+      if (importBackupFileInput) {
+        importBackupFileInput.addEventListener('change', (e) => {
+          const file = e.target.files && e.target.files[0];
+          if (file) {
+            importStudioData(file);
+            importBackupFileInput.value = '';
+          }
+        });
+      }
+
+      if (openSyncGuideBtn && syncGuideModal) {
+        openSyncGuideBtn.addEventListener('click', () => {
+          syncGuideModal.classList.remove('hidden');
+        });
+      }
+      [closeSyncModalBtn, modalCloseSyncBtn].forEach(b => {
+        if (b && syncGuideModal) {
+          b.addEventListener('click', () => syncGuideModal.classList.add('hidden'));
+        }
+      });
+
+      // Quick Scroll Jump Buttons
+      const scrollToStudioBtn = document.getElementById('scroll-to-studio-btn');
+      const jumpToStorageTopBtn = document.getElementById('jump-to-storage-top-btn');
+      const folderGallerySection = document.getElementById('folder-gallery-section');
+      const studioCompSection = document.getElementById('studio-composition-section');
+
+      if (scrollToStudioBtn && studioCompSection) {
+        scrollToStudioBtn.addEventListener('click', () => {
+          studioCompSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+      if (jumpToStorageTopBtn && folderGallerySection) {
+        jumpToStorageTopBtn.addEventListener('click', () => {
+          folderGallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+      const viewFolderManagerBtn = document.getElementById('view-folder-manager-btn');
+      if (viewFolderManagerBtn && folderGallerySection) {
+        viewFolderManagerBtn.addEventListener('click', () => {
+          folderGallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
       }
 
