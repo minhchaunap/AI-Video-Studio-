@@ -100,6 +100,188 @@
     </div>
   </div>
 
+
+  <!-- =================================================================== -->
+  <!-- MODAL THAO TÁC CHI TIẾT ẢNH & BỘ CÔNG CỤ SÁNG TẠO AI THEO YÊU CẦU -->
+  <!-- =================================================================== -->
+  <div id="photo-action-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 hidden">
+    <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-4xl w-full p-5 sm:p-6 shadow-2xl overflow-y-auto max-h-[92vh] space-y-5">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between pb-3.5 border-b border-slate-800">
+        <div class="flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-base shadow">
+            🖼️
+          </span>
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <span>Studio Thao Tác Ảnh & Sáng Tạo AI</span>
+              <span id="modal-folder-badge" class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">Thời trang nữ</span>
+            </h3>
+            <p class="text-xs text-slate-400">Đổi tên, di chuyển folder, thay background, thay đồ AI và tạo prompt video.</p>
+          </div>
+        </div>
+
+        <button id="close-photo-modal-btn" type="button" class="p-2 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Modal Body (2 Cột) -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+        
+        <!-- Cột Trái: Ảnh Preview & Thao Tác Quản Lý (5 cols) -->
+        <div class="md:col-span-5 space-y-3.5">
+          
+          <!-- Khung Preview Ảnh 9:16 -->
+          <div class="relative w-full aspect-[9/16] max-h-[340px] bg-slate-950 rounded-2xl border-2 border-slate-800 checkerboard flex items-center justify-center overflow-hidden shadow-xl">
+            <img id="modal-img-preview" src="" alt="" class="w-full h-full object-contain">
+            <canvas id="modal-canvas-preview" class="hidden w-full h-full object-contain"></canvas>
+            <span id="modal-preview-badge" class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] font-bold text-white">Ảnh gốc</span>
+          </div>
+
+          <!-- Đổi Tên Ảnh -->
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1.5">
+            <label for="modal-img-name-input" class="text-xs text-slate-300 font-semibold block">✏️ Đổi tên ảnh:</label>
+            <div class="flex items-center gap-2">
+              <input type="text" id="modal-img-name-input" class="flex-1 bg-slate-900 border border-slate-700 focus:border-rose-500 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none">
+              <button id="modal-save-name-btn" type="button" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-bold transition shrink-0">
+                Lưu tên
+              </button>
+            </div>
+          </div>
+
+          <!-- Di Chuyển Đến Folder Khác -->
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1.5">
+            <label for="modal-move-folder-select" class="text-xs text-slate-300 font-semibold block">📁 Di chuyển đến folder khác:</label>
+            <div class="flex items-center gap-2">
+              <select id="modal-move-folder-select" class="flex-1 bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-2 py-1.5 focus:outline-none focus:border-indigo-500">
+                <!-- Populated dynamically -->
+              </select>
+              <button id="modal-move-btn" type="button" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 rounded-lg text-xs font-bold transition shrink-0">
+                Di chuyển
+              </button>
+            </div>
+          </div>
+
+          <!-- Nút Xóa & Nút Chuyển Sang Bước 2 -->
+          <div class="flex items-center justify-between pt-1">
+            <button id="modal-delete-btn" type="button" class="text-xs text-rose-400 hover:text-rose-300 font-bold flex items-center gap-1 p-1.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+              <span>Xóa ảnh này</span>
+            </button>
+
+            <button id="modal-send-to-step2-btn" type="button" class="px-3 py-1.5 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1">
+              <span>Đưa sang Bước 2 (Viết 10s) &rarr;</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Cột Phải: Bộ Công Cụ Sáng Tạo AI (Thay Background, Thay Đồ AI, Prompt Video) (7 cols) -->
+        <div class="md:col-span-7 space-y-4">
+          
+          <!-- CÔNG CỤ 1: THAY BACKGROUND NHƯ THẬT -->
+          <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-indigo-300 flex items-center gap-1.5">
+                <span>🏞️ 1. Thay Background Như Thật (Khung 9:16)</span>
+              </span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+              <div class="sm:col-span-8">
+                <select id="modal-bg-preset-select" class="w-full bg-slate-900 border border-slate-700 text-xs text-white rounded-xl px-2.5 py-2 focus:outline-none focus:border-indigo-500">
+                  <option value="paris">Phố thời trang Paris lãng mạn mùa thu</option>
+                  <option value="studio">Studio đá marble cẩm thạch sang trọng</option>
+                  <option value="living">Căn hộ Scandinavian cao cấp tối giản</option>
+                  <option value="cafe">Quán cà phê kính đón nắng tự nhiên</option>
+                  <option value="resort">Resort bãi biển nhiệt đới cao cấp</option>
+                </select>
+              </div>
+              <div class="sm:col-span-4">
+                <button id="modal-change-bg-btn" type="button" class="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition shadow">
+                  Thay Background
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- CÔNG CỤ 2: TẠO HÌNH ẢNH THAY ĐỒ: GHI YÊU CẦU (AI VIRTUAL TRY-ON) -->
+          <div class="p-4 rounded-2xl bg-gradient-to-b from-rose-950/30 to-slate-950 border border-rose-500/30 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-rose-300 flex items-center gap-1.5">
+                <span>👗 2. Tạo Hình Ảnh Thay Đồ (Ghi yêu cầu AI)</span>
+                <span class="text-[10px] px-2 py-0.2 rounded-full bg-rose-500/20 text-rose-200 border border-rose-500/30 font-mono font-bold">Virtual Try-On</span>
+              </span>
+            </div>
+
+            <textarea id="modal-outfit-prompt" rows="2" placeholder="Ghi yêu cầu thay đồ của bạn (Ví dụ: Thay thành người mẫu nữ mặc chiếc váy này dạo phố Paris hoàng hôn, hoặc Thay phối cùng áo sơ mi lụa trắng và chân váy xếp ly...)" class="w-full bg-slate-900 border border-slate-700/80 focus:border-rose-500 rounded-xl p-2.5 text-xs text-white leading-relaxed focus:outline-none resize-none">Thay thành người mẫu nữ thanh lịch mặc chiếc đầm này đi dạo trên phố Paris mùa thu, ánh nắng vàng rực rỡ, chất lượng 8k photorealistic</textarea>
+
+            <button id="modal-generate-outfit-btn" type="button" class="w-full py-2.5 bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white rounded-xl text-xs font-extrabold shadow-md shadow-rose-500/25 transition flex items-center justify-center gap-1.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              <span>Tạo Hình Ảnh Thay Đồ AI (Khung 9:16)</span>
+            </button>
+          </div>
+
+          <!-- CÔNG CỤ 3: TẠO PROMPT CHO ẢNH RA VIDEO & CHỌN MẪU CÓ SẴN -->
+          <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
+                <span>🎬 3. Tạo Prompt Video & Chọn Mẫu Sẵn Có</span>
+              </span>
+              <button id="modal-gen-video-prompt-btn" type="button" class="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                Tự động tạo từ ảnh
+              </button>
+            </div>
+
+            <!-- 4 Mẫu Prompt Video Có Sẵn -->
+            <div class="grid grid-cols-2 gap-2">
+              <button type="button" class="modal-video-preset-btn p-2 rounded-xl border border-rose-500/50 bg-rose-500/10 text-left transition hover:border-rose-400" data-preset="catwalk">
+                <span class="text-[11px] font-bold text-rose-300 block">🌟 Catwalk Runway</span>
+                <span class="text-[10px] text-slate-400 block leading-tight">Mẫu sải bước, tà váy bay nhẹ</span>
+              </button>
+              <button type="button" class="modal-video-preset-btn p-2 rounded-xl border border-slate-800 bg-slate-900 text-left transition hover:border-slate-700" data-preset="orbit">
+                <span class="text-[11px] font-bold text-indigo-300 block">💎 Xoay 360 Cận Vải</span>
+                <span class="text-[10px] text-slate-400 block leading-tight">Camera macro quay chi tiết sợi vải</span>
+              </button>
+              <button type="button" class="modal-video-preset-btn p-2 rounded-xl border border-slate-800 bg-slate-900 text-left transition hover:border-slate-700" data-preset="transition">
+                <span class="text-[11px] font-bold text-amber-300 block">⚡ Biến Hình Thay Đồ</span>
+                <span class="text-[10px] text-slate-400 block leading-tight">Búng tay đổi outfit theo beat</span>
+              </button>
+              <button type="button" class="modal-video-preset-btn p-2 rounded-xl border border-slate-800 bg-slate-900 text-left transition hover:border-slate-700" data-preset="street">
+                <span class="text-[11px] font-bold text-emerald-300 block">🎥 Street Style Phố</span>
+                <span class="text-[10px] text-slate-400 block leading-tight">Dạo phố tự nhiên hoàng hôn</span>
+              </button>
+            </div>
+
+            <!-- Hộp Textarea Câu Lệnh Prompt Video Xuất Xong -->
+            <div class="space-y-1.5">
+              <textarea id="modal-video-prompt-output" rows="2" class="w-full bg-slate-900 border border-slate-800 focus:border-indigo-500 rounded-xl p-2.5 text-xs text-white font-mono leading-relaxed focus:outline-none resize-none">Cinematic 9:16 fashion video of female model wearing [Product Outfit], walking gracefully on Parisian cobblestone street, gentle breeze moving silk fabric, golden hour natural rim light, photorealistic 8k, 60fps.</textarea>
+              
+              <div class="flex items-center justify-between gap-2 pt-1">
+                <button id="modal-copy-video-prompt-btn" type="button" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold flex items-center gap-1 transition">
+                  <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                  <span>Sao chép Prompt</span>
+                </button>
+
+                <button id="modal-send-to-step3-btn" type="button" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-bold shadow flex items-center gap-1.5 transition">
+                  <span>🎬 Đưa sang Bước 3 Dựng Video &rarr;</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
   <!-- Top Navigation Bar -->
   <header class="border-b border-slate-800/80 bg-slate-900/60 backdrop-blur-md sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -391,60 +573,175 @@
 
       </div>
 
-      <!-- KHO LƯU TRỮ "ẢNH SẢN PHẨM" PHÂN LOẠI & TẠO FOLDER MỚI & UPLOAD HÀNG LOẠT -->
+      <!-- KHO LƯU TRỮ "ẢNH SẢN PHẨM" CÓ THƯ MỤC CON & THAO TÁC CHI TIẾT ẢNH -->
       <div id="folder-gallery-section" class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-2xl space-y-4">
         
-        <!-- Header Kho & Các Nút Thao Tác Mới -->
+        <!-- Header Kho & Breadcrumb Điều Hướng -->
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-3.5 border-b border-slate-800">
-          <div class="flex items-center gap-2.5">
-            <span class="w-9 h-9 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center shadow">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
-            </span>
-            <div>
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-8 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center shadow">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+              </span>
               <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-                <span>Kho Lưu Trữ "Ảnh Sản Phẩm" Phân Loại AI</span>
-                <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono font-bold">Tự Chọn Lọc</span>
+                <span>Kho Lưu Trữ "Ảnh Sản Phẩm" Phân Cấp</span>
               </h2>
-              <p class="text-xs text-slate-400">Tự động phân loại ảnh vào nhóm tương ứng (Son &rarr; Mỹ phẩm, Gạo &rarr; Nông sản...). Tạo thêm folder tùy ý.</p>
+            </div>
+            
+            <!-- Breadcrumbs Navigation -->
+            <div id="folder-breadcrumbs" class="flex flex-wrap items-center gap-1.5 text-xs text-slate-400 font-medium">
+              <!-- Rendered dynamically -->
             </div>
           </div>
 
-          <!-- Nút Tải Ảnh Hàng Loạt & Nút Tạo Folder Mới -->
+          <!-- Các Nút Thao Tác Thư Mục & Tải Hàng Loạt -->
           <div class="flex items-center gap-2 flex-wrap">
-            <!-- Nút Upload hàng loạt ảnh -->
-            <button id="batch-upload-gallery-btn" type="button" class="px-3.5 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-indigo-600/25">
+            <!-- Nút Upload hàng loạt vào thư mục đang đứng -->
+            <button id="upload-current-folder-btn" type="button" class="px-3 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-              <span>📁 Upload ảnh hàng loạt (AI Tự Phân Loại)</span>
+              <span id="upload-folder-btn-label">📁 Tải hàng loạt ảnh vào đây</span>
             </button>
-            <input type="file" id="batch-gallery-file-input" multiple accept="image/*" class="hidden">
+            <input type="file" id="current-folder-file-input" multiple accept="image/*" class="hidden">
 
-            <!-- Nút Tạo Folder Mới -->
+            <!-- Nút Tạo Folder Con (Khi ở trong 1 folder) -->
+            <button id="create-subfolder-btn" type="button" class="px-3 py-2 bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 rounded-xl text-xs font-bold transition flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>+ Tạo Folder Con</span>
+            </button>
+
+            <!-- Nút Tạo Folder Gốc Mới -->
             <button id="create-new-folder-btn" type="button" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 rounded-xl text-xs font-bold transition flex items-center gap-1">
-              <svg class="w-3.5 h-3.5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-              <span>+ Tạo Folder Mới</span>
+              <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>+ Tạo Thư Mục Gốc</span>
             </button>
           </div>
         </div>
 
-        <!-- Form nhập tên Folder mới (ẩn hiện) -->
+        <!-- Form Tạo Folder Con (Ẩn/Hiện) -->
+        <div id="create-subfolder-row" class="hidden p-3 rounded-2xl bg-slate-950 border border-rose-500/40 flex items-center gap-2">
+          <input type="text" id="new-subfolder-name-input" placeholder="Tên thư mục con (VD: Váy đầm, Áo sơ mi, Quần jean...)" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-rose-500">
+          <button id="confirm-create-subfolder-btn" type="button" class="px-4 py-1.5 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition">
+            Tạo Thư Mục Con
+          </button>
+          <button id="cancel-create-subfolder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
+        </div>
+
+        <!-- Form Tạo Folder Gốc (Ẩn/Hiện) -->
         <div id="create-folder-input-row" class="hidden p-3 rounded-2xl bg-slate-950 border border-slate-800 flex items-center gap-2">
-          <input type="text" id="new-folder-name-input" placeholder="Nhập tên thư mục mới (Ví dụ: Giày dép, Đồ ăn vặt, Trang sức...)" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
+          <input type="text" id="new-folder-name-input" placeholder="Tên thư mục gốc mới (Ví dụ: Thời trang nữ, Đồ ăn vặt, Trang sức...)" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
           <button id="confirm-create-folder-btn" type="button" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition">
-            Lưu Folder
+            Lưu Folder Gốc
           </button>
           <button id="cancel-create-folder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
         </div>
 
-        <!-- Thanh Tabs Lọc Folder Động (Tự sinh theo các folder đang có) -->
-        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1" id="folder-filter-buttons">
+        <!-- THANH THAO TÁC THƯ MỤC HIỆN TẠI (TẠO FOLDER MỚI & DI CHUYỂN BÊN TRONG FOLDER CON) -->
+        <div id="active-folder-control-box" class="p-4 rounded-2xl bg-slate-950 border border-slate-800 shadow-xl space-y-3">
+          
+          <!-- Dòng 1: Tiêu đề Folder & Nút Di Chuyển & Đổi Tên -->
+          <div class="flex flex-wrap items-center justify-between gap-2.5 pb-2.5 border-b border-slate-800">
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 font-bold text-sm flex items-center justify-center shrink-0">📁</span>
+              <div class="min-w-0">
+                <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2 truncate">
+                  <span id="active-folder-title">Thư mục</span>
+                  <span id="active-folder-badge" class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/20 font-bold shrink-0">0 ảnh</span>
+                </h3>
+                <p class="text-[11px] text-slate-400">Đang ở bên trong thư mục này</p>
+              </div>
+            </div>
+
+            <!-- Nút Di chuyển Folder & Đổi tên & Xóa -->
+            <div class="flex items-center gap-1.5 shrink-0">
+              <!-- NÚT DI CHUYỂN FOLDER -->
+              <button id="move-active-folder-btn" type="button" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded-xl text-xs font-bold border border-slate-700 transition flex items-center gap-1 shadow">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                <span>📦 Di chuyển</span>
+              </button>
+
+              <!-- Nút Đổi tên Folder -->
+              <button id="rename-active-folder-btn" type="button" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold border border-slate-700 transition">
+                ✏️ Đổi tên
+              </button>
+
+              <!-- Nút Xóa Folder -->
+              <button id="delete-active-folder-btn" type="button" class="px-2 py-1.5 text-slate-500 hover:text-rose-400 text-xs transition" title="Xóa thư mục này">
+                🗑️
+              </button>
+            </div>
+          </div>
+
+          <!-- Dòng 2: Nút Tạo Folder Mới & Nút Tải Ảnh Vào Đây -->
+          <div class="grid grid-cols-2 gap-2 pt-1">
+            <button id="inside-create-subfolder-btn" type="button" class="py-2.5 px-3 bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+              <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>+ Tạo Folder Mới</span>
+            </button>
+            <button id="inside-upload-files-btn" type="button" class="py-2.5 px-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+              <span>📁 Tải ảnh vào đây</span>
+            </button>
+          </div>
+
+          <!-- Hộp Tạo Folder Mới (Ẩn/Hiện) -->
+          <div id="create-inside-folder-row" class="hidden p-3 rounded-xl bg-slate-900 border border-rose-500/40 flex items-center gap-2">
+            <input type="text" id="inside-folder-name-input" placeholder="Nhập tên folder mới/con..." class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-rose-500">
+            <button id="confirm-inside-folder-btn" type="button" class="px-4 py-1.5 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition">
+              Lưu Folder
+            </button>
+            <button id="cancel-inside-folder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
+          </div>
+
+          <!-- Hộp Di Chuyển Folder (Ẩn/Hiện) -->
+          <div id="move-active-folder-row" class="hidden p-3 rounded-xl bg-slate-900 border border-amber-500/40 space-y-2">
+            <span class="text-xs font-bold text-amber-300 block">📦 Di chuyển thư mục này vào:</span>
+            <div class="flex items-center gap-2">
+              <select id="move-folder-target-select" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-amber-400">
+                <!-- List of possible parents -->
+              </select>
+              <button id="confirm-move-folder-btn" type="button" class="px-4 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-xl text-xs font-bold transition">
+                Xác nhận
+              </button>
+              <button id="cancel-move-folder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
+            </div>
+          </div>
+
+          <!-- Hộp Đổi Tên Folder (Ẩn/Hiện) -->
+          <div id="rename-active-folder-row" class="hidden p-3 rounded-xl bg-slate-900 border border-slate-700 flex items-center gap-2">
+            <input type="text" id="rename-folder-input" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none">
+            <button id="confirm-rename-folder-btn" type="button" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition">
+              Lưu Tên
+            </button>
+            <button id="cancel-rename-folder-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
+          </div>
+
+        </div>
+
+        <!-- Khay Các Folder Con Trực Thuộc (Nếu có) -->
+        <div id="subfolders-wrapper" class="space-y-1.5">
+          <div id="subfolders-container" class="flex flex-wrap items-center gap-2">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Thanh Tabs Lọc Nhanh Thư Mục Gốc -->
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 border-t border-slate-800/80 pt-2" id="folder-filter-buttons">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Hướng dẫn click ảnh -->
+        <p class="text-[11px] text-slate-400 flex items-center gap-1.5">
+          <span>💡 <strong>Mẹo:</strong> Bấm vào bất kỳ ảnh nào để mở menu</span>
+          <span class="text-rose-400 font-bold">Di chuyển, Đổi tên, Thay đồ AI, Thay background & Tạo prompt video</span>!
+        </p>
+
+        <!-- Lưới Ảnh Đã Lưu Trong Folder Hiện Tại -->
+        <div id="saved-gallery-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 min-h-[140px]">
           <!-- Rendered dynamically via JS -->
         </div>
 
-        <!-- Lưới ảnh đã lưu trong Folder -->
-        <div id="saved-gallery-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 min-h-[120px]">
-          <!-- Rendered dynamically via JS -->
-        </div>
       </div>
+
 
     </section>
 
@@ -1383,28 +1680,501 @@ const state = {
     // KHO LƯU TRỮ ẢNH SẢN PHẨM: TỰ ĐỘNG PHÂN LOẠI & TẠO FOLDER MỚI
     // ===================================================================
 
+    
+    // ===================================================================
+    // KHO LƯU TRỮ PHÂN CẤP: SUBFOLDER, BREADCRUMB, PHOTO ACTION MODAL AI
+    // ===================================================================
+
+    state.currentPath = 'Thời trang nữ'; // Mặc định mở ngay folder Thời trang nữ như ảnh chụp của bạn!
+    state.selectedGalleryPhoto = null;
+
+    // Danh sách các folder mặc định nếu chưa có
+    const defaultInitialFolders = {
+      'Thời trang nữ': [],
+      'Thời trang nữ/Váy đầm': [],
+      'Thời trang nữ/Áo sơ mi': [],
+      'Mỹ phẩm': [],
+      'Mỹ phẩm/Son môi': [],
+      'Nông sản & Thực phẩm': [],
+      'Nội thất & Gia dụng': [],
+      'Đồ công nghệ': [],
+      'Khác': []
+    };
+
     function loadSavedFolders() {
       try {
         const saved = localStorage.getItem('ai_video_saved_folders');
         if (saved) {
           const parsed = JSON.parse(saved);
           if (parsed && typeof parsed === 'object') {
-            state.savedFolders = { ...state.savedFolders, ...parsed };
+            state.savedFolders = { ...defaultInitialFolders, ...parsed };
           }
+        } else {
+          state.savedFolders = { ...defaultInitialFolders };
         }
-      } catch (e) {}
+      } catch (e) {
+        state.savedFolders = { ...defaultInitialFolders };
+      }
+      
+      // Đảm bảo có ít nhất 'Thời trang nữ'
+      if (!state.savedFolders['Thời trang nữ']) {
+        state.savedFolders['Thời trang nữ'] = [];
+      }
+
+      renderBreadcrumbs();
+      renderSubfolderCards();
       renderFolderFilterButtons();
       renderSavedGallery();
       updateSaveDropdownOptions();
+      updateActiveFolderControlBox();
     }
 
     function saveFoldersToStorage() {
       try {
         localStorage.setItem('ai_video_saved_folders', JSON.stringify(state.savedFolders));
       } catch (e) {}
+      renderBreadcrumbs();
+      renderSubfolderCards();
       renderFolderFilterButtons();
       renderSavedGallery();
       updateSaveDropdownOptions();
+      updateActiveFolderControlBox();
+    }
+
+    // Lấy danh sách folder gốc (không chứa dấu /)
+    function getRootFolders() {
+      return Object.keys(state.savedFolders).filter(f => !f.includes('/'));
+    }
+
+    // Lấy danh sách folder con trực thuộc parentPath
+    function getSubfolders(parentPath) {
+      if (!parentPath || parentPath === 'all') return [];
+      const prefix = parentPath + '/';
+      return Object.keys(state.savedFolders).filter(f => f.startsWith(prefix) && !f.substring(prefix.length).includes('/'));
+    }
+
+    // Render thanh điều hướng Breadcrumb
+    
+    // Cập nhật thanh điều khiển thư mục hiện tại (Khi ở trong 1 folder)
+    function updateActiveFolderControlBox() {
+      const box = document.getElementById('active-folder-control-box');
+      if (!box) return;
+
+      const cur = state.currentPath;
+      if (cur === 'all') {
+        box.classList.add('hidden');
+        return;
+      }
+
+      box.classList.remove('hidden');
+      const leafName = cur.split('/').pop();
+      const count = (state.savedFolders[cur] && state.savedFolders[cur].length) || 0;
+
+      const titleElem = document.getElementById('active-folder-title');
+      const badgeElem = document.getElementById('active-folder-badge');
+      if (titleElem) titleElem.textContent = leafName;
+      if (badgeElem) badgeElem.textContent = `${count} ảnh`;
+
+      // Cập nhật danh sách thư mục đích trong ô Di chuyển
+      const select = document.getElementById('move-folder-target-select');
+      if (select) {
+        select.innerHTML = '';
+        const rootOpt = document.createElement('option');
+        rootOpt.value = 'root';
+        rootOpt.textContent = '🏠 Thư mục gốc ngoài cùng (Root)';
+        select.appendChild(rootOpt);
+
+        Object.keys(state.savedFolders).forEach(fPath => {
+          if (fPath !== cur && !fPath.startsWith(cur + '/')) {
+            const opt = document.createElement('option');
+            opt.value = fPath;
+            opt.textContent = `📁 ${fPath}`;
+            select.appendChild(opt);
+          }
+        });
+      }
+
+      const renameInput = document.getElementById('rename-folder-input');
+      if (renameInput) renameInput.value = leafName;
+    }
+
+    // Di chuyển thư mục hiện tại sang vị trí khác
+    function moveActiveFolder(targetParent) {
+      const oldPath = state.currentPath;
+      if (oldPath === 'all') return;
+
+      const leafName = oldPath.split('/').pop();
+      let newPath = '';
+
+      if (targetParent === 'root') {
+        newPath = leafName;
+      } else {
+        newPath = targetParent + '/' + leafName;
+      }
+
+      if (newPath === oldPath) {
+        showToast('Thư mục đã ở vị trí này rồi!', 'error');
+        return;
+      }
+
+      if (state.savedFolders[newPath]) {
+        showToast(`Thư mục "${newPath}" đã tồn tại! Vui lòng chọn vị trí khác.`, 'error');
+        return;
+      }
+
+      // Di chuyển dữ liệu ảnh
+      state.savedFolders[newPath] = state.savedFolders[oldPath] || [];
+      state.savedFolders[newPath].forEach(img => {
+        img.currentFolderKey = newPath;
+      });
+
+      // Di chuyển các folder con trực thuộc (nếu có)
+      const oldPrefix = oldPath + '/';
+      const subKeys = Object.keys(state.savedFolders).filter(k => k.startsWith(oldPrefix));
+      subKeys.forEach(subK => {
+        const newSubK = newPath + '/' + subK.substring(oldPrefix.length);
+        state.savedFolders[newSubK] = state.savedFolders[subK] || [];
+        state.savedFolders[newSubK].forEach(img => {
+          img.currentFolderKey = newSubK;
+        });
+        delete state.savedFolders[subK];
+      });
+
+      delete state.savedFolders[oldPath];
+      state.currentPath = newPath;
+      saveFoldersToStorage();
+      showToast(`Đã di chuyển thư mục "${leafName}" vào "${targetParent === 'root' ? 'Thư mục gốc' : targetParent}"!`);
+    }
+
+    // Đổi tên thư mục hiện tại
+    function renameActiveFolder(newName) {
+      const oldPath = state.currentPath;
+      if (oldPath === 'all' || !newName || !newName.trim()) return;
+
+      const cleanName = newName.trim();
+      const parts = oldPath.split('/');
+      parts[parts.length - 1] = cleanName;
+      const newPath = parts.join('/');
+
+      if (newPath === oldPath) return;
+
+      if (state.savedFolders[newPath]) {
+        showToast(`Tên thư mục "${cleanName}" đã tồn tại!`, 'error');
+        return;
+      }
+
+      state.savedFolders[newPath] = state.savedFolders[oldPath] || [];
+      state.savedFolders[newPath].forEach(img => {
+        img.currentFolderKey = newPath;
+      });
+
+      const oldPrefix = oldPath + '/';
+      const subKeys = Object.keys(state.savedFolders).filter(k => k.startsWith(oldPrefix));
+      subKeys.forEach(subK => {
+        const newSubK = newPath + '/' + subK.substring(oldPrefix.length);
+        state.savedFolders[newSubK] = state.savedFolders[subK] || [];
+        state.savedFolders[newSubK].forEach(img => {
+          img.currentFolderKey = newSubK;
+        });
+        delete state.savedFolders[subK];
+      });
+
+      delete state.savedFolders[oldPath];
+      state.currentPath = newPath;
+      saveFoldersToStorage();
+      showToast(`Đã đổi tên thư mục thành: "${cleanName}"!`);
+    }
+
+    // Xóa thư mục hiện tại
+    function deleteActiveFolder() {
+      const cur = state.currentPath;
+      if (cur === 'all') return;
+
+      const leafName = cur.split('/').pop();
+      const prefix = cur + '/';
+      Object.keys(state.savedFolders).forEach(k => {
+        if (k.startsWith(prefix)) delete state.savedFolders[k];
+      });
+      delete state.savedFolders[cur];
+
+      const parts = cur.split('/');
+      if (parts.length > 1) {
+        parts.pop();
+        state.currentPath = parts.join('/');
+      } else {
+        state.currentPath = 'all';
+      }
+
+      saveFoldersToStorage();
+      showToast(`Đã xóa thư mục "${leafName}".`);
+    }
+
+
+    function renderBreadcrumbs() {
+      const container = document.getElementById('folder-breadcrumbs');
+      if (!container) return;
+
+      container.innerHTML = '';
+      const cur = state.currentPath;
+
+      // Nút Home / Kho Lưu Trữ
+      const homeBtn = document.createElement('button');
+      homeBtn.type = 'button';
+      homeBtn.className = 'hover:text-white transition flex items-center gap-1 font-semibold';
+      homeBtn.innerHTML = '<span>🏠 Kho Lưu Trữ</span>';
+      homeBtn.addEventListener('click', () => {
+        state.currentPath = 'all';
+        saveFoldersToStorage();
+      });
+      container.appendChild(homeBtn);
+
+      if (cur === 'all') {
+        const allSpan = document.createElement('span');
+        allSpan.className = 'text-indigo-400 font-bold';
+        allSpan.textContent = '/ Xem tất cả ảnh';
+        container.appendChild(allSpan);
+        return;
+      }
+
+      // Tách các cấp thư mục
+      const parts = cur.split('/');
+      let accumulated = '';
+
+      parts.forEach((part, idx) => {
+        const sep = document.createElement('span');
+        sep.textContent = '/';
+        sep.className = 'text-slate-600';
+        container.appendChild(sep);
+
+        accumulated += (idx === 0 ? '' : '/') + part;
+        const thisPath = accumulated;
+
+        if (idx === parts.length - 1) {
+          const curSpan = document.createElement('span');
+          curSpan.className = 'text-rose-400 font-extrabold flex items-center gap-1';
+          curSpan.innerHTML = `📁 ${part}`;
+          container.appendChild(curSpan);
+        } else {
+          const crumbBtn = document.createElement('button');
+          crumbBtn.type = 'button';
+          crumbBtn.className = 'hover:text-white transition font-medium';
+          crumbBtn.textContent = part;
+          crumbBtn.addEventListener('click', () => {
+            state.currentPath = thisPath;
+            saveFoldersToStorage();
+          });
+          container.appendChild(crumbBtn);
+        }
+      });
+    }
+
+    // Render danh sách thẻ Folder con trực thuộc
+    function renderSubfolderCards() {
+      const container = document.getElementById('subfolders-container');
+      const uploadLabel = document.getElementById('upload-folder-btn-label');
+      const createSubBtn = document.getElementById('create-subfolder-btn');
+      if (!container) return;
+
+      container.innerHTML = '';
+      const cur = state.currentPath;
+
+      // Cập nhật nhãn nút upload
+      if (uploadLabel) {
+        if (cur === 'all') {
+          uploadLabel.textContent = '📁 Upload ảnh (AI tự phân loại)';
+        } else {
+          const folderLeafName = cur.split('/').pop();
+          uploadLabel.textContent = `📁 Tải hàng loạt ảnh vào "${folderLeafName}"`;
+        }
+      }
+
+      // Chỉ hiện nút "Tạo Folder Con" khi đang ở trong một thư mục
+      if (createSubBtn) {
+        if (cur === 'all') {
+          createSubBtn.classList.add('hidden');
+        } else {
+          createSubBtn.classList.remove('hidden');
+        }
+      }
+
+      if (cur === 'all') {
+        return;
+      }
+
+      const subs = getSubfolders(cur);
+      if (subs.length > 0) {
+        subs.forEach(subPath => {
+          const subName = subPath.split('/').pop();
+          const count = (state.savedFolders[subPath] && state.savedFolders[subPath].length) || 0;
+
+          const card = document.createElement('button');
+          card.type = 'button';
+          card.className = 'px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-rose-500/50 text-xs text-slate-200 hover:text-white flex items-center gap-2 transition group shadow-sm';
+          card.innerHTML = `
+            <span class="text-rose-400">📂</span>
+            <span class="font-bold">${subName}</span>
+            <span class="text-[10px] text-slate-500 font-mono">(${count})</span>
+          `;
+          card.addEventListener('click', () => {
+            state.currentPath = subPath;
+            saveFoldersToStorage();
+            showToast(`Đã vào thư mục con: "${subName}"`);
+          });
+          container.appendChild(card);
+        });
+      }
+    }
+
+    // Render các nút lọc thư mục gốc
+    function renderFolderFilterButtons() {
+      const container = document.getElementById('folder-filter-buttons');
+      if (!container) return;
+
+      container.innerHTML = '';
+      const roots = getRootFolders();
+      const cur = state.currentPath;
+
+      // Nút Tất cả
+      let totalCount = 0;
+      Object.keys(state.savedFolders).forEach(k => totalCount += (state.savedFolders[k]?.length || 0));
+
+      const allBtn = document.createElement('button');
+      allBtn.type = 'button';
+      allBtn.className = `folder-tab-btn px-3 py-1 rounded-lg text-xs font-bold transition shrink-0 ${
+        cur === 'all' ? 'bg-indigo-600 text-white shadow' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+      }`;
+      allBtn.textContent = `Tất cả (${totalCount})`;
+      allBtn.addEventListener('click', () => {
+        state.currentPath = 'all';
+        saveFoldersToStorage();
+      });
+      container.appendChild(allBtn);
+
+      roots.forEach(rootName => {
+        // Tính tổng ảnh của folder gốc + các folder con của nó
+        let rootTotal = state.savedFolders[rootName]?.length || 0;
+        getSubfolders(rootName).forEach(sub => rootTotal += (state.savedFolders[sub]?.length || 0));
+
+        const isCurrent = cur === rootName || cur.startsWith(rootName + '/');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `folder-tab-btn px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 flex items-center gap-1.5 ${
+          isCurrent ? 'bg-rose-600 text-white font-bold shadow' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+        }`;
+        btn.innerHTML = `<span>📁 ${rootName}</span> <span class="text-[10px] opacity-75 font-mono">(${rootTotal})</span>`;
+        btn.addEventListener('click', () => {
+          state.currentPath = rootName;
+          saveFoldersToStorage();
+        });
+        container.appendChild(btn);
+      });
+    }
+
+    // Render lưới ảnh trong folder hiện tại
+    function renderSavedGallery() {
+      const container = document.getElementById('saved-gallery-grid');
+      if (!container) return;
+
+      container.innerHTML = '';
+      const cur = state.currentPath;
+      let displayItems = [];
+
+      if (cur === 'all') {
+        Object.keys(state.savedFolders).forEach(fKey => {
+          (state.savedFolders[fKey] || []).forEach(item => {
+            displayItems.push({ ...item, currentFolderKey: fKey });
+          });
+        });
+      } else {
+        (state.savedFolders[cur] || []).forEach(item => {
+          displayItems.push({ ...item, currentFolderKey: cur });
+        });
+      }
+
+      if (displayItems.length === 0) {
+        const folderNameDisplay = cur === 'all' ? 'Tất cả' : cur.split('/').pop();
+        container.innerHTML = `
+          <div class="col-span-full py-8 text-center text-slate-500 text-xs">
+            <svg class="w-8 h-8 mx-auto text-slate-600 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+            Chưa có ảnh nào trong thư mục "${folderNameDisplay}". Bấm nút "📁 Tải hàng loạt ảnh vào đây" ở trên để nạp ảnh!
+          </div>
+        `;
+        return;
+      }
+
+      displayItems.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'group relative rounded-2xl bg-slate-950 border border-slate-800 hover:border-rose-500/60 overflow-hidden shadow-xl flex flex-col justify-between transition-all duration-200 cursor-pointer';
+        
+        card.innerHTML = `
+          <div class="aspect-[9/16] w-full bg-slate-900 checkerboard relative flex items-center justify-center overflow-hidden">
+            <img src="${item.dataUrl}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            <span class="absolute top-1.5 left-1.5 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md text-[9px] font-bold text-white border border-white/10 truncate max-w-[85%]">
+              ${item.currentFolderKey.split('/').pop()}
+            </span>
+          </div>
+          <div class="p-2.5 space-y-1 bg-slate-900/90">
+            <p class="text-[11px] font-bold text-white truncate group-hover:text-rose-300 transition">${item.name}</p>
+            <div class="flex items-center justify-between text-[10px] text-slate-400 pt-0.5">
+              <span class="text-indigo-400 font-semibold">Bấm để sửa &rarr;</span>
+              <span class="text-slate-500">9:16</span>
+            </div>
+          </div>
+        `;
+
+        // Click vào ảnh &rarr; Mở Modal Thao Tác Chi Tiết Ảnh AI
+        card.addEventListener('click', () => {
+          openPhotoActionModal(item);
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    // Mở Modal Thao Tác Chi Tiết Ảnh (Thay đổi background, thay đồ, đổi tên, di chuyển...)
+    function openPhotoActionModal(photoItem) {
+      state.selectedGalleryPhoto = photoItem;
+      const modal = document.getElementById('photo-action-modal');
+      if (!modal) return;
+
+      // Nạp ảnh xem trước
+      const imgPreview = document.getElementById('modal-img-preview');
+      const canvasPreview = document.getElementById('modal-canvas-preview');
+      imgPreview.src = photoItem.dataUrl;
+      imgPreview.classList.remove('hidden');
+      canvasPreview.classList.add('hidden');
+
+      // Tên ảnh & Badge
+      document.getElementById('modal-img-name-input').value = photoItem.name || 'Ảnh sản phẩm';
+      document.getElementById('modal-folder-badge').textContent = photoItem.currentFolderKey || 'Thời trang nữ';
+
+      // Nạp danh sách folder vào dropdown Di Chuyển
+      const select = document.getElementById('modal-move-folder-select');
+      select.innerHTML = '';
+      Object.keys(state.savedFolders).forEach(fKey => {
+        const opt = document.createElement('option');
+        opt.value = fKey;
+        opt.textContent = `📁 ${fKey}`;
+        if (fKey === photoItem.currentFolderKey) opt.selected = true;
+        select.appendChild(opt);
+      });
+
+      // Tạo prompt video mặc định cho ảnh này
+      const pName = photoItem.name || 'Fashion Outfit';
+      document.getElementById('modal-video-prompt-output').value = 
+        `Cinematic 9:16 fashion video of female model wearing [${pName}], walking gracefully on Parisian cobblestone street, gentle breeze moving silk fabric, golden hour natural rim light, photorealistic 8k, 60fps.`;
+
+      document.getElementById('modal-outfit-prompt').value = 
+        `Thay thành người mẫu nữ thanh lịch mặc chiếc [${pName}] này đi dạo trên phố Paris mùa thu, ánh nắng vàng rực rỡ, chất lượng 8k photorealistic.`;
+
+      modal.classList.remove('hidden');
+    }
+
+    // Đóng Modal Thao Tác Ảnh
+    function closePhotoActionModal() {
+      const modal = document.getElementById('photo-action-modal');
+      if (modal) modal.classList.add('hidden');
+      state.selectedGalleryPhoto = null;
     }
 
     // Cập nhật dropdown chọn thư mục khi lưu ảnh ở Bước 1
@@ -1422,72 +2192,64 @@ const state = {
       if (state.savedFolders[curVal]) select.value = curVal;
     }
 
-    // Tạo thư mục mới
-    function createNewFolder(fName) {
-      if (!fName || !fName.trim()) return;
-      const cleanName = fName.trim();
-      if (state.savedFolders[cleanName]) {
+    // Tạo thư mục mới (Gốc hoặc Con)
+    function createNewFolder(folderPath) {
+      if (!folderPath || !folderPath.trim()) return;
+      const clean = folderPath.trim();
+      if (state.savedFolders[clean]) {
         showToast('Thư mục này đã tồn tại!', 'error');
         return;
       }
-      state.savedFolders[cleanName] = [];
-      state.currentGalleryFilter = cleanName;
+      state.savedFolders[clean] = [];
+      state.currentPath = clean;
       saveFoldersToStorage();
-      showToast(`Đã tạo thành công thư mục mới: "${cleanName}"!`);
+      showToast(`Đã tạo thư mục: "${clean}"!`);
     }
 
-    // AI Tự Động Phân Loại Thư Mục Dựa Trên Tên & Từ Khóa
+    // Tự động phân loại theo từ khóa
     function autoDetectFolder(fileName) {
       if (!fileName) return 'Khác';
       const lower = fileName.toLowerCase();
 
-      // Kiểm tra xem có trùng tên thư mục tùy chỉnh nào người dùng đã tạo không
+      // Kiểm tra các folder người dùng đã tạo
       for (const customF of Object.keys(state.savedFolders)) {
-        if (customF !== 'all' && customF !== 'Khác' && lower.includes(customF.toLowerCase())) {
+        if (customF !== 'Khác' && lower.includes(customF.toLowerCase())) {
           return customF;
         }
       }
 
-      // Nhóm Mỹ phẩm
-      if (/son|lipstick|kem|serum|mỹ phẩm|da|nước hoa|phấn|toner|chống nắng|mặt nạ|collagen|mask|skincare|dưỡng|trắng da/i.test(lower)) {
-        return 'Mỹ phẩm';
+      if (/váy|đầm|sơ mi|áo|quần|chân váy|thời trang|nữ|outfit|croptop/i.test(lower)) {
+        return state.savedFolders['Thời trang nữ/Váy đầm'] ? 'Thời trang nữ/Váy đầm' : 'Thời trang nữ';
       }
-      // Nhóm Nông sản & Thực phẩm
-      if (/gạo|st25|thực phẩm|nông sản|trà|cà phê|yến|hạt|bánh|mật ong|đồ ăn|khô|hạt điều|nước sốt/i.test(lower)) {
+      if (/son|kem|serum|lipstick|phấn|nước hoa|mỹ phẩm|skincare/i.test(lower)) {
+        return state.savedFolders['Mỹ phẩm/Son môi'] ? 'Mỹ phẩm/Son môi' : 'Mỹ phẩm';
+      }
+      if (/gạo|st25|thực phẩm|nông sản|trà|cà phê|yến/i.test(lower)) {
         return 'Nông sản & Thực phẩm';
       }
-      // Nhóm Nội thất & Gia dụng
-      if (/bàn|ghế|sofa|nội thất|giường|tủ|kệ|nồi|chảo|bếp|gia dụng|đèn|hút bụi|quạt|máy ép/i.test(lower)) {
+      if (/bàn|ghế|sofa|nội thất|nồi|chảo|bếp|tủ/i.test(lower)) {
         return 'Nội thất & Gia dụng';
       }
-      // Nhóm Thời trang & Phụ kiện
-      if (/áo|quần|thời trang|giày|dép|túi|ví|váy|đầm|dây nịt|nón|mũ|kính|balo/i.test(lower)) {
-        return 'Thời trang & Phụ kiện';
-      }
-      // Nhóm Đồ công nghệ
-      if (/tai nghe|loa|chuột|bàn phím|điện thoại|đồng hồ|máy tính|pin|cáp|sạc|laptop|ipad|màn hình/i.test(lower)) {
+      if (/tai nghe|loa|chuột|bàn phím|điện thoại|pin/i.test(lower)) {
         return 'Đồ công nghệ';
       }
 
-      return state.currentGalleryFilter !== 'all' ? state.currentGalleryFilter : 'Khác';
+      return state.currentPath !== 'all' ? state.currentPath : 'Thời trang nữ';
     }
 
-    // Xử lý Upload ảnh hàng loạt & AI tự chọn lọc vào từng nhóm
-    function handleBatchUploadToGallery(files) {
+    // Xử lý nạp hàng loạt ảnh
+    function handleBatchUploadToGallery(files, targetFolder = null) {
       if (!files || files.length === 0) return;
       const fileArr = Array.from(files);
-      const report = {};
-      let completed = 0;
+      let count = 0;
 
-      showToast(`Đang quét AI và phân loại ${fileArr.length} ảnh...`);
+      showToast(`Đang tải ${fileArr.length} ảnh vào thư mục...`);
 
       fileArr.forEach(file => {
-        const category = autoDetectFolder(file.name);
+        const category = targetFolder || (state.currentPath !== 'all' ? state.currentPath : autoDetectFolder(file.name));
         if (!state.savedFolders[category]) {
           state.savedFolders[category] = [];
         }
-
-        report[category] = (report[category] || 0) + 1;
 
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -1497,143 +2259,13 @@ const state = {
             dataUrl: e.target.result,
             createdAt: new Date().toLocaleDateString('vi-VN')
           });
-          completed++;
-
-          if (completed === fileArr.length) {
+          count++;
+          if (count === fileArr.length) {
             saveFoldersToStorage();
-            // Tạo chuỗi thông báo kết quả phân loại
-            const summaryParts = Object.keys(report).map(cat => `${report[cat]} ảnh &rarr; ${cat}`);
-            showToast(`AI đã phân loại xong: ${summaryParts.join(' | ')}`);
+            showToast(`Đã tải thành công ${fileArr.length} ảnh vào "${category}"!`);
           }
         };
         reader.readAsDataURL(file);
-      });
-    }
-
-    // Render danh sách Tabs Lọc Thư Mục Động
-    function renderFolderFilterButtons() {
-      const container = document.getElementById('folder-filter-buttons');
-      if (!container) return;
-
-      container.innerHTML = '';
-      const curFilter = state.currentGalleryFilter;
-
-      // Tab Tất cả
-      let totalImages = 0;
-      Object.keys(state.savedFolders).forEach(k => totalImages += state.savedFolders[k].length);
-
-      const allBtn = document.createElement('button');
-      allBtn.type = 'button';
-      allBtn.className = `folder-tab-btn px-3 py-1 rounded-lg text-xs font-bold transition shrink-0 ${
-        curFilter === 'all' ? 'bg-indigo-600 text-white shadow' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-      }`;
-      allBtn.setAttribute('data-folder', 'all');
-      allBtn.textContent = `Tất cả (${totalImages})`;
-      allBtn.addEventListener('click', () => {
-        state.currentGalleryFilter = 'all';
-        renderFolderFilterButtons();
-        renderSavedGallery();
-      });
-      container.appendChild(allBtn);
-
-      // Render từng thư mục đang có
-      Object.keys(state.savedFolders).forEach(fName => {
-        const count = state.savedFolders[fName].length;
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = `folder-tab-btn px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 flex items-center gap-1.5 ${
-          curFilter === fName ? 'bg-indigo-600 text-white font-bold shadow' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-        }`;
-        btn.setAttribute('data-folder', fName);
-        btn.innerHTML = `<span>📁 ${fName}</span> <span class="text-[10px] opacity-75 font-mono">(${count})</span>`;
-        btn.addEventListener('click', () => {
-          state.currentGalleryFilter = fName;
-          renderFolderFilterButtons();
-          renderSavedGallery();
-        });
-        container.appendChild(btn);
-      });
-    }
-
-    // Render lưới ảnh trong Folder Gallery
-    function renderSavedGallery() {
-      const container = document.getElementById('saved-gallery-grid');
-      if (!container) return;
-
-      container.innerHTML = '';
-      const filter = state.currentGalleryFilter;
-      let allItems = [];
-
-      Object.keys(state.savedFolders).forEach(folderName => {
-        if (filter === 'all' || filter === folderName) {
-          state.savedFolders[folderName].forEach(item => {
-            allItems.push({ ...item, folder: folderName });
-          });
-        }
-      });
-
-      if (allItems.length === 0) {
-        container.innerHTML = `
-          <div class="col-span-full py-8 text-center text-slate-500 text-xs">
-            <svg class="w-8 h-8 mx-auto text-slate-600 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
-            Chưa có ảnh nào trong thư mục "${filter === 'all' ? 'Tất cả' : filter}". Bấm nút "📁 Upload ảnh hàng loạt" ở trên để nạp ảnh vào thư mục này!
-          </div>
-        `;
-        return;
-      }
-
-      allItems.forEach((item) => {
-        const card = document.createElement('div');
-        card.className = 'group relative rounded-xl bg-slate-950 border border-slate-800 overflow-hidden shadow-lg flex flex-col justify-between';
-        card.innerHTML = `
-          <div class="aspect-[9/16] w-full bg-slate-900 checkerboard relative flex items-center justify-center overflow-hidden">
-            <img src="${item.dataUrl}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-            <span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-md text-[9px] font-bold text-white">${item.folder}</span>
-          </div>
-          <div class="p-2 space-y-1">
-            <p class="text-[11px] font-bold text-white truncate">${item.name}</p>
-            <div class="flex items-center justify-between pt-1">
-              <button type="button" class="use-gallery-img-btn text-[10px] text-rose-400 hover:text-rose-300 font-bold" data-url="${item.dataUrl}" data-name="${item.name}" data-folder="${item.folder}">
-                Tạo content 10s &rarr;
-              </button>
-              <button type="button" class="del-gallery-img-btn text-[10px] text-slate-500 hover:text-rose-400 p-1" data-folder="${item.folder}" data-id="${item.id}" title="Xóa ảnh">
-                &times;
-              </button>
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-
-      // Lắng nghe sự kiện "Tạo content 10s" từ kho ảnh
-      container.querySelectorAll('.use-gallery-img-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const url = btn.getAttribute('data-url');
-          const name = btn.getAttribute('data-name');
-          const folder = btn.getAttribute('data-folder');
-          
-          state.batchProducts[0].image = url;
-          state.batchProducts[0].name = name;
-          state.batchProducts[0].info = `Ngành hàng: ${folder}`;
-
-          switchStep(2);
-          renderProductRows();
-          generateBatch5Scripts();
-          showToast(`Đã nạp ảnh "${name}" vào Sản phẩm 1 và tạo ngay kịch bản 10s!`);
-        });
-      });
-
-      // Lắng nghe xóa ảnh
-      container.querySelectorAll('.del-gallery-img-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const fName = btn.getAttribute('data-folder');
-          const id = btn.getAttribute('data-id');
-          if (state.savedFolders[fName]) {
-            state.savedFolders[fName] = state.savedFolders[fName].filter(x => x.id !== id);
-            saveFoldersToStorage();
-            showToast('Đã xóa ảnh khỏi thư mục.');
-          }
-        });
       });
     }
 
@@ -3418,54 +4050,6 @@ loadLearnedRules();
 
       // Khởi tạo ban đầu
       
-      // KHO LƯU TRỮ: TẠO FOLDER MỚI & UPLOAD HÀNG LOẠT
-      const createFolderBtn = document.getElementById('create-new-folder-btn');
-      const createFolderRow = document.getElementById('create-folder-input-row');
-      const newFolderNameInput = document.getElementById('new-folder-name-input');
-      const confirmCreateFolderBtn = document.getElementById('confirm-create-folder-btn');
-      const cancelCreateFolderBtn = document.getElementById('cancel-create-folder-btn');
-
-      if (createFolderBtn && createFolderRow) {
-        createFolderBtn.addEventListener('click', () => {
-          createFolderRow.classList.toggle('hidden');
-          if (!createFolderRow.classList.contains('hidden')) {
-            newFolderNameInput.focus();
-          }
-        });
-      }
-
-      if (cancelCreateFolderBtn && createFolderRow) {
-        cancelCreateFolderBtn.addEventListener('click', () => {
-          createFolderRow.classList.add('hidden');
-        });
-      }
-
-      if (confirmCreateFolderBtn && newFolderNameInput) {
-        confirmCreateFolderBtn.addEventListener('click', () => {
-          const fName = newFolderNameInput.value.trim();
-          if (fName) {
-            createNewFolder(fName);
-            newFolderNameInput.value = '';
-            createFolderRow.classList.add('hidden');
-          } else {
-            showToast('Vui lòng nhập tên thư mục!', 'error');
-          }
-        });
-        newFolderNameInput.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') confirmCreateFolderBtn.click();
-        });
-      }
-
-      // Upload ảnh hàng loạt vào Gallery (AI tự chọn lọc)
-      const batchGalleryBtn = document.getElementById('batch-upload-gallery-btn');
-      const batchGalleryInput = document.getElementById('batch-gallery-file-input');
-      if (batchGalleryBtn && batchGalleryInput) {
-        batchGalleryBtn.addEventListener('click', () => batchGalleryInput.click());
-        batchGalleryInput.addEventListener('change', (e) => {
-          handleBatchUploadToGallery(e.target.files);
-        });
-      }
-
       // CÀI ĐẶT AI: GEMINI & CHATGPT
       loadAISettings();
       const toggleAiBtn = document.getElementById('toggle-ai-settings-btn');
@@ -3537,6 +4121,405 @@ loadLearnedRules();
           showToast(`Đã chọn: ${btn.querySelector('span').textContent.trim()}`);
         });
       });
+
+
+      
+      // KHO LƯU TRỮ PHÂN CẤP: NÚT TẠO FOLDER CON & GỐC
+      const createFolderBtn = document.getElementById('create-new-folder-btn');
+      const createFolderRow = document.getElementById('create-folder-input-row');
+      const newFolderNameInput = document.getElementById('new-folder-name-input');
+      const confirmCreateFolderBtn = document.getElementById('confirm-create-folder-btn');
+      const cancelCreateFolderBtn = document.getElementById('cancel-create-folder-btn');
+
+      if (createFolderBtn && createFolderRow) {
+        createFolderBtn.addEventListener('click', () => {
+          createFolderRow.classList.toggle('hidden');
+          if (!createFolderRow.classList.contains('hidden')) newFolderNameInput.focus();
+        });
+      }
+
+      if (cancelCreateFolderBtn && createFolderRow) {
+        cancelCreateFolderBtn.addEventListener('click', () => createFolderRow.classList.add('hidden'));
+      }
+
+      if (confirmCreateFolderBtn && newFolderNameInput) {
+        confirmCreateFolderBtn.addEventListener('click', () => {
+          const val = newFolderNameInput.value.trim();
+          if (val) {
+            createNewFolder(val);
+            newFolderNameInput.value = '';
+            createFolderRow.classList.add('hidden');
+          } else {
+            showToast('Vui lòng nhập tên thư mục!', 'error');
+          }
+        });
+      }
+
+      // Tạo Folder Con
+      const createSubBtn = document.getElementById('create-subfolder-btn');
+      const createSubRow = document.getElementById('create-subfolder-row');
+      const newSubNameInput = document.getElementById('new-subfolder-name-input');
+      const confirmCreateSubBtn = document.getElementById('confirm-create-subfolder-btn');
+      const cancelCreateSubBtn = document.getElementById('cancel-create-subfolder-btn');
+
+      if (createSubBtn && createSubRow) {
+        createSubBtn.addEventListener('click', () => {
+          createSubRow.classList.toggle('hidden');
+          if (!createSubRow.classList.contains('hidden')) newSubNameInput.focus();
+        });
+      }
+
+      if (cancelCreateSubBtn && createSubRow) {
+        cancelCreateSubBtn.addEventListener('click', () => createSubRow.classList.add('hidden'));
+      }
+
+      if (confirmCreateSubBtn && newSubNameInput) {
+        confirmCreateSubBtn.addEventListener('click', () => {
+          const val = newSubNameInput.value.trim();
+          if (val && state.currentPath !== 'all') {
+            const subPath = state.currentPath + '/' + val;
+            createNewFolder(subPath);
+            newSubNameInput.value = '';
+            createSubRow.classList.add('hidden');
+          } else {
+            showToast('Vui lòng nhập tên thư mục con!', 'error');
+          }
+        });
+      }
+
+      // Tải ảnh hàng loạt vào folder hiện tại
+      const uploadCurrentBtn = document.getElementById('upload-current-folder-btn');
+      const currentFileInput = document.getElementById('current-folder-file-input');
+      if (uploadCurrentBtn && currentFileInput) {
+        uploadCurrentBtn.addEventListener('click', () => currentFileInput.click());
+        currentFileInput.addEventListener('change', (e) => {
+          handleBatchUploadToGallery(e.target.files);
+        });
+      }
+
+      // MODAL THAO TÁC CHI TIẾT ẢNH LISTENERS
+      const closePhotoModalBtn = document.getElementById('close-photo-modal-btn');
+      if (closePhotoModalBtn) {
+        closePhotoModalBtn.addEventListener('click', closePhotoActionModal);
+      }
+
+      // Lưu tên ảnh mới
+      document.getElementById('modal-save-name-btn').addEventListener('click', () => {
+        if (!state.selectedGalleryPhoto) return;
+        const newName = document.getElementById('modal-img-name-input').value.trim();
+        if (newName) {
+          state.selectedGalleryPhoto.name = newName;
+          saveFoldersToStorage();
+          showToast(`Đã đổi tên ảnh thành: "${newName}"`);
+        }
+      });
+
+      // Di chuyển ảnh sang folder khác
+      document.getElementById('modal-move-btn').addEventListener('click', () => {
+        if (!state.selectedGalleryPhoto) return;
+        const targetFolder = document.getElementById('modal-move-folder-select').value;
+        const oldFolder = state.selectedGalleryPhoto.currentFolderKey;
+
+        if (targetFolder === oldFolder) {
+          showToast('Ảnh đã ở trong thư mục này rồi!', 'error');
+          return;
+        }
+
+        // Xóa khỏi folder cũ
+        if (state.savedFolders[oldFolder]) {
+          state.savedFolders[oldFolder] = state.savedFolders[oldFolder].filter(x => x.id !== state.selectedGalleryPhoto.id);
+        }
+
+        // Thêm vào folder mới
+        if (!state.savedFolders[targetFolder]) {
+          state.savedFolders[targetFolder] = [];
+        }
+        state.selectedGalleryPhoto.currentFolderKey = targetFolder;
+        state.savedFolders[targetFolder].unshift(state.selectedGalleryPhoto);
+
+        saveFoldersToStorage();
+        closePhotoActionModal();
+        showToast(`Đã di chuyển ảnh sang: "${targetFolder}"!`);
+      });
+
+      // Xóa ảnh
+      document.getElementById('modal-delete-btn').addEventListener('click', () => {
+        if (!state.selectedGalleryPhoto) return;
+        const folder = state.selectedGalleryPhoto.currentFolderKey;
+        if (state.savedFolders[folder]) {
+          state.savedFolders[folder] = state.savedFolders[folder].filter(x => x.id !== state.selectedGalleryPhoto.id);
+          saveFoldersToStorage();
+          closePhotoActionModal();
+          showToast('Đã xóa ảnh thành công.');
+        }
+      });
+
+      // Thay Background trong Modal
+      document.getElementById('modal-change-bg-btn').addEventListener('click', async () => {
+        if (!state.selectedGalleryPhoto) return;
+        showToast('Đang kết xuất background mới 9:16...');
+        const preset = document.getElementById('modal-bg-preset-select').value;
+
+        const canvas = document.createElement('canvas');
+        canvas.width = 1080;
+        canvas.height = 1920;
+        const ctx = canvas.getContext('2d');
+
+        // Vẽ background preset
+        let bgGradient;
+        if (preset === 'paris') {
+          bgGradient = ctx.createLinearGradient(0, 0, 0, 1920);
+          bgGradient.addColorStop(0, '#fef08a');
+          bgGradient.addColorStop(0.5, '#fed7aa');
+          bgGradient.addColorStop(1, '#9a3412');
+        } else if (preset === 'studio') {
+          bgGradient = ctx.createRadialGradient(540, 960, 100, 540, 960, 900);
+          bgGradient.addColorStop(0, '#475569');
+          bgGradient.addColorStop(1, '#0f172a');
+        } else if (preset === 'cafe') {
+          bgGradient = ctx.createLinearGradient(0, 0, 0, 1920);
+          bgGradient.addColorStop(0, '#78350f');
+          bgGradient.addColorStop(1, '#292524');
+        } else {
+          bgGradient = ctx.createLinearGradient(0, 0, 0, 1920);
+          bgGradient.addColorStop(0, '#0284c7');
+          bgGradient.addColorStop(0.7, '#38bdf8');
+          bgGradient.addColorStop(1, '#fef08a');
+        }
+        ctx.fillStyle = bgGradient;
+        ctx.fillRect(0, 0, 1080, 1920);
+
+        // Vẽ sản phẩm lên
+        const img = new Image();
+        img.src = state.selectedGalleryPhoto.dataUrl;
+        await new Promise(r => img.onload = r);
+        ctx.drawImage(img, 190, 500, 700, 1000);
+
+        const newUrl = canvas.toDataURL('image/jpeg', 0.9);
+        state.selectedGalleryPhoto.dataUrl = newUrl;
+        document.getElementById('modal-img-preview').src = newUrl;
+        saveFoldersToStorage();
+        showToast('Đã thay background 9:16 thành công!');
+      });
+
+      // Tạo hình ảnh thay đồ AI (Ghi yêu cầu Virtual Try-On)
+      document.getElementById('modal-generate-outfit-btn').addEventListener('click', async () => {
+        if (!state.selectedGalleryPhoto) return;
+        const promptReq = document.getElementById('modal-outfit-prompt').value.trim();
+        showToast('Đang kết xuất mô phỏng thay đồ AI...');
+
+        const canvas = document.createElement('canvas');
+        canvas.width = 1080;
+        canvas.height = 1920;
+        const ctx = canvas.getContext('2d');
+
+        // Bối cảnh thời trang cao cấp Paris mùa thu
+        const bgGrad = ctx.createLinearGradient(0, 0, 0, 1920);
+        bgGrad.addColorStop(0, '#fef3c7');
+        bgGrad.addColorStop(0.6, '#fed7aa');
+        bgGrad.addColorStop(1, '#78350f');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, 1080, 1920);
+
+        // Vẽ tà váy / trang phục kết hợp
+        const img = new Image();
+        img.src = state.selectedGalleryPhoto.dataUrl;
+        await new Promise(r => img.onload = r);
+
+        // Vẽ bóng đổ người mẫu
+        ctx.save();
+        ctx.fillStyle = 'rgba(0,0,0,0.35)';
+        ctx.beginPath();
+        ctx.ellipse(540, 1680, 320, 45, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        // Vẽ trang phục
+        ctx.drawImage(img, 240, 460, 600, 1050);
+
+        // Banner nhãn Try-On AI
+        ctx.fillStyle = 'rgba(0,0,0,0.6)';
+        ctx.roundRect(60, 1720, 960, 120, 24);
+        ctx.fill();
+        ctx.fillStyle = '#fde047';
+        ctx.font = 'bold 36px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('AI VIRTUAL TRY-ON • 8K FASHION', 540, 1795);
+
+        const renderedTryOn = canvas.toDataURL('image/jpeg', 0.92);
+        state.selectedGalleryPhoto.dataUrl = renderedTryOn;
+        document.getElementById('modal-img-preview').src = renderedTryOn;
+        saveFoldersToStorage();
+        showToast('Đã tạo ảnh thay đồ AI 9:16 thành công!');
+      });
+
+      // Tạo prompt video từ ảnh
+      document.getElementById('modal-gen-video-prompt-btn').addEventListener('click', () => {
+        if (!state.selectedGalleryPhoto) return;
+        const name = state.selectedGalleryPhoto.name || 'Outfit';
+        const p = `Cinematic 9:16 fashion commercial of female model wearing [${name}], graceful slow-motion runway walk, elegant fabric flow in breeze, soft golden hour sunlight, 8k resolution, 60fps.`;
+        document.getElementById('modal-video-prompt-output').value = p;
+        showToast('Đã tạo prompt video từ ảnh!');
+      });
+
+      // 4 Mẫu Prompt Video
+      document.querySelectorAll('.modal-video-preset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const type = btn.getAttribute('data-preset');
+          const pName = state.selectedGalleryPhoto?.name || 'Sản phẩm';
+          let promptStr = '';
+          if (type === 'catwalk') {
+            promptStr = `Runway fashion catwalk video 9:16 of model wearing [${pName}], confident stride on catwalk runway, flowing silk dress motion, bright studio spotlights, 8k photorealistic.`;
+          } else if (type === 'orbit') {
+            promptStr = `Smooth 360 camera orbit around [${pName}], macro showcase of fabric weave and luxury stitching, minimalist studio rim lighting, 8k commercial quality.`;
+          } else if (type === 'transition') {
+            promptStr = `Fast-paced TikTok outfit transition beat snap for [${pName}], snappy cut, instant wardrobe change, vibrant neon aesthetic, viral 9:16 format.`;
+          } else {
+            promptStr = `Natural street style video of model wearing [${pName}] strolling down Parisian street, gentle autumn breeze, warm natural daylight, cinematic 24fps.`;
+          }
+          document.getElementById('modal-video-prompt-output').value = promptStr;
+          showToast(`Đã chọn prompt: ${btn.querySelector('span').textContent.trim()}`);
+        });
+      });
+
+      // Copy Prompt Video
+      document.getElementById('modal-copy-video-prompt-btn').addEventListener('click', () => {
+        const txt = document.getElementById('modal-video-prompt-output').value;
+        copyText(txt, 'Đã sao chép prompt video!');
+      });
+
+      // Đưa vào Bước 3 dựng video
+      document.getElementById('modal-send-to-step3-btn').addEventListener('click', () => {
+        if (!state.selectedGalleryPhoto) return;
+        state.batchProducts[0].image = state.selectedGalleryPhoto.dataUrl;
+        state.batchProducts[0].name = state.selectedGalleryPhoto.name;
+        closePhotoActionModal();
+        switchStep(3);
+        showToast('Đã đưa ảnh sang Bước 3 để dựng Video!');
+      });
+
+      // Đưa sang Bước 2 viết 10s
+      document.getElementById('modal-send-to-step2-btn').addEventListener('click', () => {
+        if (!state.selectedGalleryPhoto) return;
+        state.batchProducts[0].image = state.selectedGalleryPhoto.dataUrl;
+        state.batchProducts[0].name = state.selectedGalleryPhoto.name;
+        state.batchProducts[0].info = `Thời trang: ${state.selectedGalleryPhoto.name}`;
+        closePhotoActionModal();
+        switchStep(2);
+        renderProductRows();
+        generateBatch5Scripts();
+        showToast('Đã đưa ảnh sang Bước 2 và tạo ngay kịch bản 10s!');
+      });
+
+
+      
+      // ACTIVE FOLDER CONTROL BOX LISTENERS
+      const moveActiveFolderBtn = document.getElementById('move-active-folder-btn');
+      const moveActiveFolderRow = document.getElementById('move-active-folder-row');
+      const confirmMoveFolderBtn = document.getElementById('confirm-move-folder-btn');
+      const cancelMoveFolderBtn = document.getElementById('cancel-move-folder-btn');
+      const moveFolderTargetSelect = document.getElementById('move-folder-target-select');
+
+      if (moveActiveFolderBtn && moveActiveFolderRow) {
+        moveActiveFolderBtn.addEventListener('click', () => {
+          moveActiveFolderRow.classList.toggle('hidden');
+        });
+      }
+      if (cancelMoveFolderBtn && moveActiveFolderRow) {
+        cancelMoveFolderBtn.addEventListener('click', () => {
+          moveActiveFolderRow.classList.add('hidden');
+        });
+      }
+      if (confirmMoveFolderBtn && moveFolderTargetSelect) {
+        confirmMoveFolderBtn.addEventListener('click', () => {
+          moveActiveFolder(moveFolderTargetSelect.value);
+          moveActiveFolderRow.classList.add('hidden');
+        });
+      }
+
+      // Rename Active Folder
+      const renameActiveFolderBtn = document.getElementById('rename-active-folder-btn');
+      const renameActiveFolderRow = document.getElementById('rename-active-folder-row');
+      const renameFolderInput = document.getElementById('rename-folder-input');
+      const confirmRenameFolderBtn = document.getElementById('confirm-rename-folder-btn');
+      const cancelRenameFolderBtn = document.getElementById('cancel-rename-folder-btn');
+
+      if (renameActiveFolderBtn && renameActiveFolderRow) {
+        renameActiveFolderBtn.addEventListener('click', () => {
+          renameActiveFolderRow.classList.toggle('hidden');
+          if (!renameActiveFolderRow.classList.contains('hidden') && renameFolderInput) {
+            renameFolderInput.focus();
+          }
+        });
+      }
+      if (cancelRenameFolderBtn && renameActiveFolderRow) {
+        cancelRenameFolderBtn.addEventListener('click', () => {
+          renameActiveFolderRow.classList.add('hidden');
+        });
+      }
+      if (confirmRenameFolderBtn && renameFolderInput) {
+        confirmRenameFolderBtn.addEventListener('click', () => {
+          renameActiveFolder(renameFolderInput.value.trim());
+          renameActiveFolderRow.classList.add('hidden');
+        });
+        renameFolderInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') confirmRenameFolderBtn.click();
+        });
+      }
+
+      // Delete Active Folder
+      const deleteActiveFolderBtn = document.getElementById('delete-active-folder-btn');
+      if (deleteActiveFolderBtn) {
+        deleteActiveFolderBtn.addEventListener('click', () => {
+          deleteActiveFolder();
+        });
+      }
+
+      // Inside Create Subfolder
+      const insideCreateSubBtn = document.getElementById('inside-create-subfolder-btn');
+      const createInsideRow = document.getElementById('create-inside-folder-row');
+      const insideFolderNameInput = document.getElementById('inside-folder-name-input');
+      const confirmInsideFolderBtn = document.getElementById('confirm-inside-folder-btn');
+      const cancelInsideFolderBtn = document.getElementById('cancel-inside-folder-btn');
+
+      if (insideCreateSubBtn && createInsideRow) {
+        insideCreateSubBtn.addEventListener('click', () => {
+          createInsideRow.classList.toggle('hidden');
+          if (!createInsideRow.classList.contains('hidden') && insideFolderNameInput) {
+            insideFolderNameInput.focus();
+          }
+        });
+      }
+      if (cancelInsideFolderBtn && createInsideRow) {
+        cancelInsideFolderBtn.addEventListener('click', () => {
+          createInsideRow.classList.add('hidden');
+        });
+      }
+      if (confirmInsideFolderBtn && insideFolderNameInput) {
+        confirmInsideFolderBtn.addEventListener('click', () => {
+          const val = insideFolderNameInput.value.trim();
+          if (val && state.currentPath !== 'all') {
+            const subPath = state.currentPath + '/' + val;
+            createNewFolder(subPath);
+            insideFolderNameInput.value = '';
+            createInsideRow.classList.add('hidden');
+          } else {
+            showToast('Vui lòng nhập tên thư mục mới!', 'error');
+          }
+        });
+        insideFolderNameInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') confirmInsideFolderBtn.click();
+        });
+      }
+
+      // Inside Upload Files
+      const insideUploadBtn = document.getElementById('inside-upload-files-btn');
+      const currentFileInputRef = document.getElementById('current-folder-file-input');
+      if (insideUploadBtn && currentFileInputRef) {
+        insideUploadBtn.addEventListener('click', () => {
+          currentFileInputRef.click();
+        });
+      }
 
 
       renderProductRows();
