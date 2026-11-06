@@ -104,7 +104,216 @@
   <!-- =================================================================== -->
   <!-- MODAL THAO TÁC CHI TIẾT ẢNH & BỘ CÔNG CỤ SÁNG TẠO AI THEO YÊU CẦU -->
   <!-- =================================================================== -->
-  <div id="photo-action-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 hidden">
+    <!-- =================================================================== -->
+  <!-- MODAL COMBO THAO TÁC THƯ MỤC (XÓA, ĐỔI TÊN, DI CHUYỂN, PHÂN LOẠI) -->
+    <!-- =================================================================== -->
+  <!-- MODAL XEM CHI TIẾT NỘI DUNG FILE WORD & CÂU LỆNH PROMPT (MỚI) -->
+  <!-- =================================================================== -->
+  <div id="word-note-viewer-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4 hidden">
+    <div class="bg-slate-900 border border-slate-700 rounded-t-3xl sm:rounded-3xl max-w-2xl w-full p-5 sm:p-6 shadow-2xl space-y-4 max-h-[92vh] overflow-y-auto animate-in fade-in slide-in-from-bottom duration-200">
+      
+      <!-- Header Modal -->
+      <div class="flex items-center justify-between pb-3.5 border-b border-slate-800">
+        <div class="flex items-center gap-3 min-w-0">
+          <span id="viewer-type-icon" class="w-10 h-10 rounded-2xl bg-blue-600/20 text-blue-400 font-serif font-black text-lg flex items-center justify-center shrink-0 shadow">
+            W
+          </span>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2">
+              <span id="viewer-type-badge" class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30">File Word</span>
+              <span id="viewer-folder-badge" class="text-[10px] text-slate-400 truncate">📁 Thư mục</span>
+            </div>
+            <h3 id="viewer-note-title" class="text-sm sm:text-base font-extrabold text-white truncate mt-0.5">Tiêu đề File Word</h3>
+          </div>
+        </div>
+        <button id="close-word-viewer-btn" type="button" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center text-sm font-bold transition">
+          ✕
+        </button>
+      </div>
+
+      <!-- KHUNG HIỂN THỊ NỘI DUNG CHI TIẾT VĂN BẢN / PROMPT -->
+      <div class="space-y-2">
+        <div class="flex items-center justify-between text-xs text-slate-400">
+          <span class="font-bold text-slate-300">📄 Nội dung văn bản / Câu lệnh Prompt:</span>
+          <span id="viewer-word-count" class="font-mono text-[11px] text-slate-500">0 ký tự</span>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 shadow-inner max-h-[45vh] overflow-y-auto">
+          <pre id="viewer-note-content" class="text-xs sm:text-sm text-slate-200 font-sans leading-relaxed whitespace-pre-wrap select-text cursor-text"></pre>
+        </div>
+      </div>
+
+      <!-- CÁC HÀNH ĐỘNG TÍCH HỢP CHUYÊN DỤNG (TÁCH ẢNH, TẠO VIDEO, COPY, TẢI WORD) -->
+      <div class="space-y-2 pt-2 border-t border-slate-800">
+        <span class="text-xs font-bold text-slate-300 block">⚡ Dùng Ngay Prompt / File Này Vào:</span>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <!-- Nút Copy Prompt -->
+          <button id="viewer-copy-prompt-btn" type="button" class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+            <span>📋 Sao Chép Prompt</span>
+          </button>
+
+          <!-- Nút Dùng Tách Ảnh (Bước 1) -->
+          <button id="viewer-use-step1-btn" type="button" class="py-2.5 px-3 bg-indigo-600/30 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/40 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+            <span>🖼️ Dùng Tách Ảnh</span>
+          </button>
+
+          <!-- Nút Dùng Tạo Video (Bước 3) -->
+          <button id="viewer-use-step3-btn" type="button" class="py-2.5 px-3 bg-purple-600/30 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/40 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+            <span>🎬 Dùng Tạo Video</span>
+          </button>
+
+          <!-- Nút Tải Word .doc -->
+          <button id="viewer-download-doc-btn" type="button" class="py-2.5 px-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            <span>Tải .doc</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer Action: Sửa & Xóa & Đóng -->
+      <div class="flex items-center justify-between pt-2 border-t border-slate-800/80">
+        <div class="flex items-center gap-2">
+          <button id="viewer-edit-note-btn" type="button" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl text-xs font-semibold transition flex items-center gap-1">
+            <span>✏️ Chỉnh Sửa</span>
+          </button>
+          <button id="viewer-delete-note-btn" type="button" class="px-3 py-1.5 text-slate-500 hover:text-rose-400 rounded-xl text-xs transition flex items-center gap-1">
+            <span>🗑️ Xóa</span>
+          </button>
+        </div>
+        <button id="viewer-close-bottom-btn" type="button" class="px-4 py-1.5 text-slate-400 hover:text-white text-xs font-semibold">
+          Đóng
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+<!-- =================================================================== -->
+  <div id="folder-combo-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4 hidden">
+    <div class="bg-slate-900 border border-slate-700 rounded-t-3xl sm:rounded-3xl max-w-lg w-full p-5 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto animate-in fade-in slide-in-from-bottom duration-200">
+      
+      <!-- Header -->
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <span class="w-10 h-10 rounded-2xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl font-bold shrink-0 shadow">
+            📁
+          </span>
+          <div class="min-w-0">
+            <h3 id="combo-folder-title" class="text-sm sm:text-base font-extrabold text-white truncate">Thư mục</h3>
+            <p id="combo-folder-path" class="text-[11px] text-slate-400 truncate">Đường dẫn: root</p>
+          </div>
+        </div>
+        <button id="close-folder-combo-btn" type="button" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center text-sm font-bold transition">
+          ✕
+        </button>
+      </div>
+
+      <!-- Thống kê tài nguyên trong thư mục -->
+      <div id="combo-folder-stats" class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between text-xs text-slate-300">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- COMBO CÁC NÚT THAO TÁC CHÍNH -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <!-- Nút Đổi tên -->
+        <button id="combo-action-rename-btn" type="button" class="p-3 rounded-2xl bg-slate-800/90 hover:bg-slate-800 border border-slate-700 text-left transition flex items-center gap-3 text-xs font-bold text-slate-200 hover:text-white shadow">
+          <span class="w-8 h-8 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-base shrink-0">✏️</span>
+          <div>
+            <span class="block">Đổi Tên</span>
+            <span class="text-[10px] text-slate-400 font-normal">Sửa tên thư mục này</span>
+          </div>
+        </button>
+
+        <!-- Nút Di chuyển -->
+        <button id="combo-action-move-btn" type="button" class="p-3 rounded-2xl bg-slate-800/90 hover:bg-slate-800 border border-slate-700 text-left transition flex items-center gap-3 text-xs font-bold text-amber-300 hover:text-amber-200 shadow">
+          <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-base shrink-0">📦</span>
+          <div>
+            <span class="block">Di Chuyển</span>
+            <span class="text-[10px] text-slate-400 font-normal">Chuyển vào thư mục khác</span>
+          </div>
+        </button>
+
+        <!-- Nút Tự Phân Loại AI (Nếu là Sp.) -->
+        <button id="combo-action-classify-btn" type="button" class="p-3 rounded-2xl bg-rose-950/40 hover:bg-rose-900/60 border border-rose-500/40 text-left transition flex items-center gap-3 text-xs font-bold text-rose-300 shadow">
+          <span class="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-base shrink-0">⚡</span>
+          <div>
+            <span class="block">Tự Phân Loại AI</span>
+            <span class="text-[10px] text-rose-400/80 font-normal">Xếp tự động vào ngành hàng</span>
+          </div>
+        </button>
+
+        <!-- Nút Xóa Thư Mục -->
+        <button id="combo-action-delete-btn" type="button" class="p-3 rounded-2xl bg-red-950/40 hover:bg-red-900/60 border border-red-500/40 text-left transition flex items-center gap-3 text-xs font-bold text-red-300 shadow">
+          <span class="w-8 h-8 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center text-base shrink-0">🗑️</span>
+          <div>
+            <span class="block">Xóa Thư Mục</span>
+            <span class="text-[10px] text-red-400/80 font-normal">Xóa thư mục và tài nguyên</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Khung Nhập Đổi Tên (Ẩn/Hiện) -->
+      <div id="combo-rename-box" class="hidden p-3 rounded-2xl bg-slate-950 border border-indigo-500/40 space-y-2">
+        <label class="text-xs font-bold text-indigo-300 block">✏️ Nhập tên mới cho thư mục:</label>
+        <div class="flex items-center gap-2">
+          <input type="text" id="combo-rename-input" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
+          <button id="combo-confirm-rename-btn" type="button" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition">
+            Lưu Tên
+          </button>
+          <button id="combo-cancel-rename-btn" type="button" class="px-2.5 py-1.5 text-slate-400 hover:text-white text-xs">
+            Hủy
+          </button>
+        </div>
+      </div>
+
+      <!-- Khung Chọn Vị Trí Di Chuyển (Ẩn/Hiện) -->
+      <div id="combo-move-box" class="hidden p-3 rounded-2xl bg-slate-950 border border-amber-500/40 space-y-2">
+        <label class="text-xs font-bold text-amber-300 block">📦 Chọn thư mục đích để di chuyển vào:</label>
+        <div class="flex items-center gap-2">
+          <select id="combo-move-select" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-amber-400">
+            <!-- Dynamically populated -->
+          </select>
+          <button id="combo-confirm-move-btn" type="button" class="px-4 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-xl text-xs font-bold transition">
+            Chuyển
+          </button>
+          <button id="combo-cancel-move-btn" type="button" class="px-2.5 py-1.5 text-slate-400 hover:text-white text-xs">
+            Hủy
+          </button>
+        </div>
+      </div>
+
+      <!-- Khung Xác Nhận Xóa (Ẩn/Hiện - Hoàn toàn in-page, an toàn Canvas) -->
+      <div id="combo-delete-box" class="hidden p-3.5 rounded-2xl bg-red-950/60 border border-red-500/60 space-y-2.5">
+        <div class="flex items-center gap-2 text-xs font-bold text-red-300">
+          <span>⚠️</span>
+          <span>Bạn có chắc chắn muốn xóa thư mục này?</span>
+        </div>
+        <p class="text-[11px] text-red-200/80 leading-relaxed">
+          Tất cả ảnh, video, liên kết và ghi chú Word bên trong thư mục này sẽ bị xóa khỏi kho lưu trữ.
+        </p>
+        <div class="flex items-center justify-end gap-2 pt-1">
+          <button id="combo-cancel-delete-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">
+            Không xóa
+          </button>
+          <button id="combo-confirm-delete-btn" type="button" class="px-4 py-1.5 bg-red-600 hover:bg-red-500 text-white rounded-xl text-xs font-bold transition shadow">
+            Xác Nhận Xóa Vĩnh Viễn
+          </button>
+        </div>
+      </div>
+
+      <!-- Nút Mở Thư Mục & Đóng -->
+      <div class="flex items-center justify-between pt-2 border-t border-slate-800">
+        <button id="combo-open-folder-btn" type="button" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow">
+          <span>📂 Mở Thư Mục Này</span>
+        </button>
+        <button id="combo-close-bottom-btn" type="button" class="px-4 py-2 text-slate-400 hover:text-white text-xs">
+          Đóng Menu
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+<div id="photo-action-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 hidden">
     <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-4xl w-full p-5 sm:p-6 shadow-2xl overflow-y-auto max-h-[92vh] space-y-5">
       
       <!-- Modal Header -->
@@ -728,26 +937,53 @@
             </div>
           </div>
 
-          <!-- Hộp Soạn & Tải Ghi Chú Word (MỚI) -->
-          <div id="add-note-input-row" class="hidden p-3.5 rounded-xl bg-slate-900 border border-blue-500/40 space-y-2.5 shadow-lg">
+          <!-- Hộp Soạn & Lưu File Word / Prompt (MỚI TÍCH HỢP PROMPT & TÁCH ẢNH, VIDEO) -->
+          <div id="add-note-input-row" class="hidden p-3.5 sm:p-4 rounded-2xl bg-slate-900 border border-blue-500/40 space-y-3 shadow-xl">
             <div class="flex items-center justify-between">
               <span class="text-xs font-bold text-blue-300 flex items-center gap-1.5">
-                <span class="px-1.5 py-0.5 rounded bg-blue-600 text-white font-serif font-black text-[10px]">W</span>
-                Soạn Ghi Chú Word / Kịch Bản / Thông Tin Sản Phẩm
+                <span class="px-2 py-0.5 rounded bg-blue-600 text-white font-serif font-black text-xs shadow">W</span>
+                <span>Lưu File Word / Câu Lệnh Prompt (Dùng Tách Ảnh & Tạo Video)</span>
               </span>
               <button id="close-add-note-btn" type="button" class="text-slate-400 hover:text-white text-xs">✕ Đóng</button>
             </div>
-            <input type="text" id="new-note-title-input" placeholder="Tiêu đề ghi chú (VD: Kịch bản video Son lì #02, Lưu ý chất liệu...)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500">
-            <textarea id="new-note-content-input" rows="4" placeholder="Nhập nội dung ghi chú chi tiết, lời thoại kịch bản, quy cách kích thước, giá bán sỉ..." class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-blue-500 resize-y"></textarea>
-            <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
+
+            <!-- Bộ Chọn Nhanh Loại Prompt / Tài Liệu -->
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="text-[11px] text-slate-400">Chọn loại:</span>
+              <button type="button" id="type-opt-img-prompt" class="note-type-chip px-2.5 py-1 rounded-lg text-xs font-semibold bg-indigo-600/30 text-indigo-300 border border-indigo-500/40 hover:bg-indigo-600 hover:text-white transition">
+                🎨 Prompt Tách & Ghép Nền
+              </button>
+              <button type="button" id="type-opt-video-prompt" class="note-type-chip px-2.5 py-1 rounded-lg text-xs font-semibold bg-purple-600/30 text-purple-300 border border-purple-500/40 hover:bg-purple-600 hover:text-white transition">
+                🎬 Prompt Tạo Video
+              </button>
+              <button type="button" id="type-opt-general-doc" class="note-type-chip px-2.5 py-1 rounded-lg text-xs font-semibold bg-blue-600/30 text-blue-300 border border-blue-500/40 hover:bg-blue-600 hover:text-white transition">
+                📝 File Word Ghi Chú
+              </button>
+            </div>
+
+            <div class="space-y-1.5">
+              <input type="text" id="new-note-title-input" placeholder="Tiêu đề file Word / Prompt (VD: Prompt Tách Áo Dài 8K, Prompt Video Flow Triệu View...)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500 font-medium">
+            </div>
+
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between text-[11px] text-slate-400">
+                <span>Nội dung câu lệnh prompt / văn bản ghi chú:</span>
+                <button type="button" id="quick-paste-clipboard-btn" class="text-blue-400 hover:text-blue-300 font-bold flex items-center gap-1">
+                  <span>📋 Dán Nhanh Từ Clipboard</span>
+                </button>
+              </div>
+              <textarea id="new-note-content-input" rows="4" placeholder="Dán nội dung câu lệnh Prompt tách ảnh, prompt tạo video, hoặc kịch bản chi tiết vào đây..." class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-xs text-slate-100 focus:outline-none focus:border-blue-500 resize-y font-mono leading-relaxed"></textarea>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-slate-800">
               <button id="download-draft-word-btn" type="button" class="px-3 py-1.5 bg-blue-900/60 hover:bg-blue-800 text-blue-200 border border-blue-700/60 rounded-xl text-xs font-semibold transition flex items-center gap-1">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                <span>📥 Xuất & Tải File Word (.doc) Ngay</span>
+                <span>📥 Xuất File Word (.doc)</span>
               </button>
               <div class="flex items-center gap-2">
                 <button id="cancel-save-note-btn" type="button" class="px-3 py-1.5 text-slate-400 hover:text-white text-xs">Hủy</button>
                 <button id="confirm-save-note-btn" type="button" class="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 shadow">
-                  <span>💾 Lưu Ghi Chú Vào Thư Mục</span>
+                  <span>💾 Lưu File Word / Prompt</span>
                 </button>
               </div>
             </div>
@@ -787,16 +1023,61 @@
 
         </div>
 
-        <!-- Khay Các Folder Con Trực Thuộc (Nếu có) -->
-        <div id="subfolders-wrapper" class="space-y-1.5">
-          <div id="subfolders-container" class="flex flex-wrap items-center gap-2">
-            <!-- Rendered dynamically -->
-          </div>
-        </div>
+        <!-- KHU VỰC QUẢN LÝ THƯ MỤC: CHẾ ĐỘ XEM LIST CHIỀU DỌC & THANH NGANG -->
+        <div class="p-3.5 sm:p-4 rounded-2xl bg-slate-950 border border-slate-800 shadow-xl space-y-3">
+          
+          <!-- Dòng tiêu đề + Bộ chuyển đổi chế độ xem Dọc/Ngang + Nút quét phân loại AI -->
+          <div class="flex items-center justify-between flex-wrap gap-2.5 pb-2.5 border-b border-slate-800/80">
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="w-7 h-7 rounded-lg bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-sm font-bold shrink-0">📁</span>
+              <div>
+                <h3 class="text-xs sm:text-sm font-extrabold text-white flex items-center gap-1.5">
+                  <span>Kho Thư Mục Sản Phẩm</span>
+                  <span id="folder-total-badge" class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-indigo-300 border border-slate-700">0 thư mục</span>
+                </h3>
+                <p class="text-[11px] text-slate-400">💡 <strong>Mẹo:</strong> Đè ngón tay lên thư mục bất kỳ để mở menu: Xóa &bull; Đổi tên &bull; Di chuyển</p>
+              </div>
+            </div>
 
-        <!-- Thanh Tabs Lọc Nhanh Thư Mục Gốc -->
-        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 border-t border-slate-800/80 pt-2" id="folder-filter-buttons">
-          <!-- Rendered dynamically -->
+            <!-- Các nút điều khiển chế độ xem & phân loại -->
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <!-- Nút Quét & Tự Phân Loại Folder Sp. -->
+              <button id="auto-classify-all-sp-btn" type="button" class="px-2.5 py-1.5 bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 rounded-xl text-xs font-bold transition flex items-center gap-1 shadow" title="Tự động quét các folder Sp. có ít nhất 1 ảnh và chuyển vào ngành hàng phù hợp">
+                <span>⚡ Tự Phân Loại "Sp."</span>
+              </button>
+
+              <!-- Bộ chuyển đổi xem List dọc vs Tabs ngang -->
+              <div class="flex items-center bg-slate-900 border border-slate-800 rounded-xl p-0.5">
+                <button id="view-mode-list-btn" type="button" class="px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 bg-indigo-600 text-white shadow">
+                  <span>📋 List Dọc</span>
+                </button>
+                <button id="view-mode-tabs-btn" type="button" class="px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 text-slate-400 hover:text-white">
+                  <span>🗂️ Thẻ Ngang</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHẾ ĐỘ 1: XEM DANH SÁCH CHIỀU DỌC (VERTICAL LIST VIEW - MẶC ĐỊNH) -->
+          <div id="folder-vertical-list-container" class="space-y-2">
+            <!-- Rendered dynamically via JS -->
+          </div>
+
+          <!-- CHẾ ĐỘ 2: XEM THANH NGANG (HORIZONTAL TABS & SUBFOLDERS) -->
+          <div id="folder-horizontal-container" class="hidden space-y-2">
+            <!-- Khay Các Folder Con Trực Thuộc (Nếu có) -->
+            <div id="subfolders-wrapper" class="space-y-1.5">
+              <div id="subfolders-container" class="flex flex-wrap items-center gap-2">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+
+            <!-- Thanh Tabs Lọc Nhanh Thư Mục Gốc -->
+            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1" id="folder-filter-buttons">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
         </div>
 
         <!-- THANH PHÂN LOẠI TÀI NGUYÊN (ẢNH, VIDEO, LINK, GHI CHÚ WORD) -->
@@ -868,15 +1149,18 @@
           </div>
         </div>
 
-        <!-- MỤC 4: KHU VỰC GHI CHÚ WORD (MỚI) -->
+        <!-- MỤC 4: KHU VỰC DANH SÁCH FILE WORD & PROMPT (MỚI) -->
         <div id="notes-asset-section" class="space-y-2 pt-2 border-t border-slate-800/80">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between flex-wrap gap-2">
             <h4 class="text-xs font-extrabold text-blue-300 flex items-center gap-1.5 uppercase tracking-wider">
-              <span>📝 Ghi Chú & Kịch Bản Word (.doc)</span>
-              <span id="section-note-count-badge" class="text-[10px] text-slate-400 font-mono font-normal">0 ghi chú</span>
+              <span class="w-5 h-5 rounded bg-blue-600 text-white font-serif font-black text-xs flex items-center justify-center">W</span>
+              <span>Danh Sách File Word & Prompt Câu Lệnh</span>
+              <span id="section-note-count-badge" class="text-[10px] text-slate-400 font-mono font-normal">0 file</span>
             </h4>
+            <span class="text-[11px] text-slate-400">💡 Bấm vào file bất kỳ để <strong>xem đầy đủ nội dung</strong>, sao chép prompt hoặc chuyển vào Tách Ảnh / Tạo Video!</span>
           </div>
-          <div id="saved-notes-list" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <!-- DANH SÁCH HIỂN THỊ DẠNG LIST (VERTICAL LIST PROMPT & WORD) -->
+          <div id="saved-notes-list" class="space-y-2.5">
             <!-- Rendered dynamically via JS -->
           </div>
         </div>
@@ -1710,6 +1994,7 @@ const state = {
       folderLinks: {},
       folderNotes: {},
       activeAssetTab: 'all',
+      folderViewMode: 'list', // 'list' (chiều dọc) hoặc 'tabs' (ngang)
 
       // BƯỚC 2 & 3 STATE:
       activeProductIdx: 0,
@@ -2176,6 +2461,71 @@ const state = {
       });
     }
 
+        // ===================================================================
+    // QUẢN LÝ & XEM CHI TIẾT FILE WORD & CÂU LỆNH PROMPT (TÁCH ẢNH & TẠO VIDEO)
+    // ===================================================================
+    let currentViewingNote = null;
+
+    function detectNoteType(title = '', content = '') {
+      const combined = (title + ' ' + content).toLowerCase();
+      if (combined.includes('tách') || combined.includes('ghép nền') || combined.includes('background') || combined.includes('outfit') || combined.includes('thay đồ') || combined.includes('khung 9:16') || combined.includes('8k')) {
+        return { type: 'image_prompt', label: '🎨 Prompt Tách & Ghép Ảnh', badgeClass: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30', icon: '🎨' };
+      }
+      if (combined.includes('video') || combined.includes('clip') || combined.includes('chuyển động') || combined.includes('motion') || combined.includes('flow') || combined.includes('camera') || combined.includes('zoom') || combined.includes('pan')) {
+        return { type: 'video_prompt', label: '🎬 Prompt Tạo Video', badgeClass: 'bg-purple-500/20 text-purple-300 border-purple-500/30', icon: '🎬' };
+      }
+      return { type: 'general_doc', label: '📝 File Word Ghi Chú', badgeClass: 'bg-blue-500/20 text-blue-300 border-blue-500/30', icon: 'W' };
+    }
+
+    function openWordNoteViewerModal(noteItem) {
+      if (!noteItem) return;
+      currentViewingNote = noteItem;
+
+      const modal = document.getElementById('word-note-viewer-modal');
+      if (!modal) return;
+
+      const meta = detectNoteType(noteItem.title, noteItem.content);
+
+      const titleEl = document.getElementById('viewer-note-title');
+      const contentEl = document.getElementById('viewer-note-content');
+      const typeBadgeEl = document.getElementById('viewer-type-badge');
+      const typeIconEl = document.getElementById('viewer-type-icon');
+      const folderBadgeEl = document.getElementById('viewer-folder-badge');
+      const wordCountEl = document.getElementById('viewer-word-count');
+
+      if (titleEl) titleEl.textContent = noteItem.title || 'Câu Lệnh Prompt / File Word';
+      if (contentEl) contentEl.textContent = noteItem.content || '(Không có nội dung văn bản)';
+      
+      if (typeBadgeEl) {
+        typeBadgeEl.textContent = meta.label;
+        typeBadgeEl.className = `text-[10px] px-2 py-0.5 rounded-full font-bold border ${meta.badgeClass}`;
+      }
+      if (typeIconEl) {
+        typeIconEl.textContent = meta.icon;
+        if (meta.type === 'image_prompt') typeIconEl.className = 'w-10 h-10 rounded-2xl bg-indigo-600/20 text-indigo-400 font-bold text-lg flex items-center justify-center shrink-0 shadow';
+        else if (meta.type === 'video_prompt') typeIconEl.className = 'w-10 h-10 rounded-2xl bg-purple-600/20 text-purple-400 font-bold text-lg flex items-center justify-center shrink-0 shadow';
+        else typeIconEl.className = 'w-10 h-10 rounded-2xl bg-blue-600/20 text-blue-400 font-serif font-black text-lg flex items-center justify-center shrink-0 shadow';
+      }
+
+      if (folderBadgeEl) {
+        folderBadgeEl.textContent = `📁 ${noteItem.folderKey ? noteItem.folderKey.split('/').pop() : 'Thư mục'}`;
+      }
+
+      if (wordCountEl) {
+        const textLen = (noteItem.content || '').length;
+        const words = (noteItem.content || '').trim().split(/\s+/).filter(Boolean).length;
+        wordCountEl.textContent = `${words} từ &bull; ${textLen} ký tự`;
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeWordNoteViewerModal() {
+      const modal = document.getElementById('word-note-viewer-modal');
+      if (modal) modal.classList.add('hidden');
+      currentViewingNote = null;
+    }
+
     function renderSavedNotes() {
       const container = document.getElementById('saved-notes-list');
       if (!container) return;
@@ -2193,80 +2543,134 @@ const state = {
 
       if (items.length === 0) {
         container.innerHTML = `
-          <div class="col-span-full py-6 text-center text-slate-500 text-xs bg-slate-950/60 rounded-2xl border border-dashed border-slate-800">
-            <span class="w-7 h-7 mx-auto mb-1.5 inline-flex items-center justify-center rounded-lg bg-blue-600/30 text-blue-400 font-serif font-black text-xs">W</span>
-            Chưa có ghi chú Word nào. Bấm nút <strong>"📝 Ghi Chú Word"</strong> ở trên để soạn kịch bản, lưu trữ thông số và xuất file Word (.doc) về máy!
+          <div class="py-8 px-4 text-center text-slate-500 text-xs bg-slate-950/70 rounded-2xl border border-dashed border-slate-800 space-y-2">
+            <span class="w-9 h-9 mx-auto inline-flex items-center justify-center rounded-xl bg-blue-600/20 text-blue-400 font-serif font-black text-sm shadow">W</span>
+            <p class="text-slate-300 font-semibold">Chưa có File Word hoặc Câu Lệnh Prompt nào trong thư mục này.</p>
+            <p class="text-slate-500 text-[11px]">Bấm nút <strong>"📝 Ghi Chú Word"</strong> ở trên để dán và lưu kịch bản, prompt tách ảnh hoặc prompt video!</p>
           </div>
         `;
         return;
       }
 
-      items.forEach(item => {
+      items.forEach((item, index) => {
+        const meta = detectNoteType(item.title, item.content);
+        const previewText = (item.content || '').substring(0, 180) + ((item.content || '').length > 180 ? '...' : '');
+
         const card = document.createElement('div');
-        card.className = 'p-3.5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-blue-500/50 transition flex flex-col justify-between space-y-3 shadow-lg';
-        
-        const previewText = (item.content || '').substring(0, 150) + ((item.content || '').length > 150 ? '...' : '');
+        card.className = 'p-3.5 sm:p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-blue-500/60 transition shadow-lg flex flex-col justify-between space-y-2.5 cursor-pointer group select-none relative';
 
         card.innerHTML = `
-          <div class="space-y-2">
-            <div class="flex items-center justify-between gap-2 border-b border-slate-800 pb-2">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="w-6 h-6 rounded-lg bg-blue-600 text-white font-serif font-black text-xs flex items-center justify-center shrink-0 shadow">W</span>
-                <h5 class="text-xs font-bold text-white truncate" title="${item.title}">${item.title || 'Ghi chú không tiêu đề'}</h5>
+          <!-- Dòng tiêu đề, loại prompt & ngày lưu -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <div class="flex items-center gap-2 min-w-0 flex-1">
+                <span class="w-7 h-7 rounded-lg ${meta.type === 'image_prompt' ? 'bg-indigo-600/20 text-indigo-400' : meta.type === 'video_prompt' ? 'bg-purple-600/20 text-purple-400' : 'bg-blue-600/20 text-blue-400 font-serif font-black'} flex items-center justify-center text-xs shrink-0 shadow">
+                  ${meta.icon}
+                </span>
+                <h5 class="text-xs sm:text-sm font-bold text-white group-hover:text-blue-300 transition truncate" title="${item.title}">${item.title || 'Câu lệnh Prompt không tiêu đề'}</h5>
               </div>
-              <span class="text-[9px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20 shrink-0 font-mono">Word .doc</span>
+              <div class="flex items-center gap-1.5 shrink-0">
+                <span class="text-[9px] px-2 py-0.5 rounded-full font-bold border ${meta.badgeClass}">${meta.label}</span>
+                <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-850 text-slate-400 font-mono">Word .doc</span>
+              </div>
             </div>
-            <p class="text-xs text-slate-300 font-sans line-clamp-3 leading-relaxed whitespace-pre-wrap">${escapeHtml(previewText)}</p>
-            <div class="text-[10px] text-slate-500 flex items-center justify-between pt-1">
-              <span>📁 ${item.folderKey ? item.folderKey.split('/').pop() : 'Thư mục'}</span>
-              <span>${item.date || ''}</span>
+
+            <!-- Đoạn trích nội dung (Bấm vào thẻ để mở xem toàn bộ) -->
+            <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 group-hover:border-slate-700 transition">
+              <p class="text-xs text-slate-300 font-sans line-clamp-3 leading-relaxed whitespace-pre-wrap">${escapeHtml(previewText)}</p>
+            </div>
+
+            <div class="flex items-center justify-between text-[10px] text-slate-500 pt-0.5">
+              <span>📁 ${item.folderKey ? item.folderKey.split('/').pop() : 'Thư mục'} &bull; ${item.date || ''}</span>
+              <span class="text-blue-400 font-semibold group-hover:underline flex items-center gap-0.5">
+                <span>👁️ Bấm để xem toàn bộ</span> &rarr;
+              </span>
             </div>
           </div>
 
-          <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-800">
-            <!-- Nút Tải Word .doc -->
-            <button type="button" class="download-doc-btn flex-1 py-1.5 px-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1 shadow">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-              <span>Tải .doc</span>
+          <!-- DÒNG CÁC NÚT HÀNH ĐỘNG NHANH TRÊN TỪNG ITEM -->
+          <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-800/80">
+            <!-- Nút Copy Prompt -->
+            <button type="button" class="quick-copy-prompt-btn py-1.5 px-2.5 bg-slate-850 hover:bg-slate-750 text-slate-200 hover:text-white rounded-xl text-xs font-semibold transition flex items-center gap-1 shadow-sm" title="Sao chép câu lệnh prompt này">
+              <span>📋 Copy</span>
             </button>
 
-            <!-- Nút Đưa vào Bước 2 viết Content -->
-            <button type="button" class="push-step2-btn py-1.5 px-2.5 bg-slate-800 hover:bg-slate-700 text-rose-300 rounded-xl text-xs font-semibold transition" title="Đưa nội dung này vào ô thông tin Bước 2 để viết bài">
-              ✨ Sang Bước 2
+            <!-- Nút Tách Ảnh (Bước 1) -->
+            <button type="button" class="quick-step1-btn py-1.5 px-2.5 bg-indigo-600/30 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/40 rounded-xl text-xs font-semibold transition flex items-center gap-1" title="Dùng prompt này vào Studio Tách & Ghép Nền Ảnh Bước 1">
+              <span>🖼️ Tách Ảnh</span>
+            </button>
+
+            <!-- Nút Tạo Video (Bước 3) -->
+            <button type="button" class="quick-step3-btn py-1.5 px-2.5 bg-purple-600/30 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/40 rounded-xl text-xs font-semibold transition flex items-center gap-1" title="Dùng prompt này vào Bước 3 Video Studio">
+              <span>🎬 Tạo Video</span>
+            </button>
+
+            <!-- Nút Tải Word .doc -->
+            <button type="button" class="quick-doc-btn py-1.5 px-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 shadow-sm" title="Tải file Microsoft Word (.doc) về máy">
+              <span>📥 .doc</span>
             </button>
 
             <!-- Nút Sửa -->
-            <button type="button" class="edit-note-btn py-1.5 px-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs transition" title="Chỉnh sửa ghi chú">
+            <button type="button" class="quick-edit-btn p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition" title="Chỉnh sửa ghi chú">
               ✏️
             </button>
 
-            <!-- Nút Copy -->
-            <button type="button" class="copy-note-btn py-1.5 px-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs transition" title="Sao chép nội dung">
-              📋
-            </button>
-
             <!-- Nút Xóa -->
-            <button type="button" class="del-note-btn py-1.5 px-2 text-slate-500 hover:text-rose-400 rounded-xl text-xs transition" title="Xóa ghi chú">
+            <button type="button" class="quick-del-btn p-1.5 text-slate-500 hover:text-rose-400 hover:bg-slate-800 rounded-lg transition" title="Xóa ghi chú">
               🗑️
             </button>
           </div>
         `;
 
-        card.querySelector('.download-doc-btn').addEventListener('click', () => {
+        // BẤM VÀO ĐÂU TRÊN CARD CŨNG MỞ MODAL XEM CHI TIẾT
+        card.addEventListener('click', () => {
+          openWordNoteViewerModal(item);
+        });
+
+        // Nút Copy Prompt
+        card.querySelector('.quick-copy-prompt-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          navigator.clipboard.writeText(item.content).then(() => {
+            showToast('Đã sao chép nội dung Prompt vào bộ nhớ tạm!');
+          });
+        });
+
+        // Nút Dùng Tách Ảnh (Bước 1)
+        card.querySelector('.quick-step1-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          navigator.clipboard.writeText(item.content);
+          goToStep(1);
+          // Nạp vào input ghi chú hoặc prompt Bước 1
+          const nameInput = document.getElementById('save-image-name-input');
+          if (nameInput && !nameInput.value) {
+            nameInput.value = item.title.replace(/[^a-zA-Z0-9_]/g, '_');
+          }
+          showToast(`✨ Đã nạp Prompt: "${item.title}" sang Bước 1 Tách & Ghép Nền Ảnh!`);
+        });
+
+        // Nút Dùng Tạo Video (Bước 3)
+        card.querySelector('.quick-step3-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          goToStep(3);
+          const customPrompt = document.getElementById('custom-video-flow-prompt');
+          if (customPrompt) {
+            customPrompt.value = item.content;
+            customPrompt.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            customPrompt.classList.add('ring-2', 'ring-purple-500');
+            setTimeout(() => customPrompt.classList.remove('ring-2', 'ring-purple-500'), 2000);
+          }
+          showToast(`✨ Đã nạp Prompt: "${item.title}" vào Bước 3 Video Studio!`);
+        });
+
+        // Nút Tải Word .doc
+        card.querySelector('.quick-doc-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
           downloadWordDocument(item.title, item.content);
         });
 
-        card.querySelector('.push-step2-btn').addEventListener('click', () => {
-          const activeIdx = state.activeProductIdx || 0;
-          if (state.batchProducts && state.batchProducts[activeIdx]) {
-            state.batchProducts[activeIdx].info = (state.batchProducts[activeIdx].info ? state.batchProducts[activeIdx].info + '\n' : '') + `[Ghi chú: ${item.title}]\n` + item.content;
-            renderProductRows();
-          }
-          goToStep(2);
-          showToast(`Đã đưa ghi chú "${item.title}" vào Sản phẩm ${activeIdx + 1} ở Bước 2!`);
-        });
-
-        card.querySelector('.edit-note-btn').addEventListener('click', () => {
+        // Nút Sửa
+        card.querySelector('.quick-edit-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
           const row = document.getElementById('add-note-input-row');
           const tInput = document.getElementById('new-note-title-input');
           const cInput = document.getElementById('new-note-content-input');
@@ -2280,25 +2684,20 @@ const state = {
           }
         });
 
-        card.querySelector('.copy-note-btn').addEventListener('click', () => {
-          const full = `${item.title}\n\n${item.content}`;
-          navigator.clipboard.writeText(full).then(() => {
-            showToast('Đã copy nội dung ghi chú!');
-          });
-        });
-
-        card.querySelector('.del-note-btn').addEventListener('click', () => {
+        // Nút Xóa
+        card.querySelector('.quick-del-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
           const list = state.folderNotes[item.folderKey] || [];
-            state.folderNotes[item.folderKey] = list.filter(n => n.id !== item.id);
-            saveFolderAssets();
-            showToast('Đã xóa ghi chú!');
+          state.folderNotes[item.folderKey] = list.filter(n => n.id !== item.id);
+          saveFolderAssets();
+          showToast(`Đã xóa: "${item.title}"`);
         });
 
         container.appendChild(card);
       });
     }
 
-    function loadSavedFolders() {
+function loadSavedFolders() {
       try {
         const saved = localStorage.getItem('ai_video_saved_folders');
         if (saved) {
@@ -2321,8 +2720,10 @@ const state = {
       loadFolderAssets();
 
       renderBreadcrumbs();
+      renderFolderVerticalList();
       renderSubfolderCards();
       renderFolderFilterButtons();
+      switchFolderViewMode(state.folderViewMode || 'list');
       renderSavedGallery();
       renderSavedVideos();
       renderSavedLinks();
@@ -2337,8 +2738,10 @@ const state = {
         localStorage.setItem('ai_video_saved_folders', JSON.stringify(state.savedFolders));
       } catch (e) {}
       renderBreadcrumbs();
+      renderFolderVerticalList();
       renderSubfolderCards();
       renderFolderFilterButtons();
+      switchFolderViewMode(state.folderViewMode || 'list');
       renderSavedGallery();
       renderSavedVideos();
       renderSavedLinks();
@@ -2619,7 +3022,549 @@ const state = {
     }
 
     // Render danh sách thẻ Folder con trực thuộc
-    function renderSubfolderCards() {
+        // ===================================================================
+    // TỰ ĐỘNG PHÂN LOẠI THƯ MỤC "SP." VÀO NGÀNH HÀNG PHÙ HỢP
+    // ===================================================================
+    const SP_CATEGORY_DICTIONARY = [
+      {
+        name: 'Thời trang nữ',
+        icon: '👗',
+        keywords: ['áo dài', 'đầm', 'váy', 'chân váy', 'croptop', 'áo lót', 'nội y', 'bikini', 'đồ bơi nữ', 'áo len nữ', 'bộ đồ nữ', 'áo bà ba', 'áo khoác nữ', 'áo thun nữ', 'quần nữ', 'nữ']
+      },
+      {
+        name: 'Thời trang nam',
+        icon: '👔',
+        keywords: ['quần short', 'kaki', 'quần jean nam', 'áo thun nam', 'áo polo', 'sơ mi nam', 'áo vest', 'quần âu', 'quần tây nam', 'áo khoác nam', 'nam', 'boxer', 'đồ bộ nam']
+      },
+      {
+        name: 'Giày dép & Túi xách',
+        icon: '👠',
+        keywords: ['giày', 'dép', 'sandal', 'cao gót', 'sneaker', 'boots', 'túi xách', 'túi đeo', 'balo', 'ví', 'clutch', 'vali']
+      },
+      {
+        name: 'Mỹ phẩm & Chăm sóc da',
+        icon: '💄',
+        keywords: ['son', 'son lì', 'son kem', 'serum', 'kem dưỡng', 'kem chống nắng', 'sữa rửa mặt', 'toner', 'nước hoa hồng', 'tẩy trang', 'mascara', 'phấn', 'cushion', 'retinol', 'b5', 'skincare', 'mỹ phẩm', 'dưỡng ẩm', 'mặt nạ', 'trị mụn']
+      },
+      {
+        name: 'Nước hoa & Chăm sóc cơ thể',
+        icon: '🧴',
+        keywords: ['nước hoa', 'perfume', 'dầu gội', 'dầu xả', 'dưỡng tóc', 'sữa tắm', 'body mist', 'xịt thơm', 'khử mùi']
+      },
+      {
+        name: 'Nông sản & Thực phẩm',
+        icon: '🌾',
+        keywords: ['hạt nêm', 'ngưu bàng', 'gạo', 'nước mắm', 'gia vị', 'trà', 'cà phê', 'hạt điều', 'ngũ cốc', 'mật ong', 'yến sào', 'nông sản', 'thực phẩm', 'trái cây', 'sấy khô', 'hải sản', 'bánh tráng', 'đặc sản', 'tương ớt', 'tiêu', 'bột ngũ cốc', 'đậu']
+      },
+      {
+        name: 'Nội thất & Gia dụng',
+        icon: '🛋️',
+        keywords: ['bàn', 'ghế', 'sofa', 'tủ', 'giường', 'kệ', 'đèn', 'rèm', 'chăn', 'ga', 'gối', 'nệm', 'nồi', 'chảo', 'bếp', 'nồi chiên', 'máy xay', 'bình giữ nhiệt', 'gia dụng', 'nội thất', 'khay', 'ly', 'tách']
+      },
+      {
+        name: 'Đồ công nghệ & Phụ kiện',
+        icon: '📱',
+        keywords: ['tai nghe', 'bluetooth', 'loa', 'điện thoại', 'ốp lưng', 'cáp sạc', 'củ sạc', 'pin dự phòng', 'chuột', 'bàn phím', 'smartwatch', 'đồng hồ thông minh', 'laptop', 'máy tính', 'camera', 'webcam', 'công nghệ']
+      },
+      {
+        name: 'Mẹ & Bé',
+        icon: '🍼',
+        keywords: ['bỉm', 'tã', 'sữa bột', 'bình sữa', 'đồ chơi', 'xe đẩy', 'quần áo trẻ em', 'sơ sinh', 'em bé', 'mẹ và bé']
+      },
+      {
+        name: 'Sức khỏe & Thực phẩm bổ sung',
+        icon: '💊',
+        keywords: ['vitamin', 'collagen', 'canxi', 'omega', 'thực phẩm chức năng', 'thực phẩm bổ sung', 'thuốc bổ', 'tinh dầu', 'massage']
+      },
+      {
+        name: 'Trang sức & Phụ kiện',
+        icon: '💍',
+        keywords: ['nhẫn', 'dây chuyền', 'vòng tay', 'khuyên tai', 'hoa tai', 'kính mát', 'kính mắt', 'thắt lưng', 'dây nịt', 'đồng hồ', 'trang sức']
+      },
+      {
+        name: 'Hóa mỹ phẩm & Đời sống',
+        icon: '🧼',
+        keywords: ['nước giặt', 'nước xả', 'nước lau sàn', 'nước rửa chén', 'khăn giấy', 'tinh dầu thơm', 'sáp thơm', 'tẩy rửa']
+      }
+    ];
+
+    function isSpFolderName(name) {
+      if (!name) return false;
+      const leaf = name.split('/').pop().trim().toLowerCase();
+      return /^(sp[\.\s\-_]|sản phẩm[\.\s\-_])/i.test(leaf);
+    }
+
+    function getCategoryIconForFolder(name) {
+      if (!name) return '📁';
+      const low = name.toLowerCase();
+      if (isSpFolderName(name)) return '📦';
+      if (low.includes('thời trang nữ') || low.includes('váy') || low.includes('áo dài')) return '👗';
+      if (low.includes('thời trang nam') || low.includes('quần nam')) return '👔';
+      if (low.includes('mỹ phẩm') || low.includes('son') || low.includes('skincare')) return '💄';
+      if (low.includes('nông sản') || low.includes('thực phẩm') || low.includes('hạt nêm') || low.includes('gạo')) return '🌾';
+      if (low.includes('nội thất') || low.includes('gia dụng') || low.includes('bàn') || low.includes('ghế')) return '🛋️';
+      if (low.includes('công nghệ') || low.includes('tai nghe') || low.includes('điện thoại')) return '📱';
+      if (low.includes('giày') || low.includes('túi')) return '👠';
+      if (low.includes('nước hoa') || low.includes('tắm') || low.includes('gội')) return '🧴';
+      if (low.includes('mẹ') || low.includes('bé')) return '🍼';
+      return '📁';
+    }
+
+    function detectCategoryForSpFolder(folderName) {
+      const leaf = folderName.split('/').pop().trim();
+      const clean = leaf.replace(/^(sp[\.\s\-_]+|sản phẩm[\.\s\-_]+)/i, '').toLowerCase();
+
+      for (const cat of SP_CATEGORY_DICTIONARY) {
+        for (const kw of cat.keywords) {
+          if (clean.includes(kw)) {
+            // Khớp với folder đã có trong state nếu có tên tương đương
+            if (state.savedFolders[cat.name]) return cat.name;
+            if (cat.name.includes('Mỹ phẩm') && state.savedFolders['Mỹ phẩm']) return 'Mỹ phẩm';
+            if (cat.name.includes('Công nghệ') && state.savedFolders['Đồ công nghệ']) return 'Đồ công nghệ';
+            if (cat.name.includes('Thời trang') && state.savedFolders['Thời trang & Phụ kiện']) return 'Thời trang & Phụ kiện';
+            return cat.name;
+          }
+        }
+      }
+      return 'Sản phẩm & Khác';
+    }
+
+    function autoClassifySpFolder(folderPath, showToastMessage = true) {
+      if (!folderPath || folderPath === 'all') return false;
+      if (!isSpFolderName(folderPath)) return false;
+
+      // ĐIỀU KIỆN QUAN TRỌNG: "Chỉ xếp khi folder đó tôi post ít nhất 1 ảnh mới xếp"
+      const photoCount = (state.savedFolders[folderPath] && state.savedFolders[folderPath].length) || 0;
+      if (photoCount < 1) {
+        if (showToastMessage) {
+          showToast(`Thư mục "${folderPath.split('/').pop()}" chưa có ảnh nào. Hãy nạp ít nhất 1 ảnh để AI phân loại!`, 'error');
+        }
+        return false;
+      }
+
+      // Nếu đã nằm trong 1 danh mục cha rồi thì không chuyển nữa
+      if (folderPath.includes('/')) return false;
+
+      const targetCategory = detectCategoryForSpFolder(folderPath);
+
+      // Nếu chưa có thư mục ngành hàng cha trong state, tự tạo thêm
+      if (!state.savedFolders[targetCategory]) {
+        state.savedFolders[targetCategory] = [];
+      }
+
+      const leafName = folderPath.split('/').pop();
+      const newPath = targetCategory + '/' + leafName;
+
+      if (newPath === folderPath) return false;
+
+      // Di chuyển ảnh
+      state.savedFolders[newPath] = state.savedFolders[folderPath] || [];
+      state.savedFolders[newPath].forEach(img => {
+        img.currentFolderKey = newPath;
+      });
+
+      // Di chuyển các folder con trực thuộc (nếu có)
+      const oldPrefix = folderPath + '/';
+      Object.keys(state.savedFolders).forEach(k => {
+        if (k.startsWith(oldPrefix)) {
+          const newSubK = newPath + '/' + k.substring(oldPrefix.length);
+          state.savedFolders[newSubK] = state.savedFolders[k] || [];
+          state.savedFolders[newSubK].forEach(img => { img.currentFolderKey = newSubK; });
+          delete state.savedFolders[k];
+        }
+      });
+
+      // Di chuyển video, link, note
+      const migrateStore = (store) => {
+        if (!store) return;
+        if (store[folderPath]) { store[newPath] = store[folderPath]; delete store[folderPath]; }
+        Object.keys(store).forEach(k => {
+          if (k.startsWith(oldPrefix)) {
+            const newK = newPath + '/' + k.substring(oldPrefix.length);
+            store[newK] = store[k];
+            delete store[k];
+          }
+        });
+      };
+      migrateStore(state.folderVideos);
+      migrateStore(state.folderLinks);
+      migrateStore(state.folderNotes);
+      saveFolderAssets();
+
+      delete state.savedFolders[folderPath];
+
+      if (state.currentPath === folderPath) {
+        state.currentPath = newPath;
+      }
+
+      saveFoldersToStorage();
+
+      if (showToastMessage) {
+        showToast(`✨ AI đã chuyển "${leafName}" vào danh mục "${targetCategory}"!`);
+      }
+      return true;
+    }
+
+    function autoClassifyAllSpFolders() {
+      const roots = getRootFolders();
+      let countMoved = 0;
+      roots.forEach(f => {
+        if (isSpFolderName(f)) {
+          const pCount = (state.savedFolders[f] && state.savedFolders[f].length) || 0;
+          if (pCount >= 1) {
+            if (autoClassifySpFolder(f, false)) countMoved++;
+          }
+        }
+      });
+
+      if (countMoved > 0) {
+        saveFoldersToStorage();
+        showToast(`✨ Đã tự động phân loại ${countMoved} thư mục "Sp." có ảnh vào ngành hàng tương ứng!`);
+      } else {
+        showToast('Không có thư mục "Sp." nào có ảnh chưa phân loại.');
+      }
+    }
+
+    // ===================================================================
+    // LONG-PRESS (ĐÈ LÊN THƯ MỤC) & MODAL COMBO (XÓA, ĐỔI TÊN, DI CHUYỂN)
+    // ===================================================================
+    let currentComboFolder = null;
+
+    function attachFolderLongPress(element, folderPath) {
+      if (!element || !folderPath || folderPath === 'all') return;
+      let pressTimer = null;
+      let isLongPress = false;
+      let startX = 0;
+      let startY = 0;
+
+      element.addEventListener('touchstart', (e) => {
+        isLongPress = false;
+        if (!e.touches || !e.touches[0]) return;
+        const touch = e.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+
+        pressTimer = setTimeout(() => {
+          isLongPress = true;
+          if (navigator.vibrate) {
+            try { navigator.vibrate(40); } catch(err) {}
+          }
+          openFolderComboModal(folderPath);
+        }, 450);
+      }, { passive: true });
+
+      element.addEventListener('touchmove', (e) => {
+        if (!e.touches || !e.touches[0]) return;
+        const touch = e.touches[0];
+        if (Math.abs(touch.clientX - startX) > 10 || Math.abs(touch.clientY - startY) > 10) {
+          clearTimeout(pressTimer);
+        }
+      }, { passive: true });
+
+      element.addEventListener('touchend', (e) => {
+        clearTimeout(pressTimer);
+        if (isLongPress) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      });
+
+      element.addEventListener('touchcancel', () => {
+        clearTimeout(pressTimer);
+      });
+
+      // Hỗ trợ click chuột phải trên máy tính
+      element.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        openFolderComboModal(folderPath);
+      });
+    }
+
+    function openFolderComboModal(folderPath) {
+      if (!folderPath || folderPath === 'all') return;
+      currentComboFolder = folderPath;
+
+      const modal = document.getElementById('folder-combo-modal');
+      if (!modal) return;
+
+      const titleEl = document.getElementById('combo-folder-title');
+      const pathEl = document.getElementById('combo-folder-path');
+      const statsEl = document.getElementById('combo-folder-stats');
+
+      const leaf = folderPath.split('/').pop();
+      if (titleEl) titleEl.textContent = leaf;
+      if (pathEl) {
+        pathEl.textContent = folderPath.includes('/') ? `📁 Nằm trong: ${folderPath.substring(0, folderPath.lastIndexOf('/'))}` : '🏠 Thư mục gốc';
+      }
+
+      // Stats
+      const pCount = (state.savedFolders[folderPath] && state.savedFolders[folderPath].length) || 0;
+      const vCount = (state.folderVideos && state.folderVideos[folderPath] && state.folderVideos[folderPath].length) || 0;
+      const lCount = (state.folderLinks && state.folderLinks[folderPath] && state.folderLinks[folderPath].length) || 0;
+      const nCount = (state.folderNotes && state.folderNotes[folderPath] && state.folderNotes[folderPath].length) || 0;
+
+      if (statsEl) {
+        statsEl.innerHTML = `
+          <span class="font-bold text-slate-200">📊 Tài nguyên:</span>
+          <span class="text-rose-400 font-semibold">${pCount} ảnh</span> &bull;
+          <span class="text-purple-400 font-semibold">${vCount} video</span> &bull;
+          <span class="text-emerald-400 font-semibold">${lCount} link</span> &bull;
+          <span class="text-blue-400 font-semibold">${nCount} Word</span>
+        `;
+      }
+
+      // Reset các hộp nhập phụ bên trong modal
+      const renameBox = document.getElementById('combo-rename-box');
+      const moveBox = document.getElementById('combo-move-box');
+      const deleteBox = document.getElementById('combo-delete-box');
+      if (renameBox) renameBox.classList.add('hidden');
+      if (moveBox) moveBox.classList.add('hidden');
+      if (deleteBox) deleteBox.classList.add('hidden');
+
+      // Điền danh sách thư mục đích vào dropdown di chuyển
+      const moveSelect = document.getElementById('combo-move-select');
+      if (moveSelect) {
+        moveSelect.innerHTML = '';
+        const rootOpt = document.createElement('option');
+        rootOpt.value = 'root';
+        rootOpt.textContent = '🏠 Thư mục gốc ngoài cùng (Root)';
+        moveSelect.appendChild(rootOpt);
+
+        Object.keys(state.savedFolders).forEach(fPath => {
+          if (fPath !== folderPath && !fPath.startsWith(folderPath + '/')) {
+            const opt = document.createElement('option');
+            opt.value = fPath;
+            opt.textContent = `📁 ${fPath}`;
+            moveSelect.appendChild(opt);
+          }
+        });
+      }
+
+      // Điền tên hiện tại vào input đổi tên
+      const renameInput = document.getElementById('combo-rename-input');
+      if (renameInput) renameInput.value = leaf;
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeFolderComboModal() {
+      const modal = document.getElementById('folder-combo-modal');
+      if (modal) modal.classList.add('hidden');
+      currentComboFolder = null;
+    }
+
+    // ===================================================================
+    // XEM DANH SÁCH THƯ MỤC CHIỀU DỌC (VERTICAL LIST VIEW)
+    // ===================================================================
+    function switchFolderViewMode(mode) {
+      state.folderViewMode = mode || 'list';
+      const listBtn = document.getElementById('view-mode-list-btn');
+      const tabsBtn = document.getElementById('view-mode-tabs-btn');
+      const listContainer = document.getElementById('folder-vertical-list-container');
+      const tabsContainer = document.getElementById('folder-horizontal-container');
+
+      if (state.folderViewMode === 'list') {
+        if (listBtn) listBtn.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 bg-indigo-600 text-white shadow';
+        if (tabsBtn) tabsBtn.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 text-slate-400 hover:text-white';
+        if (listContainer) listContainer.classList.remove('hidden');
+        if (tabsContainer) tabsContainer.classList.add('hidden');
+      } else {
+        if (listBtn) listBtn.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 text-slate-400 hover:text-white';
+        if (tabsBtn) tabsBtn.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 bg-indigo-600 text-white shadow';
+        if (listContainer) listContainer.classList.add('hidden');
+        if (tabsContainer) tabsContainer.classList.remove('hidden');
+      }
+    }
+
+    function renderFolderVerticalList() {
+      const container = document.getElementById('folder-vertical-list-container');
+      const badgeTotal = document.getElementById('folder-total-badge');
+      if (!container) return;
+
+      container.innerHTML = '';
+      const totalFoldersCount = Object.keys(state.savedFolders).length;
+      if (badgeTotal) badgeTotal.textContent = `${totalFoldersCount} thư mục`;
+
+      const cur = state.currentPath;
+
+      // Nút "🏠 Xem Tất Cả Thư Mục (Toàn bộ tài nguyên)"
+      let totalAllAssets = 0;
+      Object.keys(state.savedFolders).forEach(k => totalAllAssets += (state.savedFolders[k]?.length || 0));
+
+      const allRow = document.createElement('div');
+      allRow.className = `p-3 rounded-2xl border transition flex items-center justify-between gap-3 cursor-pointer ${
+        cur === 'all'
+          ? 'bg-indigo-950/60 border-indigo-500/60 shadow-lg ring-1 ring-indigo-500/30'
+          : 'bg-slate-900/90 border-slate-800 hover:border-slate-700'
+      }`;
+      allRow.innerHTML = `
+        <div class="flex items-center gap-3 min-w-0 flex-1">
+          <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white font-bold text-sm flex items-center justify-center shrink-0 shadow">✨</span>
+          <div class="min-w-0">
+            <h4 class="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
+              <span>Tất Cả Thư Mục & Tài Nguyên</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-bold shrink-0">${totalAllAssets} ảnh</span>
+            </h4>
+            <p class="text-[11px] text-slate-400">Hiển thị toàn bộ ảnh trong tất cả các thư mục</p>
+          </div>
+        </div>
+        <button type="button" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-indigo-300 font-bold text-xs transition shrink-0 flex items-center gap-1">
+          <span>${cur === 'all' ? 'Đang Xem' : 'Mở Xem'}</span> &rarr;
+        </button>
+      `;
+      allRow.addEventListener('click', () => {
+        state.currentPath = 'all';
+        saveFoldersToStorage();
+      });
+      container.appendChild(allRow);
+
+      // Danh sách các thư mục gốc và các thư mục con
+      const roots = getRootFolders();
+
+      roots.forEach(rootPath => {
+        const isRootActive = cur === rootPath;
+        const icon = getCategoryIconForFolder(rootPath);
+        const subfolders = getSubfolders(rootPath);
+
+        const pCount = (state.savedFolders[rootPath] && state.savedFolders[rootPath].length) || 0;
+        const vCount = (state.folderVideos && state.folderVideos[rootPath] && state.folderVideos[rootPath].length) || 0;
+        const lCount = (state.folderLinks && state.folderLinks[rootPath] && state.folderLinks[rootPath].length) || 0;
+        const nCount = (state.folderNotes && state.folderNotes[rootPath] && state.folderNotes[rootPath].length) || 0;
+
+        const row = document.createElement('div');
+        row.className = `p-3 rounded-2xl border transition flex items-center justify-between gap-3 group relative cursor-pointer select-none ${
+          isRootActive
+            ? 'bg-rose-950/40 border-rose-500/60 shadow-lg ring-1 ring-rose-500/30'
+            : 'bg-slate-900/80 border-slate-800 hover:border-slate-700 hover:bg-slate-900'
+        }`;
+
+        row.innerHTML = `
+          <div class="flex items-center gap-3 min-w-0 flex-1">
+            <span class="w-8 h-8 rounded-xl bg-slate-800 group-hover:bg-rose-500/20 text-rose-300 flex items-center justify-center text-base shrink-0 shadow transition">
+              ${icon}
+            </span>
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-rose-200 transition truncate">${rootPath}</h4>
+                ${subfolders.length > 0 ? `<span class="text-[9px] px-1.5 py-0.2 rounded-md bg-slate-800 text-slate-400 border border-slate-700">${subfolders.length} folder con</span>` : ''}
+              </div>
+              <div class="flex items-center gap-2 text-[10px] text-slate-400 pt-0.5 flex-wrap">
+                <span class="text-rose-300 font-semibold">${pCount} ảnh</span>
+                ${vCount > 0 ? `<span class="text-purple-300 font-semibold">&bull; ${vCount} video</span>` : ''}
+                ${lCount > 0 ? `<span class="text-emerald-300 font-semibold">&bull; ${lCount} link</span>` : ''}
+                ${nCount > 0 ? `<span class="text-blue-300 font-semibold">&bull; ${nCount} Word</span>` : ''}
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button type="button" class="open-folder-row-btn px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-xl text-xs font-semibold transition flex items-center gap-1 shadow-sm">
+              <span>Mở</span> &rarr;
+            </button>
+            <button type="button" class="combo-menu-trigger-btn w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center text-sm font-bold transition shadow-sm" title="Đè lên hoặc bấm để: Xóa, Đổi tên, Di chuyển">
+              ⋮
+            </button>
+          </div>
+        `;
+
+        // Click để vào thư mục
+        row.querySelector('.open-folder-row-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          state.currentPath = rootPath;
+          saveFoldersToStorage();
+        });
+
+        row.addEventListener('click', () => {
+          state.currentPath = rootPath;
+          saveFoldersToStorage();
+        });
+
+        // Bấm nút 3 chấm để mở combo menu
+        row.querySelector('.combo-menu-trigger-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          openFolderComboModal(rootPath);
+        });
+
+        // ĐÈ LÊN (LONG PRESS) HOẶC RIGHT-CLICK
+        attachFolderLongPress(row, rootPath);
+
+        container.appendChild(row);
+
+        // NẾU CÓ THƯ MỤC CON: Render danh sách thư mục con thụt đầu dòng (↳)
+        if (subfolders.length > 0) {
+          const subContainer = document.createElement('div');
+          subContainer.className = 'pl-5 sm:pl-7 space-y-1.5 border-l-2 border-slate-800 ml-4 py-1';
+
+          subfolders.forEach(subPath => {
+            const subLeaf = subPath.split('/').pop();
+            const isSubActive = cur === subPath;
+            const subIcon = getCategoryIconForFolder(subLeaf);
+
+            const spP = (state.savedFolders[subPath] && state.savedFolders[subPath].length) || 0;
+            const spV = (state.folderVideos && state.folderVideos[subPath] && state.folderVideos[subPath].length) || 0;
+            const spL = (state.folderLinks && state.folderLinks[subPath] && state.folderLinks[subPath].length) || 0;
+            const spN = (state.folderNotes && state.folderNotes[subPath] && state.folderNotes[subPath].length) || 0;
+
+            const subRow = document.createElement('div');
+            subRow.className = `p-2 sm:p-2.5 rounded-xl border transition flex items-center justify-between gap-2.5 group cursor-pointer select-none ${
+              isSubActive
+                ? 'bg-rose-950/50 border-rose-500/50 shadow'
+                : 'bg-slate-950/80 border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/60'
+            }`;
+
+            subRow.innerHTML = `
+              <div class="flex items-center gap-2 min-w-0 flex-1">
+                <span class="text-slate-500 font-mono text-xs">↳</span>
+                <span class="text-sm shrink-0">${subIcon}</span>
+                <div class="min-w-0">
+                  <h5 class="text-xs font-bold text-slate-200 group-hover:text-white truncate">${subLeaf}</h5>
+                  <div class="flex items-center gap-1.5 text-[10px] text-slate-400">
+                    <span class="text-rose-300">${spP} ảnh</span>
+                    ${spV > 0 ? `<span>&bull; ${spV} v</span>` : ''}
+                    ${spL > 0 ? `<span>&bull; ${spL} link</span>` : ''}
+                    ${spN > 0 ? `<span>&bull; ${spN} Word</span>` : ''}
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-1 shrink-0">
+                <button type="button" class="open-sub-btn px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg text-[11px] font-semibold transition">
+                  Mở
+                </button>
+                <button type="button" class="sub-combo-btn w-7 h-7 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center text-xs font-bold transition" title="Xóa, Đổi tên, Di chuyển">
+                  ⋮
+                </button>
+              </div>
+            `;
+
+            subRow.querySelector('.open-sub-btn').addEventListener('click', (e) => {
+              e.stopPropagation();
+              state.currentPath = subPath;
+              saveFoldersToStorage();
+            });
+
+            subRow.addEventListener('click', () => {
+              state.currentPath = subPath;
+              saveFoldersToStorage();
+            });
+
+            subRow.querySelector('.sub-combo-btn').addEventListener('click', (e) => {
+              e.stopPropagation();
+              openFolderComboModal(subPath);
+            });
+
+            // Đè lên thư mục con
+            attachFolderLongPress(subRow, subPath);
+
+            subContainer.appendChild(subRow);
+          });
+
+          container.appendChild(subContainer);
+        }
+      });
+    }
+
+function renderSubfolderCards() {
       const container = document.getElementById('subfolders-container');
       const uploadLabel = document.getElementById('upload-folder-btn-label');
       const createSubBtn = document.getElementById('create-subfolder-btn');
@@ -2657,20 +3602,37 @@ const state = {
           const subName = subPath.split('/').pop();
           const count = (state.savedFolders[subPath] && state.savedFolders[subPath].length) || 0;
 
-          const card = document.createElement('button');
-          card.type = 'button';
-          card.className = 'px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-rose-500/50 text-xs text-slate-200 hover:text-white flex items-center gap-2 transition group shadow-sm';
-          card.innerHTML = `
+          const cardWrapper = document.createElement('div');
+          cardWrapper.className = 'inline-flex items-center rounded-xl bg-slate-950 border border-slate-800 hover:border-rose-500/50 transition group shadow-sm overflow-hidden select-none';
+          
+          const cardBtn = document.createElement('button');
+          cardBtn.type = 'button';
+          cardBtn.className = 'px-3 py-1.5 text-xs text-slate-200 hover:text-white flex items-center gap-2 transition';
+          cardBtn.innerHTML = `
             <span class="text-rose-400">📂</span>
             <span class="font-bold">${subName}</span>
             <span class="text-[10px] text-slate-500 font-mono">(${count})</span>
           `;
-          card.addEventListener('click', () => {
+          cardBtn.addEventListener('click', () => {
             state.currentPath = subPath;
             saveFoldersToStorage();
             showToast(`Đã vào thư mục con: "${subName}"`);
           });
-          container.appendChild(card);
+
+          const dotsBtn = document.createElement('button');
+          dotsBtn.type = 'button';
+          dotsBtn.className = 'px-2 py-1.5 text-slate-500 hover:text-white hover:bg-slate-800 text-xs font-bold transition border-l border-slate-800/80';
+          dotsBtn.textContent = '⋮';
+          dotsBtn.title = 'Đè lên hoặc bấm để: Xóa, Đổi tên, Di chuyển';
+          dotsBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openFolderComboModal(subPath);
+          });
+
+          cardWrapper.appendChild(cardBtn);
+          cardWrapper.appendChild(dotsBtn);
+          attachFolderLongPress(cardWrapper, subPath);
+          container.appendChild(cardWrapper);
         });
       }
     }
@@ -2716,6 +3678,7 @@ const state = {
           state.currentPath = rootName;
           saveFoldersToStorage();
         });
+        attachFolderLongPress(btn, rootName);
         container.appendChild(btn);
       });
     }
@@ -2913,6 +3876,10 @@ const state = {
           if (count === fileArr.length) {
             saveFoldersToStorage();
             showToast(`Đã tải thành công ${fileArr.length} ảnh vào "${category}"!`);
+            // Kiểm tra phân loại Sp. khi có ít nhất 1 ảnh
+            if (category && isSpFolderName(category)) {
+              setTimeout(() => { autoClassifySpFolder(category, true); }, 300);
+            }
           }
         };
         reader.readAsDataURL(file);
@@ -3189,6 +4156,10 @@ const state = {
       state.savedFolders[targetFolder].unshift(newItem);
       saveFoldersToStorage();
       showToast(`Đã lưu ảnh vào Thư mục "${targetFolder}" thành công!`);
+      // Kiểm tra phân loại Sp. khi có ảnh được nạp
+      if (targetFolder && isSpFolderName(targetFolder)) {
+        setTimeout(() => { autoClassifySpFolder(targetFolder, true); }, 300);
+      }
     }
 
     // ===================================================================
@@ -5296,7 +6267,7 @@ loadLearnedRules();
         });
       }
 
-      // Inside Word Notes
+      // Inside Word Notes & Prompts
       const insideAddNoteBtn = document.getElementById('inside-add-note-btn');
       const addNoteRow = document.getElementById('add-note-input-row');
       const newNoteTitleInput = document.getElementById('new-note-title-input');
@@ -5305,11 +6276,64 @@ loadLearnedRules();
       const cancelSaveNoteBtn = document.getElementById('cancel-save-note-btn');
       const closeAddNoteBtn = document.getElementById('close-add-note-btn');
       const downloadDraftWordBtn = document.getElementById('download-draft-word-btn');
+      const quickPasteBtn = document.getElementById('quick-paste-clipboard-btn');
+
+      // Quick type chips
+      const optImgPrompt = document.getElementById('type-opt-img-prompt');
+      const optVidPrompt = document.getElementById('type-opt-video-prompt');
+      const optGenDoc = document.getElementById('type-opt-general-doc');
+
+      if (optImgPrompt && newNoteTitleInput) {
+        optImgPrompt.addEventListener('click', () => {
+          if (!newNoteTitleInput.value || newNoteTitleInput.value.startsWith('Prompt') || newNoteTitleInput.value.startsWith('Kịch bản')) {
+            newNoteTitleInput.value = 'Prompt Tách & Ghép Nền Ảnh 9:16';
+          }
+          if (newNoteContentInput) newNoteContentInput.focus();
+        });
+      }
+      if (optVidPrompt && newNoteTitleInput) {
+        optVidPrompt.addEventListener('click', () => {
+          if (!newNoteTitleInput.value || newNoteTitleInput.value.startsWith('Prompt') || newNoteTitleInput.value.startsWith('Kịch bản')) {
+            newNoteTitleInput.value = 'Prompt Tạo Video Flow Sản Phẩm';
+          }
+          if (newNoteContentInput) newNoteContentInput.focus();
+        });
+      }
+      if (optGenDoc && newNoteTitleInput) {
+        optGenDoc.addEventListener('click', () => {
+          if (!newNoteTitleInput.value || newNoteTitleInput.value.startsWith('Prompt') || newNoteTitleInput.value.startsWith('Kịch bản')) {
+            newNoteTitleInput.value = 'Kịch Bản & Thông Tin Sản Phẩm';
+          }
+          if (newNoteContentInput) newNoteContentInput.focus();
+        });
+      }
+
+      // Quick paste from clipboard
+      if (quickPasteBtn && newNoteContentInput) {
+        quickPasteBtn.addEventListener('click', async () => {
+          try {
+            const clipText = await navigator.clipboard.readText();
+            if (clipText) {
+              newNoteContentInput.value = clipText;
+              if (newNoteTitleInput && !newNoteTitleInput.value) {
+                const preview = clipText.trim().substring(0, 30).replace(/\n/g, ' ');
+                newNoteTitleInput.value = 'Prompt: ' + preview;
+              }
+              showToast('Đã dán nội dung từ clipboard!');
+            } else {
+              showToast('Bộ nhớ tạm đang trống!', 'error');
+            }
+          } catch (err) {
+            newNoteContentInput.focus();
+            showToast('Vui lòng chạm giữ vào ô và chọn Dán (Paste)', 'error');
+          }
+        });
+      }
 
       if (insideAddNoteBtn && addNoteRow) {
         insideAddNoteBtn.addEventListener('click', () => {
           if (state.currentPath === 'all') {
-            showToast('Vui lòng chọn 1 thư mục cụ thể để tạo ghi chú!', 'error');
+            showToast('Vui lòng chọn 1 thư mục cụ thể để lưu prompt / file Word!', 'error');
             return;
           }
           addNoteRow.removeAttribute('data-editing-id');
@@ -5347,17 +6371,17 @@ loadLearnedRules();
         confirmSaveNoteBtn.addEventListener('click', () => {
           const content = newNoteContentInput.value.trim();
           if (!content && !newNoteTitleInput.value.trim()) {
-            showToast('Vui lòng nhập tiêu đề hoặc nội dung ghi chú!', 'error');
+            showToast('Vui lòng nhập tiêu đề hoặc nội dung câu lệnh prompt!', 'error');
             return;
           }
           const cur = state.currentPath;
           if (cur === 'all') {
-            showToast('Vui lòng chọn 1 thư mục cụ thể để lưu ghi chú!', 'error');
+            showToast('Vui lòng chọn 1 thư mục cụ thể để lưu prompt!', 'error');
             return;
           }
           if (!state.folderNotes[cur]) state.folderNotes[cur] = [];
 
-          const title = newNoteTitleInput.value.trim() || 'Ghi chú ' + new Date().toLocaleTimeString('vi-VN');
+          const title = newNoteTitleInput.value.trim() || 'Prompt ' + new Date().toLocaleTimeString('vi-VN');
           const editId = addNoteRow.getAttribute('data-editing-id');
 
           if (editId) {
@@ -5366,7 +6390,7 @@ loadLearnedRules();
               state.folderNotes[cur][idx].title = title;
               state.folderNotes[cur][idx].content = content;
               state.folderNotes[cur][idx].date = new Date().toLocaleDateString('vi-VN');
-              showToast('Đã cập nhật ghi chú Word!');
+              showToast('Đã cập nhật file Word / Prompt!');
             }
           } else {
             state.folderNotes[cur].unshift({
@@ -5375,7 +6399,7 @@ loadLearnedRules();
               content: content,
               date: new Date().toLocaleDateString('vi-VN')
             });
-            showToast(`Đã lưu ghi chú Word vào thư mục "${cur.split('/').pop()}"!`);
+            showToast(`Đã lưu file Word / Prompt vào thư mục "${cur.split('/').pop()}"!`);
           }
 
           saveFolderAssets();
@@ -5386,6 +6410,94 @@ loadLearnedRules();
         });
       }
 
+      // MODAL XEM CHI TIẾT WORD & PROMPT EVENT LISTENERS
+      const closeViewerBtn = document.getElementById('close-word-viewer-btn');
+      const closeViewerBottomBtn = document.getElementById('viewer-close-bottom-btn');
+      [closeViewerBtn, closeViewerBottomBtn].forEach(b => {
+        if (b) b.addEventListener('click', () => closeWordNoteViewerModal());
+      });
+
+      const viewerCopyPromptBtn = document.getElementById('viewer-copy-prompt-btn');
+      if (viewerCopyPromptBtn) {
+        viewerCopyPromptBtn.addEventListener('click', () => {
+          if (currentViewingNote && currentViewingNote.content) {
+            navigator.clipboard.writeText(currentViewingNote.content).then(() => {
+              showToast('Đã sao chép toàn bộ Prompt vào bộ nhớ tạm!');
+            });
+          }
+        });
+      }
+
+      const viewerUseStep1Btn = document.getElementById('viewer-use-step1-btn');
+      if (viewerUseStep1Btn) {
+        viewerUseStep1Btn.addEventListener('click', () => {
+          if (!currentViewingNote) return;
+          navigator.clipboard.writeText(currentViewingNote.content);
+          goToStep(1);
+          closeWordNoteViewerModal();
+          showToast(`✨ Đã nạp Prompt: "${currentViewingNote.title}" sang Bước 1 Tách & Ghép Nền Ảnh!`);
+        });
+      }
+
+      const viewerUseStep3Btn = document.getElementById('viewer-use-step3-btn');
+      if (viewerUseStep3Btn) {
+        viewerUseStep3Btn.addEventListener('click', () => {
+          if (!currentViewingNote) return;
+          goToStep(3);
+          const customPrompt = document.getElementById('custom-video-flow-prompt');
+          if (customPrompt) {
+            customPrompt.value = currentViewingNote.content;
+            customPrompt.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            customPrompt.classList.add('ring-2', 'ring-purple-500');
+            setTimeout(() => customPrompt.classList.remove('ring-2', 'ring-purple-500'), 2000);
+          }
+          closeWordNoteViewerModal();
+          showToast(`✨ Đã nạp Prompt: "${currentViewingNote.title}" vào Bước 3 Video Studio!`);
+        });
+      }
+
+      const viewerDownloadDocBtn = document.getElementById('viewer-download-doc-btn');
+      if (viewerDownloadDocBtn) {
+        viewerDownloadDocBtn.addEventListener('click', () => {
+          if (currentViewingNote) {
+            downloadWordDocument(currentViewingNote.title, currentViewingNote.content);
+          }
+        });
+      }
+
+      const viewerEditNoteBtn = document.getElementById('viewer-edit-note-btn');
+      if (viewerEditNoteBtn) {
+        viewerEditNoteBtn.addEventListener('click', () => {
+          if (!currentViewingNote) return;
+          const item = currentViewingNote;
+          closeWordNoteViewerModal();
+          const row = document.getElementById('add-note-input-row');
+          const tInput = document.getElementById('new-note-title-input');
+          const cInput = document.getElementById('new-note-content-input');
+          if (row && tInput && cInput) {
+            row.classList.remove('hidden');
+            tInput.value = item.title;
+            cInput.value = item.content;
+            row.setAttribute('data-editing-id', item.id);
+            cInput.focus();
+            row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        });
+      }
+
+      const viewerDeleteNoteBtn = document.getElementById('viewer-delete-note-btn');
+      if (viewerDeleteNoteBtn) {
+        viewerDeleteNoteBtn.addEventListener('click', () => {
+          if (!currentViewingNote) return;
+          const item = currentViewingNote;
+          const list = state.folderNotes[item.folderKey] || [];
+          state.folderNotes[item.folderKey] = list.filter(n => n.id !== item.id);
+          saveFolderAssets();
+          closeWordNoteViewerModal();
+          showToast(`Đã xóa: "${item.title}"`);
+        });
+      }
+
       // Asset Switcher Tabs
       document.querySelectorAll('.asset-tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -5393,6 +6505,252 @@ loadLearnedRules();
           switchAssetTab(tab);
         });
       });
+
+      // View Mode Switcher (List dọc vs Tabs ngang)
+      const viewModeListBtn = document.getElementById('view-mode-list-btn');
+      const viewModeTabsBtn = document.getElementById('view-mode-tabs-btn');
+      if (viewModeListBtn && viewModeTabsBtn) {
+        viewModeListBtn.addEventListener('click', () => switchFolderViewMode('list'));
+        viewModeTabsBtn.addEventListener('click', () => switchFolderViewMode('tabs'));
+      }
+
+      // Nút Quét & Tự Phân Loại Folder "Sp."
+      const autoClassifySpBtn = document.getElementById('auto-classify-all-sp-btn');
+      if (autoClassifySpBtn) {
+        autoClassifySpBtn.addEventListener('click', () => {
+          autoClassifyAllSpFolders();
+        });
+      }
+
+      // COMBO MODAL EVENT LISTENERS (XÓA, ĐỔI TÊN, DI CHUYỂN, PHÂN LOẠI)
+      const closeComboBtn = document.getElementById('close-folder-combo-btn');
+      const closeComboBottomBtn = document.getElementById('combo-close-bottom-btn');
+      [closeComboBtn, closeComboBottomBtn].forEach(b => {
+        if (b) b.addEventListener('click', () => closeFolderComboModal());
+      });
+
+      // Nút Mở thư mục từ combo
+      const comboOpenBtn = document.getElementById('combo-open-folder-btn');
+      if (comboOpenBtn) {
+        comboOpenBtn.addEventListener('click', () => {
+          if (currentComboFolder) {
+            state.currentPath = currentComboFolder;
+            saveFoldersToStorage();
+            closeFolderComboModal();
+          }
+        });
+      }
+
+      // Nút Đổi tên trong combo
+      const comboRenameBtn = document.getElementById('combo-action-rename-btn');
+      const comboRenameBox = document.getElementById('combo-rename-box');
+      const comboRenameInput = document.getElementById('combo-rename-input');
+      const comboConfirmRenameBtn = document.getElementById('combo-confirm-rename-btn');
+      const comboCancelRenameBtn = document.getElementById('combo-cancel-rename-btn');
+
+      if (comboRenameBtn && comboRenameBox) {
+        comboRenameBtn.addEventListener('click', () => {
+          comboRenameBox.classList.toggle('hidden');
+          if (!comboRenameBox.classList.contains('hidden') && comboRenameInput) {
+            comboRenameInput.focus();
+          }
+        });
+      }
+      if (comboCancelRenameBtn && comboRenameBox) {
+        comboCancelRenameBtn.addEventListener('click', () => comboRenameBox.classList.add('hidden'));
+      }
+      if (comboConfirmRenameBtn && comboRenameInput) {
+        comboConfirmRenameBtn.addEventListener('click', () => {
+          const newName = comboRenameInput.value.trim();
+          if (!newName || !currentComboFolder) {
+            showToast('Vui lòng nhập tên thư mục!', 'error');
+            return;
+          }
+          const oldPath = currentComboFolder;
+          const parts = oldPath.split('/');
+          parts[parts.length - 1] = newName;
+          const newPath = parts.join('/');
+
+          if (newPath === oldPath) {
+            comboRenameBox.classList.add('hidden');
+            return;
+          }
+          if (state.savedFolders[newPath]) {
+            showToast(`Tên thư mục "${newName}" đã tồn tại!`, 'error');
+            return;
+          }
+
+          state.savedFolders[newPath] = state.savedFolders[oldPath] || [];
+          state.savedFolders[newPath].forEach(img => { img.currentFolderKey = newPath; });
+
+          const oldPrefix = oldPath + '/';
+          Object.keys(state.savedFolders).forEach(k => {
+            if (k.startsWith(oldPrefix)) {
+              const newK = newPath + '/' + k.substring(oldPrefix.length);
+              state.savedFolders[newK] = state.savedFolders[k] || [];
+              state.savedFolders[newK].forEach(img => { img.currentFolderKey = newK; });
+              delete state.savedFolders[k];
+            }
+          });
+
+          // Di chuyển video, link, note
+          const renameStore = (store) => {
+            if (!store) return;
+            if (store[oldPath]) { store[newPath] = store[oldPath]; delete store[oldPath]; }
+            Object.keys(store).forEach(k => {
+              if (k.startsWith(oldPrefix)) {
+                const newK = newPath + '/' + k.substring(oldPrefix.length);
+                store[newK] = store[k];
+                delete store[k];
+              }
+            });
+          };
+          renameStore(state.folderVideos);
+          renameStore(state.folderLinks);
+          renameStore(state.folderNotes);
+          saveFolderAssets();
+
+          delete state.savedFolders[oldPath];
+          if (state.currentPath === oldPath) state.currentPath = newPath;
+          saveFoldersToStorage();
+          closeFolderComboModal();
+          showToast(`Đã đổi tên thư mục thành: "${newName}"!`);
+        });
+      }
+
+      // Nút Di chuyển trong combo
+      const comboMoveBtn = document.getElementById('combo-action-move-btn');
+      const comboMoveBox = document.getElementById('combo-move-box');
+      const comboMoveSelect = document.getElementById('combo-move-select');
+      const comboConfirmMoveBtn = document.getElementById('combo-confirm-move-btn');
+      const comboCancelMoveBtn = document.getElementById('combo-cancel-move-btn');
+
+      if (comboMoveBtn && comboMoveBox) {
+        comboMoveBtn.addEventListener('click', () => {
+          comboMoveBox.classList.toggle('hidden');
+        });
+      }
+      if (comboCancelMoveBtn && comboMoveBox) {
+        comboCancelMoveBtn.addEventListener('click', () => comboMoveBox.classList.add('hidden'));
+      }
+      if (comboConfirmMoveBtn && comboMoveSelect) {
+        comboConfirmMoveBtn.addEventListener('click', () => {
+          if (!currentComboFolder) return;
+          const targetParent = comboMoveSelect.value;
+          const oldPath = currentComboFolder;
+          const leafName = oldPath.split('/').pop();
+          const newPath = targetParent === 'root' ? leafName : targetParent + '/' + leafName;
+
+          if (newPath === oldPath) {
+            showToast('Thư mục đã ở vị trí này rồi!', 'error');
+            return;
+          }
+          if (state.savedFolders[newPath]) {
+            showToast(`Thư mục "${newPath}" đã tồn tại! Vui lòng chọn vị trí khác.`, 'error');
+            return;
+          }
+
+          state.savedFolders[newPath] = state.savedFolders[oldPath] || [];
+          state.savedFolders[newPath].forEach(img => { img.currentFolderKey = newPath; });
+
+          const oldPrefix = oldPath + '/';
+          Object.keys(state.savedFolders).forEach(k => {
+            if (k.startsWith(oldPrefix)) {
+              const newK = newPath + '/' + k.substring(oldPrefix.length);
+              state.savedFolders[newK] = state.savedFolders[k] || [];
+              state.savedFolders[newK].forEach(img => { img.currentFolderKey = newK; });
+              delete state.savedFolders[k];
+            }
+          });
+
+          // Di chuyển video, link, note
+          const migrateStore = (store) => {
+            if (!store) return;
+            if (store[oldPath]) { store[newPath] = store[oldPath]; delete store[oldPath]; }
+            Object.keys(store).forEach(k => {
+              if (k.startsWith(oldPrefix)) {
+                const newK = newPath + '/' + k.substring(oldPrefix.length);
+                store[newK] = store[k];
+                delete store[k];
+              }
+            });
+          };
+          migrateStore(state.folderVideos);
+          migrateStore(state.folderLinks);
+          migrateStore(state.folderNotes);
+          saveFolderAssets();
+
+          delete state.savedFolders[oldPath];
+          if (state.currentPath === oldPath) state.currentPath = newPath;
+          saveFoldersToStorage();
+          closeFolderComboModal();
+          showToast(`Đã di chuyển thư mục "${leafName}" vào "${targetParent === 'root' ? 'Thư mục gốc' : targetParent}"!`);
+        });
+      }
+
+      // Nút Xóa trong combo
+      const comboDeleteBtn = document.getElementById('combo-action-delete-btn');
+      const comboDeleteBox = document.getElementById('combo-delete-box');
+      const comboConfirmDeleteBtn = document.getElementById('combo-confirm-delete-btn');
+      const comboCancelDeleteBtn = document.getElementById('combo-cancel-delete-btn');
+
+      if (comboDeleteBtn && comboDeleteBox) {
+        comboDeleteBtn.addEventListener('click', () => {
+          comboDeleteBox.classList.toggle('hidden');
+        });
+      }
+      if (comboCancelDeleteBtn && comboDeleteBox) {
+        comboCancelDeleteBtn.addEventListener('click', () => comboDeleteBox.classList.add('hidden'));
+      }
+      if (comboConfirmDeleteBtn) {
+        comboConfirmDeleteBtn.addEventListener('click', () => {
+          if (!currentComboFolder) return;
+          const target = currentComboFolder;
+          const leafName = target.split('/').pop();
+          const prefix = target + '/';
+
+          Object.keys(state.savedFolders).forEach(k => {
+            if (k.startsWith(prefix)) delete state.savedFolders[k];
+          });
+          delete state.savedFolders[target];
+
+          const cleanStore = (store) => {
+            if (!store) return;
+            delete store[target];
+            Object.keys(store).forEach(k => { if (k.startsWith(prefix)) delete store[k]; });
+          };
+          cleanStore(state.folderVideos);
+          cleanStore(state.folderLinks);
+          cleanStore(state.folderNotes);
+          saveFolderAssets();
+
+          if (state.currentPath === target || state.currentPath.startsWith(prefix)) {
+            const parts = target.split('/');
+            if (parts.length > 1) {
+              parts.pop();
+              state.currentPath = parts.join('/');
+            } else {
+              state.currentPath = 'all';
+            }
+          }
+
+          saveFoldersToStorage();
+          closeFolderComboModal();
+          showToast(`Đã xóa thư mục "${leafName}".`);
+        });
+      }
+
+      // Nút Tự phân loại AI trong combo
+      const comboClassifyBtn = document.getElementById('combo-action-classify-btn');
+      if (comboClassifyBtn) {
+        comboClassifyBtn.addEventListener('click', () => {
+          if (!currentComboFolder) return;
+          const success = autoClassifySpFolder(currentComboFolder, true);
+          if (success) {
+            closeFolderComboModal();
+          }
+        });
+      }
 
 
       renderProductRows();
